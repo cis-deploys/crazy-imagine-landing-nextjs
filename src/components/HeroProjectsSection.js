@@ -1,0 +1,38 @@
+import React from "react"
+import { Box } from "@mui/material"
+import { makeStyles } from "@mui/styles"
+import Image from "next/image"
+
+const useStyles = makeStyles(theme => ({
+  heroContainer: {
+    backgroundColor: "#304fd5",
+  },
+  imageContainer: {
+    backgroundColor: "#27AAE1",
+    display: "flex",
+    justifyContent: "center",
+    padding: "45px 60px",
+    marginTop: "90px",
+    maxHeight: "850px",
+    [theme.breakpoints.down("md")]: {
+      padding: "25px 43px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "25px 15px",
+    },
+  },
+}))
+
+const HeroProjectsSection = ({ image, title }) => {
+  const classes = useStyles()
+
+  const dataImage = image.length > 1 ? image[1]?.url : image[0]?.url;
+
+  return (
+    <Box className={classes.imageContainer}>
+      <Image src={dataImage} alt={title} width={1600} height={1000}/>
+    </Box>
+  )
+}
+
+export default HeroProjectsSection
