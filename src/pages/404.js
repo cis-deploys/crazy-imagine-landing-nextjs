@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 import Background from '../../public/Background404.svg'
 import Image404 from '../../public/Image404.svg'

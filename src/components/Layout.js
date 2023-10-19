@@ -8,10 +8,12 @@ import Navbar from "./Navbar"
 import Footer from "./Footer"
 import GoogleAdsTag from "./googleAdsTag"
 import NavbarMobile from "./NavbarMobile"
+import SEO from "./seo"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, seo }) => {
   return (
     <>
+      <SEO seo={ seo }/>
       <Hidden mdDown>
         <Navbar variant="secondary" />
       </Hidden>

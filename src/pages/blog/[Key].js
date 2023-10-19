@@ -9,7 +9,7 @@ import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router"
 
 // COMPONENTS
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 import PostContent from "../../components/PostContent";
 import RecentlyPosted from "../../components/RecentlyPosted";
 import LastestPosts from "../../components/LastestPosts";

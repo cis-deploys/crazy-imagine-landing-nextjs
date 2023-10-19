@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import SectionHeader from "../components/SectionHeader"
 import HomeMainSection from "../components/HomeMainSection"
 import ReferenceSection from "../components/ReferenceSection"

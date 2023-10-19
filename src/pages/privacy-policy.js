@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import PrivacyPolicySection from "../components/PrivacyPolicySection"
 import SectionHeader from "../components/SectionHeader"
 import ContactSection from "../components/ContactSection"

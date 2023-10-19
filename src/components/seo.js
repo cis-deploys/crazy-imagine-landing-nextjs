@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 //import { Helmet } from "react-helmet";
 import Loading from "./Loading";
+import { useTranslation } from "react-i18next";
 const Helmet = React.lazy(() => import("react-helmet"))
 
-const SEO = ({ seo = {} }) => {
-  const { strapiGlobal } = useStaticQuery(query);
-  const { defaultSeo, siteName, favicon } = strapiGlobal;
+const SEO = ({ seo = {}, favicon }) => {
   const { i18n, t } = useTranslation()
   const lang = i18n.language 
 
@@ -97,10 +96,10 @@ const SEO = ({ seo = {} }) => {
             title={fullSeo.metaTitle}
             titleTemplate={fullSeo.metaTitle}
             link={[
-              {
-                rel: "icon",
-                href: favicon.localFile.publicURL,
-              },
+              // {
+              //   rel: "icon",
+              //   href: favicon.localFile.publicURL,
+              // },
               {
                 rel: "stylesheet preload",
                 href: "https://fonts.googleapis.com/css?family=Staatliches",
@@ -148,25 +147,3 @@ SEO.defaultProps = {
   image: null,
   article: false,
 };
-
-const query = graphql`
-  query {
-    strapiGlobal {
-      siteName
-      favicon {
-        localFile {
-          publicURL
-        }
-      }
-      defaultSeo {
-        metaTitle
-        metaDescription
-        shareImage {
-          localFile {
-            publicURL
-          }
-        }
-      }
-    }
-  }
-`;

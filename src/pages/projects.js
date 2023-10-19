@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { Box } from "@mui/material"
 
 import SectionHeader from "../components/SectionHeader"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import ServicesSection from "../components/ServicesSection"
 import ContactSection from "../components/ContactSection"
 import ProjectSection from "../components/ProjectSection"
