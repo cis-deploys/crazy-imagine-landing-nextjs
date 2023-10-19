@@ -29,8 +29,9 @@ const GalleryProjects = ({ gallery, description }) => {
   return (
     <>
       <Box ref={ Ref1 } className={classes.galleryContainer}>
-        {firstGallery.map(({ url }) => (
+        {firstGallery.map(({ url }, index) => (
           <Image
+            key={index}
             src={(url)}
             style={{
               objectFit: "contain",
@@ -43,8 +44,9 @@ const GalleryProjects = ({ gallery, description }) => {
       </Box>
       <DescriptionProjects description={description} />
       <Box ref={ Ref2 } className={classes.galleryContainer}>
-        {secondGallery.map(({ url }) => (
+        {secondGallery.map(({ url }, index) => (
           <Image
+            key={ index }
             src={(url)}
             style={{
               objectFit: "contain",

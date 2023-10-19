@@ -3,6 +3,7 @@ import { Box, Grid } from "@mui/material"
 import { PROJECTS } from "../navigation/sitemap"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
+import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
   projectImage: {

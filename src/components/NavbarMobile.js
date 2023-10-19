@@ -133,13 +133,13 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }))
 
 const icons = [
-  <FontAwesomeIcon icon={faHouse} size="lg" />,
-  <FontAwesomeIcon icon={faBars} size="lg" />,
-  <FontAwesomeIcon icon={faCode} size="lg" />,
-  <FontAwesomeIcon icon={faBlog} size="lg" />,
-  <FontAwesomeIcon icon={faLaptopCode} size="lg" />,
-  <FontAwesomeIcon icon={faPhone} size="lg" />,
-  <FontAwesomeIcon icon={faFlag} size="lg" />,
+  <FontAwesomeIcon key="icon-faHouse" icon={faHouse} size="lg" />,
+  <FontAwesomeIcon key="icon-faBars" icon={faBars} size="lg" />,
+  <FontAwesomeIcon key="icon-faCode" icon={faCode} size="lg" />,
+  <FontAwesomeIcon key="icon-faBlog" icon={faBlog} size="lg" />,
+  <FontAwesomeIcon key="icon-faLaptopCode" icon={faLaptopCode} size="lg" />,
+  <FontAwesomeIcon key="icon-faPhone" icon={faPhone} size="lg" />,
+  <FontAwesomeIcon key="icon-faFlag" icon={faFlag} size="lg" />,
 ]
 
 export const NavbarMobile = ({
@@ -222,6 +222,7 @@ export const NavbarMobile = ({
           <List onClick={handleDrawerClose} className={classes.list}>
             {[
               <Link
+                key="navbar-link-home"
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${HOME}`}
@@ -233,6 +234,7 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
+                key="navbar-link-about"
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${ABOUT}`}
@@ -244,6 +246,7 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
+                key="navbar-link-projects"
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${PROJECTS}`}
@@ -255,6 +258,7 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
+                key="navbar-link-blog"
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${BLOG}`}
@@ -266,6 +270,7 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
+                key="navbar-link-work-with-us"
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${WORK_WITH_US}`}
@@ -280,6 +285,7 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
+                key="navbar-link-contact"
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${CONTACT}`}
@@ -290,7 +296,7 @@ export const NavbarMobile = ({
                 </Typography>
                 </a>
               </Link>,
-              <LanguageModal />,
+              <LanguageModal key="language-modal"/>,
             ]?.map((text, index) => (
               <ListItem button key={index} alignItems="center">
                 <ListItemIcon className={classes.resetLink}>

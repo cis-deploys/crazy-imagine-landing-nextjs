@@ -27,7 +27,7 @@ export async function getServerSideProps() {
 }
 
 
-function indexPage({ projects, articles, reviews }) {
+function IndexPage({ projects, articles, reviews }) {
   const { t } = useTranslation()
 
   return (
@@ -61,4 +61,4 @@ function indexPage({ projects, articles, reviews }) {
     </Layout>
   )
 }
-export default indexPage
+export default IndexPage
