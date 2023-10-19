@@ -6,7 +6,7 @@ import { Box, Hidden } from "@mui/material"
 // COMPONENTS
 import Navbar from "./Navbar"
 import Footer from "./Footer"
-import GoogleAdsTag from "./googleAdsTag"
+import GoogleAdsTag from "./GoogleAdsTag"
 import NavbarMobile from "./NavbarMobile"
 import SEO from "./seo"
 

@@ -1,7 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
-import Layout from "../components/Layout";
+import Layout from "../components/Layout"
 import SectionHeader from "../components/SectionHeader"
 import ContactSection from "../components/ContactSection"
 import AboutSection from "../components/AboutSection"
@@ -27,17 +27,4 @@ const About = () => {
     </Layout>
   )
 }
-// export const query = graphql`
-//   query($language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `
 export default About
