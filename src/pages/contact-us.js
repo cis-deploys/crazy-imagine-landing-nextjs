@@ -1,11 +1,20 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
-import SectionHeader from "../components/SectionHeader"
-import ContactSection from "../components/ContactSection"
 
 import headerImage from "../../public/astronaut.svg"
+
+const SectionHeader = dynamic(
+  () => import("../components/SectionHeader"),
+  { ssr: false },
+)
+
+const ContactSection = dynamic(
+  () => import("../components/ContactSection"),
+  { ssr: false },
+)
 
 const Contact = () => {
   const { t } = useTranslation()
@@ -23,18 +32,5 @@ const Contact = () => {
     </Layout>
   )
 }
-// export const query = graphql`
-//   query($language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-//`
 
 export default Contact

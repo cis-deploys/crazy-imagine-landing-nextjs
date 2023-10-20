@@ -1,14 +1,31 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import dynamic from 'next/dynamic'
 import { Box } from "@mui/material"
 
-import SectionHeader from "../components/SectionHeader"
 import Layout from "../components/Layout"
-import ServicesSection from "../components/ServicesSection"
-import ContactSection from "../components/ContactSection"
-import ProjectSection from "../components/ProjectSection"
 
 import headerImage from "../../public/robot.svg"
+
+const SectionHeader = dynamic(
+  () => import("../components/SectionHeader"),
+  { ssr: false },
+)
+
+const ServicesSection = dynamic(
+  () => import("../components/ServicesSection"),
+  { ssr: false },
+)
+
+const ProjectSection = dynamic(
+  () => import("../components/ProjectSection"),
+  { ssr: false },
+)
+
+const ContactSection = dynamic(
+  () => import("../components/ContactSection"),
+  { ssr: false },
+)
 
 export async function getServerSideProps() {
   const resProjects = await fetch("https://strapi.crazyimagine.com/projects")

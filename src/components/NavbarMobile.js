@@ -38,7 +38,7 @@ import { colorsIconos, colors } from "../helpers/navbarColors"
 import useScroll from "../hooks/useScroll"
 
 // STATIC
-import CrazyImageLogo from "../images/crazy-imagine-icon.svg"
+import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
 import {
   CONTACT,
   HOME,

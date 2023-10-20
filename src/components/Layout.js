@@ -1,14 +1,27 @@
 import React from "react"
+import dynamic from 'next/dynamic'
 import PropTypes from "prop-types"
 
 import { Box, Hidden } from "@mui/material"
  
 // COMPONENTS
-import Navbar from "./Navbar"
-import Footer from "./Footer"
 import GoogleAdsTag from "./GoogleAdsTag"
-import NavbarMobile from "./NavbarMobile"
 import SEO from "./seo"
+
+const Navbar = dynamic(
+  () => import("./Navbar"),
+  { ssr: false },
+)
+
+const NavbarMobile = dynamic(
+  () => import("./NavbarMobile"),
+  { ssr: false },
+)
+
+const Footer = dynamic(
+  () => import("./Footer"),
+  { ssr: false },
+)
 
 const Layout = ({ children, seo }) => {
   return (

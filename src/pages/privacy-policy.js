@@ -1,23 +1,36 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
+import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
-import PrivacyPolicySection from "../components/PrivacyPolicySection"
-import SectionHeader from "../components/SectionHeader"
-import ContactSection from "../components/ContactSection"
-import Imagen from "../components/Imagen"
 
 import headerImage from "../../public/rocket.svg"
+
+const SectionHeader = dynamic(
+  () => import("../components/SectionHeader"),
+  { ssr: false },
+)
+
+const PrivacyPolicySection = dynamic(
+  () => import("../components/PrivacyPolicySection"),
+  { ssr: false },
+)
+
+const Imagen = dynamic(
+  () => import("../components/Imagen"),
+  { ssr: false },
+)
+
+const ContactSection = dynamic(
+  () => import("../components/ContactSection"),
+  { ssr: false },
+)
 
 const PrivacyPolicy = () => {
   const { t } = useTranslation()
   return (
-    <Layout
-      // seo={{
-      //   metaTitle: "Crazy Imagine Software | Privacy Policy",
-      //   metaDescription: t("privacyPolicy_sectionHeader_metaDescription"),
-      // }}
-    >
+    <Layout>
+
       <SectionHeader
         title={t("privacyPolicy_title")}
         img={headerImage}
@@ -31,18 +44,5 @@ const PrivacyPolicy = () => {
   )
 }
 
-// export const query = graphql`
-//   query($language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default PrivacyPolicy

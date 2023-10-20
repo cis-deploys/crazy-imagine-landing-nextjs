@@ -3,6 +3,7 @@ import { makeStyles } from "@mui/styles"
 import { Box, Typography, Button } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -163,6 +164,7 @@ const useStyles = makeStyles(theme => ({
 const CardService = ({ icon, title, contentList }) => {
   const classes = useStyles()
   const ref = useRef()
+  const { t } = useTranslation()
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
   return (
@@ -183,7 +185,7 @@ const CardService = ({ icon, title, contentList }) => {
         className={classes.readMoreButton}
         onClick={() => setListVisible(!isListVisible)}
       >
-        {isListVisible ? "Read Less «" : "Read More »"}
+        {isListVisible ? t("readLess") : t("readMore")}
       </Button>
     </Box>
   )

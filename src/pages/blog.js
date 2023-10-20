@@ -1,13 +1,31 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
-import FeaturedArticle from "../components/FeaturedArticle"
-import SectionHeader from "../components/SectionHeader"
-import BlogArticle from "../components/BlogArticle"
-import ContactSection from "../components/ContactSection"
 
 import headerImage from "../../public/deco.svg"
+
+const SectionHeader = dynamic(
+  () => import("../components/SectionHeader"),
+  { ssr: false },
+)
+
+const FeaturedArticle = dynamic(
+  () => import("../components/FeaturedArticle"),
+  { ssr: false },
+)
+
+const BlogArticle = dynamic(
+  () => import("../components/BlogArticle"),
+  { ssr: false },
+)
+
+const ContactSection = dynamic(
+  () => import("../components/ContactSection"),
+  { ssr: false },
+)
+
 
 export async function getServerSideProps() {
   const resArticles = await fetch("https://strapi.crazyimagine.com/articles")

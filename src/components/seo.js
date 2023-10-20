@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-//import { Helmet } from "react-helmet";
 import Loading from "./Loading";
 import { useTranslation } from "react-i18next";
 const Helmet = React.lazy(() => import("react-helmet"))

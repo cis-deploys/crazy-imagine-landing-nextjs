@@ -1,14 +1,14 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
-import Image from 'next/image'
+import Image from "next/image"
+
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 
 import Layout from "../components/Layout"
 
-import Background from '../../public/Background404.svg'
 import Image404 from '../../public/Image404.svg'
-import ContactSection from "../components/ContactSection"
+
 
 const useStyles = makeStyles((theme)=>({
   navbarLogo: {
@@ -83,7 +83,7 @@ const NotFoundPage = () => {
     <Layout>
     <Box className={classes.container}>
       <Box className={classes.ContainerTexts} >
-        <Image src={Image404} className={classes.navbarLogo} alt="imagen-404" />
+        <Image src={Image404} className={classes.navbarLogo} alt="imagen-404"/>
         <Typography variant="h3" className={classes.title}>404</Typography>
         <Typography variant="h3" className={classes.titleSecondary}>{t("404-title")}</Typography>
       </Box>

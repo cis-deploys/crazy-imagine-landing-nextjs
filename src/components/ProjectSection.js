@@ -217,7 +217,7 @@ const ProjectSection = ({ title, btn, size, projects }) => {
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => {
                 const dataImage = el?.images[0]?.url //localFile
-                const title = el?.title
+                const titleProject = el?.title
 
 
                 return (
@@ -228,7 +228,7 @@ const ProjectSection = ({ title, btn, size, projects }) => {
 
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
-                          {el?.title}
+                          {titleProject}
                         </Typography>
                         <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`}>
 

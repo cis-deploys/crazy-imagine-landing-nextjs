@@ -1,17 +1,53 @@
 import { Box } from "@mui/material"
 import { useTranslation } from "react-i18next"
+import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
-import SectionHeader from "../components/SectionHeader"
-import HomeMainSection from "../components/HomeMainSection"
-import ReferenceSection from "../components/ReferenceSection"
-import ProjectSection from "../components/ProjectSection"
-import MailchimpForm from "../components/MailchimpForm"
-import Partners from "../components/Partners"
-import LastestPosts from "../components/LastestPosts"
-import ContactSection from "../components/ContactSection"
 
 import headerImage from "../../public/flag.svg"
+
+const SectionHeader = dynamic(
+  () => import("../components/SectionHeader"),
+  { ssr: false },
+)
+
+const HomeMainSection = dynamic(
+  () => import("../components/HomeMainSection"),
+  { ssr: false },
+)
+
+const ReferenceSection = dynamic(
+  () => import("../components/ReferenceSection"),
+  { ssr: false },
+)
+
+const ProjectSection = dynamic(
+  () => import("../components/ProjectSection"),
+  { ssr: false },
+)
+
+const MailchimpForm = dynamic(
+  () => import("../components/MailchimpForm"),
+  { ssr: false },
+)
+
+const Partners = dynamic(
+  () => import("../components/Partners"),
+  { ssr: false },
+)
+
+const LastestPosts = dynamic(
+  () => import("../components/LastestPosts"),
+  { ssr: false },
+)
+
+const ContactSection = dynamic(
+  () => import("../components/ContactSection"),
+  { ssr: false },
+)
+
+
+
 
 export async function getServerSideProps() {
   const resProjects = await fetch("https://strapi.crazyimagine.com/projects")
