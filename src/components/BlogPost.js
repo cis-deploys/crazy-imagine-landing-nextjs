@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles"
 import { BLOG } from "../navigation/sitemap"
 import { useTranslation } from "react-i18next"
 import Link from "next/link"
+import 'swiper/swiper-bundle.css';
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -150,10 +151,11 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
       }}
       pagination={{
         clickable: true,
+        dynamicBullets: true,
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
-      modules={[Pagination]}
+      modules={[ Pagination, Keyboard ]}
       className={`${classes.slider} ${bulletClass}`}
     >
       {

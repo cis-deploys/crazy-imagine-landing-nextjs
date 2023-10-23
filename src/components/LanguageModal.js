@@ -121,6 +121,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa",
     letterSpacing: "0.1em",
     lineHeight: "16px",
+    zIndex: 999,
   },
   effect: {
     "&::before": {
@@ -140,6 +141,9 @@ const useStyles = makeStyles(theme => ({
       transform: "scaleX(1)",
     },
   },
+  box: {
+    border: 'none'
+  }
 }))
 
 export const LanguageModal = () => {
@@ -153,21 +157,22 @@ export const LanguageModal = () => {
 
   return (
     <>
-      <Box style={{ border: 'none' }}>
-        <FormControl className={classes.formControl}>
+      <Box className={classes.box }>
+        <FormControl className={ classes.formControl } variant="standard">
           <Select
             value={t("languageModal_select")}
             onChange={handleChange}
             className={`${classes.selectEmpty} ${classes.effect}`}
+            displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
           >
-            <MenuItem value={t("languageModal_select")} style={{ zIndex: 999, }} className={classes.item}>
+            <MenuItem value={t("languageModal_select")} className={ classes.item }>
               {t("languageModal_select")}
             </MenuItem>
             {(t("languageModal_select") === "ES") ?
-              <MenuItem value="EN" style={{ zIndex: 999, }} className={classes.item}>EN</MenuItem>
+              <MenuItem value="EN" className={ classes.item }>EN</MenuItem>
               :
-              <MenuItem value="ES" style={{ zIndex: 999, }} className={classes.item}>ES</MenuItem>
+              <MenuItem value="ES" className={ classes.item }>ES</MenuItem>
             }
           </Select>
         </FormControl>

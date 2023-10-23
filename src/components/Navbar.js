@@ -128,6 +128,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     color: "#FFFFFF",
+    textDecoration: "none"
   },
   effect: {
     paddingTop: "10px",
@@ -159,6 +160,11 @@ const useStyles = makeStyles(theme => ({
       color: "#FFFFF",
     },
   },
+
+  link: {
+    textDecoration: "none",
+    borderRadius: "100px"
+  }
 }))
 
 export const Navbar = ({
@@ -223,15 +229,11 @@ export const Navbar = ({
             <LanguageModal />
           </Box>
           <SocialMedia />
-          <Link
-            href={`${CONTACT}`}
-            style={{ textDecoration: "none", borderRadius: "100px" }}
-            
-          >
-            <a>
+          <Link href={`${CONTACT}`}>
+
+            <a className={ classes.link }>
             <Button className={classes.contactButton}>
               <span
-                style={{ textDecoration: "none" }}
                 className={classes.contactTypography}
               >
                 {t("common_button_contact_us")}

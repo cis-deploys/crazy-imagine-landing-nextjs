@@ -6,11 +6,8 @@ import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Keyboard } from 'swiper/core';
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
-import "swiper/css"
-import "swiper/css/pagination"
 import { Pagination } from "swiper";
+import 'swiper/swiper-bundle.css';
 
 const useStyles = makeStyles(theme => ({
   review: {
@@ -134,7 +131,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-  const CustomerReview = ({ reviews }) => {
+  const CustomerReview = ({ reviews, bulletClass }) => {
   const classes = useStyles()
   SwiperCore.use([Keyboard])
   const { i18n } = useTranslation();
@@ -170,6 +167,7 @@ const useStyles = makeStyles(theme => ({
             }}
             keyboard={{ enabled: true }}
             modules={[Pagination, Keyboard]}
+            className={bulletClass}
           >
             { reviews
             ?.filter(reviews => reviews?.locale?.includes(lang))

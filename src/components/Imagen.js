@@ -31,7 +31,7 @@ const Imagen = () => {
         src={Crazy}
         alt="Imagen de la empresa"
         width={1520}
-        height={597}
+        height={599}
       />
     </Box>
   )
