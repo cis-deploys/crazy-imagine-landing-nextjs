@@ -181,39 +181,40 @@ export const Navbar = ({
     <AppBar color={color} position="fixed" className={classes.container}>
       <Toolbar className={classes.root}>
         <Box className={classes.barContainer}>
-          <Link href={`${HOME}`}>
+          <Link href={`${HOME}`} >
             <a>
             <Image
               src={CrazyImagineLogo}
               alt="logo"
-              style={{ width: "100%", height: "100%" }}
+              width={230}
+              height={48}
             />
             </a>
           </Link>
           <Box className={classes.linkContainer}>
             <Typography style={{ minWidth: "max-content"}}>
-              <Link href={`${ABOUT}`}>
+              <Link href={`${ABOUT}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_about")}
                 </a>
               </Link>
             </Typography>
             <Typography>
-            <Link href={`${PROJECTS}`}>
+            <Link href={`${PROJECTS}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_services")}
                 </a>
               </Link>
             </Typography>
             <Typography>
-            <Link href={`${BLOG}`}>
+            <Link href={`${BLOG}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_blog")}
                 </a>
               </Link>
             </Typography>
             <Typography style={{ minWidth: "max-content" }}>
-            <Link href={`${WORK_WITH_US}`}>
+            <Link href={`${WORK_WITH_US}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_work_with_us")}
                 </a>
@@ -225,6 +226,7 @@ export const Navbar = ({
           <Link
             href={`${CONTACT}`}
             style={{ textDecoration: "none", borderRadius: "100px" }}
+            
           >
             <a>
             <Button className={classes.contactButton}>

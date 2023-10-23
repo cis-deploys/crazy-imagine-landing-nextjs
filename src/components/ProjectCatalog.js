@@ -12,27 +12,4 @@ const ProjectCatalog = ({ projects }) => {
         )
       }
 
-// const query = graphql`
-//   query {
-//     projects: allStrapiProjects {
-//       nodes {
-//         id
-//         slug
-//         Key
-//         images {
-//           localFile {
-//             childImageSharp {
-//               gatsbyImageData(
-//                 layout: FULL_WIDTH
-//                 placeholder: BLURRED
-//                 quality: 5
-//                 formats: [WEBP]
-//               )
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 export default ProjectCatalog

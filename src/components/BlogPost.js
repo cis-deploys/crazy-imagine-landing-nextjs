@@ -168,7 +168,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
                   {el?.title}
                 </Typography>
                 <Link
-                  href={`${BLOG}/${el?.Key}`}>
+                  href={`${BLOG}/${el?.Key}`} >
                   <a className={classes.link}>
                   {t("common_lastestPosts_blogPost_button_readMore")}
                   </a>

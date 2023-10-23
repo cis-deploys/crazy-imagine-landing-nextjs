@@ -5,7 +5,6 @@ import PropTypes from "prop-types"
 import { Box, Hidden } from "@mui/material"
  
 // COMPONENTS
-import GoogleAdsTag from "./GoogleAdsTag"
 import SEO from "./seo"
 
 const Navbar = dynamic(
@@ -46,7 +45,6 @@ const Layout = ({ children, seo }) => {
       >
         {children}
       </Box>
-      <GoogleAdsTag/>
       <Footer />
     </>
   )

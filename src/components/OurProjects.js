@@ -78,39 +78,5 @@ const OurProjects = ({ projects }) => {
         )
   }
 
-// const query = graphql`
-//   query {
-//     projects: allStrapiProjectsPage {
-//       nodes {
-//         title: ourProjectsTitle
-//         description: outProjectsDescription
-//         bgImage: ourProjectsImage {
-//           localFile {
-//             childImageSharp {
-//               gatsbyImageData(
-//                 layout: FULL_WIDTH
-//                 placeholder: BLURRED
-//                 quality: 5
-//                 formats: [WEBP]
-//               )
-//             }
-//           }
-//         }
-//         bgImageTitle: imageTitle {
-//           localFile {
-//             childImageSharp {
-//               gatsbyImageData(
-//                 layout: FULL_WIDTH
-//                 placeholder: BLURRED
-//                 quality: 5
-//                 formats: [WEBP]
-//               )
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default OurProjects

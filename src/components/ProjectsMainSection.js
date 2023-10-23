@@ -100,7 +100,7 @@ const ProjectsMainSection = () => {
               className={classes.seeMoreContainer}
               marginTop="28px"
             >
-              <Link href={`${PROJECTS}#all`} className={classes.resetLink}>
+              <Link href={`${PROJECTS}#all`} className={classes.resetLink} >
                 <a>
                 <Typography className={classes.seeMore}>See more</Typography>
                 </a>

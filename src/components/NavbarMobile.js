@@ -173,13 +173,14 @@ export const NavbarMobile = ({
       >
         <Toolbar>
           <Box className={classes.navbarMobileResponsive}>
-            <Link href={`${HOME}`}>
+            <Link href={`${HOME}`} >
               <a>
               <Image
                 src={CrazyImageLogo}
                 alt="logo"
                 className={classes.navbarLogo}
-                style={{ width: "100%", height: "100%" }}
+                width={230}
+                height={48}
               />
               </a>
             </Link>
@@ -226,6 +227,7 @@ export const NavbarMobile = ({
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${HOME}`}
+                
               >
                 <a>
                 <Typography className={classes.textLink}>
@@ -238,6 +240,7 @@ export const NavbarMobile = ({
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${ABOUT}`}
+                
               >
                 <a>
                 <Typography className={classes.textLink}>
@@ -250,6 +253,7 @@ export const NavbarMobile = ({
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${PROJECTS}`}
+                
               >
                 <a>
                 <Typography className={classes.textLink}>
@@ -262,6 +266,7 @@ export const NavbarMobile = ({
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${BLOG}`}
+                
               >
                 <a>
                 <Typography className={classes.textLink}>
@@ -274,6 +279,7 @@ export const NavbarMobile = ({
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${WORK_WITH_US}`}
+                
               >
                 <a>
                 <Typography
@@ -289,6 +295,7 @@ export const NavbarMobile = ({
                 className={classes.resetLink}
                 style={{ textDecoration: "none" }}
                 href={`${CONTACT}`}
+                
               >
                 <a>
                 <Typography className={classes.textLink}>

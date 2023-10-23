@@ -40,7 +40,7 @@ const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "0px 60px",
+    padding: "0px 60px 70px",
     gap: "23px",
     justifyContent: "center",
     backgroundColor: "#193174",
@@ -50,11 +50,11 @@ const useStyes = makeStyles(theme => ({
     backgroundSize: "cover",
     [theme.breakpoints.down("md")]: {
       gap: "16px",
-      padding: "0px 43px"
+      padding: "0px 43px 30px"
     },
     [theme.breakpoints.down("xs")]: {
       gap: "16px",
-      padding: "0px 15px"
+      padding: "0px 15px 30px"
     },
   },
   link: {
@@ -109,7 +109,8 @@ const LastestPosts = ({ articles }) => {
         className={isVisible ? classes.title2 : classes.title}
       >{t("home_lastestPosts_title")}</Typography>
       <Link href={`${BLOG}`}
-        style={{ textDecoration: "none" }}>
+        style={{ textDecoration: "none" }}
+        >
 
         <a className={isVisible ? classes.link2 : classes.link}>
         {t("common_lastestPosts_button_allBlogs")}

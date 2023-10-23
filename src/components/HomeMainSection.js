@@ -124,7 +124,7 @@ const HomeMainSection = () => {
 
       <HomeDescription />
 
-      <Link href={`${PROJECTS}`} style={{ textDecoration: "none" }}>
+      <Link href={`${PROJECTS}`} style={{ textDecoration: "none" }} >
         <a>
         <Button
           ref={ref}

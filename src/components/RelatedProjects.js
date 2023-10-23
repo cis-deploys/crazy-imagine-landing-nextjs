@@ -144,7 +144,7 @@ const RelatedProjects = ({ bulletClass, projects }) => {
                     <Typography className={classes.title}>
                       {el?.title}
                     </Typography>
-                    <Link href={`${PROJECTS}/${el?.Key}`}>
+                    <Link href={`${PROJECTS}/${el?.Key}`} >
                       <a className={classes.link}>
                       {t("common_lastestPosts_blogPost_button_readMore")}
                       </a>

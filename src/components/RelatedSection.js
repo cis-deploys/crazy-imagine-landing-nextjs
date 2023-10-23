@@ -73,7 +73,7 @@ const RelatedSection = ({ projects }) => {
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>{t("project_RelatedSection_title")}</Typography>
-      <Link href={`${PROJECTS}`}>
+      <Link href={`${PROJECTS}`} >
         
         <a className={classes.link}>
         {t("common_lastestPosts_button_allBlogs")}

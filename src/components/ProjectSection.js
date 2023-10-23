@@ -230,7 +230,7 @@ const ProjectSection = ({ title, btn, size, projects }) => {
                         <Typography className={classes.titleCarousel}>
                           {titleProject}
                         </Typography>
-                        <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`}>
+                        <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`} >
 
                           <a className={classes.link}>
                           {t("common_projectSection_button_viewProject")}

@@ -11,9 +11,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#27AAE1",
     display: "flex",
     justifyContent: "center",
-    padding: "45px 60px",
+    padding: "45px 0px",
     marginTop: "90px",
     maxHeight: "850px",
+    width: '100%',
+    height: '100%',
     [theme.breakpoints.down("md")]: {
       padding: "25px 43px",
     },
@@ -30,7 +32,7 @@ const HeroProjectsSection = ({ image, title }) => {
 
   return (
     <Box className={classes.imageContainer}>
-      <Image src={dataImage} alt={title} width={1600} height={1000}/>
+      <Image src={dataImage} alt={title} width={1700} height={1000} priority/>
     </Box>
   )
 }

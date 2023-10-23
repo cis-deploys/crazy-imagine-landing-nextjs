@@ -205,7 +205,7 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             <Typography className={classes.titleCard}>
               {featureArticle[0]?.title}
             </Typography>
-            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${featureArticle[0]?.Key}`}>
+            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${featureArticle[0]?.Key}`} >
               <a style={{ textDecoration: "none" }} className={classes.link}>
                 {t("common_lastestPosts_blogPost_button_readMore")}
               </a>

@@ -27,15 +27,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PostContent = ({ data }) => {
+const PostContent = ({ articles }) => {
   const classes = useStyles()
   const { i18n, t } = useTranslation()
   const lang = i18n.language 
+
   return (
     <>
       <Box className={classes.container}>
         <ReactMarkdown rehypePlugins={[rehypeRaw]} className={classes.content}>
-          {data?.content || ''}
+          {articles?.content}
         </ReactMarkdown>
       </Box>
     </>

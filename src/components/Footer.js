@@ -217,42 +217,42 @@ const Footer = ({ height = "192px" }) => {
     >
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
-          <Link href={`${HOME}`} className={classes.linkTypography}>
-            <Image src={CrazyImageLogo} alt="footerImage" style={{ width: "100%", height: "100%" }}/>
+          <Link href={`${HOME}`} className={classes.linkTypography} >
+            <Image src={CrazyImageLogo} alt="footerImage" width={230} height={48}/>
           </Link>
           <SocialMedia />
         </Box>
         <Box className={classes.linkContainer}>
           <Typography>
-          <Link href={`${ABOUT}`}>
+          <Link href={`${ABOUT}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_about")}
                 </a>
               </Link>
           </Typography>
           <Typography>
-          <Link href={`${PROJECTS}`}>
+          <Link href={`${PROJECTS}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_services")}
                 </a>
               </Link>
           </Typography>
           <Typography>
-          <Link href={`${BLOG}`}>
+          <Link href={`${BLOG}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_blog")}
                 </a>
               </Link>
           </Typography>
           <Typography>
-          <Link href={`${WORK_WITH_US}`}>
+          <Link href={`${WORK_WITH_US}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_work_with_us")}
                 </a>
               </Link>
           </Typography>
           <Typography>
-          <Link href={`${CONTACT}`}>
+          <Link href={`${CONTACT}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("home_footer_button_contact")}
                 </a>

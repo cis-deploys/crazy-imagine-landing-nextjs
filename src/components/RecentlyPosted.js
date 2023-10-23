@@ -114,7 +114,7 @@ const RecentlyPosted = ({ articles: AllArticles }) => {
                         <Typography className={classes.listTitle}>
                           {el?.title}
                         </Typography>
-                        <Link href={`${BLOG}/${el?.Key}`}>
+                        <Link href={`${BLOG}/${el?.Key}`} >
                           <a className={classes.link}>
                           {t("common_lastestPosts_blogPost_button_readMore")}
                           </a>

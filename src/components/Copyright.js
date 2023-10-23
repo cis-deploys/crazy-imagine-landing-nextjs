@@ -94,7 +94,7 @@ const Copyright = () => {
           {" "}
           {t("home_copyright_label1")}
         </Typography>
-        <Link href={`${PRIVACY_POLICY}`}>
+        <Link href={`${PRIVACY_POLICY}`} >
           <a className={classes.copyright}>
           {" "}
           {t("home_copyright_label2")}

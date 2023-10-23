@@ -76,6 +76,7 @@ const ProjectsContact = () => {
                 <Link
                   href={`${HOME}#contact`}
                   className={classes.resetStyleLinks}
+                  
                 >
                   <a>
                   <Box
@@ -98,38 +99,5 @@ const ProjectsContact = () => {
           </Box>
         )
         }
-
-// const query = graphql`
-//   query MyQuery {
-//     projects: allStrapiProjectsPage {
-//       nodes {
-//         images: projectContactImg {
-//           localFile {
-//             childImageSharp {
-//               gatsbyImageData(
-//                 layout: FULL_WIDTH
-//                 placeholder: BLURRED
-//                 quality: 5
-//                 formats: [WEBP]
-//               )
-//             }
-//           }
-//         }
-//         imageContact: imgContact {
-//           localFile {
-//             childImageSharp {
-//               gatsbyImageData(
-//                 layout: FULL_WIDTH
-//                 placeholder: BLURRED
-//                 quality: 5
-//                 formats: [WEBP]
-//               )
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default ProjectsContact

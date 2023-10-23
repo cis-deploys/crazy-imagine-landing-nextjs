@@ -73,7 +73,7 @@ const PostCarousel = ({ articles }) => {
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>{t("post_postCarousel_title")}</Typography>
-      <Link href={`${BLOG}`}>
+      <Link href={`${BLOG}`} >
         <a className={classes.link}>
         {t("common_lastestPosts_button_allBlogs")}
         </a>
