@@ -100,7 +100,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: "30px",
-    paddingBottom: "20px",
+    paddingBottom: "40px",
     width: "100%",
     maxWidth: "1000px",
     [theme.breakpoints.down("sm")]: {
@@ -205,13 +205,17 @@ const ContactForm = () => {
     mode: "onChange",
   })
 
+  const serviceEmail = process.env.EMAIL_SERVICE_ID
+  const templateEmail = process.env.EMAIL_TEMPLATE_ID
+  const keyEmail = process.env.PUBLIC_KEY
+
   const sendEmail = (e) => {
     const userEmail = {
       ...e,
       typeProject,
       findUs,
     };
-    emailjs.send('service_idrfktg', 'template_d6gox3w', userEmail, 'barMeaEdxx4emnNzc')
+    emailjs.send(serviceEmail, templateEmail, userEmail, keyEmail)
       .then((result) => {
         Swal.fire(
           t("home_contacSection_contactForm_swalSuccess_title"),
@@ -255,6 +259,7 @@ const ContactForm = () => {
               {...register("name")}
               error={errors.name}
               helperText={errors.name?.message}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -265,6 +270,7 @@ const ContactForm = () => {
               label={t("home_contacSection_contactForm_textField_label2")}
               className={`${classes.root} `}
               {...register("company")}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -275,6 +281,7 @@ const ContactForm = () => {
               label={t("home_contacSection_contactForm_textField_label5")}
               className={`${classes.root} `}
               {...register("country")}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -287,6 +294,7 @@ const ContactForm = () => {
               {...register("phone")}
               error={errors.phone}
               helperText={errors.phone?.message}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12}>
@@ -301,6 +309,7 @@ const ContactForm = () => {
               error={errors.email}
               {...register("email")}
               helperText={errors.email?.message}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12}>
@@ -314,6 +323,7 @@ const ContactForm = () => {
               {...register("comments")}
               error={errors.comments}
               helperText={errors.comments?.message}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -325,6 +335,7 @@ const ContactForm = () => {
                 className={classes.selectEmpty}
                 value={typeProject}
                 onChange={handleChangeTypeProject}
+                variant="standard"
               >
                 <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label_MenuItem")}>{t("home_contacSection_contactForm_Select_label_MenuItem")}</MenuItem>
                 <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label_MenuItem1")}>{t("home_contacSection_contactForm_Select_label_MenuItem1")}</MenuItem>
@@ -341,6 +352,7 @@ const ContactForm = () => {
                 className={classes.selectEmpty}
                 value={findUs}
                 onChange={handleChangeFindUs}
+                variant="standard"
               >
                 <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem")}>{t("home_contacSection_contactForm_Select_label1_MenuItem")}</MenuItem>
                 <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem1")}>{t("home_contacSection_contactForm_Select_label1_MenuItem1")}</MenuItem>

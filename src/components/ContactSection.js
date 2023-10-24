@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   img2: {
-    marginTop: "auto",
+    marginTop: "83px",
   },
   container: {
      padding: "0px 60px",

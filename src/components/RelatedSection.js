@@ -60,7 +60,6 @@ const useStyes = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     gap: "21px",
-    width: "100%",
     [theme.breakpoints.down("md")]: {
       gap: "15px",
     },
@@ -70,6 +69,7 @@ const useStyes = makeStyles(theme => ({
 const RelatedSection = ({ projects }) => {
   const classes = useStyes()
   const { t } = useTranslation()
+  
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>{t("project_RelatedSection_title")}</Typography>
@@ -79,6 +79,7 @@ const RelatedSection = ({ projects }) => {
         {t("common_lastestPosts_button_allBlogs")}
         </a>
       </Link>
+      
       <RelatedProjects projects={ projects }/>
     </Box>
   )

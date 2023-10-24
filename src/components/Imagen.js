@@ -30,8 +30,8 @@ const Imagen = () => {
         className={`${classes.img2}`}
         src={Crazy}
         alt="Imagen de la empresa"
-        width={1520}
-        height={597}
+        width={1800}
+        height={800}
       />
     </Box>
   )

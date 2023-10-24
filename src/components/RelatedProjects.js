@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Box, Typography } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
@@ -7,6 +7,7 @@ import { PROJECTS } from "../navigation/sitemap"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
+import 'swiper/swiper-bundle.css';
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -16,7 +17,7 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    width: "380px",
+    width: "400px",
     height: "fit-content",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
@@ -98,8 +99,10 @@ const useStyes = makeStyles(theme => ({
 
 const RelatedProjects = ({ bulletClass, projects }) => {
   const classes = useStyes()
+  SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
   const lang = i18n.language 
+
 
         return (
           <Swiper
@@ -114,7 +117,7 @@ const RelatedProjects = ({ bulletClass, projects }) => {
               900: {
                 slidesPerView: 4,
               },
-              1440: {
+              1280: {
                 slidesPerView: 4,
               },
               1920: {
@@ -135,11 +138,11 @@ const RelatedProjects = ({ bulletClass, projects }) => {
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => (
 
-              <SwiperSlide key={index} className={classes.slide}>
+              <SwiperSlide key={index} className={classes.carousel}>
                 <Box className={classes.container}>
                   <>
                   <Box
-                    style={{ backgroundImage: `url(${el?.images[0]?.url?.publicURL})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "top center", height: "250px", width: "100%" }} />
+                    style={{ backgroundImage: `url(${el?.images[0]?.url})`, objectFit: "contain", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "400px" }} />
                   <Box className={classes.textContainer}>
                     <Typography className={classes.title}>
                       {el?.title}

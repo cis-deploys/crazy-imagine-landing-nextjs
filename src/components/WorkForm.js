@@ -179,7 +179,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     padding: "20px",
-    backgroundColor: "rgba(235, 235, 235, 0.4)",
+    backgroundColor: "rgba(235, 235, 235, 0.6)",
     marginTop: "94px",
     borderRadius: "14px 14px 0px 0px",
     [theme.breakpoints.down("md")]: {
@@ -580,6 +580,7 @@ const WorkForm = () => {
                 id="outlined-basic"
                 label={t("workWithUs_workForm_textField_label1")}
                 name="firstName"
+                variant="standard"
               />
               <TextField
                 required
@@ -591,6 +592,7 @@ const WorkForm = () => {
                 id="outlined-basic"
                 label={t("workWithUs_workForm_textField_label2")}
                 name="lastName"
+                variant="standard"
               />
             </Box>
             <Box className={classes.shortContainer}>
@@ -604,6 +606,7 @@ const WorkForm = () => {
                 id="outlined-basic"
                 label={t("workWithUs_workForm_textField_label3")}
                 name="email"
+                variant="standard"
               />
               <TextField
                 required
@@ -615,6 +618,7 @@ const WorkForm = () => {
                 id="outlined-basic"
                 label={t("workWithUs_workForm_textField_label4")}
                 name="phone"
+                variant="standard"
               />
             </Box>
             <TextField
@@ -626,6 +630,7 @@ const WorkForm = () => {
               id="outlined-basic"
               label={t("workWithUs_workForm_textField_label5")}
               name="linkedin"
+              variant="standard"
             />
             <TextField
               className={`${classes.formInput} ${classes.root}`}
@@ -636,6 +641,7 @@ const WorkForm = () => {
               id="outlined-basic"
               label={t("workWithUs_workForm_textField_label6")}
               name="website"
+              variant="standard"
             />
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
@@ -683,7 +689,7 @@ const WorkForm = () => {
               control={control}
               defaultValue="Google"
               render={({ field }) =>
-              <Select labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" {...field} className={classes.selectEmpty}>
+              <Select labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" {...field} className={classes.selectEmpty} variant="standard">
               <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem")}>{t("home_contacSection_contactForm_Select_label1_MenuItem")}</MenuItem>
               <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem1")}>{t("home_contacSection_contactForm_Select_label1_MenuItem1")}</MenuItem>
               <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem2")}>{t("home_contacSection_contactForm_Select_label1_MenuItem2")}</MenuItem>

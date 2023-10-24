@@ -1,10 +1,12 @@
 import { Box } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 
 import Layout from "../components/Layout"
 
 import headerImage from "../../public/flag.svg"
+import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -59,15 +61,25 @@ export async function getServerSideProps() {
   const resReviews = await fetch("https://strapi.crazyimagine.com/reviews")
   const reviews = await resReviews.json()
 
-  return { props: { projects, articles, reviews } }
+  const resHomepage = await fetch("https://strapi.crazyimagine.com/homepage")
+  const homepage = await resHomepage.json()
+
+  return { props: { projects, articles, reviews, homepage } }
 }
 
 
-function IndexPage({ projects, articles, reviews }) {
+function IndexPage({ projects, articles, reviews, homepage }) {
   const { t } = useTranslation()
+  const metaTitle = homepage.seo.metaTitle
+  const metaDescription = homepage.seo.metaDescription
+  const keywords = homepage.seo.keywords
 
   return (
-    <Layout>
+    <Layout seo >
+      <NextSeo
+      title={`${metaTitle}`}
+      description={`${metaDescription}`}
+      />
       <Box overflow="hidden">
         <SectionHeader
           title={t("home_sectionHeader_title")}

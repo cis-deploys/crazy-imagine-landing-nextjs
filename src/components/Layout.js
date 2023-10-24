@@ -22,10 +22,9 @@ const Footer = dynamic(
   { ssr: false },
 )
 
-const Layout = ({ children, seo }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <SEO seo={ seo }/>
       <Hidden mdDown>
         <Navbar variant="secondary" />
       </Hidden>
