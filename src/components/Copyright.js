@@ -3,7 +3,8 @@ import { Box,  Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { PRIVACY_POLICY } from "../navigation/sitemap"
 import { makeStyles } from "@mui/styles";
-import Link from "next/link";
+import Link from "next/link"
+import '@fontsource/roboto/400.css'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -95,7 +96,7 @@ const Copyright = () => {
           {t("home_copyright_label1")}
         </Typography>
         <Link href={`${PRIVACY_POLICY}`} >
-          <a className={classes.copyright}>
+          <a className={classes.copyright} >
           {" "}
           {t("home_copyright_label2")}
           

@@ -4,8 +4,8 @@ import Loading from "./Loading";
 import { useTranslation } from "react-i18next";
 const Helmet = React.lazy(() => import("react-helmet"))
 
-const SEO = ({ seo = {}, favicon }) => {
-  const { i18n, t } = useTranslation()
+const SEO = ({ seo = {} }) => {
+  const { i18n } = useTranslation()
   const lang = i18n.language 
 
   //Merge default and page-specific SEO values
@@ -42,8 +42,8 @@ const SEO = ({ seo = {}, favicon }) => {
 
     if (fullSeo.shareImage) {
       const imageUrl =
-        (process.env.GATSBY_ROOT_URL || "http://127.0.0.1:8000") +
-        fullSeo.shareImage.localFile.publicURL;
+        (process.env.NEXT_ROOT_URL || "http://127.0.0.1:8000") +
+        fullSeo.shareImage.url;
       tags.push(
         {
           name: "image",
@@ -97,7 +97,7 @@ const SEO = ({ seo = {}, favicon }) => {
             link={[
               // {
               //   rel: "icon",
-              //   href: favicon.localFile.publicURL,
+              //   href: favicon.url,
               // },
               {
                 rel: "stylesheet preload",

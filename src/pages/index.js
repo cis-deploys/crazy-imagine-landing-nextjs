@@ -59,11 +59,14 @@ export async function getServerSideProps() {
   const resReviews = await fetch("https://strapi.crazyimagine.com/reviews")
   const reviews = await resReviews.json()
 
-  return { props: { projects, articles, reviews } }
+  const resHomepage = await fetch("https://strapi.crazyimagine.com/homepage")
+  const homepage = await resHomepage.json()
+
+  return { props: { projects, articles, reviews, homepage } }
 }
 
 
-function IndexPage({ projects, articles, reviews }) {
+function IndexPage({ projects, articles, reviews, homepage }) {
   const { t } = useTranslation()
 
   return (

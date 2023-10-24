@@ -205,13 +205,17 @@ const ContactForm = () => {
     mode: "onChange",
   })
 
+  const serviceEmail = process.env.EMAIL_SERVICE_ID
+  const templateEmail = process.env.EMAIL_TEMPLATE_ID
+  const keyEmail = process.env.PUBLIC_KEY
+
   const sendEmail = (e) => {
     const userEmail = {
       ...e,
       typeProject,
       findUs,
     };
-    emailjs.send('service_idrfktg', 'template_d6gox3w', userEmail, 'barMeaEdxx4emnNzc')
+    emailjs.send(serviceEmail, templateEmail, userEmail, keyEmail)
       .then((result) => {
         Swal.fire(
           t("home_contacSection_contactForm_swalSuccess_title"),
