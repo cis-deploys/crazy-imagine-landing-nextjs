@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 
 // COMPONENTS
 import Layout from "../../components/Layout";
-import { Box } from "@mui/material";
 
 const LastestPosts = dynamic(
   () => import("../../components/LastestPosts"),

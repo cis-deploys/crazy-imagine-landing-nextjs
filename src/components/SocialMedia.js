@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     borderRadius: "5px",
     [theme.breakpoints.down("xs")]: {
-      width: "25px",
+    width: "25px",
     height: "25px",
     },
   },
@@ -94,7 +94,7 @@ export const SocialMedia = () => {
           overflow: 'hidden'
         }}
       >
-        <Image src={UpworkIcon} alt='upwork-icon' className={classes.contactIcon} />
+        <Image src={UpworkIcon} size="2x" alt='upwork-icon' className={classes.contactIcon} />
       </a>
     </Box>
   )

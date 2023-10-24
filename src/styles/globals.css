@@ -27,7 +27,7 @@ body {
 
 .swiper-pagination {
   position: static;
-  padding: 0px 0px;
+  padding: 20px 0px;
   order: 2;
 }
 /* swiper-bullet ---------------------------------------------------*/

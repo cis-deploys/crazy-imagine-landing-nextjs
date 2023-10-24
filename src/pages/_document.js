@@ -1,9 +1,38 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-export default function MyDocument() {
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
+
+  render() {
   return (
     <Html lang="en">
       <Head>
+        <link
+            rel="icon"
+            href="/favicon.ico"
+          />
+          <link
+            rel="stylesheet preload"
+            href="https://fonts.googleapis.com/css?family=Staatliches"
+            as="style"
+          />
+          <link
+            rel="stylesheet preload"
+            href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
+            as="style"
+          />
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"
+          />
+          <script
+            src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js"
+          />
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js"
+          />
       <script
     dangerouslySetInnerHTML={{
       __html: `
@@ -20,4 +49,5 @@ export default function MyDocument() {
     </Html>
   )
 }
-
+}
+export default MyDocument;

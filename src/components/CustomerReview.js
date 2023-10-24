@@ -110,7 +110,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   swiperSlide: {
-    height: "450px",
+    height: "600px",
     alignItems: "center",
     transform: "scale(1)",
     [theme.breakpoints.between(1201, 1280)]: {

@@ -40,7 +40,7 @@ const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "0px 60px 70px",
+    padding: "0px 60px 10px",
     gap: "23px",
     justifyContent: "center",
     backgroundColor: "#193174",
@@ -48,6 +48,7 @@ const useStyes = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
+    height: "670px",
     [theme.breakpoints.down("md")]: {
       gap: "16px",
       padding: "0px 43px 30px"
@@ -106,11 +107,12 @@ const LastestPosts = ({ articles }) => {
   return (
     <Box ref={ref} className={classes.container}>
       <Typography
-        className={isVisible ? classes.title2 : classes.title}
-      >{t("home_lastestPosts_title")}</Typography>
-      <Link href={`${BLOG}`}
-        style={{ textDecoration: "none" }}
-        >
+
+        className={isVisible ? classes.title2 : classes.title}>
+        {t("home_lastestPosts_title")}
+
+        </Typography>
+      <Link href={`${BLOG}`} style={{ textDecoration: "none" }}>
 
         <a className={isVisible ? classes.link2 : classes.link}>
         {t("common_lastestPosts_button_allBlogs")}

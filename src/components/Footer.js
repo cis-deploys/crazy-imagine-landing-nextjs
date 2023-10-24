@@ -19,7 +19,7 @@ import {
 import { useTranslation } from "react-i18next"
 import { SocialMedia } from "./SocialMedia"
 import Copyright from "./Copyright"
-import Image from "next/image"
+import Image from "next/image" 
 import { makeStyles } from "@mui/styles";
 import Link from "next/link"
 
@@ -217,8 +217,10 @@ const Footer = ({ height = "192px" }) => {
     >
       <Box className={classes.footerContainer}>
         <Box className={classes.logoContainer}>
-          <Link href={`${HOME}`} className={classes.linkTypography} >
-            <Image src={CrazyImageLogo} alt="footerImage" width={230} height={48}/>
+          <Link href={`${HOME}`}  >
+            <a className={classes.linkTypography}>
+            <Image src={CrazyImageLogo} alt="footerImage" width={245} height={55}/>
+            </a>
           </Link>
           <SocialMedia />
         </Box>

@@ -100,6 +100,7 @@ const useStyes = makeStyles(theme => ({
   slider: {
     width: "100%",
     boxSizing: "content-box",
+    alignItems: "center",
     [theme.breakpoints.between(0, 600)]: {
       width: "65%",
     },

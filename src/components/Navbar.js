@@ -164,7 +164,7 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: "none",
     borderRadius: "100px"
-  }
+  },
 }))
 
 export const Navbar = ({
@@ -188,12 +188,12 @@ export const Navbar = ({
       <Toolbar className={classes.root}>
         <Box className={classes.barContainer}>
           <Link href={`${HOME}`} >
-            <a>
+            <a >
             <Image
               src={CrazyImagineLogo}
               alt="logo"
-              width={230}
-              height={48}
+              width={245}
+              height={55}
             />
             </a>
           </Link>

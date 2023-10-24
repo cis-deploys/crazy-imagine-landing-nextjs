@@ -39,13 +39,12 @@ const useStyes = makeStyles(theme => ({
   referenceContainer: {
     textAlign: "center",
     background: "#193174",
-    paddingTop: "78px",
     backgroundImage: `url('/background.svg')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     overflow: "hidden",
-    padding: "58px 60px",
+    padding: "58px 60px 0px",
     [theme.breakpoints.down("md")]: {
       padding: "55px 43px 0px 43px",
     },
