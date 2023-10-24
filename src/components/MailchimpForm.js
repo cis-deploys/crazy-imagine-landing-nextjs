@@ -270,6 +270,7 @@ const MailchimpForm = () => {
               {...register("name")}
               error={errors.name}
               helperText={errors.name?.message}
+              variant="standard"
             />
             <TextField
               id="lastName"
@@ -280,6 +281,7 @@ const MailchimpForm = () => {
               {...register("lastName")}
               error={errors.lastName}
               helperText={errors.lastName?.message}
+              variant="standard"
             />
           </Box>
           <TextField
@@ -292,6 +294,7 @@ const MailchimpForm = () => {
             error={errors.email}
             {...register("email")}
             helperText={errors.email?.message}
+            variant="standard"
           />
           <Button
             type="submit"

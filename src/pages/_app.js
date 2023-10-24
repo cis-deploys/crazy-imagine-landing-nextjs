@@ -7,6 +7,7 @@ import "../styles/swiper-bullet.module.css"
 
 import i18n from "../../i18n"
 import { theme } from "../theme"
+import SEO from "../components/seo"
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -157,7 +157,7 @@ export const LanguageModal = () => {
 
   return (
     <>
-      <Box className={classes.box }>
+      <Box sx={{ border: 'none' }}>
         <FormControl className={ classes.formControl } variant="standard">
           <Select
             value={t("languageModal_select")}
