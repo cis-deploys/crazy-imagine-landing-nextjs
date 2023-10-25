@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     gap: "150px",
     width: "100%",
+    height: "auto",
     [theme.breakpoints.down("xs")]: {
       height: "280px",
     },
@@ -32,7 +33,7 @@ const Imagen = () => {
         alt="Imagen de la empresa"
         layout="responsive"
         width={1800}
-        height={800}
+        height={745}
       />
     </Box>
   )
