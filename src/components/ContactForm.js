@@ -196,6 +196,7 @@ const ContactForm = () => {
       .matches(/^(?:[0-9+\-().\s]{10,20})?$/, t("workWithUs_workForm_schemaYup_phone2")),
     comments: yup.string().required(t("home_contacSection_contactForm_schemaYup_comments")),
   })
+
   const {
     register,
     handleSubmit,
@@ -205,17 +206,14 @@ const ContactForm = () => {
     mode: "onChange",
   })
 
-  const serviceEmail = process.env.EMAIL_SERVICE_ID
-  const templateEmail = process.env.EMAIL_TEMPLATE_ID
-  const keyEmail = process.env.PUBLIC_KEY
-
   const sendEmail = (e) => {
+    console.log("email", email)
     const userEmail = {
       ...e,
       typeProject,
       findUs,
     };
-    emailjs.send(serviceEmail, templateEmail, userEmail, keyEmail)
+    emailjs.send('service_idrfktg', 'template_d6gox3w', userEmail, 'barMeaEdxx4emnNzc')
       .then((result) => {
         Swal.fire(
           t("home_contacSection_contactForm_swalSuccess_title"),

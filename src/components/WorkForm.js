@@ -441,6 +441,7 @@ const WorkForm = () => {
         ),
       otherwise: yup.mixed(),
     }),
+
     reference: yup.string(),
   })
               
@@ -449,7 +450,6 @@ const WorkForm = () => {
     handleSubmit,
     watch,
     control,
-    
     formState: { errors },
     reset,
   } = useForm({
@@ -467,7 +467,7 @@ const WorkForm = () => {
     }
   }, [watchCurriculum])
 
-  const domain = process.env.GATSBY_STRAPI_URL
+  const domain = process.env.CRAZY_STRAPI_URL
 
   const onSubmitHandler = async data => {
 
@@ -645,7 +645,8 @@ const WorkForm = () => {
             />
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
-                <span className={classes.attachLabel}>{t("workWithUs_workForm_textField_label7")}</span>
+                <span className={classes.attachLabel}>
+                  {t("workWithUs_workForm_textField_label7")}</span>
                 <label className={classes.attachButton} htmlFor="resume-btn">
                   {t("workWithUs_workForm_textField_button1")}
                 </label>
