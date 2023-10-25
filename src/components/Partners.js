@@ -67,6 +67,11 @@ const useStyles = makeStyles(theme => ({
         transform: "translateY(0)",
       },
     },
+    logo: {
+      width: "100%",
+      height: "auto",
+      objectFit: 'contain'
+    }
 }))
 
 const Partners = () => {
@@ -88,6 +93,7 @@ const Partners = () => {
                   alt='Little Taller logo'
                   width={85}
                   height={85}
+                  layout='fixed'
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -97,6 +103,7 @@ const Partners = () => {
                   alt='Ordering Logo'
                   width={279}
                   height={62}
+                  layout='fixed'
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -106,6 +113,7 @@ const Partners = () => {
                   alt='Piggyback logo'
                   width={71}
                   height={85}
+                  layout='fixed'
               /> 
         </Box>
       </Box>
@@ -117,6 +125,7 @@ const Partners = () => {
                   alt='Clientify logo'
                   width={280}
                   height={66}
+                  layout='fixed'
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -126,6 +135,7 @@ const Partners = () => {
                   alt='Motorenn logo'
                   width={85}
                   height={85}
+                  layout='fixed'
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -135,6 +145,7 @@ const Partners = () => {
                   alt='Vettedviz logo'
                   width={280}
                   height={106}
+                  layout='fixed'
               /> 
         </Box>
       </Box>

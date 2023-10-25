@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Layout from "../components/Layout"
 
 import headerImage from "../../public/marciano.svg"
+import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -26,12 +27,23 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-const About = () => {
+export async function getServerSideProps() {
+  const resAboutpage = await fetch("https://strapi.crazyimagine.com/about-page")
+  const aboutpage = await resAboutpage.json()
+
+  return { props: { aboutpage } }
+}
+
+
+const About = ({ aboutpage }) => {
   const { t } = useTranslation()
+  const title = aboutpage.title
+  const metaTitle = aboutpage.SEO.metaTitle
+  const metaDescription = aboutpage.SEO.metaDescription
+  const keywords = aboutpage.SEO.keywords
 
   return (
-    <Layout>
-      
+    <Layout >
       <SectionHeader
         title={t("about_sectionHeader_title")}
         btn={false}

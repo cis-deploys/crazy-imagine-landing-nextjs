@@ -7,6 +7,7 @@ import Layout from "../components/Layout"
 
 import headerImage from "../../public/flag.svg"
 import { NextSeo } from "next-seo"
+import SEO from "../components/seo"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -48,9 +49,6 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-
-
-
 export async function getServerSideProps() {
   const resProjects = await fetch("https://strapi.crazyimagine.com/projects")
   const projects = await resProjects.json()
@@ -70,16 +68,9 @@ export async function getServerSideProps() {
 
 function IndexPage({ projects, articles, reviews, homepage }) {
   const { t } = useTranslation()
-  const metaTitle = homepage.seo.metaTitle
-  const metaDescription = homepage.seo.metaDescription
-  const keywords = homepage.seo.keywords
 
   return (
-    <Layout seo >
-      <NextSeo
-      title={`${metaTitle}`}
-      description={`${metaDescription}`}
-      />
+    <Layout >
       <Box overflow="hidden">
         <SectionHeader
           title={t("home_sectionHeader_title")}

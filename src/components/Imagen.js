@@ -9,7 +9,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     gap: "150px",
     width: "100%",
-    objectFit: "contain",
     [theme.breakpoints.down("xs")]: {
       height: "280px",
     },
@@ -17,7 +16,8 @@ const useStyles = makeStyles(theme => ({
   img2: {
     marginTop: "auto",
     width: "100%",
-    height: "100%",
+    height: "auto",
+    objectFit: 'contain'
   },
 }))
 
@@ -30,6 +30,7 @@ const Imagen = () => {
         className={`${classes.img2}`}
         src={Crazy}
         alt="Imagen de la empresa"
+        layout="responsive"
         width={1800}
         height={800}
       />
