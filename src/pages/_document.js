@@ -11,7 +11,7 @@ class MyDocument extends Document {
             href="/favicon.ico"
           />
           <link
-            rel="stylesheet"
+            rel="stylesheet preload"
             href="https://fonts.googleapis.com/css?family=Staatliches&display=optional"
             as="style"
           />
