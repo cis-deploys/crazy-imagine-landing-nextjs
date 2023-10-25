@@ -48,9 +48,6 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-
-
-
 export async function getServerSideProps() {
   const resProjects = await fetch("https://strapi.crazyimagine.com/projects")
   const projects = await resProjects.json()
