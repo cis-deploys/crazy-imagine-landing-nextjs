@@ -17,7 +17,6 @@ const useStyes = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "40px",
     textAlign: "center",
-    marginBottom: "50px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
     [theme.breakpoints.down("md")]: {
