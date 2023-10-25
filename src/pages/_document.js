@@ -1,16 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document'
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
+function MyDocument () {
 
-  render() {
   return (
     <Html lang="en">
       <Head>
-        <link
+        {/* <link
             rel="icon"
             href="/favicon.ico"
           />
@@ -32,7 +27,7 @@ class MyDocument extends Document {
           />
           <script
             src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js"
-          />
+          /> */}
       <script
     dangerouslySetInnerHTML={{
       __html: `
@@ -48,6 +43,5 @@ class MyDocument extends Document {
       </body>
     </Html>
   )
-}
 }
 export default MyDocument;
