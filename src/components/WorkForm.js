@@ -5,7 +5,6 @@ import axios from "axios"
 import * as yup from "yup"
 import Swal from "sweetalert2"
 import { Box,  Input, Typography, Select, MenuItem, InputLabel, Alert, Button } from "@mui/material"
-//import Alert from '@mui/material/Alert';
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next"
 import TextField from "@mui/material/TextField"
@@ -428,22 +427,17 @@ const WorkForm = () => {
     email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
     phone: yup.string().matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, t("workWithUs_workForm_schemaYup_phone2")).required(t("workWithUs_workForm_schemaYup_phone")),
     linkedin: yup.string(),
-    website: yup.string(),
-    curriculum: yup.mixed().when("website", { is: "",
-      then: yup.mixed().test("required", t("workWithUs_workForm_schemaYup_curriculum1"), value => {
-          return value && value.length
-        }).test("fileSize", t("workWithUs_workForm_schemaYup_curriculum2"), (value, context) => {
-          return value && value[0] && value[0].size <= 2097152
-        }).test("type",t("workWithUs_workForm_schemaYup_curriculum3"),
-          function (value) {
-            return value && value[0] && ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'].includes(value[0].type)
-          }
-        ),
-      otherwise: yup.mixed(),
+    website: yup.string().url(),
+    curriculum: yup.mixed().test('fileSize', 'El archivo debe tener un tamaño máximo de 2 MB', (value) => {
+      if (!value) return true;
+      return value && value[0] && value[0].size <= 2097152;
+    }).test('type', t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
+      if (!value) return true;
+      const allowedTypes = ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'];
+      return typeof value === 'object' && value.hasOwnProperty('type') && allowedTypes.includes(value[0].type);
     }),
-
     reference: yup.string(),
-  })
+  });
               
   const {
     register,
@@ -469,30 +463,30 @@ const WorkForm = () => {
 
   const domain = process.env.CRAZY_STRAPI_URL
 
-  const onSubmitHandler = async data => {
-
-    if (data.curriculum?.length === 1) {
+  const onSubmitHandler = async() => {
+    
+    if (curriculum?.length === 1) {
       setShowButton(true)
 
       const formData = new FormData()
-      formData.append("files", data.curriculum[0])
+      formData.append("files", curriculum[0])
       axios
         .post(`${domain}/upload`, formData)
         .then(async response => {
-          const file = response.data[0].id
+          const file = response.id
           const sendData = {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            phone: data.phone,
-            linkedin: data.linkedin,
-            website: data.website,
-            reference: data.reference,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phone: phone,
+            linkedin: linkedin,
+            website: website,
+            reference: reference,
             curriculum: file,
           }
           const res = await axios.post(`${domain}/curriculums`, sendData)
         
-          if (res.statusText === "OK") {
+          if (res.status === 200) {
             setFormStatus("well")
             setShowButton(false)
             setFileIsLoaded(false)
@@ -514,26 +508,26 @@ const WorkForm = () => {
         })
         })
     } else {
-      if (data.website !== "") {
+      if (website !== "") {
         const sendData = {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phone: data.phone,
-          linkedin: data.linkedin,
-          website: data.website,
-          reference: data.reference,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          linkedin: linkedin,
+          website: website,
+          reference: reference,
         }
         const res = await axios.post(`${domain}/curriculums`, sendData)
 
-        if (res.statusText === "OK") {
+        if (res.status === 200) {
           setFormStatus("well")
           setFileIsLoaded(false)
           setShowButton(false)
           Swal.fire(
           t("home_contacSection_contactForm_swalSuccess_title"),
           t("workWithUs_workForm_submit_success"),
-          "success"
+          "success",
         )
           reset()
         } else {
@@ -574,7 +568,7 @@ const WorkForm = () => {
                 required
                 className={`${classes.shortInput} ${classes.root}`}
                 {...register("firstName")}
-                error={errors.firstName}
+                error={!!errors.firstName}
                 helperText={errors.firstName?.message}
                 type="text"
                 id="outlined-basic"
@@ -586,7 +580,7 @@ const WorkForm = () => {
                 required
                 className={`${classes.shortInput} ${classes.root}`}
                 {...register("lastName")}
-                error={errors.lastName}
+                error={!!errors.lastName}
                 helperText={errors.lastName?.message}
                 type="text"
                 id="outlined-basic"
@@ -599,7 +593,7 @@ const WorkForm = () => {
               <TextField
                 required
                 className={`${classes.shortInput} ${classes.root}`}
-                error={errors.email}
+                error={!!errors.email}
                 {...register("email")}
                 helperText={errors.email?.message}
                 type="text"
@@ -611,7 +605,7 @@ const WorkForm = () => {
               <TextField
                 required
                 className={`${classes.shortInput} ${classes.root}`}
-                error={errors.phone}
+                error={!!errors.phone}
                 {...register("phone")}
                 helperText={errors.phone?.message}
                 type="text"
@@ -624,7 +618,7 @@ const WorkForm = () => {
             <TextField
               className={`${classes.formInput} ${classes.root}`}
               helperText={errors.linkedin?.message}
-              error={errors.linkedin}
+              error={!!errors.linkedin}
               {...register("linkedin")}
               type="text"
               id="outlined-basic"
@@ -635,7 +629,7 @@ const WorkForm = () => {
             <TextField
               className={`${classes.formInput} ${classes.root}`}
               helperText={errors.website?.message}
-              error={errors.website}
+              error={!!errors.website}
               {...register("website")}
               type="text"
               id="outlined-basic"
@@ -651,7 +645,7 @@ const WorkForm = () => {
                   {t("workWithUs_workForm_textField_button1")}
                 </label>
                 <Typography className={classes.limitMessage}>Max 2 mb</Typography>
-              <Alert
+                <Alert
               severity="success" 
               className={classes.uploadAlert}
               style={{
@@ -674,7 +668,7 @@ const WorkForm = () => {
                   }
                 })} />
              </Box>
-            <Alert
+             <Alert
               severity={(errors.curriculum?.message === t("workWithUs_workForm_schemaYup_curriculum4")) ? "success" : "error"}
               className={classes.curriculumAlert}
               style={{
