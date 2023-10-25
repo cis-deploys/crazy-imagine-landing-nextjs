@@ -5,13 +5,13 @@ function MyDocument () {
   return (
     <Html lang="en">
       <Head>
-        {/* <link
+        <link
             rel="icon"
             href="/favicon.ico"
           />
           <link
             rel="stylesheet preload"
-            href="https://fonts.googleapis.com/css?family=Staatliches"
+            href="https://fonts.googleapis.com/css?family=Staatliches&display=optional"
             as="style"
           />
           <link
@@ -19,7 +19,7 @@ function MyDocument () {
             href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
             as="style"
           />
-          <script
+          {/* <script
             src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"
           />
           <script
@@ -27,7 +27,7 @@ function MyDocument () {
           />
           <script
             src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js"
-          /> */}
+          />*/}
       <script
     dangerouslySetInnerHTML={{
       __html: `
@@ -35,7 +35,7 @@ function MyDocument () {
         })(window,document,'script','dataLayer','AW-10981293938');
       `,
     }}
-  />
+  /> 
       </Head>
       <body>
         <Main />
