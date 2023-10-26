@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
@@ -190,7 +190,17 @@ const ProjectSection = ({ title, btn, size, projects }) => {
   const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
-  const lang = i18n.language 
+  const lang = i18n.language
+
+  const [projectDataAll, setProjectDataAll] = useState(projects.filter(article =>
+    article.locale.includes(lang)
+  ));
+  
+  useEffect(() => {
+      setProjectDataAll(projects.filter(article =>
+        article.locale.includes(lang)
+      ));
+  }, [i18n.language]);
 
       return (
         <Box ref={ref} className={classes.container}>
@@ -212,8 +222,7 @@ const ProjectSection = ({ title, btn, size, projects }) => {
             className={`${classes.container} purpleBullet`}
           >
 
-            { projects
-              ?.filter(projects => projects?.locale?.includes(lang))
+            { projectDataAll
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => {
                 const dataImage = el?.images[0]?.url //localFile

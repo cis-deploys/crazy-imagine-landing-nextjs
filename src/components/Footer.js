@@ -71,7 +71,9 @@ const useStyles = makeStyles(theme => ({
     padding: "0px 60px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
+      height: "auto",
       padding: "0px 43px",
+      flexDirection: "column",
     },
     [theme.breakpoints.down("xs")]: {
       width: "100%",
@@ -82,11 +84,13 @@ const useStyles = makeStyles(theme => ({
       maxWidth: "1440px",
       margin: "0 auto",
       padding: "0px 60px",
+      flexDirection: "row",
     },
     [theme.breakpoints.up("xl")]: {
       maxWidth: "1920px",
       margin: "0 auto",
       padding: "0px 60px",
+      flexDirection: "row",
     },
   },
   effect: {

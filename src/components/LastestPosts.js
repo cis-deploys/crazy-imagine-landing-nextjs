@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { Box, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
@@ -98,11 +98,19 @@ const useStyes = makeStyles(theme => ({
   },
 }))
 
-const LastestPosts = ({ articles }) => {
+const LastestPosts = ({ articles, articlesAll }) => {
   const classes = useStyes()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+    
+  const [projectDataAll, setProjectDataAll] = useState(articlesAll
+    ?.filter( articles => articles?.locale?.includes(i18n.language)) || []);
+
+      useEffect(() => {
+          setProjectDataAll(articlesAll
+            ?.filter( projects => projects?.locale?.includes(i18n.language)) || []);
+      }, [i18n.language]);
 
   return (
     <Box ref={ref} className={classes.container}>
@@ -119,7 +127,7 @@ const LastestPosts = ({ articles }) => {
         </a>
 
       </Link>
-      <BlogPost articles={ articles }/>
+      <BlogPost articles={ projectDataAll }/>
     </Box>
   )
 }

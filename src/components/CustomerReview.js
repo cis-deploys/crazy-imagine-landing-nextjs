@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
@@ -137,6 +137,16 @@ const useStyles = makeStyles(theme => ({
   const { i18n } = useTranslation();
   const lang = i18n.language;
 
+  const [projectDataAll, setProjectDataAll] = useState(reviews.filter(article =>
+    article.locale.includes(lang)
+  ));
+
+  useEffect(() => {
+      setProjectDataAll(reviews.filter(article =>
+        article.locale.includes(lang)
+      ));
+  }, [i18n.language]);
+
         return (
           <Swiper
             spaceBetween={50}
@@ -169,8 +179,7 @@ const useStyles = makeStyles(theme => ({
             modules={[Pagination, Keyboard]}
             className={bulletClass}
           >
-            { reviews
-            ?.filter(reviews => reviews?.locale?.includes(lang))
+            { projectDataAll
             ?.map((review, index) => (
 
               <SwiperSlide key={index} className={classes.swiperSlide}>
