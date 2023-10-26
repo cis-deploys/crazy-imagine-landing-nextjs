@@ -24,8 +24,8 @@ export async function getServerSideProps(context) {
   const { Key } = query;
 
   const resArticlesAll = await fetch(`https://strapi.crazyimagine.com/articles?_locale=es-VE&_limit=6&_sort=created_at:DESC`)
-  const resArticlesAllEs = await fetch(`https://strapi.crazyimagine.com/articles?_locale=en&_limit=6&_sort=created_at:DESC`)
   const articlesAll = await resArticlesAll.json();
+  const resArticlesAllEs = await fetch(`https://strapi.crazyimagine.com/articles?_locale=en&_limit=6&_sort=created_at:DESC`)
   const articlesAllEs = await resArticlesAllEs.json();
 
   const resArticles = await fetch(`https://strapi.crazyimagine.com/articles?Key=${Key}&_locale=all`)
@@ -39,7 +39,7 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
   return (
     <Layout>
 
-      <BlogKey articles={ articles } articlesAll={ articlesAll }/>
+      <BlogKey articles={ articles } articlesAll={ articlesAll.concat(articlesAllEs) }/>
 
       <LastestPosts articles={ articles } articlesAll={ articlesAll.concat(articlesAllEs) }/>
 

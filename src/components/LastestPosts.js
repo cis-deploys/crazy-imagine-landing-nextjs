@@ -104,13 +104,19 @@ const LastestPosts = ({ articles, articlesAll }) => {
   const isVisible = useIntersection(ref, "0px")
   const { i18n, t } = useTranslation();
     
-  const [projectDataAll, setProjectDataAll] = useState(articlesAll
-    ?.filter( articles => articles?.locale?.includes(i18n.language)) || []);
+  const [projectDataAll, setProjectDataAll] = useState(articlesAll.filter(article =>
+    article.locale.includes(i18n.language)
+    ))?.sort((a, b) => {
+      return new Date(b.created_at) - new Date(a.created_at)
+    }); 
 
-      useEffect(() => {
-          setProjectDataAll(articlesAll
-            ?.filter( projects => projects?.locale?.includes(i18n.language)) || []);
-      }, [i18n.language]);
+    useEffect(() => {
+      setProjectDataAll(articlesAll.filter(article =>
+        article.locale.includes(i18n.language)
+        ))?.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at)
+        });
+    }, [i18n.language]);
 
   return (
     <Box ref={ref} className={classes.container}>

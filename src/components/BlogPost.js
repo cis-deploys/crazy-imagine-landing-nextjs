@@ -118,7 +118,6 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
   SwiperCore.use([Keyboard])
-  console.log('BlogPost');
 
   const articles = AllArticles
   const articlesFilter = articles?.filter(article =>
