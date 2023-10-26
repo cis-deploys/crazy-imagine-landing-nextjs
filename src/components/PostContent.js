@@ -30,13 +30,13 @@ const useStyles = makeStyles(theme => ({
 const PostContent = ({ articles }) => {
   const classes = useStyles()
   const { i18n, t } = useTranslation()
-  const lang = i18n.language 
+  const lang = i18n.language
 
   return (
     <>
       <Box className={classes.container}>
         <ReactMarkdown rehypePlugins={[rehypeRaw]} className={classes.content}>
-          {articles?.content}
+          {articles[0]?.content}
         </ReactMarkdown>
       </Box>
     </>

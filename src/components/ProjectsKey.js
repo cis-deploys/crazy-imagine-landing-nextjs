@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from 'react';
+// import React from "react"
 import { Box, Typography } from "@mui/material"
 import HeroProjectsSection from "./HeroProjectsSection"
 import AboutProjects from "./AboutProjects"
@@ -9,6 +10,7 @@ import ContactSection from "./ContactSection"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router"
+
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -68,46 +70,54 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ProjectsKey = ({projects}) => {
+const ProjectsKey = ({projects, projectsAll}) => {
     const classes = useStyles()
     const { i18n, t } = useTranslation()
     const lang = i18n.language 
     const router = useRouter();
     const { Key } = router.query;
+    const [projectData, setProjectData] = useState(projects
+      ?.filter( project => project?.Key === Key && project?.Key !== null)
+      ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
-    const projectsFilter = projects
-    ?.filter( project => project?.Key === Key && project?.Key !== null)
-    ?.filter( projects => projects?.locale?.includes(lang)) || []
-        const title = projectsFilter[0]?.title || ''
-        const date = projectsFilter[0]?.created_at || ''
-        const description = projectsFilter[0]?.description || ''
-        const image = projectsFilter[0]?.images || ''
+    const [projectDataAll, setProjectDataAll] = useState(projectsAll
+      ?.filter( projects => projects?.locale?.includes(lang)) || []);    
+
+        useEffect(() => {
+          setProjectData(projects
+            ?.filter( project => project?.Key === Key && project?.Key !== null)
+            ?.filter( projects => projects?.locale?.includes(lang)) || []);
+
+            setProjectDataAll(projectsAll
+              ?.filter( projects => projects?.locale?.includes(lang)) || []);
+        }, [i18n.language]);
+
   return (
     <>
       <Box className={classes.header}>
         <Typography className={classes.title} variant="h1" component="h1">
-        {title}
+        {projectData[0]?.title}
         </Typography>
-        <Typography className={classes.date}>{date}</Typography>
-        <Typography className={classes.description}>{description}</Typography>
+        <Typography className={classes.date}>{projectData[0]?.created_at}</Typography>
+        <Typography className={classes.description}>{projectData[0]?.description}</Typography>
       </Box>
       <Box overflow="hidden">
-        <HeroProjectsSection image={image} title={projectsFilter[0]?.title} />
+        <HeroProjectsSection image={projectData[0]?.images} title={projectData[0]?.title} />
         <>
           <AboutProjects
-            aboutProject={projectsFilter[0]?.details}
-            images={image}
-            gallery={projectsFilter[0]?.galleryImages}
-            moreAbout={projectsFilter[0]?.description}
+            aboutProject={projectData[0]?.details}
+            images={projectData[0]?.images}
+            gallery={projectData[0]?.galleryImages}
+            moreAbout={projectData[0]?.description}
           />
           <GalleryProjects
-            images={image}
-            gallery={projectsFilter[0]?.galleryImages}
-            id={projectsFilter[0]?.id}
-            description={projectsFilter[0]?.moreAbout}
+            images={projectData[0]?.images}
+            gallery={projectData[0]?.galleryImages}
+            id={projectData[0]?.id}
+            description={projectData[0]?.moreAbout}
           />
         </>
-        <RelatedSection projects={ projects }/>
+        <RelatedSection projects={ projectDataAll }/>
         <ContactSection />
       </Box>
     </>

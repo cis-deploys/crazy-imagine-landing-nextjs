@@ -50,23 +50,29 @@ const ContactSection = dynamic(
 )
 
 export async function getServerSideProps() {
-  const resProjects = await fetch("https://strapi.crazyimagine.com/projects")
+  const resProjects = await fetch("https://strapi.crazyimagine.com/projects?_locale=es-VE&_limit=6&_sort=created_at:DESC")
   const projects = await resProjects.json()
 
-  const resArticles = await fetch("https://strapi.crazyimagine.com/articles")
+  const resProjectsEn = await fetch("https://strapi.crazyimagine.com/projects?_locale=en&_limit=6&_sort=created_at:DESC")
+  const projectsEn = await resProjectsEn.json()
+
+  const resArticles = await fetch("https://strapi.crazyimagine.com/articles?_locale=es-VE&_limit=6&_sort=created_at:DESC")
   const articles = await resArticles.json()
 
-  const resReviews = await fetch("https://strapi.crazyimagine.com/reviews")
+  const resArticlesEn = await fetch("https://strapi.crazyimagine.com/articles?_locale=en&_limit=6&_sort=created_at:DESC")
+  const articlesEn = await resArticlesEn.json()
+
+  const resReviews = await fetch("https://strapi.crazyimagine.com/reviews?_locale=all")
   const reviews = await resReviews.json()
 
-  const resHomepage = await fetch("https://strapi.crazyimagine.com/homepage")
+  const resHomepage = await fetch("https://strapi.crazyimagine.com/homepage?_locale=all")
   const homepage = await resHomepage.json()
 
-  return { props: { projects, articles, reviews, homepage } }
+  return { props: { projects, projectsEn, articles, articlesEn, reviews, homepage } }
 }
 
 
-function IndexPage({ projects, articles, reviews, homepage }) {
+function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepage }) {
   const { t } = useTranslation()
 
   return (
@@ -87,13 +93,13 @@ function IndexPage({ projects, articles, reviews, homepage }) {
           title={t("home_projectSection_title")}
           btn={true}
           size={true}
-          projects={projects}
+          projects={projects.concat(projectsEn)}
         />
         <MailchimpForm />
 
         <Partners />
 
-        <LastestPosts articles={ articles }/>
+        <LastestPosts articlesAll={ articles.concat(articlesEn) }/>
 
         <ContactSection bgColor="#FFFFFF" />
       </Box>

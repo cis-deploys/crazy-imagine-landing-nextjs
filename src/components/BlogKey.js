@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from 'react';
 import dynamic from "next/dynamic";
 import {
   Box,
@@ -142,42 +142,52 @@ const useStyles = makeStyles(theme => ({
     },
   }))
 
-const BlogKey = ({ articles }) => {
+const BlogKey = ({ articles, articlesAll }) => {
     const classes = useStyles()
     const { i18n, t } = useTranslation()
     const lang = i18n.language 
     const router = useRouter();
     const { Key } = router.query;
 
-    const posts = articles.filter( article => article?.Key === Key)
-    const articlesFilter = posts.filter(({ locale }) => locale.includes(lang)) || []
-        const title = articlesFilter[0]?.title || ''
-        const description = articlesFilter[0]?.description || ''
-        const author = articlesFilter[0]?.author.name || ''
-        const category = articlesFilter[0]?.category.name || ''
-        const date = articlesFilter[0]?.category.created_at || ''
+    // const [projectData, setProjectData] = useState(articles.filter(({ locale }) => locale.includes(lang)) || []);
+    
+    const [projectData, setProjectData] = useState(articles
+      ?.filter( project => project?.Key === Key && project?.Key !== null)
+      ?.filter( articles => articles?.locale?.includes(lang)) || []);
+      
+    const [projectDataAll, setProjectDataAll] = useState(articlesAll
+      ?.filter( articles => articles?.locale?.includes(lang)) || []);
+
+        useEffect(() => {
+          setProjectData(articles
+            ?.filter( project => project?.Key === Key && project?.Key !== null)
+            ?.filter( projects => projects?.locale?.includes(lang)) || []);
+
+            setProjectDataAll(articlesAll
+              ?.filter( projects => projects?.locale?.includes(lang)) || []);
+        }, [i18n.language]);
 
   return (
     <>
     <Box className={classes.header}>
     <>
-      <InputLabel className={classes.label}>{category}</InputLabel>
+      <InputLabel className={classes.label}>{projectData[0]?.category.name}</InputLabel>
       <Typography className={classes.title} variant="h1" component="h1">
-        {title}
+        {projectData[0]?.title}
       </Typography>
       <Typography className={classes.date}>
-        {date} │ <span className={classes.author}>{author}</span>
+        {projectData[0]?.category.created_at} │ <span className={classes.author}>{projectData[0]?.author.name}</span>
       </Typography>
-      <Typography className={classes.description}>{description}</Typography>
+      <Typography className={classes.description}>{projectData[0]?.description}</Typography>
     </>
   </Box>
   <Box className={classes.imgContainer}>
-    <Image src={articlesFilter[0]?.image[0]?.url} alt={title} width={1700} height={1000} />
+    <Image src={projectData[0]?.image[0]?.url} alt={projectData[0]?.title} width={1700} height={1000} />
   </Box>
   <Box className={classes.contentContainer}>
     
-    <PostContent articles={articlesFilter[0]} />
-    <RecentlyPosted articles={ articles }/>
+    <PostContent articles={projectData} />
+    <RecentlyPosted articles={ projectDataAll }/>
   </Box>
   </>
   )
