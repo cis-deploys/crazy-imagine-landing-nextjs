@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
@@ -240,11 +240,24 @@ const BlogArticle = ({ articles: AllArticles }) => {
   const articlesFilter = articles.filter(article =>
     article.locale.includes(lang)
   )
-  const articlesSort = articlesFilter
-    .sort((a, b) => {
-      return new Date(b.created_at) - new Date(a.created_at)
-    })
-    .slice(0, load)
+
+    const [projectDataAll, setProjectDataAll] = useState(articlesFilter
+      .sort((a, b) => {
+        return new Date(b.created_at) - new Date(a.created_at)
+      })
+      .slice(0, load));
+
+    useEffect(() => {
+      const articles = AllArticles
+      const articlesFilter = articles.filter(article =>
+        article.locale.includes(lang)
+      )
+        setProjectDataAll(articlesFilter
+          .sort((a, b) => {
+            return new Date(b.created_at) - new Date(a.created_at)
+          })
+          .slice(0, load));
+    }, [i18n.language, load]);
 
   return (
     <Box className={classes.wrapperContainerSection}>
@@ -259,7 +272,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
         </Typography>
         <Box className={classes.wrapper}>
           {
-          articlesSort.map(( el, index) => {
+          projectDataAll.map(( el, index) => {
               const dataImage = el?.image[0].url
               const title = el?.image[0].title
             return(

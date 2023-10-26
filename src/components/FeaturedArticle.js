@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
@@ -187,6 +187,22 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
       return new Date(b.created_at) - new Date(a.created_at)
     })
     .slice(0, 1)
+      
+    const [projectDataAll, setProjectDataAll] = useState(featureArticle);
+
+    useEffect(() => {
+          const articles = AllArticles
+          const articlesFilter = articles.filter(article =>
+            article.locale.includes(lang)
+          )
+          const featureArticle = articlesFilter
+            .sort((a, b) => {
+              return new Date(b.created_at) - new Date(a.created_at)
+            })
+            .slice(0, 1)
+            setProjectDataAll(featureArticle);
+    }, [i18n.language]);
+
   return (
     <Box ref={ref} className={classes.container}>
       <Typography className={isVisible ? classes.title2 : classes.title}>
@@ -197,15 +213,15 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
           <Image
             className={classes.img}
             alt="Feature Article"
-            src={featureArticle[0]?.image[0]?.url}
+            src={projectDataAll[0]?.image[0]?.url}
             width={982}
             height={614}
           />
           <Box className={classes.textContainer}>
             <Typography className={classes.titleCard}>
-              {featureArticle[0]?.title}
+              {projectDataAll[0]?.title}
             </Typography>
-            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${featureArticle[0]?.Key}`} >
+            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[0]?.Key}`} >
               <a style={{ textDecoration: "none" }} className={classes.link}>
                 {t("common_lastestPosts_blogPost_button_readMore")}
               </a>
