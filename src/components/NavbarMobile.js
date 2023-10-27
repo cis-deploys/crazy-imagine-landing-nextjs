@@ -54,21 +54,28 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
-    [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down("xs")]: {
     backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
     },
   }),
   navbarMobileIcons: props => ({
     fontSize: 50,
     color: props.scroll ? props.iconsVariant : "white",
+    [theme.breakpoints.down("md")]: {
+      fontSize: 30,
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: 30,
     },
   }),
   navbarLogo: {
     marginLeft: "25px",
+    marginTop: "15px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "10px",
+    },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "0px",
+      marginLeft: "10px",
     },
   },
   navbarMobileLogo: {
@@ -109,9 +116,18 @@ const useStyles = makeStyles(theme => ({
   btn: {
     "& .MuiButtonBase-root": {
       padding: "8px",
+      marginRight: "2px"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginRight: "0px",
+      marginLeft: "1px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "0px",
+      marginLeft: "1px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginRight: "-20px",
+      marginRight: "0px",
       marginLeft: "1px",
     },
   },
@@ -128,6 +144,9 @@ const useStyles = makeStyles(theme => ({
     height: "5.5em",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      height: "3em",
+    },
     [theme.breakpoints.down("xs")]: {
       height: "3em",
     },
@@ -149,13 +168,13 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }))
 
 const icons = [
-  <FontAwesomeIcon key="icon-faHouse" icon={faHouse} size="lg" />,
-  <FontAwesomeIcon key="icon-faBars" icon={faBars} size="lg" />,
-  <FontAwesomeIcon key="icon-faCode" icon={faCode} size="lg" />,
-  <FontAwesomeIcon key="icon-faBlog" icon={faBlog} size="lg" />,
-  <FontAwesomeIcon key="icon-faLaptopCode" icon={faLaptopCode} size="lg" />,
-  <FontAwesomeIcon key="icon-faPhone" icon={faPhone} size="lg" />,
-  <FontAwesomeIcon key="icon-faFlag" icon={faFlag} size="lg" />,
+  <FontAwesomeIcon key="icon-faHouse" icon={faHouse} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faBars" icon={faBars} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faCode" icon={faCode} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faBlog" icon={faBlog} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faLaptopCode" icon={faLaptopCode} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faPhone" icon={faPhone} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faFlag" icon={faFlag} size="fa-lg" />,
 ]
 
 export const NavbarMobile = ({
@@ -206,7 +225,7 @@ export const NavbarMobile = ({
               onClick={handleDrawerOpen}
               className={classes.btn}
               edge="start"
-              sx={{ p: 8, mr: 2, ...(open && { display: "none" }) }}
+              sx={{ ...(open && { display: "none" }) }}
             >
               <Menu className={classes.navbarMobileIcons} />
             </IconButton>
@@ -218,7 +237,7 @@ export const NavbarMobile = ({
           anchor="left"
           open={open}
         >
-          <DrawerHeader style={{ justifyContent: "space-between" }}>
+          <DrawerHeader style={{ justifyContent: "space-between", marginLeft: "15px"}}>
             <Link href={`${HOME}`} >
               <a onClick={handleDrawerClose}>
               <Image

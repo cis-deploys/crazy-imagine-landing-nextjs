@@ -6,8 +6,6 @@ import Head from 'next/head'
 import Layout from "../components/Layout"
 
 import headerImage from "../../public/flag.svg"
-import { NextSeo } from "next-seo"
-import SEO from "../components/seo"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),

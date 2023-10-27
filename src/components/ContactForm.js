@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       lineHeight: "140%",
       color: "#193173", 
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "10px",
+      },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
@@ -43,6 +46,9 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "10px",
+      },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
@@ -52,7 +58,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   formControlLabel:{
-   // width: "258px",
     "& .MuiFormControl-root": {
       fontFamily: "HindVadodara",
       fontStyle: "normal",
@@ -60,6 +65,9 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "10px",
+      },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
@@ -104,7 +112,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     maxWidth: "1000px",
     [theme.breakpoints.down("sm")]: {
-      padding: "0px 28px 20px 28px",
+      padding: "0px 10px 20px 10px",
       marginTop: "30px",
     },
     [theme.breakpoints.down("xs")]: {
@@ -125,6 +133,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     gap: "10px",
     [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
+    [theme.breakpoints.down("sm")]: {
       width: "auto",
     },
   },
@@ -162,7 +173,11 @@ const useStyles = makeStyles(theme => ({
         fontSize: "10px",
       },
     },
-
+    [theme.breakpoints.down("md")]: {
+      margin: "auto",
+      display: "flex",
+      textAlign: "center",
+    },
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
       display: "flex",

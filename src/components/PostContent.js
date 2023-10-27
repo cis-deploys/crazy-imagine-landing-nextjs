@@ -18,11 +18,27 @@ const useStyles = makeStyles(theme => ({
       fontSize: "12px",
       lineHeight: "20px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "12px",
+      lineHeight: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "12px",
+      lineHeight: "20px",
+    },
   },
   container: {
     width: "60%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      order: 1,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      order: 1,
     },
   },
 }))

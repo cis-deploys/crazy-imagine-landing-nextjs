@@ -22,11 +22,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     [theme.breakpoints.down("md")]: {
-      height: "708px",
+      height: "550px",
       padding: "0px 43px",
     },
+    [theme.breakpoints.down("sm")]: {
+      height: "400px",
+      padding: "0px 15px",
+    },
     [theme.breakpoints.down("xs")]: {
-      height: "auto",
+      height: "400px",
       padding: "0px 15px",
     },
   },
@@ -56,7 +60,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "22px",
       lineHeight: "22px",
       marginTop: "34px",
-      marginBottom: "20px",
+      marginBottom: "0px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontWeight: "22px",
+      fontSize: "22px",
+      lineHeight: "22px",
+      marginTop: "34px",
+      marginBottom: "0px",
     },
   },
   "@keyframes myEffect": {

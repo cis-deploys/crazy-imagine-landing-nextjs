@@ -15,7 +15,19 @@ const useStyles = makeStyles(theme => ({
     marginTop: "144px",
     marginBottom: "52px",
     overflow: "hidden",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      height: "auto",
+      marginTop: "17px",
+      marginBottom: "17px",
+    },
     [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      height: "auto",
+      marginTop: "17px",
+      marginBottom: "17px",
+    },
+    [theme.breakpoints.down("sx")]: {
       flexDirection: "column",
       height: "auto",
       marginTop: "17px",
@@ -29,6 +41,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "20px",
     width: "41%",
+    [theme.breakpoints.down("md")]: {
+      width: "79%",
+      gap: "10px",
+      marginBottom: "17px",
+    },
     [theme.breakpoints.down("sm")]: {
       width: "79%",
       gap: "10px",
@@ -99,12 +116,16 @@ const useStyles = makeStyles(theme => ({
     visibility: "hidden",
   },
   img2: {
+    display: "flex",
     animation: `$myEffect 2000ms`,
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
       width: "80%",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "80%",
+      width: "70%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
     },
   },
   "@keyframes myEffect": {
@@ -118,7 +139,21 @@ const useStyles = makeStyles(theme => ({
     },
   },
   imgn: {
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      width: "40%",
+      marginTop: "47px",
+      justifyContent: "center",
+      textAlign: "center",
+    },
     [theme.breakpoints.down("sm")]: {
+      width: "40%",
+      marginTop: "47px",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+    [theme.breakpoints.down("sx")]: {
+      width: "inherit",
       marginTop: "47px",
       justifyContent: "center",
       textAlign: "center",

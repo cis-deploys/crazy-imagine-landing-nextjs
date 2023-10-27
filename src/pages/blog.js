@@ -42,9 +42,9 @@ const Blog = ({ articles }) => {
 
       <SectionHeader
         title={t("blog_sectionHeader_title")}
-        btn={false}
+        btn={true}
         img={headerImage}
-        little={true}
+        cls="textContainer"
       />
 
       <FeaturedArticle articles={ articles }/>

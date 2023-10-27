@@ -23,18 +23,20 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     background: "#FFF",
     overflow: "hidden",
-  
-    [theme.breakpoints.down("md")]: {
-      height: "600px",
-    },
     [theme.breakpoints.down("md")]: {
       height: "auto",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "auto",
+      flexDirection: "column",
     },
   },
   cardContainer: {
     paddingTop:"62px",
     [theme.breakpoints.down("sm")]: {
-      paddingTop:"0px"
+      paddingTop:"0px",
+      flexDirection: "column",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",

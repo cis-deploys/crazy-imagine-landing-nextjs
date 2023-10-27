@@ -25,6 +25,11 @@ const useStyles = makeStyles(theme => ({
       gap: "50px",
       padding: "0 2%",
       paddingBottom: "4%",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "0 5%",
+      },
       [theme.breakpoints.down("xs")]: {
         flexDirection: "column",
         alignItems: "center",

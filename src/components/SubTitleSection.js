@@ -15,6 +15,12 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     marginBottom: "52px",
     marginTop: "34px",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      height: "auto",
+      marginTop: "17px",
+      marginBottom: "17px",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       height: "auto",
@@ -29,6 +35,11 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     flexDirection: "column",
     width: "41%",
+    [theme.breakpoints.down("md")]: {
+      width: "79%",
+      gap: "10px",
+      marginBottom: "17px",
+    },
     [theme.breakpoints.down("sm")]: {
       gap: "10px",
       width: "79%",
@@ -103,7 +114,19 @@ const useStyles = makeStyles(theme => ({
     },
   },
   imgn: {
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      width: "40%",
+      justifyContent: "center",
+      textAlign: "center",
+    },
     [theme.breakpoints.down("sm")]: {
+      width: "40%",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+    [theme.breakpoints.down("sx")]: {
+      width: "inherit",
       justifyContent: "center",
       textAlign: "center",
     },

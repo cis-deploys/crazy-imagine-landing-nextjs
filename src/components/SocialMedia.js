@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
   contactIcon: {
     fontSize: "20px",
     color: "#A7E4F5",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "16px",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "16px",
     },
@@ -21,6 +24,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "5px",
+    [theme.breakpoints.down("sm")]: {
+      width: "25px",
+      height: "25px",
+      },
     [theme.breakpoints.down("xs")]: {
     width: "25px",
     height: "25px",

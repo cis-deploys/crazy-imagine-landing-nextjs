@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
         <Navbar variant="secondary" />
       </Hidden>
       <Hidden lgUp>
-        <NavbarMobile/>
+        <NavbarMobile />
       </Hidden>
       <Box
         sx={{

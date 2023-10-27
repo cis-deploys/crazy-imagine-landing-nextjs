@@ -57,7 +57,6 @@ const useStyles = makeStyles(theme => ({
         margin: "3px",
       },
     },
-   
     "& .MuiFormHelperText-root.Mui-error": {
       [theme.breakpoints.down("md")]: {
         fontSize: "10px",
@@ -157,12 +156,19 @@ const useStyles = makeStyles(theme => ({
     width: "80%",
     gap: "93px",
     [theme.breakpoints.down("md")]: {
-      gap: "65px",
+      gap: "25px",
+      flexDirection: "row",
+      alignItems: "flex-start",
+      width: "90%",
     },
     [theme.breakpoints.down("sm")]: {
+      width: "80%",
       gap: "40px",
+      flexDirection: "column",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
+      width: "80%",
       gap: "20px",
       flexDirection: "column",
       alignItems: "center",
@@ -183,7 +189,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px 14px 0px 0px",
     [theme.breakpoints.down("md")]: {
       marginTop: "66px",
-      padding: "12px",
+      padding: "5px",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "30px",
@@ -551,7 +557,7 @@ const WorkForm = () => {
       <Box className={classes.container1}>
         <Box
           style={{
-            width: "fit-content",
+            width: "auto",
             marginLeft: "auto",
             marginRight: "auto",
           }}

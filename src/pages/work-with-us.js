@@ -28,9 +28,9 @@ const WorkWithUsPage = () => {
 
       <SectionHeader
         title={t("workWithUs_sectionHeader_title")}
-        btn={false}
-        little={true}
+        btn={true}
         img={headerImage}
+        cls="textContainer"
       />
       
       <WorkForm />
