@@ -190,14 +190,20 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       marginTop: "66px",
       padding: "5px",
+      justifyContent: "center",
+      alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "30px",
-      padding: "8px",
+      marginTop: "15px",
+      padding: "4px",
+      justifyContent: "center",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "15px",
       padding: "4px",
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
   containerInfo: {
@@ -221,7 +227,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
   },
   container1: {
-    overflow: "hidden",
+    //overflow: "hidden",
   },
   attachContainer: {
     width: "87%",
@@ -319,16 +325,21 @@ const useStyles = makeStyles(theme => ({
     },
   },
   shortInput: {
+    display: "fit-content",
     height: 1,
     width: "250px",
+    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       width: "170px",
+      alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
       width: "104px",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
       width: "86px",
+      alignItems: "center",
     },
   },
   shortContainer: {
@@ -338,6 +349,13 @@ const useStyles = makeStyles(theme => ({
     marginTop: "40px",
     marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
+      marginBottom: "30px",
+      //width: "80%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "30px",
+    },
+    [theme.breakpoints.down("xs")]: {
       marginBottom: "30px",
     },
   },
