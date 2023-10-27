@@ -37,10 +37,16 @@ const useStyles = makeStyles(theme => ({
     },
     header: {
       height: "auto",
-      width: "80%",
+      width: "90%",
       paddingTop: "60px",
       margin: "90px auto 0px auto",
       [theme.breakpoints.down("md")]: {
+        margin: "0px auto 0px auto",
+      },
+      [theme.breakpoints.down("sm")]: {
+        margin: "0px auto 0px auto",
+      },
+      [theme.breakpoints.down("xs")]: {
         margin: "0px auto 0px auto",
       },
     },
@@ -99,6 +105,16 @@ const useStyles = makeStyles(theme => ({
         fontSize: "17px",
         lineHeight: "22px",
       },
+      [theme.breakpoints.down("sm")]: {
+        marginTop: "25px",
+        fontSize: "14px",
+        lineHeight: "22px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        marginTop: "25px",
+        fontSize: "14px",
+        lineHeight: "22px",
+      },
     },
     root: {
       "& .MuiFormLabel-root": {
@@ -114,6 +130,10 @@ const useStyles = makeStyles(theme => ({
           lineHeight: "12px",
         },
         [theme.breakpoints.down("sm")]: {
+          fontSize: "10px",
+          lineHeight: "10px",
+        },
+        [theme.breakpoints.down("sx")]: {
           fontSize: "10px",
           lineHeight: "10px",
         },
@@ -139,6 +159,19 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         gap: "20px",
       },
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "10px",
+      },
+      
     },
   }))
 

@@ -24,13 +24,14 @@ const useStyles = makeStyles((theme) => ({
       gap: '20px',
       height: 'auto',
       paddingTop: '52px',
-      paddingBottom: '50px'
+      paddingBottom: '50px',
+      
     },
     card: {
       height: 'min-content !important'
     },
     bgWhite: {
-      paddingTop:'52px',
+      padding:'52px',
     }
 }));
 
@@ -78,7 +79,7 @@ const ServicesSection = () => {
           
         </Box>
       </Box>
-      <Box className={`${classes.container} ${classes.bg}`}>
+      <Box className={`${classes.container} ${classes.bgWhite}`}>
         <ServiceCapabilities
           title={t("common_capabilities_title2")}
           desc={t("common_capabilities_description2")}

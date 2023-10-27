@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       color: "#193173",
       fontStyle: "normal",
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: "10px",
       },
     },
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
       fontStyle: "italic",
       color: "#193173",
       lineHeight: "140%",
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: "10px",
       },
       fontFamily: "HindVadodara",
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     fontFamily: "Nexa Bold",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "40px",
+      fontSize: "30px",
       marginBottom: "20px",
     },
     [theme.breakpoints.down("xs")]: {
@@ -92,8 +92,8 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "40px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "12px",
-      lineHeight: "14px",
+      fontSize: "8px",
+      lineHeight: "10px",
       marginBottom: "30px",
       padding: "0 15px",
     },
@@ -105,14 +105,16 @@ const useStyles = makeStyles(theme => ({
     padding: "50px",
     borderRadius: "30px",
     flexDirection: "column",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       width: "90%",
       padding: "40px",
       margin: "auto",
+      flexDirection: "column"
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
       padding: "30px",
+      flexDirection: "column"
     },
   },
   formButton: {
@@ -144,7 +146,9 @@ const useStyles = makeStyles(theme => ({
       width: "auto",
     },
     [theme.breakpoints.down("xs")]: {
+      width: "auto",
       marginTop: "10px",
+      padding: "10px 10px 10px 10px",
     },
   },
   containerForm: {
@@ -161,20 +165,38 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "auto",
     },
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      height: "auto",
+      flexDirection: "column",
+    },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "30px",
+      flexDirection: "column",
+      width: "auto",
+      height: "auto",
     },
   },
   inputShort: {
     width: "250px",
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      flexDirection: "column"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      flexDirection: "column"
     },
   },
   inputLong: {
     width: "520px",
     [theme.breakpoints.down("md")]: {
       width: "auto",
+      flexDirection: "column"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      flexDirection: "column"
     },
   },
   dividerInputs: {
@@ -183,7 +205,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "auto",
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.down("sx")]: {
       width: "auto",
       flexDirection: "column",
     },

@@ -14,6 +14,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      height: "auto",
+    },
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      height: "auto",
+    },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       height: "auto",

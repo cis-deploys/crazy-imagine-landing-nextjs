@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
       paddingTop: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      paddingTop: "20px",
+      padding: "20px 15px",
     },
     [theme.breakpoints.down("xs")]: {
       paddingTop: "10px",
@@ -161,6 +161,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     background: "transparent",
     gap: "21px",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   loadButton: {
     visibility: "hidden",

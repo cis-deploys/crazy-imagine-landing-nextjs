@@ -34,8 +34,8 @@ const PrivacyPolicy = () => {
       <SectionHeader
         title={t("privacyPolicy_title")}
         img={headerImage}
-        btn={false}
-        little={true}
+        btn={true}
+        cls="textContainer"
       />
       <PrivacyPolicySection />
       <Imagen />

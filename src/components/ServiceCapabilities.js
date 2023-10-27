@@ -13,11 +13,19 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     margin: props.img ? "unset" : "auto",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "40px",
+      textAlign: "justify"
+    },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       gap: "40px",
+      textAlign: "justify"
     },
   }),
   "@keyframes myEffect": {
@@ -57,10 +65,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
-    // [theme.breakpoints.down("md")]: {
-    //   fontSize: "40px",
-    //   lineHeight: "40px",
-    // },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "28px",
       lineHeight: "28px",
@@ -76,15 +84,15 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     width: props.img ? "35%" : "50%",
     justifyContent: "center",
-    [theme.breakpoints.down("xs")]: {
-      width: "55%"
+    [theme.breakpoints.down("sm")]: {
+      width: "60%"
     },
-    // [theme.breakpoints.down("sm")]: {
-    //   width: props.img ? "59%" : "auto",
-    // },
+    [theme.breakpoints.down("xs")]: {
+      width: "60%"
+    },
   }),
   img: {
-    width: "unset",
+    width: "inherit",
     [theme.breakpoints.down("sm")]: {
       width: "35%",
     },
@@ -102,22 +110,35 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     whiteSpace: "pre-line",
     textAlign: "justify",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       fontSize: "16px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "14px",
     },
   },
   imagen2: {
-    width: "unset",
-    [theme.breakpoints.down("sm")]: {
-      width: "30%",
-      minWidth: "250px"
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      width: "40%",
+      marginTop: "47px",
+      justifyContent: "center",
+      textAlign: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "45%",
-      minWidth: "180px"
+    [theme.breakpoints.down("sm")]: {
+      width: "inherit",
+      marginTop: "47px",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+    [theme.breakpoints.down("sx")]: {
+      width: "inherit",
+      marginTop: "47px",
+      justifyContent: "center",
+      textAlign: "center",
     },
   },
 }))

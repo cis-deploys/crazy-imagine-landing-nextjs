@@ -3,7 +3,12 @@ import dynamic from "next/dynamic";
 
 // COMPONENTS
 import Layout from "../../components/Layout";
+import { Box } from '@mui/material';
 
+const BlogKey = dynamic(
+  () => import("../../components/BlogKey"),
+  { ssr: false },
+)
 const LastestPosts = dynamic(
   () => import("../../components/LastestPosts"),
   { ssr: false },
@@ -14,10 +19,6 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-const BlogKey = dynamic(
-  () => import("../../components/BlogKey"),
-  { ssr: false },
-)
 
 export async function getServerSideProps(context) {
   const { query } = context;
@@ -38,13 +39,11 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
 
   return (
     <Layout>
-
       <BlogKey articles={ articles } articlesAll={ articlesAll.concat(articlesAllEs) }/>
 
       <LastestPosts articles={ articles } articlesAll={ articlesAll.concat(articlesAllEs) }/>
 
       <ContactSection />
-      
     </Layout>
   )
 }

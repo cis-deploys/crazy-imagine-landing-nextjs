@@ -22,6 +22,11 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
+      height: "100%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "11px",
+      height: "inherit",
     },
   },
   customerName: {
@@ -107,6 +112,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       width: "inherit",
+      height: "inherit",
     },
   },
   swiperSlide: {

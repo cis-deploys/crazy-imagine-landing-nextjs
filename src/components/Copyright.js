@@ -12,6 +12,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     width: "100%",
     backgroundColor: "#071A4E",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      height: "auto",
+    },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       height: "auto",
@@ -27,7 +31,8 @@ const useStyles = makeStyles(theme => ({
       height: "55px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "34px",
+      flexDirection: "column",
+      height: "auto",
     },
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",

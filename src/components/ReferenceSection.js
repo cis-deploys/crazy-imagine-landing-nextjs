@@ -45,13 +45,16 @@ const useStyes = makeStyles(theme => ({
     overflow: "hidden",
     padding: "58px 60px 0px",
     [theme.breakpoints.down("md")]: {
-      padding: "55px 43px 0px 43px",
+      padding: "55px 43px 20px 43px",
+      height: "435px",
     },
     [theme.breakpoints.down("sm")]: {
-      paddingTop: "34px",
+      padding: "34px 15px 0px 15px",
+      height: "450px",
     },
     [theme.breakpoints.down("xs")]: {
       padding: "34px 15px 0px 15px",
+      height: "450px",
     },
   },
 }))
