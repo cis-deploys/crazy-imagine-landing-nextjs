@@ -5,6 +5,10 @@ import "../styles/globals.css"
 import "../styles/Swiper.module.css"
 import "../styles/swiper-bullet.module.css"
 
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 import i18n from "../../i18n"
 import { theme } from "../theme"
 

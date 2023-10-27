@@ -168,13 +168,13 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }))
 
 const icons = [
-  <FontAwesomeIcon key="icon-faHouse" icon={faHouse} size="fa-lg" />,
-  <FontAwesomeIcon key="icon-faBars" icon={faBars} size="fa-lg" />,
-  <FontAwesomeIcon key="icon-faCode" icon={faCode} size="fa-lg" />,
-  <FontAwesomeIcon key="icon-faBlog" icon={faBlog} size="fa-lg" />,
-  <FontAwesomeIcon key="icon-faLaptopCode" icon={faLaptopCode} size="fa-lg" />,
-  <FontAwesomeIcon key="icon-faPhone" icon={faPhone} size="fa-lg" />,
-  <FontAwesomeIcon key="icon-faFlag" icon={faFlag} size="fa-lg" />,
+  <FontAwesomeIcon key="icon-faHouse" icon={faHouse} size="lg" />,
+  <FontAwesomeIcon key="icon-faBars" icon={faBars} size="lg" />,
+  <FontAwesomeIcon key="icon-faCode" icon={faCode} size="lg" />,
+  <FontAwesomeIcon key="icon-faBlog" icon={faBlog} size="lg" />,
+  <FontAwesomeIcon key="icon-faLaptopCode" icon={faLaptopCode} size="lg" />,
+  <FontAwesomeIcon key="icon-faPhone" icon={faPhone} size="lg" />,
+  <FontAwesomeIcon key="icon-faFlag" icon={faFlag} size="lg" />,
 ]
 
 export const NavbarMobile = ({
@@ -248,7 +248,7 @@ export const NavbarMobile = ({
               </a>
             </Link>
             <IconButton onClick={handleDrawerClose}>
-              <FontAwesomeIcon icon={faXmark} inverse />
+              <FontAwesomeIcon icon={faXmark} inverse size="lg"/>
             </IconButton>
           </DrawerHeader>
 
