@@ -261,13 +261,13 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     whiteSpace: "pre-line",
     [theme.breakpoints.down("md")]: {
-      lineHeight: "61px",
+      lineHeight: "40px",
       fontWeight: "600",
-      fontSize: "51px",
+      fontSize: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      lineHeight: props.little ? "61px" : "40px",
-      fontSize: props.little ? "51px" : "30px",
+      lineHeight: props.little ? "51px" : "40px",
+      fontSize: props.little ? "23px" : "30px",
       fontWeight: props.little ? 600 : 400,
     },
     [theme.breakpoints.down("xs")]: {

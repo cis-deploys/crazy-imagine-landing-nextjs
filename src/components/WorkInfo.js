@@ -14,14 +14,14 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     marginTop: "140px",
     fontWeight: "900",
-    fontSize: "40px",
+    fontSize: "35px",
     lineHeight: "50px",
     whiteSpace: "pre-line",
     color: "#193174",
     [theme.breakpoints.down("md")]: {
-      fontSize: "35px",
+      fontSize: "25px",
       marginTop: "120px",
-      lineHeight: "35px",
+      lineHeight: "20px",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "80px",
