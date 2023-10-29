@@ -27,7 +27,6 @@ export async function getServerSideProps(context) {
 
 const Project = ({ projects, projectsAll, projectsAllEs }) => {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
-  console.log(projects)
   const projectsNew = [];
   projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
     const imagesArticles = [];
