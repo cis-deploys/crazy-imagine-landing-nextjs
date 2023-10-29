@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
   const resArticlesAllEs = await fetch(`${domain}articles?locale=en&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)//falta restringuir seo
   const articlesAllEs = await resArticlesAllEs.json();
 
-  const resArticles = await fetch(`${domain}articles?Key=${Key}&locale=all&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticles = await fetch(`${domain}articles?filters[Key][$eq]=${Key}&locale=all&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json();
 
   return { props: { articles, articlesAll, articlesAllEs } }
@@ -57,7 +57,7 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
       Key,
       createdAt,
       locale,
-      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      image: imagesArticles,
       category: category?.data?.attributes,
       author: author?.data?.attributes,
       seo
@@ -82,7 +82,7 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
       Key,
       createdAt,
       locale,
-      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      image: imagesArticles,
       category: category?.data?.attributes,
       author: author?.data?.attributes,
       seo
@@ -107,7 +107,7 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
       Key,
       createdAt,
       locale,
-      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      image: imagesArticles,
       category: category?.data?.attributes,
       author: author?.data?.attributes,
       seo

@@ -108,8 +108,8 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
       Key,
       createdAt,
       locale,
-      images: (imagesArticles.length > 0) ? imagesArticles : undefined,
-      galleryImages: (galleryImagesArticles.length > 0) ? galleryImagesArticles : undefined,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
       seo
     });
   });
@@ -140,8 +140,8 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
       Key,
       createdAt,
       locale,
-      images: (imagesArticles.length > 0) ? imagesArticles : undefined,
-      galleryImages: (galleryImagesArticles.length > 0) ? galleryImagesArticles : undefined,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
       seo
     });
   });
@@ -163,7 +163,7 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
       Key,
       createdAt,
       locale,
-      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      image: imagesArticles,
       category: category?.data?.attributes,
       author: author?.data?.attributes,
       seo
@@ -187,7 +187,7 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
       Key,
       createdAt,
       locale,
-      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      image: imagesArticles,
       category: category?.data?.attributes,
       author: author?.data?.attributes,
       seo
@@ -209,7 +209,7 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
       review,
       createdAt,
       locale,
-      avatar: (avatarReviews.length > 0) ? avatarReviews : undefined,
+      avatar: avatarReviews,
     });
   });
 

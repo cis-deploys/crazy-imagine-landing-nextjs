@@ -106,7 +106,7 @@ const RecentlyPosted = ({ articles: AllArticles }) => {
             {
               articlesSort?.slice(0, 4).map((el) => (
 
-              <Box key={el?.id} marginBottom="24px">
+              <Box key={el?.title} marginBottom="24px">
                 <Grid container alignItems="center">
                   <Grid item xs>
                     <Box className={classes.container}>

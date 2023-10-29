@@ -57,7 +57,7 @@ const Blog = ({ articles }) => {
       Key,
       createdAt,
       locale,
-      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      image: imagesArticles,
       category: category?.data?.attributes,
       author: author?.data?.attributes,
       seo

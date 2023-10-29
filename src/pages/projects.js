@@ -65,8 +65,8 @@ function Projects({ projects }) {
       Key,
       createdAt,
       locale,
-      images: (imagesArticles.length > 0) ? imagesArticles : undefined,
-      galleryImages: (galleryImagesArticles.length > 0) ? galleryImagesArticles : undefined,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
       seo
     });
   });

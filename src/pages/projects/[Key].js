@@ -19,7 +19,7 @@ export async function getServerSideProps(context) {
     const projectsAll = await resprojectsAll.json();
     const projectsAllEs = await resprojectsAllEs.json();
 
-    const resProjects = await fetch(`${domain}projects?Key=${Key}&locale=all&populate=images&populate=galleryImages&populate=seo`)
+    const resProjects = await fetch(`${domain}projects?filters[Key][$eq]=${Key}&locale=all&populate=images&populate=galleryImages&populate=seo`)
     const projects = await resProjects.json()
   
     return { props: { projects, projectsAll, projectsAllEs } }
@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
 
 const Project = ({ projects, projectsAll, projectsAllEs }) => {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
-
+  console.log(projects)
   const projectsNew = [];
   projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
     const imagesArticles = [];
@@ -55,8 +55,8 @@ const Project = ({ projects, projectsAll, projectsAllEs }) => {
       Key,
       createdAt,
       locale,
-      images: (imagesArticles.length > 0) ? imagesArticles : undefined,
-      galleryImages: (galleryImagesArticles.length > 0) ? galleryImagesArticles : undefined,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
       seo
     });
   });
@@ -88,8 +88,8 @@ const Project = ({ projects, projectsAll, projectsAllEs }) => {
       Key,
       createdAt,
       locale,
-      images: (imagesArticles.length > 0) ? imagesArticles : undefined,
-      galleryImages: (galleryImagesArticles.length > 0) ? galleryImagesArticles : undefined,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
       seo
     });
   });
@@ -121,8 +121,8 @@ const Project = ({ projects, projectsAll, projectsAllEs }) => {
       Key,
       createdAt,
       locale,
-      images: (imagesArticles.length > 0) ? imagesArticles : undefined,
-      galleryImages: (galleryImagesArticles.length > 0) ? galleryImagesArticles : undefined,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
       seo
     });
   });
