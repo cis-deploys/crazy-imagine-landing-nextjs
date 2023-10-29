@@ -28,13 +28,48 @@ const ContactSection = dynamic(
 )
 
 export async function getServerSideProps() {
-  const resProjects = await fetch("https://strapi.crazyimagine.com/projects?_locale=all")
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  const resProjects = await fetch(`${domain}projects?locale=all&populate=images&populate=galleryImages&populate=seo`)
   const projects = await resProjects.json()
   return { props: { projects } }
 }
 
 function Projects({ projects }) {
   const { t } = useTranslation()
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+
+  const projectsNew = [];
+  projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
+    const imagesArticles = [];
+    if(images.data){
+      images.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    const galleryImagesArticles = [];
+    if(galleryImages.data){
+      galleryImages.data.map(({ attributes: { url }}) => {
+        galleryImagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    projectsNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
+      seo
+    });
+  });
 
   return (
     <Layout>
@@ -49,7 +84,7 @@ function Projects({ projects }) {
         <ProjectSection
           title={t("services_projectSection_title")}
           btn={false}
-          projects={projects}
+          projects={projectsNew}
         />
         <ContactSection />
       </Box>

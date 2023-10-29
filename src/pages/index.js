@@ -48,22 +48,24 @@ const ContactSection = dynamic(
 )
 
 export async function getServerSideProps() {
-  const resProjects = await fetch("https://strapi.crazyimagine.com/projects?_locale=es-VE&_limit=6&_sort=created_at:DESC")
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  // console.log(`${domain}articles?locale=en&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`);
+  const resProjects = await fetch(`${domain}projects?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)
   const projects = await resProjects.json()
 
-  const resProjectsEn = await fetch("https://strapi.crazyimagine.com/projects?_locale=en&_limit=6&_sort=created_at:DESC")
+  const resProjectsEn = await fetch(`${domain}projects?locale=en&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)
   const projectsEn = await resProjectsEn.json()
 
-  const resArticles = await fetch("https://strapi.crazyimagine.com/articles?_locale=es-VE&_limit=6&_sort=created_at:DESC")
+  const resArticles = await fetch(`${domain}articles?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
-  const resArticlesEn = await fetch("https://strapi.crazyimagine.com/articles?_locale=en&_limit=6&_sort=created_at:DESC")
+  const resArticlesEn = await fetch(`${domain}articles?locale=en&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
   const articlesEn = await resArticlesEn.json()
 
-  const resReviews = await fetch("https://strapi.crazyimagine.com/reviews?_locale=all")
+  const resReviews = await fetch(`${domain}reviews?locale=all&populate=avatar`)
   const reviews = await resReviews.json()
 
-  const resHomepage = await fetch("https://strapi.crazyimagine.com/homepage?_locale=all")
+  const resHomepage = await fetch(`${domain}homepage?locale=all`)//falta restringuir con populate
   const homepage = await resHomepage.json()
 
   return { props: { projects, projectsEn, articles, articlesEn, reviews, homepage } }
@@ -72,6 +74,144 @@ export async function getServerSideProps() {
 
 function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepage }) {
   const { t } = useTranslation()
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+
+  const projectsNew = [];
+  const projectsEnNew = [];
+  const articlesEnNew = [];
+  const articlesNew = [];
+  const reviewsNew = [];
+
+  projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
+    const imagesArticles = [];
+    if(images.data){
+      images.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    const galleryImagesArticles = [];
+    if(galleryImages.data){
+      galleryImages.data.map(({ attributes: { url }}) => {
+        galleryImagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    projectsNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
+      seo
+    });
+  });
+
+  projectsEn.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
+    const imagesArticles = [];
+    if(images.data){
+      images.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    const galleryImagesArticles = [];
+    if(galleryImages.data){
+      galleryImages.data.map(({ attributes: { url }}) => {
+        galleryImagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    projectsEnNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
+      seo
+    });
+  });
+
+  articlesEn.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
+    const imagesArticles = [];
+    if(image.data){
+      image.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    articlesEnNew.push({
+      title,
+      description,
+      content,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      image: imagesArticles,
+      category: category?.data?.attributes,
+      author: author?.data?.attributes,
+      seo
+    });
+  });
+
+  articles.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
+    const imagesArticles = [];
+    if(image.data){
+      image.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    articlesNew.push({
+      title,
+      description,
+      content,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      image: imagesArticles,
+      category: category?.data?.attributes,
+      author: author?.data?.attributes,
+      seo
+    });
+  });
+
+  reviews.data.map(({ attributes: { name, ocupation, review, createdAt, locale, avatar }}) => {
+    const avatarReviews = [];
+    if(avatar.data){
+      avatar.data.map(({ attributes: { url }}) => {
+        avatarReviews.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    reviewsNew.push({
+      name,
+      ocupation,
+      review,
+      createdAt,
+      locale,
+      avatar: avatarReviews,
+    });
+  });
 
   return (
     <Layout >
@@ -85,19 +225,19 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
         />
         <HomeMainSection />
 
-        <ReferenceSection reviews={ reviews }/>
+        <ReferenceSection reviews={ reviewsNew }/>
 
         <ProjectSection
           title={t("home_projectSection_title")}
           btn={true}
           size={true}
-          projects={projects.concat(projectsEn)}
+          projects={projectsNew.concat(projectsEnNew)}
         />
         <MailchimpForm />
 
         <Partners />
 
-        <LastestPosts articlesAll={ articles.concat(articlesEn) }/>
+        <LastestPosts articlesAll={ articlesNew?.concat(articlesEnNew) }/>
 
         <ContactSection bgColor="#FFFFFF" />
       </Box>

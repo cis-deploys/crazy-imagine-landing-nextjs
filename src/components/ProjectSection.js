@@ -203,13 +203,13 @@ const ProjectSection = ({ title, btn, size, projects }) => {
   const { i18n, t } = useTranslation()
   const lang = i18n.language
 
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(article =>
-    article.locale.includes(lang)
+  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
+    project.locale.includes(lang)
   ));
   
   useEffect(() => {
-      setProjectDataAll(projects.filter(article =>
-        article.locale.includes(lang)
+      setProjectDataAll(projects.filter(project =>
+        project.locale.includes(lang)
       ));
   }, [i18n.language]);
 

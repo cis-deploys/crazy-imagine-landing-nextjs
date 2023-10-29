@@ -222,7 +222,7 @@ const ContactForm = () => {
   })
 
   const sendEmail = (e) => {
-    console.log("email", email)
+    // console.log("email", email)
     const userEmail = {
       ...e,
       typeProject,

@@ -75,6 +75,7 @@ const ProjectsKey = ({projects, projectsAll}) => {
     const lang = i18n.language 
     const router = useRouter();
     const { Key } = router.query;
+    console.log(projects);
     const [projectData, setProjectData] = useState(projects
       ?.filter( project => project?.Key === Key && project?.Key !== null)
       ?.filter( projects => projects?.locale?.includes(lang)) || []);
