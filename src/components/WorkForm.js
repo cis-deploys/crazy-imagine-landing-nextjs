@@ -505,7 +505,7 @@ const WorkForm = () => {
         curriculum: data.curriculum[0],
       }
       console.log(sendData);
-      const res = await axios.post(`${domain}/curriculums`, sendData)
+      const res = await axios.post(`${domain}curriculums`, sendData)
     
       if (res.status === 200) {
         setFormStatus("well")
