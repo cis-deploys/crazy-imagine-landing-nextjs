@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
 import { useIntersection } from "../hooks/useIntersection"
+import emailjs from '@emailjs/browser';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -434,7 +435,7 @@ const WorkForm = () => {
     }).test('type', t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
       if (!value) return true;
       const allowedTypes = ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'];
-      return typeof value === 'object' && value.hasOwnProperty('type') && allowedTypes.includes(value[0].type);
+      return typeof value === 'object' && value[0]?.type && ('application/pdf' === value[0].type || 'application/msword' === value[0].type || 'image/jpeg' === value[0].type || 'image/jpg' === value[0].type);
     }),
     reference: yup.string(),
   });
@@ -454,26 +455,28 @@ const WorkForm = () => {
   const watchCurriculum = watch("curriculum");
 
   useEffect(() => {
-    if (watchCurriculum?.length > 0 && ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'].includes(watchCurriculum[0].type) && watchCurriculum[0].size <= 2097152 ) {
+    if (watchCurriculum?.length > 0 && ('application/pdf' === watchCurriculum[0].type || 'application/msword' === watchCurriculum[0].type || 'image/jpeg' === watchCurriculum[0].type || 'image/jpg' === watchCurriculum[0].type) && watchCurriculum[0].size <= 2097152) {
       setFileIsLoaded(true)
     } else {
       setFileIsLoaded(false)
     }
   }, [watchCurriculum])
 
-  const domain = process.env.CRAZY_STRAPI_URL
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL;
+  const domainurl = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
-  const onSubmitHandler = async() => {
-    
+  const onSubmitHandler = async(formData) => {
+    const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
+    const cvurl = curriculum.url;
     if (curriculum?.length === 1) {
       setShowButton(true)
 
       const formData = new FormData()
       formData.append("files", curriculum[0])
       axios
-        .post(`${domain}/upload`, formData)
+        .post(`${domain}upload`, formData)
         .then(async response => {
-          const file = response.id
+          const file = response.data[0].id
           const sendData = {
             firstName: firstName,
             lastName: lastName,
@@ -484,12 +487,31 @@ const WorkForm = () => {
             reference: reference,
             curriculum: file,
           }
-          const res = await axios.post(`${domain}/curriculums`, sendData)
+          const res = await axios.post(`${domain}curriculums`, { data: sendData })
         
           if (res.status === 200) {
             setFormStatus("well")
             setShowButton(false)
             setFileIsLoaded(false)
+
+            const userEmail = {
+              name: firstName,
+              lastname: lastName,
+              email: email,
+              phone: phone,
+              linkedin: linkedin,
+              website: website,
+              reference: reference,
+              file: url,//`${domainurl}${cvurl}`,
+            }
+
+            emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
+            .then((result) => {
+              console.log('successfull send email');
+            }, (error) => {
+              console.log('failed send email');
+            });
+
             Swal.fire(
             t("home_contacSection_contactForm_swalSuccess_title"),
             t("workWithUs_workForm_submit_success"),
@@ -518,17 +540,36 @@ const WorkForm = () => {
           website: website,
           reference: reference,
         }
-        const res = await axios.post(`${domain}/curriculums`, sendData)
+        const res = await axios.post(`${domain}curriculums`, { data: sendData });
 
         if (res.status === 200) {
           setFormStatus("well")
           setFileIsLoaded(false)
           setShowButton(false)
+
+          const userEmail = {
+            name: firstName,
+            lastname: lastName,
+            email: email,
+            phone: phone,
+            linkedin: linkedin,
+            website: website,
+            reference: reference,
+            file: '',
+          }
+
+          emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
+          .then((result) => {
+            console.log('successfull send email');
+          }, (error) => {
+            console.log('failed send email');
+          });
+
           Swal.fire(
           t("home_contacSection_contactForm_swalSuccess_title"),
           t("workWithUs_workForm_submit_success"),
-          "success",
-        )
+          "success"
+          )
           reset()
         } else {
           setFormStatus("bad")

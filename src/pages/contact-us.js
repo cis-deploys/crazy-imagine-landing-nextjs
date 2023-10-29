@@ -18,7 +18,8 @@ const ContactSection = dynamic(
 )
 
 export async function getServerSideProps() {
-  const resContactpage = await fetch("https://strapi.crazyimagine.com/contact-page")
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  const resContactpage = await fetch(`${domain}contact-page?locale=all`)
   const contactpage = await resContactpage.json()
 
   return { props: { contactpage } }
@@ -26,9 +27,9 @@ export async function getServerSideProps() {
 
 const Contact = ({ contactpage }) => {
   const { t } = useTranslation()
-  const metaTitle = contactpage.SEO.metaTitle
-  const metaDescription = contactpage.SEO.metaDescription
-  const keywords = contactpage.SEO.keywords
+  // const metaTitle = contactpage.SEO.metaTitle
+  // const metaDescription = contactpage.SEO.metaDescription
+  // const keywords = contactpage.SEO.keywords
 
   return (
     <Layout>

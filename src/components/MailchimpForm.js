@@ -8,6 +8,7 @@ import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next"
 import { useIntersection } from "../hooks/useIntersection"
 import Swal from "sweetalert2"
+import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -227,27 +228,38 @@ const MailchimpForm = () => {
         resolver: yupResolver(schema),
         mode: "onChange",
       })
+      
   
   const submit = async (e) => {
-    const result = await addToMailchimp(e.email, {
-      FNAME: e.name,
-      LNAME: e.lastName,
+    const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+    await axios.post(`${domain}mailchimps`, {
+      "data":{
+        email: e.email,
+        name:  e.name,
+        lastname: e.lastName,
+      }
     })
-    reset()
-
-    if(result.result === "success"){
+    .then(({ data }) => {
+      // Handle success.
+      // console.log("handle success", data);
       Swal.fire(
         t("home_mailchimp_swalSuccess_title"),
         t("home_mailchimp_swalSuccess_text"),
         "success"
-      )
-    }else{
+      
+        )
+    })
+    .catch(error => {
+      // Handle error.
+      // console.log('An error occurred:', error.response.data.error.message);
       Swal.fire({
         icon: "error",
         title: t("home_contacSection_contactForm_swalError_title"),
         text: t("home_contacSection_contactForm_swalError_text"),
       })
-    }
+
+    });
+    reset()
   }
 
   return (

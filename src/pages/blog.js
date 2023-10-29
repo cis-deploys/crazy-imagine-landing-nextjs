@@ -28,7 +28,8 @@ const ContactSection = dynamic(
 
 
 export async function getServerSideProps() {
-  const resArticles = await fetch("https://strapi.crazyimagine.com/articles?_locale=all")
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  const resArticles = await fetch(`${domain}articles?locale=all&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
   return { props: { articles } }
@@ -36,6 +37,32 @@ export async function getServerSideProps() {
 
 const Blog = ({ articles }) => {
   const { t } = useTranslation()
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+  
+  const articlesNew = [];
+  articles.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
+    const imagesArticles = [];
+    if(image.data){
+      image.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    articlesNew.push({
+      title,
+      description,
+      content,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      image: (imagesArticles.length > 0) ? imagesArticles : undefined,
+      category: category?.data?.attributes,
+      author: author?.data?.attributes,
+      seo
+    });
+  });
 
   return (
     <Layout >
@@ -47,9 +74,9 @@ const Blog = ({ articles }) => {
         little={true}
       />
 
-      <FeaturedArticle articles={ articles }/>
+      <FeaturedArticle articles={ articlesNew }/>
 
-      <BlogArticle articles={ articles }/>
+      <BlogArticle articles={ articlesNew }/>
 
       <ContactSection />
 
