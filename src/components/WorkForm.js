@@ -452,14 +452,14 @@ const WorkForm = () => {
     phone: yup.string().matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, t("workWithUs_workForm_schemaYup_phone2")).required(t("workWithUs_workForm_schemaYup_phone")),
     linkedin: yup.string(),
     website: yup.string().url(),
-    curriculum: yup.mixed().test('fileSize', 'El archivo debe tener un tamaño máximo de 2 MB', (value) => {
-      if (!value) return true;
-      return value && value[0] && value[0].size <= 2097152;
-    }).test('type', t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
-      if (!value) return true;
-      const allowedTypes = ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'];
-      return typeof value === 'object' && value.hasOwnProperty('type') && allowedTypes.includes(value[0].type);
-    }),
+    curriculum: yup.mixed()
+        .required(t("workWithUs_workForm_schemaYup_curriculum1"))
+        .test("fileSize", t("workWithUs_workForm_schemaYup_curriculum2"), (value, context) => {
+          return value && value[0] && value[0].size <= 2097152;
+        })
+        .test("type", t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
+          return value && value[0] && ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'].includes(value[0].type);
+        }),
     reference: yup.string(),
   });
               
@@ -487,60 +487,87 @@ const WorkForm = () => {
 
   const domain = process.env.CRAZY_STRAPI_URL
 
-  const onSubmitHandler = async() => {
-    
-    if (curriculum?.length === 1) {
+  const onSubmitHandler = async data => {
+
+    if (data.curriculum?.length === 1) {
       setShowButton(true)
 
       const formData = new FormData()
-      formData.append("files", curriculum[0])
-      axios
-        .post(`${domain}/upload`, formData)
-        .then(async response => {
-          const file = response.id
-          const sendData = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phone: phone,
-            linkedin: linkedin,
-            website: website,
-            reference: reference,
-            curriculum: file,
-          }
-          const res = await axios.post(`${domain}/curriculums`, sendData)
+
+      const sendData = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        linkedin: data.linkedin,
+        website: data.website,
+        reference: data.reference,
+        curriculum: data.curriculum[0],
+      }
+      console.log(sendData);
+      const res = await axios.post(`${domain}/curriculums`, sendData)
+    
+      if (res.status === 200) {
+        setFormStatus("well")
+        setShowButton(false)
+        setFileIsLoaded(false)
+        Swal.fire(
+        t("home_contacSection_contactForm_swalSuccess_title"),
+        t("workWithUs_workForm_submit_success"),
+        "success"
+        )
+        reset()
+      }
+
+      // formData.append("files", data.curriculum[0])
+      // axios
+      //   .post(`${domain}/upload`, formData)
+      //   .then(async response => {
+      //     const file = response.data[0].id
+      //     const sendData = {
+      //       firstName: data.firstName,
+      //       lastName: data.lastName,
+      //       email: data.email,
+      //       phone: data.phone,
+      //       linkedin: data.linkedin,
+      //       website: data.website,
+      //       reference: data.reference,
+      //       curriculum: file,
+      //     }
+      //     console.log(sendData);
+      //     const res = await axios.post(`${domain}/curriculums`, sendData)
         
-          if (res.status === 200) {
-            setFormStatus("well")
-            setShowButton(false)
-            setFileIsLoaded(false)
-            Swal.fire(
-            t("home_contacSection_contactForm_swalSuccess_title"),
-            t("workWithUs_workForm_submit_success"),
-            "success"
-            )
-            reset()
-          }
-        })
-        .catch(error => {
-          setFormStatus("bad")
-          setShowButton(false)
-          Swal.fire({
-          icon: "error",
-          title: t("home_contacSection_contactForm_swalError_title"),
-          text: t("workWithUs_workForm_submit_error"),
-        })
-        })
+      //     if (res.status === 200) {
+      //       setFormStatus("well")
+      //       setShowButton(false)
+      //       setFileIsLoaded(false)
+      //       Swal.fire(
+      //       t("home_contacSection_contactForm_swalSuccess_title"),
+      //       t("workWithUs_workForm_submit_success"),
+      //       "success"
+      //       )
+      //       reset()
+      //     }
+      //   })
+      //   .catch(error => {
+      //     setFormStatus("bad")
+      //     setShowButton(false)
+      //     Swal.fire({
+      //     icon: "error",
+      //     title: t("home_contacSection_contactForm_swalError_title"),
+      //     text: t("workWithUs_workForm_submit_error"),
+      //   })
+      //   })
     } else {
-      if (website !== "") {
+      if (data.website !== "") {
         const sendData = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          phone: phone,
-          linkedin: linkedin,
-          website: website,
-          reference: reference,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          linkedin: data.linkedin,
+          website: data.website,
+          reference: data.reference,
         }
         const res = await axios.post(`${domain}/curriculums`, sendData)
 
