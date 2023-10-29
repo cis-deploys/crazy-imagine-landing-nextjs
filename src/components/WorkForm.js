@@ -485,7 +485,7 @@ const WorkForm = () => {
     }
   }, [watchCurriculum])
 
-  const domain = process.env.CRAZY_STRAPI_URL
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
   const onSubmitHandler = async data => {
 
@@ -505,7 +505,7 @@ const WorkForm = () => {
         curriculum: data.curriculum[0],
       }
       console.log(sendData);
-      const res = await axios.post(`${domain}/curriculums`, sendData)
+      const res = await axios.post(`${domain}/api/curriculums`, sendData)
     
       if (res.status === 200) {
         setFormStatus("well")
