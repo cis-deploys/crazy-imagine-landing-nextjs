@@ -54,18 +54,30 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
-    [theme.breakpoints.down("md")]: {
-      padding: "0px 0px 0px 19px",
+      [theme.breakpoints.down("xs")]: {
+    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
     },
   }),
   navbarMobileIcons: props => ({
     fontSize: 50,
     color: props.scroll ? props.iconsVariant : "white",
+    [theme.breakpoints.down("md")]: {
+      fontSize: 30,
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: 30,
     },
   }),
-  navbarLogo: {},
+  navbarLogo: {
+    marginLeft: "25px",
+    marginTop: "15px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "10px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "10px",
+    },
+  },
   navbarMobileLogo: {
     width: 140,
     height: 73,
@@ -73,18 +85,25 @@ const useStyles = makeStyles(theme => ({
   resetLink: {
     lineHeight: 2.5,
     color: "white",
+    textDecoration: "none !important",
     "&:hover": {
       color: "#67DAFF",
-      textDecoration: "none",
+      textDecoration: "none !important",
     },
   },
   textLink: {
     fontFamily: "HindVadodara",
     fontStyle: "normal",
+    color: "white",
     fontWeight: "400",
     fontSize: "16px",
     lineHeight: "130%",
     letterSpacing: "0.02em",
+    textDecoration: "none !important",
+    "&:hover": {
+      color: "#67DAFF",
+      textDecoration: "none !important",
+    },
   },
   drawer: {
     width: "100%",
@@ -97,9 +116,18 @@ const useStyles = makeStyles(theme => ({
   btn: {
     "& .MuiButtonBase-root": {
       padding: "8px",
+      marginRight: "2px"
+    },
+    [theme.breakpoints.down("md")]: {
+      marginRight: "0px",
+      marginLeft: "1px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "0px",
+      marginLeft: "1px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginRight: "-20px",
+      marginRight: "0px",
       marginLeft: "1px",
     },
   },
@@ -116,9 +144,16 @@ const useStyles = makeStyles(theme => ({
     height: "5.5em",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      height: "3em",
+    },
     [theme.breakpoints.down("xs")]: {
       height: "3em",
     },
+  },
+  Crazy: {
+    width: "100%",
+    height: "100%",
   },
 }))
 
@@ -174,11 +209,10 @@ export const NavbarMobile = ({
         <Toolbar>
           <Box className={classes.navbarMobileResponsive}>
             <Link href={`${HOME}`} >
-              <a>
+              <a className={classes.navbarLogo}>
               <Image
                 src={CrazyImageLogo}
                 alt="logo"
-                className={classes.navbarLogo}
                 width={230}
                 height={48}
               />
@@ -191,7 +225,7 @@ export const NavbarMobile = ({
               onClick={handleDrawerOpen}
               className={classes.btn}
               edge="start"
-              sx={{ p: 8, mr: 2, ...(open && { display: "none" }) }}
+              sx={{ ...(open && { display: "none" }) }}
             >
               <Menu className={classes.navbarMobileIcons} />
             </IconButton>
@@ -203,19 +237,18 @@ export const NavbarMobile = ({
           anchor="left"
           open={open}
         >
-          <DrawerHeader style={{ justifyContent: "space-between" }}>
+          <DrawerHeader style={{ justifyContent: "space-between", marginLeft: "15px"}}>
             <Link href={`${HOME}`} >
               <a onClick={handleDrawerClose}>
               <Image
                 src={CrazyImageLogo}
                 alt="ss"
-                style={{ width: "100%", height: "100%" }}
+                className={classes.Crazy}
               />
               </a>
             </Link>
-            <LanguageModal />
             <IconButton onClick={handleDrawerClose}>
-              <FontAwesomeIcon icon={faXmark} inverse />
+              <FontAwesomeIcon icon={faXmark} inverse size="lg"/>
             </IconButton>
           </DrawerHeader>
 
@@ -224,12 +257,9 @@ export const NavbarMobile = ({
             {[
               <Link
                 key="navbar-link-home"
-                className={classes.resetLink}
-                style={{ textDecoration: "none" }}
-                href={`${HOME}`}
-                
-              >
-                <a>
+                href={`${HOME}`}>
+
+                <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>
                   {t("common_button_home")}
                 </Typography>
@@ -237,12 +267,9 @@ export const NavbarMobile = ({
               </Link>,
               <Link
                 key="navbar-link-about"
-                className={classes.resetLink}
-                style={{ textDecoration: "none" }}
-                href={`${ABOUT}`}
-                
-              >
-                <a>
+                href={`${ABOUT}`}>
+
+                <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>
                   {t("common_button_about")}
                 </Typography>
@@ -250,38 +277,31 @@ export const NavbarMobile = ({
               </Link>,
               <Link
                 key="navbar-link-projects"
-                className={classes.resetLink}
-                style={{ textDecoration: "none" }}
-                href={`${PROJECTS}`}
-                
-              >
-                <a>
+                href={`${PROJECTS}`}>
+
+                <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>
                   {t("common_button_services")}
                 </Typography>
                 </a>
               </Link>,
+
               <Link
                 key="navbar-link-blog"
-                className={classes.resetLink}
-                style={{ textDecoration: "none" }}
-                href={`${BLOG}`}
-                
-              >
-                <a>
+                href={`${BLOG}`}>
+
+                <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>
                   {t("common_button_blog")}
                 </Typography>
                 </a>
               </Link>,
+
               <Link
                 key="navbar-link-work-with-us"
-                className={classes.resetLink}
-                style={{ textDecoration: "none" }}
-                href={`${WORK_WITH_US}`}
-                
-              >
-                <a>
+                href={`${WORK_WITH_US}`} >
+
+                <a className={classes.resetLink}>
                 <Typography
                   style={{ textDecoration: "none" }}
                   className={classes.textLink}
@@ -292,12 +312,9 @@ export const NavbarMobile = ({
               </Link>,
               <Link
                 key="navbar-link-contact"
-                className={classes.resetLink}
-                style={{ textDecoration: "none" }}
-                href={`${CONTACT}`}
-                
-              >
-                <a>
+                href={`${CONTACT}`}>
+
+                <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>
                   {t("common_button_contact_us")}
                 </Typography>

@@ -77,8 +77,8 @@ function Projects({ projects }) {
         <SectionHeader
           title={t("services_sectionHeader_title")}
           img={headerImage}
-          btn={false}
-          little={true}
+          btn={true}
+          cls="textContainer"
         />
         <ServicesSection />
         <ProjectSection

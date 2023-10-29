@@ -3,7 +3,12 @@ import dynamic from "next/dynamic";
 
 // COMPONENTS
 import Layout from "../../components/Layout";
+import { Box } from '@mui/material';
 
+const BlogKey = dynamic(
+  () => import("../../components/BlogKey"),
+  { ssr: false },
+)
 const LastestPosts = dynamic(
   () => import("../../components/LastestPosts"),
   { ssr: false },
@@ -14,10 +19,6 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-const BlogKey = dynamic(
-  () => import("../../components/BlogKey"),
-  { ssr: false },
-)
 
 export async function getServerSideProps(context) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
@@ -122,7 +123,6 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
       <LastestPosts articles={ articlesNew } articlesAll={ articlesAllNew ? articlesAllNew?.concat(articlesAllEsNew) : [] }/>
 
       <ContactSection />
-      
     </Layout>
   )
 }

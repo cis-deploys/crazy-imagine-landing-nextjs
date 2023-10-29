@@ -51,11 +51,18 @@ const useStyes = makeStyles(theme => ({
     height: "670px",
     [theme.breakpoints.down("md")]: {
       gap: "16px",
-      padding: "0px 43px 30px"
+      padding: "0px 43px 20px",
+      height: "550px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "16px",
+      padding: "0px 0px 0px",
+      height: "520px",
     },
     [theme.breakpoints.down("xs")]: {
       gap: "16px",
-      padding: "0px 15px 30px"
+      padding: "0px 0px 0px",
+      height: "520px",
     },
   },
   link: {

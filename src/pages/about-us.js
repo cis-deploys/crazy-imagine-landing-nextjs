@@ -47,9 +47,9 @@ const About = ({ aboutpage }) => {
     <Layout >
       <SectionHeader
         title={t("about_sectionHeader_title")}
-        btn={false}
+        btn={true}
         img={headerImage}
-        little={true}
+        cls="textContainer"
       />
       <AboutSection />
       <Imagen />

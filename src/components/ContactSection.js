@@ -20,6 +20,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     color: "#193174",
+    display: "flex",
+    [theme.breakpoints.down("md")]:{
+      fontSize: "40px",
+      lineHeight: "50px",
+      alignItems: "center",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "25px",
       lineHeight: "30px",
@@ -48,6 +54,11 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
+      alignItems: "center",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -63,7 +74,8 @@ const useStyles = makeStyles(theme => ({
       marginTop:"40px",
       width: "100%",
       justifyContent: "center",
-      
+      alignItems: "center",
+      order: "2",
     },
     [theme.breakpoints.down("sm")]: {
       alignItems: "center",
@@ -72,8 +84,20 @@ const useStyles = makeStyles(theme => ({
   },
   img2: {
     marginTop: "83px",
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      marginTop:"auto",
+      width: "100%",
+      justifyContent: "center",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop:"auto",
+      alignItems: "center",
+      order: "2",
+    },
   },
   container: {
+     display: "flex",
      padding: "0px 60px",
      height: "550px",
      alignItems: "end",
@@ -81,13 +105,16 @@ const useStyles = makeStyles(theme => ({
        padding: "0px 60px",
      },
      [theme.breakpoints.down("md")]: {
-      padding: "0px 43px",
+      width: "100%",
+      padding: "30px 43px 0px",
+      flexDirection: "column",
+      height: "auto",
      },
      [theme.breakpoints.down("sm")]: {
        height: "auto",
        flexDirection: "column",
        width: "100%",
-       padding: "0px 15px",
+       padding: "10px 15px 0px",
      },
   },
 }))

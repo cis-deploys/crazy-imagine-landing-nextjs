@@ -26,6 +26,9 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "13px",
     },
+    [theme.breakpoints.down("sx")]: {
+      gap: "13px",
+    },
   },
   title: {
     fontFamily: "Nexa Bold",
@@ -62,10 +65,14 @@ const useStyes = makeStyles(theme => ({
     padding: "26px 25px 32px 37px",
     height: "100%",
     [theme.breakpoints.down("md")]: {
+      height: "30%",
+      width: "60%",
       gap: "13px",
       padding: "18px 18px 16px 26px",
     },
     [theme.breakpoints.down("sm")]: {
+      height: "30%",
+      width: "60%",
       gap: "8px",
       padding: "11px 11px 10px 16px",
     },

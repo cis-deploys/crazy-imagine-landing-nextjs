@@ -36,9 +36,9 @@ const Contact = ({ contactpage }) => {
 
       <SectionHeader
         title={t("contactUs_sectionHeader_title")}
-        btn={false}
+        btn={true}
         img={headerImage}
-        little={true}
+        cls="textContainer"
       />
       <ContactSection />
       

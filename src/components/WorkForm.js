@@ -58,7 +58,6 @@ const useStyles = makeStyles(theme => ({
         margin: "3px",
       },
     },
-   
     "& .MuiFormHelperText-root.Mui-error": {
       [theme.breakpoints.down("md")]: {
         fontSize: "10px",
@@ -158,12 +157,19 @@ const useStyles = makeStyles(theme => ({
     width: "80%",
     gap: "93px",
     [theme.breakpoints.down("md")]: {
-      gap: "65px",
+      gap: "25px",
+      flexDirection: "row",
+      alignItems: "flex-start",
+      width: "90%",
     },
     [theme.breakpoints.down("sm")]: {
+      width: "80%",
       gap: "40px",
+      flexDirection: "column",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
+      width: "80%",
       gap: "20px",
       flexDirection: "column",
       alignItems: "center",
@@ -184,15 +190,21 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "14px 14px 0px 0px",
     [theme.breakpoints.down("md")]: {
       marginTop: "66px",
-      padding: "12px",
+      padding: "5px",
+      justifyContent: "center",
+      alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "30px",
-      padding: "8px",
+      marginTop: "15px",
+      padding: "4px",
+      justifyContent: "center",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "15px",
       padding: "4px",
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
   containerInfo: {
@@ -216,7 +228,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
   },
   container1: {
-    overflow: "hidden",
+    //overflow: "hidden",
   },
   attachContainer: {
     width: "87%",
@@ -314,16 +326,21 @@ const useStyles = makeStyles(theme => ({
     },
   },
   shortInput: {
+    display: "fit-content",
     height: 1,
     width: "250px",
+    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       width: "170px",
+      alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
       width: "104px",
+      alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
       width: "86px",
+      alignItems: "center",
     },
   },
   shortContainer: {
@@ -333,6 +350,13 @@ const useStyles = makeStyles(theme => ({
     marginTop: "40px",
     marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
+      marginBottom: "30px",
+      //width: "80%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "30px",
+    },
+    [theme.breakpoints.down("xs")]: {
       marginBottom: "30px",
     },
   },
@@ -530,15 +554,15 @@ const WorkForm = () => {
         })
         })
     } else {
-      if (website !== "") {
+      if (data.website !== "") {
         const sendData = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          phone: phone,
-          linkedin: linkedin,
-          website: website,
-          reference: reference,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          linkedin: data.linkedin,
+          website: data.website,
+          reference: data.reference,
         }
         const res = await axios.post(`${domain}curriculums`, { data: sendData });
 
@@ -592,7 +616,7 @@ const WorkForm = () => {
       <Box className={classes.container1}>
         <Box
           style={{
-            width: "fit-content",
+            width: "auto",
             marginLeft: "auto",
             marginRight: "auto",
           }}

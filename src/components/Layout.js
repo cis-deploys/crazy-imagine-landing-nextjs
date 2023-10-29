@@ -26,11 +26,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <SEO />
-      <Hidden mdDown>
+      <Hidden lgDown>
         <Navbar variant="secondary" />
       </Hidden>
       <Hidden lgUp>
-        <NavbarMobile/>
+        <NavbarMobile />
       </Hidden>
       <Box
         sx={{

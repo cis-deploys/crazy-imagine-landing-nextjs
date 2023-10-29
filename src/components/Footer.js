@@ -58,8 +58,14 @@ const useStyles = makeStyles(theme => ({
     color: "#27AAE1",
     marginTop: 3,
     alingSelf: "center",
+    size:"1x",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
+      size: "1x"
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "14px",
+      size:"1x"
     },
   },
   footerContainer: {
@@ -69,16 +75,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "space-between",
     padding: "0px 60px",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      height: "auto",
-      padding: "0px 43px",
-      flexDirection: "column",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-      height: "auto",
-      flexDirection: "column",
+    [theme.breakpoints.up("xl")]: {
+      maxWidth: "1920px",
+      margin: "0 auto",
+      padding: "0px 60px",
+      flexDirection: "row",
     },
     [theme.breakpoints.up("lg")]: {
       maxWidth: "1440px",
@@ -86,11 +87,21 @@ const useStyles = makeStyles(theme => ({
       padding: "0px 60px",
       flexDirection: "row",
     },
-    [theme.breakpoints.up("xl")]: {
-      maxWidth: "1920px",
-      margin: "0 auto",
-      padding: "0px 60px",
-      flexDirection: "row",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "auto",
+      padding: "0px 43px",
+      justifyContent: "space-between",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      height: "auto",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      height: "auto",
+      flexDirection: "column",
     },
   },
   effect: {
@@ -114,13 +125,19 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     gap: "20px",
     height: "100%",
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      gap: "0px",
+      marginBottom: "-45px",
+      marginTop: "15px",
+      padding: "14px 4px 45px 4px",
+    },
     [theme.breakpoints.down("xs")]: {
       width: "auto",
       gap: "0px",
       marginBottom: "-45px",
       marginTop: "15px",
-      padding: "14px 4px 54px 4px",
+      padding: "14px 4px 45px 4px",
     },
   },
   linkContainer: {
@@ -149,6 +166,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "auto",
       borderLeft: "0px solid #233B7E",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "4px 0px 4px 4px",
+      marginBottom: "15px",
     },
     [theme.breakpoints.down("xs")]: {
       padding: "4px 0px 4px 4px",
@@ -196,6 +217,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "HindVadodara",
     fontWeight: "400",
     fontSize: "14px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "10px",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "10px",
     },
