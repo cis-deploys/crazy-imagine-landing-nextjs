@@ -512,6 +512,7 @@ const WorkForm = () => {
             curriculum: file,
           }
           const res = await axios.post(`${domain}curriculums`, { data: sendData })
+          console.log("data", res)
         
           if (res.status === 200) {
             setFormStatus("well")
@@ -526,7 +527,7 @@ const WorkForm = () => {
               linkedin: linkedin,
               website: website,
               reference: reference,
-              file: url,//`${domainurl}${cvurl}`,
+              file: cvurl,//`${domainurl}${cvurl}`,
             }
 
             emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')

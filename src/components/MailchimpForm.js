@@ -266,8 +266,7 @@ const MailchimpForm = () => {
       }
     })
     .then(({ data }) => {
-      // Handle success.
-      // console.log("handle success", data);
+
       Swal.fire(
         t("home_mailchimp_swalSuccess_title"),
         t("home_mailchimp_swalSuccess_text"),
@@ -276,8 +275,6 @@ const MailchimpForm = () => {
         )
     })
     .catch(error => {
-      // Handle error.
-      // console.log('An error occurred:', error.response.data.error.message);
       Swal.fire({
         icon: "error",
         title: t("home_contacSection_contactForm_swalError_title"),

@@ -53,9 +53,9 @@ const useStyles = makeStyles(theme => ({
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
-    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
+    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
       [theme.breakpoints.down("xs")]: {
-    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
+    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
     },
   }),
   navbarMobileIcons: props => ({
@@ -180,6 +180,7 @@ const icons = [
 export const NavbarMobile = ({
   variant = "secondary",
   variantIcons = "secondary",
+  color = "transparent",
 }) => {
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
@@ -197,12 +198,13 @@ export const NavbarMobile = ({
     scroll,
     linkVariant,
     iconsVariant,
+    color,
   })
 
   return (
     <>
       <AppBar
-        color="transparent"
+        color={color}
         position="fixed"
         className={classes.container}
       >
