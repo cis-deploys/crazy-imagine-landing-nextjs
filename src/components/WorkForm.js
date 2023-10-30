@@ -491,7 +491,8 @@ const WorkForm = () => {
 
   const onSubmitHandler = async(formData) => {
     const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
-    const cvurl = curriculum.url;
+    // const cvurl = curriculum.url;
+    console.log("curriculums", curriculum)
     if (curriculum?.length === 1) {
       setShowButton(true)
 
@@ -500,7 +501,9 @@ const WorkForm = () => {
       axios
         .post(`${domain}upload`, formData)
         .then(async response => {
-          const file = response.data[0].id
+          const file = response.data[0].id;
+          const cvurl = response.data[0].url;
+          
           const sendData = {
             firstName: firstName,
             lastName: lastName,
@@ -512,7 +515,6 @@ const WorkForm = () => {
             curriculum: file,
           }
           const res = await axios.post(`${domain}curriculums`, { data: sendData })
-          console.log("data", res)
         
           if (res.status === 200) {
             setFormStatus("well")
@@ -532,9 +534,9 @@ const WorkForm = () => {
 
             emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
             .then((result) => {
-              console.log('successfull send email');
+              //console.log('successfull send email');
             }, (error) => {
-              console.log('failed send email');
+              //console.log('failed send email');
             });
 
             Swal.fire(
