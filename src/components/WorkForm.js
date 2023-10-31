@@ -512,7 +512,7 @@ const WorkForm = () => {
             reference: data.reference,
             curriculum: file,
           }
-          const res = await axios.post(`${domain}curriculums`, sendData)
+          const res = await axios.post(`${domain}curriculums`, {data: sendData})
 
       if (res.status === 200) {
         setFormStatus("well")
@@ -547,7 +547,7 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
-        const res = await axios.post(`${domain}curriculums`, sendData)
+        const res = await axios.post(`${domain}curriculums`, {data: sendData})
 
         if (res.status === 200) {
           setFormStatus("well")
