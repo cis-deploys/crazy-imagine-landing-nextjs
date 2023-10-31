@@ -235,46 +235,54 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MailchimpForm = () => {
-    const ref = useRef()
-    const isVisible = useIntersection(ref, "0px")
-    const { t } = useTranslation();
-    const classes = useStyles({})
-    const schema = yup.object().shape({
-        name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
-        email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
-        lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
-      })
-      const {
-        formState: { errors },
-        handleSubmit,
-        register, 
-        reset,
-      } = useForm({
-        resolver: yupResolver(schema),
-        mode: "onChange",
-      })
-  
-  const submit = async (e) => {
-    const result = await addToMailchimp(e.email, {
-      FNAME: e.name,
-      LNAME: e.lastName,
+  const ref = useRef()
+  const isVisible = useIntersection(ref, "0px")
+  const { t } = useTranslation();
+  const classes = useStyles({})
+  const schema = yup.object().shape({
+      name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
+      email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
+      lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
     })
-    reset()
+    const {
+      formState: { errors },
+      handleSubmit,
+      register, 
+      reset,
+    } = useForm({
+      resolver: yupResolver(schema),
+      mode: "onChange",
+    })
+    
 
-    if(result.result === "success"){
-      Swal.fire(
-        t("home_mailchimp_swalSuccess_title"),
-        t("home_mailchimp_swalSuccess_text"),
-        "success"
-      )
-    }else{
-      Swal.fire({
-        icon: "error",
-        title: t("home_contacSection_contactForm_swalError_title"),
-        text: t("home_contacSection_contactForm_swalError_text"),
-      })
+const submit = async (e) => {
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  await axios.post(`${domain}mailchimps`, {
+    "data":{
+      email: e.email,
+      name:  e.name,
+      lastname: e.lastName,
     }
-  }
+  })
+  .then(({ data }) => {
+
+    Swal.fire(
+      t("home_mailchimp_swalSuccess_title"),
+      t("home_mailchimp_swalSuccess_text"),
+      "success"
+    
+      )
+  })
+  .catch(error => {
+    Swal.fire({
+      icon: "error",
+      title: t("home_contacSection_contactForm_swalError_title"),
+      text: t("home_contacSection_contactForm_swalError_text"),
+    })
+
+  });
+  reset()
+}
 
   return (
     <Box ref={ref} className={classes.containerForm}>
