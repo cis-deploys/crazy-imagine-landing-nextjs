@@ -485,7 +485,7 @@ const WorkForm = () => {
     }
   }, [watchCurriculum])
 
-  //const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
   const onSubmitHandler = async data => {
 
@@ -498,7 +498,7 @@ const WorkForm = () => {
       formData.append("files", fileTest)
       console.log('formData: ', formData);
       axios
-        .post(`https://strapi.crazyimagine.com/upload`, formData)
+        .post(`${domain}/upload`, formData)
         .then(async response => {
           const file = response.data[0].id
           console.log("file", response.data[0].id)
@@ -512,7 +512,7 @@ const WorkForm = () => {
             reference: data.reference,
             curriculum: file,
           }
-          const res = await axios.post(`https://strapi.crazyimagine.com/curriculums`, sendData)
+          const res = await axios.post(`${domain}/curriculums`, sendData)
 
       if (res.status === 200) {
         setFormStatus("well")
@@ -547,7 +547,7 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
-        const res = await axios.post(`https://strapi.crazyimagine.com/curriculums`, sendData)
+        const res = await axios.post(`${domain}/curriculums`, sendData)
 
         if (res.status === 200) {
           setFormStatus("well")
