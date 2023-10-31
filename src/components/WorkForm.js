@@ -534,9 +534,9 @@ const WorkForm = () => {
 
             emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
             .then((result) => {
-              //console.log('successfull send email');
+
             }, (error) => {
-              //console.log('failed send email');
+
             });
 
             Swal.fire(
@@ -587,9 +587,9 @@ const WorkForm = () => {
 
           emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
           .then((result) => {
-            //console.log('successfull send email');
+
           }, (error) => {
-           // console.log('failed send email');
+
           });
 
           Swal.fire(
