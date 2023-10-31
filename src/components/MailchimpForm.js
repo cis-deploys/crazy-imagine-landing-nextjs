@@ -8,6 +8,7 @@ import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next"
 import { useIntersection } from "../hooks/useIntersection"
 import Swal from "sweetalert2"
+import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
   root: {
