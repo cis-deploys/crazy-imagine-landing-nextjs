@@ -492,21 +492,28 @@ const WorkForm = () => {
     if (data.curriculum?.length === 1) {
       setShowButton(true)
 
+      console.log("data", data.curriculum[0])
+      const fileTest =  data.curriculum[0]
       const formData = new FormData()
+      formData.append("files", fileTest)
+      console.log('formData: ', formData);
+      axios
+        .post(`${domain}/upload`, formData)
+        .then(async response => {
+          const file = response.data[0].id
+          console.log("file", response.data[0].id)
+          const sendData = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            linkedin: data.linkedin,
+            website: data.website,
+            reference: data.reference,
+            curriculum: file,
+          }
+          const res = await axios.post(`${domain}/curriculums`, sendData)
 
-      const sendData = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        phone: data.phone,
-        linkedin: data.linkedin,
-        website: data.website,
-        reference: data.reference,
-        curriculum: data.curriculum[0],
-      }
-      console.log(sendData);
-      const res = await axios.post(`${domain}curriculums`, sendData)
-    
       if (res.status === 200) {
         setFormStatus("well")
         setShowButton(false)
@@ -518,7 +525,17 @@ const WorkForm = () => {
         )
         reset()
       }
-
+    })
+    .catch(error => {
+      console.log(error.message, "error")
+      setFormStatus("bad")
+      setShowButton(false)
+      Swal.fire({
+      icon: "error",
+      title: t("home_contacSection_contactForm_swalError_title"),
+      text: t("workWithUs_workForm_submit_error"),
+    })
+    })
     } else {
       if (data.website !== "") {
         const sendData = {
