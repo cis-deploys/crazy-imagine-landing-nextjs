@@ -492,7 +492,7 @@ const WorkForm = () => {
   const onSubmitHandler = async(formData) => {
     const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
     // const cvurl = curriculum.url;
-    console.log("curriculums", curriculum)
+
     if (curriculum?.length === 1) {
       setShowButton(true)
 
@@ -587,9 +587,9 @@ const WorkForm = () => {
 
           emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
           .then((result) => {
-            console.log('successfull send email');
+            //console.log('successfull send email');
           }, (error) => {
-            console.log('failed send email');
+           // console.log('failed send email');
           });
 
           Swal.fire(
