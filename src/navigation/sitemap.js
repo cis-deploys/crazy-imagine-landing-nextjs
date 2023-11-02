@@ -1,6 +1,7 @@
 exports.BLOG = "/blog"
 exports.HOME = "/"
 exports.TEAMS = "/team"
+exports.SERVICES = "/services"
 exports.PROJECTS = "/projects"
 exports.WORK_WITH_US = "/work-with-us"
 exports.CONTACT = "/contact-us"

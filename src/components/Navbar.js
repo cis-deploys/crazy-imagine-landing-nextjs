@@ -7,6 +7,7 @@ import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
 import {
   CONTACT,
   HOME,
+  SERVICES,
   PROJECTS,
   WORK_WITH_US,
   ABOUT,
@@ -207,6 +208,13 @@ export const Navbar = ({
             </Typography>
             <Typography>
             <Link href={`${PROJECTS}`} >
+                <a className={`${classes.linkTypography} ${classes.effect}`}>
+                {t("common_button_projects")}
+                </a>
+              </Link>
+            </Typography>
+            <Typography>
+            <Link href={`${SERVICES}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_services")}
                 </a>
