@@ -19,6 +19,11 @@ const useStyes = makeStyles(theme => ({
     textAlign: "center",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "28px",
+      lineHeight: "28px",
+      marginBottom: "35px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineHeight: "28px",
@@ -43,10 +48,14 @@ const useStyes = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     overflow: "hidden",
-    padding: "58px 60px 0px",
+    padding: "58px 60px",
+    [theme.breakpoints.down("lg")]: {
+      padding: "55px 30px",
+      height: "480px",
+    },
     [theme.breakpoints.down("md")]: {
-      padding: "55px 43px 20px 43px",
-      height: "435px",
+      padding: "55px 43px",
+      height: "450px",
     },
     [theme.breakpoints.down("sm")]: {
       padding: "34px 15px 0px 15px",

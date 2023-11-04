@@ -16,21 +16,25 @@ import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "830px",
-    padding: "0px 60px",
+    height: "auto",
+    padding: "0px 30px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    [theme.breakpoints.up("xl")]: {
+      height: "800px",
+      padding: "0px 43px",
+    },
     [theme.breakpoints.down("md")]: {
-      height: "550px",
+      height: "500px",
       padding: "0px 43px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "400px",
+      height: "430px",
       padding: "0px 15px",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "400px",
+      height: "420px",
       padding: "0px 15px",
     },
   },
@@ -44,10 +48,15 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     fontSize: "40px",
     lineHeight: "40px",
-    marginTop: "84px",
     textAlign: "center",
+    marginTop: "84px",
     color: "#193173",
     marginBottom: "47px",
+    [theme.breakpoints.up("lg")]: {
+      fontWeight: "700",
+      fontSize: "40px",
+      lineHeight: "40px",
+    },
     [theme.breakpoints.down("md")]: {
       fontWeight: "28px",
       fontSize: "28px",
@@ -86,7 +95,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     padding: "14px 20px 12px 20px",
     alignSelf: "center",
-    marginBottom: "60px",
+    marginBottom: "30px",
     "&:hover": {
       backgroundColor: "#30AADE",
     },
@@ -101,17 +110,26 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: "0.05em",
       color: "#FFFFFF",
     },
+    [theme.breakpoints.up("xl")]: {
+      padding: "14px 20px 12px 20px",
+      marginTop: "50px",
+      marginBottom: "60px",
+      "& > span": {
+        fontSize: "20px",
+        lineHeight: "18px",
+      },
+    },
     [theme.breakpoints.down("md")]: {
       padding: "10px 14px 8px 14px",
-      marginTop: "15px",
+      marginTop: "14px",
       "& > span": {
-        fontSize: "10px",
+        fontSize: "9px",
         lineHeight: "10px",
       },
     },
     [theme.breakpoints.down("sm")]: {
       padding: "6px 9px 5px 9px",
-      marginTop: "15px",
+      marginTop: "14px",
       "& > span": {
         fontSize: "10px",
         lineHeight: "10px",
@@ -121,16 +139,28 @@ const useStyles = makeStyles(theme => ({
   carouselContainer: {
     boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
-    width: "535px",
+    width: "380px",
     height: "auto",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
+    objectFit: "contain",
+    [theme.breakpoints.up("xl")]: {
+      gap: "18px",
+      width: "max-content"
+    },
+    [theme.breakpoints.down("lg")]: {
+      gap: "10px",
+      height: "230px",
+      width: "max-content"
+    },
     [theme.breakpoints.down("md")]: {
-      width: "400px",
+      gap: "10px",
+      height: "210px",
+      width: "max-content"
     },
     [theme.breakpoints.down("sm")]: {
-      width: "325px",
+      gap: "13px",
     },
   },
   titleCarousel: {
@@ -140,13 +170,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: "24px",
     lineHeight: "24px",
     color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "18px",
+      lineHeight: "18px",
     },
     [theme.breakpoints.down("md")]: {
-      fontWeight: "18px",
-      fontSize: "18px",
+      fontWeight: "15px",
+      fontSize: "15px",
       lineHeight: "18px",
       width: "90%",
       overflow: "hidden",
@@ -178,24 +208,39 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    [theme.breakpoints.between(0, 400)]: {
-      width: "75%",
+    height: "350px",
+    alignItems: "center",
+    transform: "scale(1)",
+    [theme.breakpoints.between(1201, 1280)]: {
+      height: "270px",
+    },
+    [theme.breakpoints.between(901, 1200)]: {
+      height: "230px",
+    },
+    [theme.breakpoints.between(550, 900)]: {
+      height: "225px",
+    },
+    [theme.breakpoints.between(400, 549)]: {
+      height: "210px",
+    },
+    [theme.breakpoints.between(200, 400)]: {
+      height: "250px",
     },
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    gap: "26px",
-    padding: "28px 0 38px 28px",
+    gap: "20px",
+    padding: "20px 0px 38px 28px",
     backgroundColor: "white",
     [theme.breakpoints.down("md")]: {
       gap: "18px",
-      padding: "20px 0 27px 20px",
+      padding: "20px 0px 27px 20px",
     },
   },
 }))
 
-const ProjectSection = ({ title, btn, size, projects }) => {
+const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
@@ -219,18 +264,37 @@ const ProjectSection = ({ title, btn, size, projects }) => {
             {title}
           </Typography>
           <Swiper
-            slidesPerView={"auto"}
-            centeredSlides={true}
             spaceBetween={50}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              600: {
+                slidesPerView: 2,
+              },
+              960: {
+                slidesPerView: 3,
+              },
+              1280: {
+                slidesPerView: 4,
+              },
+              1920: {
+                slidesPerView: 5,
+              }
+            }}
             pagination={{
               clickable: true,
             }}
-            //autoplay={{ delay: 1000 }}
             grabCursor={true}
             loop={true}
             modules={[Pagination]}
+            style={{
+              width: "100%",
+              boxSizing: "content-box",
+              height: "auto"
+            }}
             keyboard={{ enabled: true }}
-            className={`${classes.container} purpleBullet`}
+            className={bulletClass}
           >
 
             { projectDataAll

@@ -21,6 +21,11 @@ const useStyes = makeStyles(theme => ({
     textAlign: "center",
     color: "#FFFFFF",
     marginTop: "78px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "40px",
+      lineWeight: "40px",
+      marginTop: "55px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineWeight: "28px",
@@ -40,23 +45,21 @@ const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "0px 60px 10px",
-    gap: "23px",
+    padding: "0px 0px 10px",
+    gap: "15px",
     justifyContent: "center",
     backgroundColor: "#193174",
     backgroundImage: `url('/background.svg')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    height: "670px",
+    height: "800px",
     [theme.breakpoints.down("md")]: {
       gap: "16px",
-      padding: "0px 43px 20px",
-      height: "550px",
+      height: "450px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "16px",
-      padding: "0px 0px 0px",
       height: "520px",
     },
     [theme.breakpoints.down("xs")]: {
@@ -79,6 +82,10 @@ const useStyes = makeStyles(theme => ({
     letterspacing: "0.1em",
     color: "#888DFF",
     marginBottom: "auto",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "20px",
+      lineHeight: "18px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",

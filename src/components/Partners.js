@@ -53,6 +53,10 @@ const useStyles = makeStyles(theme => ({
       color: "#193173",
       lineHeight: "40px",
       margin: "50px 0",
+      [theme.breakpoints.up("xl")]: {
+        margin: "30px 0",
+        fontSize: "50px",
+      },
       [theme.breakpoints.down("sm")]: {
         margin: "30px 0",
         fontSize: "40px",
@@ -75,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     logo: {
       width: "100%",
       height: "auto",
-      objectFit: 'contain'
+      objectFit: 'contain',
     }
 }))
 

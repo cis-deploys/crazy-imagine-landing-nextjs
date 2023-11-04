@@ -19,11 +19,19 @@ const useStyes = makeStyles(theme => ({
     overflow: "hidden",
     width: "380px",
     height: "fit-content",
+    [theme.breakpoints.up("xl")]: {
+      gap: "18px",
+      height: "fit-content",
+      width: "max-content"
+    },
     [theme.breakpoints.down("md")]: {
       gap: "18px",
-      height: "inherit",
+      height: "fit-content",
     },
     [theme.breakpoints.down("sm")]: {
+      gap: "13px",
+    },
+    [theme.breakpoints.down("xs")]: {
       gap: "13px",
     },
   },
@@ -101,14 +109,25 @@ const useStyes = makeStyles(theme => ({
     width: "100%",
     boxSizing: "content-box",
     alignItems: "center",
-    [theme.breakpoints.between(0, 600)]: {
-      width: "65%",
-    },
   },
   carousel: {
-    height: "400px",
-    [theme.breakpoints.down("md")]: {
-      height: "300px",
+    height: "600px",
+    alignItems: "center",
+    transform: "scale(1)",
+    [theme.breakpoints.between(1201, 1280)]: {
+      height: "270px",
+    },
+    [theme.breakpoints.between(901, 1200)]: {
+      height: "230px",
+    },
+    [theme.breakpoints.between(550, 900)]: {
+      height: "225px",
+    },
+    [theme.breakpoints.between(400, 549)]: {
+      height: "210px",
+    },
+    [theme.breakpoints.between(200, 400)]: {
+      height: "250px",
     },
   },
 }))
@@ -132,7 +151,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   return (
 
     <Swiper
-      spaceBetween={30}
+      spaceBetween={50}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -140,14 +159,14 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
         600: {
           slidesPerView: 2,
         },
-        900: {
-          slidesPerView: 4,
+        960: {
+          slidesPerView: 3,
         },
-        1440: {
+        1280: {
           slidesPerView: 4,
         },
         1920: {
-          slidesPerView: 5
+          slidesPerView: 5,
         }
       }}
       pagination={{
@@ -156,8 +175,13 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
+      style={{
+        width: "100%",
+        boxSizing: "content-box",
+        height: "inherit"
+      }}
       modules={[ Pagination, Keyboard ]}
-      className={`${classes.slider} ${bulletClass}`}
+      className={bulletClass}
     >
       {
         articlesSort.map(( el, index) => (

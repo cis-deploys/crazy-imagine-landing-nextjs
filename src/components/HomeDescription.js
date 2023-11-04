@@ -52,6 +52,10 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     textAlign: "center",
     whiteSpace: "pre-line",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "25px",
+      lineHeight: "25px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "17px",
@@ -66,6 +70,10 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "40px",
     color: "#193174",
     textAlign: "center",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "30px",
+      lineHeight: "30px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "21px",
       lineHeight: "27px",

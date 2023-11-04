@@ -20,8 +20,20 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.01em",
     color: "#193174",
     height: "100%",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "20px",
+      height: "100%",
+    },
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "15px",
+      height: "100%",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "12px",
+      height: "100%",
+    },
     [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
+      fontSize: "12px",
       height: "100%",
     },
     [theme.breakpoints.down("xs")]: {
@@ -96,12 +108,12 @@ const useStyles = makeStyles(theme => ({
     height: "400px",
     boxSizing: "border-box",
     [theme.breakpoints.down("lg")]: {
-      padding: "22px 35px 18px 35px",
-      gap: "14px",
-      height: "400px",
+      padding: "22px 35px 11px 35px",
+      gap: "11px",
+      height: "inherit",
     },
     [theme.breakpoints.down("md")]: {
-      padding: "22px 35px 18px 35px",
+      padding: "22px 35px 11px 35px",
       gap: "14px",
       height: "inherit",
     },
@@ -120,7 +132,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     transform: "scale(1)",
     [theme.breakpoints.between(1201, 1280)]: {
-      height: "250px",
+      height: "270px",
     },
     [theme.breakpoints.between(901, 1200)]: {
       height: "230px",
@@ -180,6 +192,7 @@ const useStyles = makeStyles(theme => ({
             style={{
               width: "100%",
               boxSizing: "content-box",
+              height: "inherit"
             }}
             keyboard={{ enabled: true }}
             modules={[Pagination, Keyboard]}

@@ -70,6 +70,15 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: "0.05em",
       color: "#FFFFFF",
     },
+    [theme.breakpoints.up("xl")]: {
+      marginBottom: "61px",
+      marginTop: "34px",
+      "& > span": {
+        fontSize: "20px",
+        lineHeight: "18px",
+        padding: "14px 20px 12px 20px",
+      },
+    },
     [theme.breakpoints.down("md")]: {
       marginBottom: "61px",
       marginTop: "34px",

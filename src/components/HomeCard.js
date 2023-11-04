@@ -15,6 +15,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     whiteSpace: "pre-line",
     color: "#193174",
+    [theme.breakpoints.up("xl")]: {
+      width: "200px",
+      fontSize: "30px",
+      lineHeight: "30px",
+    },
     [theme.breakpoints.down("md")]: {
       width: "105px",
       fontSize: "12px",

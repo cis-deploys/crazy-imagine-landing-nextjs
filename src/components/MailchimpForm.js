@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       color: "#193173",
       fontStyle: "normal",
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "18px",
+      },
       [theme.breakpoints.down("sm")]: {
         fontSize: "10px",
       },
@@ -64,6 +67,14 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     textAlign: "center",
     fontFamily: "Nexa Bold",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "40px",
+      marginBottom: "20px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "30px",
+      marginBottom: "20px",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "30px",
       marginBottom: "20px",
@@ -87,6 +98,16 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "50px",
     textAlign: "center",
     padding: "0 50px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "25px",
+      lineHeight: "20px",
+      marginBottom: "40px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "16px",
+      marginBottom: "40px",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
       lineHeight: "16px",
@@ -106,6 +127,11 @@ const useStyles = makeStyles(theme => ({
     padding: "50px",
     borderRadius: "30px",
     flexDirection: "column",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      margin: "auto",
+      flexDirection: "column"
+    },
     [theme.breakpoints.down("md")]: {
       width: "90%",
       padding: "40px",
@@ -139,9 +165,15 @@ const useStyles = makeStyles(theme => ({
       color: "#FFFFFF",
       fontFamily: "Nexa Bold",
       lineHeight: "14px",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "20px",
+      },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
       },
+    },
+    [theme.breakpoints.up("xl")]: {
+      width: "auto",
     },
     [theme.breakpoints.down("md")]: {
       width: "auto",
@@ -163,6 +195,11 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundPosition: "center",
     overflow: "hidden",
+    [theme.breakpoints.up("xl")]: {
+      width: "auto",
+      height: "auto",
+      flexDirection: "column",
+    },
     [theme.breakpoints.down("md")]: {
       width: "auto",
     },
@@ -180,6 +217,10 @@ const useStyles = makeStyles(theme => ({
   inputShort: {
     width: "250px",
     display: "flex",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      flexDirection: "column"
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
       flexDirection: "column"

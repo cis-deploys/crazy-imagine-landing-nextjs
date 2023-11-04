@@ -40,11 +40,16 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     width: "45%",
     whiteSpace: "pre-line",
+    [theme.breakpoints.up("xl")]: {
+      marginTop: "9px",
+      marginBottom: "9px", 
+      width: "40%",
+      gap: "14px",
+    },
     [theme.breakpoints.down("md")]: {
       marginTop: "9px",
       marginBottom: "9px", 
       width: "40%",
-     
       gap: "14px",
     },
     [theme.breakpoints.down("sm")]: {
@@ -67,6 +72,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     alignSelf: "flex-start",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "60px",
+      lineHeight: "60px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "41px",
       lineHeight: "41px",
@@ -84,6 +93,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#27AAE1",
     alignSelf: "flex-start",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "60px",
+      lineHeight: "60px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "41px",
       lineHeight: "41px",
@@ -102,6 +115,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     textAlign: "justify",
     color: "#193174",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "30px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
     },
