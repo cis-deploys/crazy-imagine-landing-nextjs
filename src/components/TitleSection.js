@@ -40,11 +40,16 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     width: "45%",
     whiteSpace: "pre-line",
+    [theme.breakpoints.up("xl")]: {
+      marginTop: "9px",
+      marginBottom: "9px", 
+      width: "40%",
+      gap: "14px",
+    },
     [theme.breakpoints.down("md")]: {
       marginTop: "9px",
       marginBottom: "9px", 
       width: "40%",
-     
       gap: "14px",
     },
     [theme.breakpoints.down("sm")]: {
@@ -67,6 +72,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     alignSelf: "flex-start",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "60px",
+      lineHeight: "60px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "41px",
       lineHeight: "41px",
@@ -84,6 +93,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#27AAE1",
     alignSelf: "flex-start",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "60px",
+      lineHeight: "60px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "41px",
       lineHeight: "41px",
@@ -102,43 +115,46 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     textAlign: "justify",
     color: "#193174",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "30px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
     },
   },
-  img: {
-    visibility: "hidden",
-  },
-  img2: {
-    animation: `$myEffect 2000ms`,
-    width: "314px",
-    height: "357px",
-    [theme.breakpoints.down("lg")]: {
-      width: "auto",
-      height: "auto",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "70%",
-      height: "70%",
-      alignItems: "center",
-    },
-    [theme.breakpoints.between(200, 600)]: {
-      width: "45%",
-    },
-    [theme.breakpoints.between(0, 200)]: {
-      width: "55%",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateX(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateX(0)",
-    },
-  },
+  // img: {
+  //   visibility: "hidden",
+  // },
+  // img2: {
+  //   animation: `$myEffect 2000ms`,
+  //   width: "314px",
+  //   height: "357px",
+  //   [theme.breakpoints.down("lg")]: {
+  //     width: "auto",
+  //     height: "auto",
+  //   },
+  //   [theme.breakpoints.down("md")]: {
+  //     width: "70%",
+  //     height: "70%",
+  //     alignItems: "center",
+  //   },
+  //   [theme.breakpoints.between(200, 600)]: {
+  //     width: "45%",
+  //   },
+  //   [theme.breakpoints.between(0, 200)]: {
+  //     width: "55%",
+  //   },
+  // },
+  // "@keyframes myEffect": {
+  //   "0%": {
+  //     opacity: 0,
+  //     transform: "translateX(-200%)",
+  //   },
+  //   "100%": {
+  //     opacity: 1,
+  //     transform: "translateX(0)",
+  //   },
+  // },
   imgContainer: {
     display: "flex",
     justifyContent: "center",
@@ -171,7 +187,7 @@ export const TitleSection = ({ desc }) => {
           src={mainImage}
           width={314}
           height={357}
-          className={isVisible ? classes.img2 : classes.img}
+          className={isVisible ? 'image-component' : 'image'}
           alt="Title"
         />
       </Box>

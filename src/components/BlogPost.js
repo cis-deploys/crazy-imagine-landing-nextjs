@@ -19,12 +19,27 @@ const useStyes = makeStyles(theme => ({
     overflow: "hidden",
     width: "380px",
     height: "fit-content",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.up("xl")]: {
       gap: "18px",
-      height: "inherit",
+      height: "fit-content",
+      width: "max-content"
+    },
+    [theme.breakpoints.down("lg")]: {
+      gap: "5px",
+      height: "235px",
+      width: "max-content"
+    },
+    [theme.breakpoints.down("md")]: {
+      gap: "5px",
+      height: "230px",
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "13px",
+      gap: "10px",
+      height: "250px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "10px",
+      height: "250px",
     },
   },
   title: {
@@ -46,6 +61,10 @@ const useStyes = makeStyles(theme => ({
     //width:"100%",
     height: "60px",
     textTransform: "uppercase",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      lineHeight: "16px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "16px",
       lineHeight: "16px",
@@ -79,6 +98,11 @@ const useStyes = makeStyles(theme => ({
     gap: "19px",
     padding: "6px 25px 22px 27px",
     height: "100px",
+    [theme.breakpoints.down("lg")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+      height: "100px"
+    },
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
@@ -101,14 +125,25 @@ const useStyes = makeStyles(theme => ({
     width: "100%",
     boxSizing: "content-box",
     alignItems: "center",
-    [theme.breakpoints.between(0, 600)]: {
-      width: "65%",
-    },
   },
   carousel: {
-    height: "400px",
-    [theme.breakpoints.down("md")]: {
-      height: "300px",
+    height: "600px",
+    alignItems: "center",
+    transform: "scale(1)",
+    [theme.breakpoints.between(1201, 1280)]: {
+      height: "270px",
+    },
+    [theme.breakpoints.between(901, 1200)]: {
+      height: "230px",
+    },
+    [theme.breakpoints.between(550, 900)]: {
+      height: "225px",
+    },
+    [theme.breakpoints.between(400, 549)]: {
+      height: "210px",
+    },
+    [theme.breakpoints.between(200, 400)]: {
+      height: "250px",
     },
   },
 }))
@@ -132,7 +167,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   return (
 
     <Swiper
-      spaceBetween={30}
+      spaceBetween={50}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -140,24 +175,29 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
         600: {
           slidesPerView: 2,
         },
-        900: {
-          slidesPerView: 4,
+        960: {
+          slidesPerView: 3,
         },
-        1440: {
+        1280: {
           slidesPerView: 4,
         },
         1920: {
-          slidesPerView: 5
+          slidesPerView: 5,
         }
       }}
       pagination={{
         clickable: true,
-        dynamicBullets: true,
+        //dynamicBullets: true,
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
+      style={{
+        width: "100%",
+        boxSizing: "content-box",
+        height: "inherit"
+      }}
       modules={[ Pagination, Keyboard ]}
-      className={`${classes.slider} ${bulletClass}`}
+      className={bulletClass}
     >
       {
         articlesSort.map(( el, index) => (
@@ -165,7 +205,15 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
           <Box className={classes.container}>
             <>
               <Box
-                style={{ backgroundImage: `url(${el?.image[0]?.url})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "310" }} />
+                style={{ 
+                  backgroundImage: `url(${el?.image[0]?.url})`, 
+                  objectFit: "contain", 
+                  backgroundRepeat: "no-repeat", 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center", 
+                  height: "200px", 
+                  width: "310",
+                  }} />
               <Box className={classes.textContainer}>
                 <Typography className={classes.title}>
                   {el?.title}

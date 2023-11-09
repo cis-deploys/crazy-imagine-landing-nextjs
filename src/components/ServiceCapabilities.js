@@ -13,6 +13,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     margin: props.img ? "unset" : "auto",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "40px",
+      textAlign: "justify"
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       justifyContent: "center",
@@ -84,6 +91,18 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     width: props.img ? "35%" : "50%",
     justifyContent: "center",
+    [theme.breakpoints.up("xl")]: {
+      width: "50%",
+      alignItems: "center",
+      justifyItems: "center",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+      alignItems: "center",
+      justifyItems: "center",
+      flexDirection: "column",
+    },
     [theme.breakpoints.down("sm")]: {
       width: "60%"
     },
@@ -91,15 +110,6 @@ const useStyles = makeStyles(theme => ({
       width: "60%"
     },
   }),
-  img: {
-    width: "inherit",
-    [theme.breakpoints.down("sm")]: {
-      width: "35%",
-    },
-    [theme.breakpoints.between(400, 0)]: {
-      width: "45%",
-    },
-  },
   desc2: {
     fontFamily: "HindVadodara",
     fontStyle: "normal",
@@ -120,25 +130,29 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
     },
   },
-  imagen2: {
+   img: {
+     display: "flex",
+     justifyContent: "center",
+     width: "40%",
+     [theme.breakpoints.down("sm")]: {
+       width: "15%",
+     },
+   },
+   imgContainer: {
     display: "flex",
+    justifyContent: "center",
     [theme.breakpoints.down("md")]: {
-      width: "40%",
-      marginTop: "47px",
       justifyContent: "center",
-      textAlign: "center",
+      width: "40%",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "inherit",
-      marginTop: "47px",
       justifyContent: "center",
-      textAlign: "center",
+      width: "40%",
     },
-    [theme.breakpoints.down("sx")]: {
+    [theme.breakpoints.down("xs")]: {
       width: "inherit",
-      marginTop: "47px",
       justifyContent: "center",
-      textAlign: "center",
+      marginTop: "10px",
     },
   },
 }))
@@ -151,8 +165,9 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container}>
-        {img && 
-        <Image src={img} className={classes.imagen2} alt={`${title}`} />}
+        <Box className={classes.imgContainer}>
+        <Image src={img} className={isVisible ? 'image-component' : 'image'} alt={`${title}`}/>
+        </Box>
         <Box className={classes.textContainer}>
           <Typography className={classes.subtitle2}>{t("common_button_capabilities")}</Typography>
           <Typography className={classes.title2}>{title}</Typography>

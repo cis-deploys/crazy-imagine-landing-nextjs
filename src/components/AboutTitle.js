@@ -112,51 +112,22 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
     },
   },
-  img: {
-    visibility: "hidden",
-  },
-  img2: {
+  imgContainer: {
     display: "flex",
-    animation: `$myEffect 2000ms`,
+    justifyContent: "center",
+    
     [theme.breakpoints.down("md")]: {
-      width: "80%",
+      justifyContent: "center",
+      width: "40%",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "70%",
+      justifyContent: "center",
+      width: "40%",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "60%",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateX(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateX(0)",
-    },
-  },
-  imgn: {
-    display: "flex",
-    [theme.breakpoints.down("md")]: {
-      width: "40%",
-      marginTop: "47px",
-      justifyContent: "center",
-      textAlign: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "40%",
-      marginTop: "47px",
-      justifyContent: "center",
-      textAlign: "center",
-    },
-    [theme.breakpoints.down("sx")]: {
       width: "inherit",
-      marginTop: "47px",
       justifyContent: "center",
-      textAlign: "center",
+      marginTop: "10px",
     },
   },
 }))
@@ -168,8 +139,8 @@ export const AboutTitle = ({ title, desc, img }) => {
 
   return (
     <Box className={classes.container}>
-      <Box className={classes.imgn}>
-        <Image className={isVisible ? classes.img2 : classes.img} src={img} alt="" />
+      <Box className={classes.imgContainer}>
+        <Image className={isVisible ? 'image-component' : 'image'} src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title2}>{title}</Typography>

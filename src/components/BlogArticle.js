@@ -52,38 +52,38 @@ const useStyles = makeStyles(theme => ({
       padding: "11px 11px 10px 16px",
     },
   },
-  wrapperTitle: {
-    visibility: "hidden",
-  },
-  wrapperTitle2: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "900",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    color: "#FFFFFF",
-    marginBottom: "38px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
+  // wrapperTitle: {
+  //   visibility: "hidden",
+  // },
+  // wrapperTitle2: {
+  //   animation: `$myEffect 2000ms`,
+  //   fontFamily: "Nexa Bold",
+  //   fontStyle: "normal",
+  //   fontWeight: "900",
+  //   fontSize: "40px",
+  //   lineHeight: "40px",
+  //   textAlign: "center",
+  //   color: "#FFFFFF",
+  //   marginBottom: "38px",
+  //   [theme.breakpoints.down("md")]: {
+  //     fontSize: "28px",
+  //     lineHeight: "28px",
+  //   },
+  //   [theme.breakpoints.down("sm")]: {
+  //     fontSize: "22px",
+  //     lineHeight: "22px",
+  //   },
+  // },
+  // "@keyframes myEffect": {
+  //   "0%": {
+  //     opacity: 0,
+  //     transform: "translateY(-200%)",
+  //   },
+  //   "100%": {
+  //     opacity: 1,
+  //     transform: "translateY(0)",
+  //   },
+  // },
   wrapperContainer: {
     width: "75%",
     margin: "auto",
@@ -91,6 +91,10 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: "83px",
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.up("xl")]: {
+      width: "45%",
+      paddingTop: "40px",
+    },
     [theme.breakpoints.down("md")]: {
       paddingTop: "40px",
     },
@@ -160,67 +164,69 @@ const useStyles = makeStyles(theme => ({
     flexWrap: "wrap",
     justifyContent: "center",
     background: "transparent",
+    marginTop: "50px",
+    marginBottom: "50px",
     gap: "21px",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   },
-  loadButton: {
-    visibility: "hidden",
-  },
-  loadButton2: {
-    background: "#797EF6",
-    borderRadius: "100px",
-    alignSelf: "center",
-    marginTop: "71px",
-    animation: `$myEffecto 2000ms`,
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      padding: "14px 20px 12px 20px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "50px",
-      marginBottom: "75px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "40px",
-      marginBottom: "70px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      "& > span": {
-        fontSize: "9px",
-        lineHeight: "9px",
-      },
-      marginTop: "30px",
-      marginBottom: "45px",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(300%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
+  // loadButton: {
+  //   visibility: "hidden",
+  // },
+  // loadButton2: {
+  //   background: "#797EF6",
+  //   borderRadius: "100px",
+  //   alignSelf: "center",
+  //   marginTop: "71px",
+  //   animation: `$myEffecto 2000ms`,
+  //   "&:hover": {
+  //     backgroundColor: "#30AADE",
+  //   },
+  //   "& > span": {
+  //     fontFamily: "Nexa Bold",
+  //     fontStyle: "normal",
+  //     fontWeight: "400",
+  //     fontSize: "14px",
+  //     padding: "14px 20px 12px 20px",
+  //     lineHeight: "14px",
+  //     display: "flex",
+  //     alignItems: "center",
+  //     textAlign: "center",
+  //     letterSpacing: "0.05em",
+  //     color: "#FFFFFF",
+  //   },
+  //   [theme.breakpoints.down("md")]: {
+  //     marginTop: "50px",
+  //     marginBottom: "75px",
+  //     "& > span": {
+  //       fontSize: "10px",
+  //       lineHeight: "10px",
+  //     },
+  //   },
+  //   [theme.breakpoints.down("sm")]: {
+  //     marginTop: "40px",
+  //     marginBottom: "70px",
+  //   },
+  //   [theme.breakpoints.down("xs")]: {
+  //     "& > span": {
+  //       fontSize: "9px",
+  //       lineHeight: "9px",
+  //     },
+  //     marginTop: "30px",
+  //     marginBottom: "45px",
+  //   },
+  // },
+  // "@keyframes myEffecto": {
+  //   "0%": {
+  //     opacity: 0,
+  //     transform: "translateY(300%)",
+  //   },
+  //   "100%": {
+  //     opacity: 1,
+  //     transform: "translateY(0)",
+  //   },
+  // },
 }))
 
 const BlogArticle = ({ articles: AllArticles }) => {
@@ -268,8 +274,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
         <Typography
           ref={ref}
           className={
-            isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
-          }
+            isVisible ? 'title-white' : 'title'}
         >
           {t("blog_blogArticle_title")}
         </Typography>
@@ -305,7 +310,8 @@ const BlogArticle = ({ articles: AllArticles }) => {
           <Button
             ref={ref1}
             onClick={() => { loadArticles(articles.length) }}
-            className={ isVisible1 ? classes.loadButton2 : classes.loadButton }
+            style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
+            className={ isVisible1 ? 'button-component' : 'button' }
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>

@@ -24,15 +24,19 @@ const useStyles = makeStyles((theme) => ({
       gap: '20px',
       height: 'auto',
       paddingTop: '52px',
-      paddingBottom: '50px',
-      
+      [theme.breakpoints.between(0, 767)]: {
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: 'center',
+        width: "auto"
+      },
     },
     card: {
       height: 'min-content !important'
     },
     bgWhite: {
       padding:'52px',
-    }
+    },
 }));
 
 const ServicesSection = () => {
@@ -84,7 +88,7 @@ const ServicesSection = () => {
           title={t("common_capabilities_title2")}
           desc={t("common_capabilities_description2")}
         />
-        <Box className={`${classes.cardContainer} ${classes.pMajor}`}>
+        <Box className={`${classes.cardContainer}`}>
           <CardService 
             title={t("common_capabilities_capabilitiesCard_title3")}
             icon={faBagShopping}

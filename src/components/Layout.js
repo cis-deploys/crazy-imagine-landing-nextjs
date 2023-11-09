@@ -40,10 +40,11 @@ const Layout = ({ children }) => {
       </Hidden>
       <Box
         sx={{
-          maxWidth: {
-            lg: "auto",
-            xl: 1920,
-          },
+          // maxWidth: {
+          //   lg: 1280,
+          //   xl: "auto",
+          // },
+          width: '100%',
           margin: {
             lg: "0 auto",
           },
