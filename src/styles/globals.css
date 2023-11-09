@@ -119,9 +119,6 @@ body {
   border-radius: 100px;
   margin-bottom: 87px;
   margin-top: 48px;
-  :hover {
-    background-color: #30AADE;
-  };
   > span {
     font-family: Nexa Bold;
     font-style: normal;
@@ -143,8 +140,9 @@ body {
         line-height: 18px;
         padding: 14px 20px 12px 20px;
       }
+      
   }
-  @media screen and (max-width: 960px) {
+  @media only screen and (min-width: 960px) and (max-width: 1919px) {
     margin-bottom: 61px;
       margin-top: 34px;
       > span {
@@ -153,7 +151,7 @@ body {
         padding: 10px 14px 8px 14px;
       };
   }
-  @media screen and (max-width: 600px) {
+  @media only screen and (max-width: 959px) {
     margin-bottom: 20px;
     margin-top: 24px;
     > span {
@@ -163,6 +161,10 @@ body {
     };
   }
 }
+
+.button-component:hover {
+  background-color: #30AADE;
+};
 
 @keyframes myEffect-image-component {
   0% {

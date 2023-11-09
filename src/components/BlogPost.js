@@ -36,6 +36,7 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "10px",
       height: "250px",
+      width: "380px",
     },
     [theme.breakpoints.down("xs")]: {
       gap: "10px",
@@ -140,7 +141,7 @@ const useStyes = makeStyles(theme => ({
       height: "225px",
     },
     [theme.breakpoints.between(400, 549)]: {
-      height: "210px",
+      height: "250px",
     },
     [theme.breakpoints.between(200, 400)]: {
       height: "250px",

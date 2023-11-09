@@ -74,8 +74,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "20px",
-      width: "max-content",
-      height: "250px",
+      width: "350px",
+      height: "260px",
     },
   },
   titleCarousel: {
