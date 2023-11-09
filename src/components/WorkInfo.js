@@ -18,10 +18,15 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "50px",
     whiteSpace: "pre-line",
     color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "25px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "50px",
       marginTop: "120px",
-      lineHeight: "20px",
+      lineHeight: "50px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "30px",
+      marginTop: "120px",
+      lineHeight: "30px",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "80px",

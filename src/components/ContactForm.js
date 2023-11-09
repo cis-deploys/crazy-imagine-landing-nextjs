@@ -24,8 +24,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       lineHeight: "140%",
       color: "#193173", 
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
+      },
+      [theme.breakpoints.down("lg")]: {
+        fontSize: "14px",
+      },
       [theme.breakpoints.down("sm")]: {
-        fontSize: "10px",
+        fontSize: "12px",
       },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
@@ -46,11 +52,17 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "10px",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
       },
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
+      [theme.breakpoints.down("lg")]: {
+        fontSize: "14px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "13px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "12px",
       },
     },
     [theme.breakpoints.down("xs")]: {
@@ -148,42 +160,42 @@ const useStyles = makeStyles(theme => ({
       width: "auto",
     },
   },
-  formButton: {
-    backgroundColor: "#797EF6",
-    marginTop: "23px",
-    borderRadius: "100px",
-    alignSelf: "flex-start",
-    alignItems: "center",
-    padding: "14px 20px 12px 20px",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: 400,
-      fontSize: "14px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
-      },
-    },
-    [theme.breakpoints.down("md")]: {
-      margin: "auto",
-      display: "flex",
-      textAlign: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      margin: "auto",
-      display: "flex",
-      textAlign: "center",
-    },
-  },
+  // formButton: {
+  //   backgroundColor: "#797EF6",
+  //   marginTop: "23px",
+  //   borderRadius: "100px",
+  //   alignSelf: "flex-start",
+  //   alignItems: "center",
+  //   padding: "14px 20px 12px 20px",
+  //   "&:hover": {
+  //     backgroundColor: "#30AADE",
+  //   },
+  //   "& > span": {
+  //     fontFamily: "Nexa Bold",
+  //     fontStyle: "normal",
+  //     fontWeight: 400,
+  //     fontSize: "14px",
+  //     lineHeight: "14px",
+  //     display: "flex",
+  //     alignItems: "center",
+  //     textAlign: "center",
+  //     letterSpacing: "0.05em",
+  //     color: "#FFFFFF",
+  //     [theme.breakpoints.down("xs")]: {
+  //       fontSize: "10px",
+  //     },
+  //   },
+  //   [theme.breakpoints.down("md")]: {
+  //     margin: "auto",
+  //     display: "flex",
+  //     textAlign: "center",
+  //   },
+  //   [theme.breakpoints.down("sm")]: {
+  //     margin: "auto",
+  //     display: "flex",
+  //     textAlign: "center",
+  //   },
+  // },
   snackColor: {
     fontSize: "bold",
     backgroundColor: "white !important",
@@ -385,7 +397,7 @@ const ContactForm = () => {
           </Grid>
           <Grid item xs={12}>
             <Button
-              className={classes.formButton}
+              className={'button-component'}
               type="submit"
             >
             <span>{t("common_button_contact_us")}</span>

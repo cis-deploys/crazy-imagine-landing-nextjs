@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@mui/styles"
-import { Box, Typography, Button } from "@mui/material"
+import { Box, Typography, Button, Card, CardContent } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next";
@@ -156,7 +156,38 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: "10px",
     display: "inline-block",
     width: "100%",
-  
+    [theme.breakpoints.down("md")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "10px",
+      lineHeight: "10px",
+    },
+  },
+  cardContent: {
+    width: "auto",
+    height: "240px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "27px",
+    alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+      height: "180px",
+      gap: "20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      height: "180px",
+      gap: "12px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "200px",
+      height: "110px",
+      gap: "12px",
+    },
   },
  
 
@@ -168,12 +199,13 @@ const CardService = ({ icon, title, contentList }) => {
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
   return (
-    <Box
+    <Card
       ref={ref}
       className={isVisible ? classes.container2 : classes.container}
     >
+      <CardContent className={classes.cardContent}>
       <FontAwesomeIcon icon={icon} className={classes.icon} />
-      <Typography className={classes.title}>{title}</Typography>
+      <Typography className={'title-card'}>{title}</Typography>
       <ul className={classes.list} style={{ display: isListVisible ? "block" : "none" }}>
         {contentList?.map((value, index) => (
           <li key={index} className={classes.listItem}>
@@ -187,7 +219,8 @@ const CardService = ({ icon, title, contentList }) => {
       >
         {isListVisible ? t("readLess") : t("readMore")}
       </Button>
-    </Box>
+      </CardContent>
+    </Card>
   )
 }
 export default CardService

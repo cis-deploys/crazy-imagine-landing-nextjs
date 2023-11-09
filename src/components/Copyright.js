@@ -27,6 +27,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     width: "92%",
     height: "78px",
+    [theme.breakpoints.up("xl")]: {
+      maxWidth: "3000px",
+      margin: "0 auto",
+      padding: "0px",
+    },
     [theme.breakpoints.down("md")]: {
       height: "55px",
     },
@@ -40,11 +45,6 @@ const useStyles = makeStyles(theme => ({
       marginTop: "5px",
       marginBottom: "5px",
     },
-    [theme.breakpoints.up("xl")]: {
-      maxWidth: "1920px",
-      margin: "0 auto",
-      padding: "0px",
-    },
   },
   copyright: {
     color: "white",
@@ -53,6 +53,15 @@ const useStyles = makeStyles(theme => ({
     fontSize: "12px",
     textAlign: "left",
     fontStyle: "normal",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "15px",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "15px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
     },

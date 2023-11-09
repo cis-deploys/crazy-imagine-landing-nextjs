@@ -1,10 +1,6 @@
 import React, { useRef } from "react"
 import { Box, Grid, Button } from "@mui/material"
-import {
-  faCode,
-  faThumbsUp,
-  faCircleCheck,
-} from "@fortawesome/free-solid-svg-icons"
+import {faCode, faThumbsUp, faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import HomeCard from "./HomeCard"
 import TitleSection from "./TitleSection"
 import HomeDescription from "../components/HomeDescription"
@@ -41,67 +37,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       paddingTop: "0px"
-    },
-    
-    
-  },
-  button: {
-    visibility: "hidden",
-  },
-  button2: {
-    animation: `$myEffect 2000ms`,
-    background: "#797EF6",
-    borderRadius: "100px",
-    marginBottom: "87px",
-    marginTop: "48px",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      padding: "14px 20px 12px 20px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.up("xl")]: {
-      marginBottom: "61px",
-      marginTop: "34px",
-      "& > span": {
-        fontSize: "20px",
-        lineHeight: "18px",
-        padding: "14px 20px 12px 20px",
-      },
-    },
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "61px",
-      marginTop: "34px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "14px",
-        padding: "10px 14px 8px 14px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "40px",
-      marginTop: "24px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
+    },  
   },
 }))
 
@@ -139,7 +75,7 @@ const HomeMainSection = () => {
         <a>
         <Button
           ref={ref}
-          className={isVisible ? classes.button2 : classes.button}
+          className={isVisible ? 'button-component' : 'button'}
         >
           <span>{t("common_button_get_started")}</span>
         </Button>

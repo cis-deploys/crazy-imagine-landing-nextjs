@@ -40,42 +40,6 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       justifyContent: "center",
     },
-    title: {
-      visibility: "hidden",
-    },
-    title2: {
-      animation: `$myEffectTitle 2000ms`,
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "700",
-      fontSize: "50px",
-      textAlign: "center",
-      color: "#193173",
-      lineHeight: "40px",
-      margin: "50px 0",
-      [theme.breakpoints.up("xl")]: {
-        margin: "30px 0",
-        fontSize: "50px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        margin: "30px 0",
-        fontSize: "40px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        margin: "20px 0",
-        fontSize: "30px",
-      },
-    },
-    "@keyframes myEffectTitle": {
-      "0%": {
-        opacity: 0,
-        transform: "translateY(-200%)",
-      },
-      "100%": {
-        opacity: 1,
-        transform: "translateY(0)",
-      },
-    },
     logo: {
       width: "100%",
       height: "auto",
@@ -91,7 +55,7 @@ const Partners = () => {
 
   return (
     <Box className={classes.section}>
-      <Typography ref={ref} className={isVisible ? classes.title2 : classes.title}>
+      <Typography ref={ref} className={isVisible ? 'title-blue' : 'title'}>
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>

@@ -52,7 +52,11 @@ const useStyles = makeStyles(theme => ({
     color: "#27AAE1",
     marginBottom: "6px",
     [theme.breakpoints.down("md")]: {
-      fontSize: "15px",
+      fontSize: "14px",
+      lineHeight: "15px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
       lineHeight: "15px",
     },
   },
@@ -65,6 +69,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "22px",
     textAlign: "center",
     alignSelf: "flex-end",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",

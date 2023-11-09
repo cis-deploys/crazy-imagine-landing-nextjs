@@ -24,15 +24,22 @@ const useStyes = makeStyles(theme => ({
       height: "fit-content",
       width: "max-content"
     },
+    [theme.breakpoints.down("lg")]: {
+      gap: "5px",
+      height: "235px",
+      width: "max-content"
+    },
     [theme.breakpoints.down("md")]: {
-      gap: "18px",
-      height: "fit-content",
+      gap: "5px",
+      height: "230px",
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "13px",
+      gap: "10px",
+      height: "250px",
     },
     [theme.breakpoints.down("xs")]: {
-      gap: "13px",
+      gap: "10px",
+      height: "250px",
     },
   },
   title: {
@@ -54,6 +61,10 @@ const useStyes = makeStyles(theme => ({
     //width:"100%",
     height: "60px",
     textTransform: "uppercase",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      lineHeight: "16px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "16px",
       lineHeight: "16px",
@@ -87,6 +98,11 @@ const useStyes = makeStyles(theme => ({
     gap: "19px",
     padding: "6px 25px 22px 27px",
     height: "100px",
+    [theme.breakpoints.down("lg")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+      height: "100px"
+    },
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
@@ -171,7 +187,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
       }}
       pagination={{
         clickable: true,
-        dynamicBullets: true,
+        //dynamicBullets: true,
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
@@ -189,7 +205,15 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
           <Box className={classes.container}>
             <>
               <Box
-                style={{ backgroundImage: `url(${el?.image[0]?.url})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "310" }} />
+                style={{ 
+                  backgroundImage: `url(${el?.image[0]?.url})`, 
+                  objectFit: "contain", 
+                  backgroundRepeat: "no-repeat", 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center", 
+                  height: "200px", 
+                  width: "310",
+                  }} />
               <Box className={classes.textContainer}>
                 <Typography className={classes.title}>
                   {el?.title}

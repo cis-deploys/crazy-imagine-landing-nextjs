@@ -5,32 +5,32 @@ import { makeStyles } from "@mui/styles"
 import { Card, CardContent, Typography } from "@mui/material"
 
 const useStyles = makeStyles(theme => ({
-  title: {
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    width: "150px",
-    fontSize: "28px",
-    lineHeight: "28px",
-    textAlign: "center",
-    whiteSpace: "pre-line",
-    color: "#193174",
-    [theme.breakpoints.up("xl")]: {
-      width: "200px",
-      fontSize: "30px",
-      lineHeight: "30px",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "105px",
-      fontSize: "12px",
-      lineHeight: "12px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "65px",
-      fontSize: "12px",
-      lineHeight: "12px",
-    },
-  },
+  // title: {
+  //   fontFamily: "Nexa Bold",
+  //   fontStyle: "normal",
+  //   fontWeight: "700",
+  //   width: "150px",
+  //   fontSize: "28px",
+  //   lineHeight: "28px",
+  //   textAlign: "center",
+  //   whiteSpace: "pre-line",
+  //   color: "#193174",
+  //   [theme.breakpoints.up("xl")]: {
+  //     width: "200px",
+  //     fontSize: "30px",
+  //     lineHeight: "30px",
+  //   },
+  //   [theme.breakpoints.down("md")]: {
+  //     width: "105px",
+  //     fontSize: "12px",
+  //     lineHeight: "12px",
+  //   },
+  //   [theme.breakpoints.down("sm")]: {
+  //     width: "65px",
+  //     fontSize: "12px",
+  //     lineHeight: "12px",
+  //   },
+  // },
   cardContainer: {
     visibility: "hidden",
   },
@@ -86,6 +86,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "20px",
       lineHeight: "20px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
   },
 }))
 
@@ -101,7 +105,7 @@ const HomeCard = ({ title, icon }) => {
     >
       <CardContent className={classes.cardContent}>
         <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
-        <Typography className={classes.title}>{title}</Typography>
+        <Typography className={'title-card'}>{title}</Typography>
       </CardContent>
     </Card>
   )

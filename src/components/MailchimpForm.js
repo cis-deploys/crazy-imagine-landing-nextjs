@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up("lg")]: {
         fontSize: "18px",
       },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "16px",
+      },
       [theme.breakpoints.down("sm")]: {
         fontSize: "10px",
       },
@@ -54,36 +57,36 @@ const useStyles = makeStyles(theme => ({
       
     },
   },
-  titleMail: {
-    visibility: "hidden",
-  },
-  titleMail2: {
-    animation: `$myEffectTitleMail 2000ms`,
-    lineHeight: "40px",    
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "50px",
-    marginBottom: "30px",
-    color: "#FFFFFF",
-    textAlign: "center",
-    fontFamily: "Nexa Bold",
-    [theme.breakpoints.up("xl")]: {
-      fontSize: "40px",
-      marginBottom: "20px",
-    },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "30px",
-      marginBottom: "20px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "30px",
-      marginBottom: "20px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "30px",
-      marginBottom: "10px",
-    },
-  },
+  // titleMail: {
+  //   visibility: "hidden",
+  // },
+  // titleMail2: {
+  //   animation: `$myEffectTitleMail 2000ms`,
+  //   lineHeight: "40px",    
+  //   fontStyle: "normal",
+  //   fontWeight: "700",
+  //   fontSize: "50px",
+  //   marginBottom: "30px",
+  //   color: "#FFFFFF",
+  //   textAlign: "center",
+  //   fontFamily: "Nexa Bold",
+  //   [theme.breakpoints.up("xl")]: {
+  //     fontSize: "40px",
+  //     marginBottom: "20px",
+  //   },
+  //   [theme.breakpoints.down("md")]: {
+  //     fontSize: "30px",
+  //     marginBottom: "20px",
+  //   },
+  //   [theme.breakpoints.down("sm")]: {
+  //     fontSize: "30px",
+  //     marginBottom: "20px",
+  //   },
+  //   [theme.breakpoints.down("xs")]: {
+  //     fontSize: "30px",
+  //     marginBottom: "10px",
+  //   },
+  // },
   subTitleMail: {
     visibility: "hidden",
   },
@@ -144,46 +147,7 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column"
     },
   },
-  formButton: {
-    padding: "14px 20px 12px 20px",
-    margin: "auto",
-    marginTop: "23px",
-    alignSelf: "flex-start",
-    borderRadius: "100px",
-    backgroundColor: "#797EF6",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      display: "flex",
-      letterSpacing: "0.05em",
-      textAlign: "center",
-      alignItems: "center",
-      fontStyle: "normal",
-      fontWeight: 400,
-      fontSize: "14px",
-      color: "#FFFFFF",
-      fontFamily: "Nexa Bold",
-      lineHeight: "14px",
-      [theme.breakpoints.up("xl")]: {
-        fontSize: "20px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
-      },
-    },
-    [theme.breakpoints.up("xl")]: {
-      width: "auto",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      marginTop: "10px",
-      padding: "10px 10px 10px 10px",
-    },
-  },
+
   containerForm: {
     display: "flex",
     alignItems: "center",
@@ -328,7 +292,7 @@ const MailchimpForm = () => {
 
   return (
     <Box ref={ref} className={classes.containerForm}>
-        <Typography className={isVisible ? classes.titleMail2 : classes.titleMail}>
+        <Typography className={isVisible ? 'title-white' : 'title'}>
           {t("home_mailChimp_title")}
         </Typography>
         <Typography className={isVisible ? classes.subTitleMail2 : classes.subTitleMail}>
@@ -372,12 +336,14 @@ const MailchimpForm = () => {
             helperText={errors.email?.message}
             variant="standard"
           />
+          <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
           <Button
             type="submit"
-            className={classes.formButton}
+            className={'button-component'}
           >
             <span>{t("home_mailChimp_button")}</span>
           </Button>
+          </a>
         </Box>
       </form>
     </Box>

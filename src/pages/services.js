@@ -83,7 +83,8 @@ function Services({ projects }) {
         <ServicesSection />
         <ProjectSection
           title={t("services_projectSection_title")}
-          btn={false}
+          btn={true}
+          size={true}
           projects={projectsNew}
         />
         <ContactSection />

@@ -12,155 +12,70 @@ import "../styles/Swiper.module.css"
 import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
+import 'swiper/swiper-bundle.css';
 import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "auto",
-    padding: "0px 30px",
+    height: "fit-content",
+    padding: "30px 60px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     [theme.breakpoints.up("xl")]: {
-      height: "800px",
-      padding: "0px 43px",
+      height: "900px",
+      padding: "10px 48px",
     },
-    [theme.breakpoints.down("md")]: {
-      height: "500px",
-      padding: "0px 43px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "430px",
-      padding: "0px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "420px",
-      padding: "0px 15px",
-    },
-  },
-  title: {
-    visibility: "hidden",
-  },
-  title2: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    marginTop: "84px",
-    color: "#193173",
-    marginBottom: "47px",
     [theme.breakpoints.up("lg")]: {
-      fontWeight: "700",
-      fontSize: "40px",
-      lineHeight: "40px",
+      height: "750px",
+      padding: "10px 48px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      height: "670px",
+      padding: "20px 40px",
     },
     [theme.breakpoints.down("md")]: {
-      fontWeight: "28px",
-      fontSize: "28px",
-      lineHeight: "28px",
-      marginTop: "55px",
-      marginBottom: "33px",
+      height: "550px",
+      padding: "30px 43px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontWeight: "22px",
-      fontSize: "22px",
-      lineHeight: "22px",
-      marginTop: "34px",
-      marginBottom: "0px",
+      height: "580px",
+      padding: "0px 43px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontWeight: "22px",
-      fontSize: "22px",
-      lineHeight: "22px",
-      marginTop: "34px",
-      marginBottom: "0px",
+      height: "480px",
+      padding: "0px 43px",
     },
   },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
-  button: props => ({
-    display: props.btn ? "initial" : "none",
-    background: "#797EF6",
-    borderRadius: "100px",
-    padding: "14px 20px 12px 20px",
-    alignSelf: "center",
-    marginBottom: "30px",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      lineHeight: "14px",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.up("xl")]: {
-      padding: "14px 20px 12px 20px",
-      marginTop: "50px",
-      marginBottom: "60px",
-      "& > span": {
-        fontSize: "20px",
-        lineHeight: "18px",
-      },
-    },
-    [theme.breakpoints.down("md")]: {
-      padding: "10px 14px 8px 14px",
-      marginTop: "14px",
-      "& > span": {
-        fontSize: "9px",
-        lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      padding: "6px 9px 5px 9px",
-      marginTop: "14px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-  }),
   carouselContainer: {
     boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
-    width: "380px",
-    height: "auto",
+    width: "max-content",
+    height: "fit-content",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
-    objectFit: "contain",
     [theme.breakpoints.up("xl")]: {
-      gap: "18px",
-      width: "max-content"
+      width: "450px",
+      height: "320px"
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "450px",
+      height: "300px"
     },
     [theme.breakpoints.down("lg")]: {
-      gap: "10px",
-      height: "230px",
-      width: "max-content"
+      width: "360px",
+      height: "240px"
     },
     [theme.breakpoints.down("md")]: {
-      gap: "10px",
-      height: "210px",
-      width: "max-content"
+      marginTop: "40px",
+      width: "350px",
+      height: "260px"
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "13px",
+      marginTop: "20px",
+      width: "max-content",
+      height: "250px",
     },
   },
   titleCarousel: {
@@ -170,13 +85,17 @@ const useStyles = makeStyles(theme => ({
     fontSize: "24px",
     lineHeight: "24px",
     color: "#193174",
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "18px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "25px",
+      lineHeight: "18px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "22px",
       lineHeight: "18px",
     },
     [theme.breakpoints.down("md")]: {
-      fontWeight: "15px",
-      fontSize: "15px",
+      fontWeight: "18px",
+      fontSize: "18px",
       lineHeight: "18px",
       width: "90%",
       overflow: "hidden",
@@ -198,6 +117,10 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     color: "#888DFF",
     textDecoration: "none",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "16px",
+      lineHeight: "11px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -208,34 +131,45 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    height: "350px",
+    height: "600px",
     alignItems: "center",
     transform: "scale(1)",
+    [theme.breakpoints.between(1281, 3000)]: {
+      height: "auto",
+    },
     [theme.breakpoints.between(1201, 1280)]: {
       height: "270px",
     },
     [theme.breakpoints.between(901, 1200)]: {
-      height: "230px",
+      height: "240px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "225px",
+      height: "270px",
     },
     [theme.breakpoints.between(400, 549)]: {
-      height: "210px",
+      height: "350px",
     },
     [theme.breakpoints.between(200, 400)]: {
-      height: "250px",
+      height: "270px",
     },
   },
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
-    padding: "20px 0px 38px 28px",
+    gap: "26px",
+    padding: "28px 0 38px 28px",
     backgroundColor: "white",
+    [theme.breakpoints.up("xl")]: {
+      gap: "20px",
+      padding: "20px 0 27px 20px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      gap: "15px",
+      padding: "20px 0 27px 20px",
+    },
     [theme.breakpoints.down("md")]: {
-      gap: "18px",
-      padding: "20px 0px 27px 20px",
+      gap: "15px",
+      padding: "20px 0 27px 20px",
     },
   },
 }))
@@ -260,7 +194,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
       return (
         <Box ref={ref} className={classes.container}>
-          <Typography className={isVisible ? classes.title2 : classes.titleStyles}>
+          <Typography className={isVisible ? 'title-blue' : 'title'}>
             {title}
           </Typography>
           <Swiper
@@ -268,7 +202,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             breakpoints={{
               0: {
                 slidesPerView: 1,
-              },
+                },
               600: {
                 slidesPerView: 2,
               },
@@ -285,6 +219,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             pagination={{
               clickable: true,
             }}
+            slidesPerView={"auto"}
             grabCursor={true}
             loop={true}
             modules={[Pagination]}
@@ -308,7 +243,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
-                      <Image src={dataImage} alt={title} width={538} height={252}/>
+                      <Image src={dataImage} alt={title} width={310} height="200px"/>
 
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
@@ -329,12 +264,10 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             {btn && (
               <Link href={`${PROJECTS}`} >
 
-                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
-                  
-                <Button className={classes.button}>
+                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "45px" }}>   
+                <Button className={'button-component'}>
                   <span>{t("home_projectSection_button")}</span>
                 </Button>
-
                 </a>
 
               </Link>

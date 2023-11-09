@@ -8,40 +8,6 @@ import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 
 const useStyes = makeStyles(theme => ({
-  title: {
-    visibility: "hidden",
-  },
-  title2: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    color: "#FFFFFF",
-    marginTop: "78px",
-    [theme.breakpoints.up("xl")]: {
-      fontSize: "40px",
-      lineWeight: "40px",
-      marginTop: "55px",
-    },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineWeight: "28px",
-      marginTop: "55px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
   container: {
     display: "flex",
     flexDirection: "column",
@@ -54,11 +20,23 @@ const useStyes = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     height: "800px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.up("lg")]: {
+      padding: "55px 15px 20px 15px",
       gap: "16px",
-      height: "450px",
+      height: "750px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      padding: "55px 15px 20px 15px",
+      gap: "16px",
+      height: "500px",
+    },
+    [theme.breakpoints.down("md")]: {
+      padding: "34px 15px 0px 15px",
+      gap: "16px",
+      height: "500px",
     },
     [theme.breakpoints.down("sm")]: {
+      padding: "34px 15px 0px 15px",
       gap: "16px",
       height: "520px",
     },
@@ -136,7 +114,7 @@ const LastestPosts = ({ articles, articlesAll }) => {
     <Box ref={ref} className={classes.container}>
       <Typography
 
-        className={isVisible ? classes.title2 : classes.title}>
+        className={isVisible ? 'title-white' : 'title'}>
         {t("home_lastestPosts_title")}
 
         </Typography>
