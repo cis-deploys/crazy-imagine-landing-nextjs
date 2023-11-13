@@ -62,6 +62,10 @@ function Projects({ projects }) {
         });
       });
     }
+    // --------------------------- eliminar valores de prueba ----------------------------
+    const tipo1 = "Wordpress";
+    const tipo2 = "App con JS";
+    const tipo3 = "eCommerce";
     projectsNew.push({
       title,
       description,
@@ -73,7 +77,50 @@ function Projects({ projects }) {
       locale,
       images: imagesArticles,
       galleryImages,
-      seo
+      seo,
+      type: tipo1
+    });
+    projectsNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages,
+      seo,
+      type: tipo2
+    });
+    projectsNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages,
+      seo,
+      type: tipo3
+    });
+    projectsNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages,
+      seo,
+      type: tipo1
     });
     
   });
