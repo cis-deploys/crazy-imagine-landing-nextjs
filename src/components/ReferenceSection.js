@@ -15,6 +15,10 @@ const useStyes = makeStyles(theme => ({
     backgroundSize: "cover",
     overflow: "hidden",
     padding: "58px 60px",
+    [theme.breakpoints.up("lg")]: {
+      padding: "55px 30px",
+      height: "600px",
+    },
     [theme.breakpoints.down("lg")]: {
       padding: "55px 30px",
       height: "480px",
@@ -24,12 +28,8 @@ const useStyes = makeStyles(theme => ({
       height: "450px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "34px 15px 0px 15px",
-      height: "450px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "34px 15px 0px 15px",
-      height: "450px",
+      padding: "30px 43px 10px 43px",
+      height: "430px",
     },
   },
 }))

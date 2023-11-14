@@ -5,6 +5,158 @@ body {
 
 /*Components---------------------------------------------------------------*/
 
+@keyframes myEffectCard-service {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.containerServices2 {
+  animation: myEffectCard-service 2000ms;
+  width: 314px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
+    width: 314px;
+    height: auto !important;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 270px;
+    height: auto !important;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 240px;
+    height: auto !important;
+  }
+}
+@keyframes myEffectosCard-container {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cardContainer {
+  visibility: hidden;
+}
+
+.cardContainerHome2 {
+  animation: myEffectosCard-container 2000ms;
+  background-color: #FFFFFF;
+  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  height: 185px;
+  width: 314px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
+    width: 314px;
+    height: 185px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 270px;
+    height: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 240px;
+    height: 130px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.cardContentHome {
+  width: 314px;
+  height: 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: "10px";
+  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
+    width: 314px;
+    height: 185px;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 250px;
+    height: 150px;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 240px;
+    height: 130px;
+  }
+}
+
+.container-white-component {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  gap: 59px;
+  height: 100%;
+  margin-top: 10px;
+  @media only screen and (min-width: 601px) and (max-width: 959px) {
+    gap: 10px;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    width: 80%;
+  }
+  @media only screen and (max-width: 600px) {
+    flex-direction: row;
+    gap: 0px;
+    width: 80%;
+    margin-top: 10px;
+  };
+}
+
+.text-container-white-component {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: 45%;
+  white-space: pre-line;
+  @media only screen and (min-width: 1920px){
+    margin-top: 9px;
+    margin-bottom: 9px;
+    width: 40%;
+    gap: 14px;
+  };
+  @media only screen and (max-width: 960px) {
+    margin-top: 9px;
+    margin-bottom: 9px;
+    width: 40%;
+    gap: 14px;
+  }
+}
+
 .title-card {
   font-family: Nexa Bold;
   font-style: normal;
@@ -13,22 +165,22 @@ body {
   font-size: 28px;
   line-height: 28px;
   text-align: center;
-  white-space: pre-line;
   color: #193174;
+  margin-top: 10px;
   @media only screen and (min-width: 1920px){
-    width: 200px;
-    font-size: 30px;
-    line-height: 30px;
+    width: 220px;
+    font-size: 28px;
+    line-height: 28px;
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-    width: 105px;
+    width: 220px;
     font-size: 20px;
     line-height: 28px;
   }
   @media only screen and (max-width: 959px) {
-    width: 65px;
+    width: 220px;
     font-size: 15px;
-    line-height: 12px;
+    line-height: 15px;
   }
 }
 
@@ -140,7 +292,7 @@ body {
         line-height: 18px;
         padding: 14px 20px 12px 20px;
       }
-      
+
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
     margin-bottom: 61px;
@@ -178,7 +330,7 @@ body {
 }
 
 .image {
-  visibility: hidden;
+  display: none;
 }
 .image-component {
   animation: myEffect-image-component 2000ms;

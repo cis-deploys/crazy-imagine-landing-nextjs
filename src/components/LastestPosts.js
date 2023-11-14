@@ -21,29 +21,24 @@ const useStyes = makeStyles(theme => ({
     backgroundSize: "cover",
     height: "800px",
     [theme.breakpoints.up("lg")]: {
-      padding: "55px 15px 20px 15px",
+      padding: "55px 43px 0px 43px",
       gap: "16px",
-      height: "750px",
+      height: "700px",
     },
     [theme.breakpoints.down("lg")]: {
-      padding: "55px 15px 20px 15px",
+      padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "500px",
+      height: "460px",
     },
     [theme.breakpoints.down("md")]: {
-      padding: "34px 15px 0px 15px",
+      padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "500px",
+      height: "460px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "34px 15px 0px 15px",
+      padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "520px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      gap: "16px",
-      padding: "0px 0px 0px",
-      height: "520px",
+      height: "460px",
     },
   },
   link: {

@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
      },
      [theme.breakpoints.down("md")]: {
       width: "100%",
-      padding: "0px 43px 0px",
+      padding: "0px 43px",
       flexDirection: "column",
       height: "auto",
      },
@@ -103,7 +103,7 @@ const useStyles = makeStyles(theme => ({
        height: "auto",
        flexDirection: "column",
        width: "100%",
-       padding: "0px 15px 0px",
+       padding: "0px 43px",
      },
   },
 }))

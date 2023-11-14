@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("md")]: {
         fontSize: "15px",
       },
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: "11px",
       },
     },
@@ -189,12 +189,6 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "80%",
-      gap: "20px",
-      flexDirection: "column",
-      alignItems: "center",
-    },
   },
   formContainer: {
     visibility: "hidden",
@@ -216,12 +210,6 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "15px",
-      padding: "4px",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    [theme.breakpoints.down("xs")]: {
       marginTop: "15px",
       padding: "4px",
       justifyContent: "center",
@@ -317,9 +305,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "226px",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "189px",
-    },
   },
   shortInput: {
     display: "fit-content",
@@ -334,10 +319,6 @@ const useStyles = makeStyles(theme => ({
       width: "104px",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "86px",
-      alignItems: "center",
-    },
   },
   shortContainer: {
     display: "flex",
@@ -347,7 +328,6 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
       marginBottom: "30px",
-      //width: "80%"
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "30px",

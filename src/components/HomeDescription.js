@@ -15,12 +15,10 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: "50px",
     },
     [theme.breakpoints.down("sm")]: {
+      width: "80%",
       height: "auto",
       paddingTop: "30px",
       paddingBottom: "10px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "65%"
     },
   },
   textContainer: {
@@ -60,7 +58,12 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "17px",
     },
-  },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
+      lineHeight: "17px",
+      whiteSpace: "normal",
+    },
+},
   desc: {
     fontFamily: "HindVadodara",
     fontWeight: "600",
@@ -80,8 +83,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       paddingTop: "25px",
-      fontSize: "17px",
+      fontSize: "15px",
       lineHeight: "17px",
+      whiteSpace: "normal",
     },
   },
 }))

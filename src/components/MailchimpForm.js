@@ -57,36 +57,6 @@ const useStyles = makeStyles(theme => ({
       
     },
   },
-  // titleMail: {
-  //   visibility: "hidden",
-  // },
-  // titleMail2: {
-  //   animation: `$myEffectTitleMail 2000ms`,
-  //   lineHeight: "40px",    
-  //   fontStyle: "normal",
-  //   fontWeight: "700",
-  //   fontSize: "50px",
-  //   marginBottom: "30px",
-  //   color: "#FFFFFF",
-  //   textAlign: "center",
-  //   fontFamily: "Nexa Bold",
-  //   [theme.breakpoints.up("xl")]: {
-  //     fontSize: "40px",
-  //     marginBottom: "20px",
-  //   },
-  //   [theme.breakpoints.down("md")]: {
-  //     fontSize: "30px",
-  //     marginBottom: "20px",
-  //   },
-  //   [theme.breakpoints.down("sm")]: {
-  //     fontSize: "30px",
-  //     marginBottom: "20px",
-  //   },
-  //   [theme.breakpoints.down("xs")]: {
-  //     fontSize: "30px",
-  //     marginBottom: "10px",
-  //   },
-  // },
   subTitleMail: {
     visibility: "hidden",
   },
@@ -141,10 +111,23 @@ const useStyles = makeStyles(theme => ({
       margin: "auto",
       flexDirection: "column"
     },
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
+    [theme.breakpoints.between(376, 450)]: {
+      width: "auto",
+      padding: "70px",
+      flexDirection: "column",
+      height: "370px"
+    },
+    [theme.breakpoints.between(326, 376)]: {
+      width: "auto",
+      padding: "50px",
+      flexDirection: "column",
+      height: "350px"
+    },
+    [theme.breakpoints.between(0, 325)]: {
+      width: "auto",
       padding: "30px",
-      flexDirection: "column"
+      flexDirection: "column",
+      height: "320px"
     },
   },
 
@@ -171,11 +154,6 @@ const useStyles = makeStyles(theme => ({
       width: "auto",
       height: "auto",
       flexDirection: "column",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      width: "auto",
-      height: "auto",
     },
   },
   inputShort: {

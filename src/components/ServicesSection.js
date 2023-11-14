@@ -23,19 +23,16 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       gap: '20px',
       height: 'auto',
-      paddingTop: '52px',
+      paddingTop: 'auto',
       [theme.breakpoints.between(0, 767)]: {
         alignItems: "center",
         flexDirection: "column",
         justifyContent: 'center',
-        width: "auto"
+        width: "100%",
       },
     },
     card: {
       height: 'min-content !important'
-    },
-    bgWhite: {
-      padding:'52px',
     },
 }));
 
@@ -50,13 +47,13 @@ const ServicesSection = () => {
 
   return (
     <>
-      <Box className={`${classes.container} ${classes.bgWhite}`}>
+      <Box className={`${classes.container}`}>
         <ServiceCapabilities
           title={t("common_capabilities_title1")}
           desc={t("common_capabilities_description1")}
           img={fullStackImage}
         />
-        <Box className={`${classes.cardContainer} ${classes.pMinor}`}>
+        <Box className={`${classes.cardContainer}`}>
           <CardService
             title={t("common_capabilities_capabilitiesCard_title1")}
             icon={faCode}
@@ -83,7 +80,7 @@ const ServicesSection = () => {
           
         </Box>
       </Box>
-      <Box className={`${classes.container} ${classes.bgWhite}`}>
+      <Box className={`${classes.container}`}>
         <ServiceCapabilities
           title={t("common_capabilities_title2")}
           desc={t("common_capabilities_description2")}

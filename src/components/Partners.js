@@ -13,7 +13,7 @@ import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
     section: {
-      padding: "50px 0",
+      padding: "50px 43px",
       backgroundColor:"white",
     },
     container: {
@@ -25,20 +25,19 @@ const useStyles = makeStyles(theme => ({
       gap: "50px",
       padding: "0 2%",
       paddingBottom: "4%",
-      [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
+      [theme.breakpoints.between(0, 960)]: {
+        flexDirection: "row",
         alignItems: "center",
-        padding: "0 5%",
-      },
-      [theme.breakpoints.down("xs")]: {
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "0 5%",
+        padding: "0 20%",
+        gap: "20px"
       },
     },
     containerImage: {
       display: "flex",
       justifyContent: "center",
+      [theme.breakpoints.between(0, 960)]: {
+      width: "50%"
+      }
     },
     logo: {
       width: "100%",

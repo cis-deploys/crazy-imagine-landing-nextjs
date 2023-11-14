@@ -113,7 +113,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#FFFFFF",
     justifyContent: "space-between",
     width: "max-content",
-    height: "400px",
+    height: "300px",
     boxSizing: "border-box",
     [theme.breakpoints.down("lg")]: {
       padding: "22px 35px 11px 35px",
@@ -130,15 +130,14 @@ const useStyles = makeStyles(theme => ({
       gap: "9px",
       height: "inherit",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "inherit",
-      height: "inherit",
-    },
   },
   swiperSlide: {
     height: "600px",
     alignItems: "center",
     transform: "scale(1)",
+    [theme.breakpoints.between(1281, 3000)]: {
+      height: "400px",
+    },
     [theme.breakpoints.between(1201, 1280)]: {
       height: "270px",
     },
@@ -155,6 +154,23 @@ const useStyles = makeStyles(theme => ({
       height: "250px",
     },
   },
+  swiper: {
+    width: "100%",
+    boxSizing: "content-box",
+    height: "auto",
+    [theme.breakpoints.up("lg")]: {
+      height: "450px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      height: "340px",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "330px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "330px",
+    },
+  }
 }))
 
   const CustomerReview = ({ reviews, bulletClass }) => {
@@ -197,14 +213,14 @@ const useStyles = makeStyles(theme => ({
               clickable: true,
             }}
             grabCursor={true}
-            style={{
-              width: "100%",
-              boxSizing: "content-box",
-              height: "inherit"
-            }}
+            // style={{
+            //   width: "100%",
+            //   boxSizing: "content-box",
+            //   height: "350px"
+            // }}
             keyboard={{ enabled: true }}
             modules={[Pagination, Keyboard]}
-            className={bulletClass}
+            className={classes.swiper}
           >
             { projectDataAll
             ?.map((review, index) => (
