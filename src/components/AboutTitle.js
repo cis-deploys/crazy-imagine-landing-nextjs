@@ -97,7 +97,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    //animation: `$myEffectos 2000ms`,
     fontFamily: "HindVadodara",
     fontStyle: "normal",
     fontWeight: "400",

@@ -65,7 +65,7 @@ export async function getServerSideProps() {
   const resReviews = await fetch(`${domain}reviews?locale=all&populate=avatar`)
   const reviews = await resReviews.json()
 
-  const resHomepage = await fetch(`${domain}home-page?populate=seo`)//falta restringuir con populate
+  const resHomepage = await fetch(`${domain}home-page?locale=all&populate=seo`)//falta restringuir con populate
   const homepage = await resHomepage.json()
 
   return { props: { projects, projectsEn, articles, articlesEn, reviews, homepage } }
@@ -213,26 +213,9 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
     });
   });
   
-  // homepage.data.map(({ attributes: { seo }}) => {
-  //   const SeoHomepage = [];
-  //   if(seo.data){
-  //     seo.data.map(({ attributes: { metaTitle, metaDescription, keywords } }) => {
-  //       SeoHomepage.push({
-  //         metaTitle,
-  //         metaDescription,
-  //         keywords
-  //       });
-  //     });
-  //   }
-  //   });
 
   return (
     <Layout >
-      {/* <Head>
-        <title>Crazy Imagine Software | {metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta name="keywords" content={keywords} />
-      </Head> */}
       <Box overflow="hidden">
         <SectionHeader
           title={t("home_sectionHeader_title")}

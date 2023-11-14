@@ -21,23 +21,23 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     height: "100%",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "20px",
-      height: "100%",
-    },
-    [theme.breakpoints.down("xl")]: {
       fontSize: "15px",
       height: "100%",
     },
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "14px",
+      height: "100%",
+    },
     [theme.breakpoints.down("lg")]: {
-      fontSize: "12px",
+      fontSize: "14px",
       height: "100%",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "12px",
+      fontSize: "14px",
       height: "100%",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "11px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
       height: "inherit",
     },
   },
@@ -51,11 +51,15 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-end",
     color: "#27AAE1",
     marginBottom: "6px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xl")]: {
       fontSize: "14px",
       lineHeight: "15px",
     },
     [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "15px",
+    },
+    [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
       lineHeight: "15px",
     },
@@ -69,6 +73,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "22px",
     textAlign: "center",
     alignSelf: "flex-end",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
     [theme.breakpoints.down("lg")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -78,8 +86,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "15px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-      lineHeight: "9px",
+      fontSize: "12px",
+      lineHeight: "10px",
     },
   },
   iconsContainer: {
@@ -136,16 +144,16 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     transform: "scale(1)",
     [theme.breakpoints.between(1281, 3000)]: {
-      height: "400px",
+      height: "450px",
     },
     [theme.breakpoints.between(1201, 1280)]: {
-      height: "270px",
+      height: "300px",
     },
     [theme.breakpoints.between(901, 1200)]: {
-      height: "230px",
+      height: "250px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "225px",
+      height: "250px",
     },
     [theme.breakpoints.between(400, 549)]: {
       height: "210px",
@@ -213,11 +221,6 @@ const useStyles = makeStyles(theme => ({
               clickable: true,
             }}
             grabCursor={true}
-            // style={{
-            //   width: "100%",
-            //   boxSizing: "content-box",
-            //   height: "350px"
-            // }}
             keyboard={{ enabled: true }}
             modules={[Pagination, Keyboard]}
             className={classes.swiper}

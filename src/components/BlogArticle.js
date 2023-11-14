@@ -171,62 +171,6 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
     },
   },
-  // loadButton: {
-  //   visibility: "hidden",
-  // },
-  // loadButton2: {
-  //   background: "#797EF6",
-  //   borderRadius: "100px",
-  //   alignSelf: "center",
-  //   marginTop: "71px",
-  //   animation: `$myEffecto 2000ms`,
-  //   "&:hover": {
-  //     backgroundColor: "#30AADE",
-  //   },
-  //   "& > span": {
-  //     fontFamily: "Nexa Bold",
-  //     fontStyle: "normal",
-  //     fontWeight: "400",
-  //     fontSize: "14px",
-  //     padding: "14px 20px 12px 20px",
-  //     lineHeight: "14px",
-  //     display: "flex",
-  //     alignItems: "center",
-  //     textAlign: "center",
-  //     letterSpacing: "0.05em",
-  //     color: "#FFFFFF",
-  //   },
-  //   [theme.breakpoints.down("md")]: {
-  //     marginTop: "50px",
-  //     marginBottom: "75px",
-  //     "& > span": {
-  //       fontSize: "10px",
-  //       lineHeight: "10px",
-  //     },
-  //   },
-  //   [theme.breakpoints.down("sm")]: {
-  //     marginTop: "40px",
-  //     marginBottom: "70px",
-  //   },
-  //   [theme.breakpoints.down("xs")]: {
-  //     "& > span": {
-  //       fontSize: "9px",
-  //       lineHeight: "9px",
-  //     },
-  //     marginTop: "30px",
-  //     marginBottom: "45px",
-  //   },
-  // },
-  // "@keyframes myEffecto": {
-  //   "0%": {
-  //     opacity: 0,
-  //     transform: "translateY(300%)",
-  //   },
-  //   "100%": {
-  //     opacity: 1,
-  //     transform: "translateY(0)",
-  //   },
-  // },
 }))
 
 const BlogArticle = ({ articles: AllArticles }) => {
