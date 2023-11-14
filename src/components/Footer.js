@@ -76,12 +76,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     padding: "0px 60px",
     [theme.breakpoints.up("xl")]: {
-      maxWidth: "1920px",
+      maxWidth: "3000px",
       margin: "0 auto",
       padding: "0px 60px",
       flexDirection: "row",
     },
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.down("lg")]: {
       maxWidth: "1440px",
       margin: "0 auto",
       padding: "0px 60px",
@@ -210,6 +210,9 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       color: "white",
     },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "18px",
+    },
   },
   infoTypography: {
     color: "#FFFFFF",
@@ -217,6 +220,15 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "HindVadodara",
     fontWeight: "400",
     fontSize: "14px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "15px",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "15px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "10px",
     },

@@ -13,7 +13,7 @@ import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
     section: {
-      padding: "50px 0",
+      padding: "50px 43px",
       backgroundColor:"white",
     },
     container: {
@@ -25,57 +25,24 @@ const useStyles = makeStyles(theme => ({
       gap: "50px",
       padding: "0 2%",
       paddingBottom: "4%",
-      [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
+      [theme.breakpoints.between(0, 960)]: {
+        flexDirection: "row",
         alignItems: "center",
-        padding: "0 5%",
-      },
-      [theme.breakpoints.down("xs")]: {
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "0 5%",
+        padding: "0 20%",
+        gap: "20px"
       },
     },
     containerImage: {
       display: "flex",
       justifyContent: "center",
-    },
-    title: {
-      visibility: "hidden",
-    },
-    title2: {
-      animation: `$myEffectTitle 2000ms`,
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "700",
-      fontSize: "50px",
-      textAlign: "center",
-      color: "#193173",
-      lineHeight: "40px",
-      margin: "50px 0",
-      [theme.breakpoints.down("sm")]: {
-        margin: "30px 0",
-        fontSize: "40px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        margin: "20px 0",
-        fontSize: "30px",
-      },
-    },
-    "@keyframes myEffectTitle": {
-      "0%": {
-        opacity: 0,
-        transform: "translateY(-200%)",
-      },
-      "100%": {
-        opacity: 1,
-        transform: "translateY(0)",
-      },
+      [theme.breakpoints.between(0, 960)]: {
+      width: "50%"
+      }
     },
     logo: {
       width: "100%",
       height: "auto",
-      objectFit: 'contain'
+      objectFit: 'contain',
     }
 }))
 
@@ -87,7 +54,7 @@ const Partners = () => {
 
   return (
     <Box className={classes.section}>
-      <Typography ref={ref} className={isVisible ? classes.title2 : classes.title}>
+      <Typography ref={ref} className={isVisible ? 'title-blue' : 'title'}>
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>

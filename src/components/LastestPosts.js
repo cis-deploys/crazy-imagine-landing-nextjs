@@ -8,61 +8,37 @@ import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 
 const useStyes = makeStyles(theme => ({
-  title: {
-    visibility: "hidden",
-  },
-  title2: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    color: "#FFFFFF",
-    marginTop: "78px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineWeight: "28px",
-      marginTop: "55px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "0px 60px 10px",
-    gap: "23px",
+    padding: "0px 0px 10px",
+    gap: "15px",
     justifyContent: "center",
     backgroundColor: "#193174",
     backgroundImage: `url('/background.svg')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    height: "670px",
-    [theme.breakpoints.down("md")]: {
+    height: "800px",
+    [theme.breakpoints.up("lg")]: {
+      padding: "55px 43px 0px 43px",
       gap: "16px",
-      padding: "0px 43px 20px",
-      height: "550px",
+      height: "700px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      padding: "20px 43px 0px 43px",
+      gap: "16px",
+      height: "460px",
+    },
+    [theme.breakpoints.down("md")]: {
+      padding: "20px 43px 0px 43px",
+      gap: "16px",
+      height: "460px",
     },
     [theme.breakpoints.down("sm")]: {
+      padding: "20px 43px 0px 43px",
       gap: "16px",
-      padding: "0px 0px 0px",
-      height: "520px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      gap: "16px",
-      padding: "0px 0px 0px",
-      height: "520px",
+      height: "460px",
     },
   },
   link: {
@@ -79,6 +55,10 @@ const useStyes = makeStyles(theme => ({
     letterspacing: "0.1em",
     color: "#888DFF",
     marginBottom: "auto",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "20px",
+      lineHeight: "18px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -129,7 +109,7 @@ const LastestPosts = ({ articles, articlesAll }) => {
     <Box ref={ref} className={classes.container}>
       <Typography
 
-        className={isVisible ? classes.title2 : classes.title}>
+        className={isVisible ? 'title-white' : 'title'}>
         {t("home_lastestPosts_title")}
 
         </Typography>

@@ -22,8 +22,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
+      },
       [theme.breakpoints.down("md")]: {
-        fontSize: "10px",
+        fontSize: "15px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "12px",
       },
     },
      "& .MuiTypography-body1": {
@@ -33,6 +39,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "140%",
       color: "#193173",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "15px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "11px",
+      },
     },
     "& .MuiFormLabel-root": {
       fontFamily: "HindVadodara",
@@ -41,9 +56,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("md")]: {
-        fontSize: "10px",
-      },
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "18px",
+        },
+        [theme.breakpoints.down("md")]: {
+          fontSize: "12px",
+        },
+        [theme.breakpoints.down("md")]: {
+          fontSize: "10px",
+        },
     },
     "& .MuiInput-underline:before": {
       borderBottom: "1px #D6D6D6 solid !important",
@@ -168,12 +189,6 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "80%",
-      gap: "20px",
-      flexDirection: "column",
-      alignItems: "center",
-    },
   },
   formContainer: {
     visibility: "hidden",
@@ -195,12 +210,6 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "15px",
-      padding: "4px",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    [theme.breakpoints.down("xs")]: {
       marginTop: "15px",
       padding: "4px",
       justifyContent: "center",
@@ -282,31 +291,6 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "10px",
     },
   },
-  attachButton: {
-    border: "2px solid #797EF6",
-    borderRadius: "100px",
-    padding: "14px 20px 12px 20px",
-    marginBottom: "15px",
-    color: "#797EF6",
-    cursor: "pointer",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "14px",
-    lineHeight: "14px",
-    textAlign: "center",
-    letterSpacing: "0.05em",
-    "&:hover": {
-      backgroundColor: "#797EF6",
-      color: "white",
-    },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "9px",
-      padding: "10px 14px 8px 14px",
-      fontSize: "10px",
-      lineHeight: "10px",
-    },
-  },
   formInput: {
     height: 1,
     width: "520px",
@@ -320,9 +304,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: "226px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "189px",
     },
   },
   shortInput: {
@@ -338,10 +319,6 @@ const useStyles = makeStyles(theme => ({
       width: "104px",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "86px",
-      alignItems: "center",
-    },
   },
   shortContainer: {
     display: "flex",
@@ -351,7 +328,6 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
       marginBottom: "30px",
-      //width: "80%"
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "30px",
@@ -379,6 +355,15 @@ const useStyles = makeStyles(theme => ({
       textAlign: "center",
       letterSpacing: "0.05em",
       color: "#FFFFFF",
+    },
+    [theme.breakpoints.up("xl")]: {
+      marginTop: "16px",
+      marginBottom: "25px",
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "15px",
+        lineHeight: "10px",
+      },
     },
     [theme.breakpoints.down("md")]: {
       marginTop: "16px",
@@ -761,7 +746,7 @@ const WorkForm = () => {
                </Select> 
               }
             /> 
-            <Button className={classes.formButton} type="submit" disabled={showButton}>
+            <Button className={'button-component'} type="submit" disabled={showButton}>
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

@@ -3,6 +3,351 @@ body {
   margin: 0px;
 }
 
+/*Components---------------------------------------------------------------*/
+
+@keyframes myEffectCard-service {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.containerServices2 {
+  animation: myEffectCard-service 2000ms;
+  width: 314px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
+    width: 314px;
+    height: auto !important;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 270px;
+    height: auto !important;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 240px;
+    height: auto !important;
+  }
+}
+@keyframes myEffectosCard-container {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cardContainer {
+  visibility: hidden;
+}
+
+.cardContainerHome2 {
+  animation: myEffectosCard-container 2000ms;
+  background-color: #FFFFFF;
+  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  height: 185px;
+  width: 314px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
+    width: 314px;
+    height: 185px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 270px;
+    height: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 240px;
+    height: 130px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.cardContentHome {
+  width: 314px;
+  height: 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: "10px";
+  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
+    width: 314px;
+    height: 185px;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 250px;
+    height: 150px;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 240px;
+    height: 130px;
+  }
+}
+
+.container-white-component {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  gap: 59px;
+  height: 100%;
+  margin-top: 10px;
+  @media only screen and (min-width: 601px) and (max-width: 959px) {
+    gap: 10px;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    width: 80%;
+  }
+  @media only screen and (max-width: 600px) {
+    flex-direction: row;
+    gap: 0px;
+    width: 80%;
+    margin-top: 10px;
+  };
+}
+
+.text-container-white-component {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: 45%;
+  white-space: pre-line;
+  @media only screen and (min-width: 1920px){
+    margin-top: 9px;
+    margin-bottom: 9px;
+    width: 40%;
+    gap: 14px;
+  };
+  @media only screen and (max-width: 960px) {
+    margin-top: 9px;
+    margin-bottom: 9px;
+    width: 40%;
+    gap: 14px;
+  }
+}
+
+.title-card {
+  font-family: Nexa Bold;
+  font-style: normal;
+  font-weight: 700;
+  width: 150px;
+  font-size: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #193174;
+  margin-top: 10px;
+  @media only screen and (min-width: 1920px){
+    width: 220px;
+    font-size: 28px;
+    line-height: 28px;
+  }
+  @media only screen and (min-width: 960px) and (max-width: 1919px) {
+    width: 220px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+  @media only screen and (max-width: 959px) {
+    width: 220px;
+    font-size: 15px;
+    line-height: 15px;
+  }
+}
+
+@keyframes myEffect-title {
+  0% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  visibility: hidden;
+}
+
+.title-blue {
+  animation: myEffect-title 2000ms;
+  font-family: Nexa Bold;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+  margin-top: 20px;
+  text-align: center;
+  color: #193173;
+  padding-bottom: 20px ;
+  @media only screen and (min-width: 1920px){
+    font-size: 40px;
+    line-height: 38px;
+  }
+  @media only screen and (min-width: 960px) and (max-width: 1919px) {
+    font-size: 35px;
+    line-height: 32px;
+  }
+  @media only screen and (max-width: 959px) {
+    font-size: 25px;
+    line-height: 28px;
+    margin-bottom: 0px;
+  }
+}
+
+.title-white {
+  animation: myEffect-title 2000ms;
+  font-family: Nexa Bold;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  color: #FFFFFF;
+  white-space: pre-line;
+  @media only screen and (min-width: 1920px){
+      font-size: 40px;
+      line-height: 38px;
+      margin-bottom: 0px;
+  }
+  @media only screen and (min-width: 960px) and (max-width: 1919px) {
+      font-size: 35px;
+      line-height: 32px;
+      margin-bottom: 0px;
+  }
+  @media only screen and (max-width: 959px) {
+      font-size: 25px;
+      line-height: 28px;
+      margin-bottom: 0px;
+    }
+};
+
+@keyframes myEffectbutton {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.button {
+  visibility: hidden;
+}
+
+.button-component {
+  animation: myEffectbutton 2000ms;
+  background: #797EF6;
+  border-radius: 100px;
+  margin-bottom: 87px;
+  margin-top: 48px;
+  > span {
+    font-family: Nexa Bold;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 14px 20px 12px 20px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+  };
+  @media only screen and (min-width: 1920px){
+    margin-bottom: 61px;
+    margin-top: 10px;
+      > span  {
+        font-size: 20px;
+        line-height: 18px;
+        padding: 14px 20px 12px 20px;
+      }
+
+  }
+  @media only screen and (min-width: 960px) and (max-width: 1919px) {
+    margin-bottom: 61px;
+      margin-top: 34px;
+      > span {
+        font-size: 10px;
+        line-height: 14px;
+        padding: 10px 14px 8px 14px;
+      };
+  }
+  @media only screen and (max-width: 959px) {
+    margin-bottom: 20px;
+    margin-top: 24px;
+    > span {
+      font-size: 10px;
+      line-height: 14px;
+      padding: 10px 14px 8px 14px;
+    };
+  }
+}
+
+.button-component:hover {
+  background-color: #30AADE;
+};
+
+@keyframes myEffect-image-component {
+  0% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.image {
+  display: none;
+}
+.image-component {
+  animation: myEffect-image-component 2000ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 1920px){
+    width: 100%;
+  };
+  @media only screen and (min-width: 960px) and (max-width: 1919px) {
+    width: 80%;
+  };
+  @media only screen and (max-width: 959px) {
+    width: 60%;
+  }
+}
+
 /* Carrousel -------------------------------------------------------*/
 
 .swiper {
@@ -21,15 +366,16 @@ body {
 }
 
 .swiper-pagination-bullet {
-  width: 11px;
-  height: 11px;
+  width: 20px;
+  height: 15px;
 }
 
 .swiper-pagination {
   position: static;
-  padding: 20px 0px;
+  padding: 10px;
   order: 2;
 }
+
 /* swiper-bullet ---------------------------------------------------*/
 
 .purpleBullet {
@@ -61,10 +407,6 @@ body {
   --swiper-theme-color: #ffffff;
   --swiper-pagination-bullet-inactive-color: #b2b6ff;
 }
-
-
-
-
 
 /* typography ------------------------------------------------------*/
 

@@ -65,7 +65,7 @@ export async function getServerSideProps() {
   const resReviews = await fetch(`${domain}reviews?locale=all&populate=avatar`)
   const reviews = await resReviews.json()
 
-  const resHomepage = await fetch(`${domain}homepage?locale=all`)//falta restringuir con populate
+  const resHomepage = await fetch(`${domain}home-page?locale=all&populate=seo`)//falta restringuir con populate
   const homepage = await resHomepage.json()
 
   return { props: { projects, projectsEn, articles, articlesEn, reviews, homepage } }
@@ -212,6 +212,7 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
       avatar: avatarReviews,
     });
   });
+  
 
   return (
     <Layout >
