@@ -13,12 +13,9 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    gap: "59px",
+    gap: "5px",
     height: "100%",
     marginTop: "50px",
-    [theme.breakpoints.between(0, 600)]: {
-      gap: "5px",
-    },
   },
   titleContainer: {
     alignSelf: "flex-start",
@@ -96,13 +93,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "17px",
-    letterSpacing: "0.03em",
+    letterSpacing: "0.02em",
+    textAlign: "justify",
     color: "#193174",
     [theme.breakpoints.between(601, 3000)]: {
       display: "none",
-    },
-    [theme.breakpoints.between(0, 600)]: {
-      display: "unset",
     },
   },
   imgContainer: {
@@ -147,7 +142,7 @@ export const TitleSection = ({ desc }) => {
         </Typography>
       </Box>
     </Box>
-    <Box sx={{ padding: "0px 30px", textAlign: "center", width: "90%", marginBottom: "50px"}}>
+    <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "50px"}}>
       <Typography ref={ref} className={classes.desc2}>
           {desc}
       </Typography>

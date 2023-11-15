@@ -7,12 +7,12 @@ import { makeStyles } from "@mui/styles"
 const useStyles = makeStyles(theme => ({
   container: {
     height: "auto",
-    paddingTop: "50px",
+    padding: "0px 10px",
     width: "100%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.between(0, 3000)]: {
       height: "auto",
-      paddingTop: "50px",
-      paddingBottom: "50px",
+      paddingTop: "30px",
+      paddingBottom: "30px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "80%",
@@ -60,6 +60,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
+      textAlign: "justify",
       lineHeight: "17px",
       whiteSpace: "normal",
     },
@@ -67,7 +68,7 @@ const useStyles = makeStyles(theme => ({
   desc: {
     fontFamily: "HindVadodara",
     fontWeight: "600",
-    whiteSpace: "pre-line",
+    //whiteSpace: "pre-line",
     fontSize: "30px",
     lineHeight: "39px",
     paddingTop: "40px",
@@ -77,15 +78,17 @@ const useStyles = makeStyles(theme => ({
       fontSize: "30px",
       lineHeight: "30px",
     },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "21px",
-      lineHeight: "27px",
+    [theme.breakpoints.between(601, 1280)]: {
+      padding: "20px 30px 0px 30px",
+      fontSize: "18px",
+      lineHeight: "25px",
     },
     [theme.breakpoints.down("sm")]: {
       paddingTop: "25px",
       fontSize: "15px",
-      lineHeight: "17px",
+      lineHeight: "18px",
       whiteSpace: "normal",
+      textAlign: "justify",
     },
   },
 }))

@@ -3,8 +3,6 @@ import { Box, Typography, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
-// import Link from "next/link"
-// import { CONTACT } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -262,23 +260,17 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("lg")]: {
+      lineHeight: "70px",
+      fontWeight: "600",
+      fontSize: "70px",
+    },
     [theme.breakpoints.down("md")]: {
       lineHeight: "40px",
       fontWeight: "600",
       fontSize: "40px",
     },
-    [theme.breakpoints.down("sm")]: {
-      lineHeight: props.little ? "51px" : "40px",
-      fontSize: props.little ? "23px" : "30px",
-      fontWeight: props.little ? 600 : 400,
-    },
-    [theme.breakpoints.down("xs")]: {
-      whiteSpace: "normal",
-      lineHeight: props.little ? "51px" : "40px",
-      fontSize: props.little ? "23px" : "30px",
-      fontWeight: 100,
-    },
-    [theme.breakpoints.between(0, 400)]: {
+    [theme.breakpoints.between(0, 600)]: {
       lineHeight: props.little ? "41px" : "30px",
       fontSize: props.little ? "21px" : "25px",
       fontWeight: 100,

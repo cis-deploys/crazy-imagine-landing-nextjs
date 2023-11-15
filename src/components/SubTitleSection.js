@@ -57,6 +57,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: "58px",
     lineHeight: "58px",
     color: "#193174",
+    [theme.breakpoints.down("lg")]: {
+      fontWeight: "auto",
+      fontSize: "50px",
+      lineHeight: "50px",
+    },
     [theme.breakpoints.down("md")]: {
       fontWeight: "auto",
       fontSize: "53px",
@@ -67,12 +72,6 @@ const useStyles = makeStyles(theme => ({
       fontWeight: "auto",
       fontSize: "28px",
       lineHeight: "28px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "22px",
-      lineHeight: "22px",
     },
   },
   desc2: {

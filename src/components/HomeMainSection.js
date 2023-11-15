@@ -29,15 +29,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   cardContainer: {
-    paddingTop:"62px",
+    paddingTop:"5px",
     [theme.breakpoints.down("sm")]: {
       paddingTop:"0px",
       flexDirection: "column",
     },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      paddingTop: "0px"
-    },  
   },
 }))
 

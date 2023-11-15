@@ -82,15 +82,9 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
-      lineHeight: "16px",
+      fontSize: "12px",
+      lineHeight: "14px",
       marginBottom: "40px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "8px",
-      lineHeight: "10px",
-      marginBottom: "30px",
-      padding: "0 15px",
     },
   },
   inputContainer: {

@@ -48,20 +48,16 @@ const useStyles = makeStyles(theme => ({
     },
   },
   carouselContainer: {
-    boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
+    boxShadow: "3px 0px 3px 3px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     width: "max-content",
     height: "fit-content",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.up("xl")]: {
-      width: "450px",
+    [theme.breakpoints.between(1281, 3000)]: {
+      width: "460px",
       height: "320px"
-    },
-    [theme.breakpoints.up("lg")]: {
-      width: "450px",
-      height: "300px"
     },
     [theme.breakpoints.down("lg")]: {
       width: "360px",
@@ -76,6 +72,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: "20px",
       width: "350px",
       height: "260px",
+      boxShadow: "2px 0px 2px 2px rgba(0, 0, 0, 0.1)",
     },
   },
   titleCarousel: {
