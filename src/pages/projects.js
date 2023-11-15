@@ -35,7 +35,7 @@ function Projects({ projects }) {
   // console.log(projects.data)
   
   const projectsNew = [];
-
+  console.log(projects)
   projects?.data.map(({ 
     attributes:{
       Key,
@@ -52,9 +52,10 @@ function Projects({ projects }) {
       slug,
       title,
       updatedAt,
+      project_types: types,
     }} ) => {
-      
     const imagesArticles = [];
+    const typesArticles = [];
     if(images){
       images.data.map(({ attributes: { url }}) => {
         imagesArticles.push({
@@ -62,10 +63,15 @@ function Projects({ projects }) {
         });
       });
     }
+    if(types){
+      types.data.map(({ attributes: { name }}) => {
+        typesArticles.push({
+          name,//: `${domain}${url}`
+        });
+      });
+    }
+    
     // --------------------------- eliminar valores de prueba ----------------------------
-    const tipo1 = "Wordpress";
-    const tipo2 = "App con JS";
-    const tipo3 = "eCommerce";
     projectsNew.push({
       title,
       description,
@@ -78,49 +84,7 @@ function Projects({ projects }) {
       images: imagesArticles,
       galleryImages,
       seo,
-      type: tipo1
-    });
-    projectsNew.push({
-      title,
-      description,
-      details,
-      moreAbout,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      images: imagesArticles,
-      galleryImages,
-      seo,
-      type: tipo2
-    });
-    projectsNew.push({
-      title,
-      description,
-      details,
-      moreAbout,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      images: imagesArticles,
-      galleryImages,
-      seo,
-      type: tipo3
-    });
-    projectsNew.push({
-      title,
-      description,
-      details,
-      moreAbout,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      images: imagesArticles,
-      galleryImages,
-      seo,
-      type: tipo1
+      types: typesArticles, 
     });
     
   });

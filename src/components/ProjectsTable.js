@@ -256,20 +256,23 @@ const BlogArticle = ({ AllArticles }) => {
       loadingPage(articlesFilter);
       setCalculatePage(Math.ceil(articles.length / QUANTITYPAGE));
     }else{
-      const filteredObjects = articlesFilter.filter((obj) => newSelected.includes(obj.type.replace(/\s+/g, '').toLowerCase()));
+      const filteredObjects = articlesFilter.filter((obj) => 
+        ( obj.types.some(type => newSelected.includes(type.replace(/\s+/g, '').toLowerCase())) )
+      );
       setCalculatePage(Math.ceil(filteredObjects.length / QUANTITYPAGE));
       loadingPage(filteredObjects);
     }
   };
 
   const loadingSelectedOption = () => {
-    const types = articlesFilter.sort((a, b) => {return new Date(b.created_at) - new Date(a.created_at)}
-    ).map(object => object.type)
+    const types = articlesFilter.sort((a, b) => {return new Date(b.created_at) - new Date(a.created_at)})
+      .map(object => object.types) 
+      .flat();
 
     const uniqueTypes = types.filter((value, index, self) => {
       return value && self.indexOf(value) === index;
     });
-    setSelectedOption(uniqueTypes);
+    setSelectedOption(uniqueTypes); 
   };
 
   const loadingPage = (elements = []) =>{
@@ -290,7 +293,9 @@ const BlogArticle = ({ AllArticles }) => {
       }
 
       if(selectedButtons[0]){
-        loadingPage(articlesFilter.filter((obj) => selectedButtons.includes(obj.type.replace(/\s+/g, '').toLowerCase())));
+        loadingPage(articlesFilter.filter((obj) => 
+          ( obj.types.some(type => newSelected.includes(type.replace(/\s+/g, '').toLowerCase())) )
+        ));
       }else{
         loadingPage(AllArticles);
       }
@@ -349,7 +354,7 @@ const BlogArticle = ({ AllArticles }) => {
               const dataImage = el?.images[0]?.url
               const title = el?.images[0]?.title
             return(
-            <Grid xs={12} sm={6} smOffset={1} md={4} mdOffset={2} lg={3} lgOffset={1} key={index} className={classes.containerItem} >
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index} className={classes.containerItem} >
               <Box component="article" className={classes.container2}>
                 <Image className={classes.ron} src={dataImage} alt={title} width={580} height={250}/>
                 <Box className={classes.textContainer}>
