@@ -244,6 +244,14 @@ const useStyles = makeStyles(theme => ({
       height: "70%",
     },
   },
+  contactButton: {
+    background: "rgba(25, 49, 116, 0.87)",
+    border: "1px solid rgba(0, 0, 0, 0)",
+    margin: 0,
+    "&:hover": {
+      border: "1px solid rgba(25, 49, 116, 0.87)"
+    },
+  },
   "@keyframes myEffect": {
     "0%": {
       opacity: 0,
@@ -316,7 +324,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const SectionHeader = ({ title, desc, btn, little, img }) => {
+export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
   const classes = useStyles({ little, btn })
   const { t } = useTranslation()
 
@@ -326,6 +334,14 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
         <Box className={classes.textContainer}>
           <Typography className={classes.title} variant="h1" component="h1"><span>{title}</span></Typography>
           <Typography className={classes.desc}>{desc}</Typography>
+          { button ? 
+            <Button component="a" href={`#${button.refID}`}
+              className={`button-component ${classes.contactButton} `}
+            >
+              <span>{button.text}</span>
+            </Button> 
+            : ''
+          }
         </Box>
         <Box className={classes.imgContainer}>
           <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" />
