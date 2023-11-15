@@ -245,11 +245,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   contactButton: {
-    background: "rgba(25, 49, 116, 0.87)",
-    border: "1px solid rgba(0, 0, 0, 0)",
+    background: "#797EF6",
     margin: 0,
     "&:hover": {
-      border: "1px solid rgba(25, 49, 116, 0.87)"
+      background: "#797EF6",
     },
   },
   "@keyframes myEffect": {
