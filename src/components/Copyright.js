@@ -7,85 +7,38 @@ import Link from "next/link"
 import '@fontsource/roboto/400.css'
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
-    backgroundColor: "#071A4E",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-      height: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      height: "auto",
-    },
-  },
   copyContainer: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "92%",
-    height: "78px",
-    [theme.breakpoints.down("md")]: {
-      height: "55px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-      height: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      height: "auto",
-      marginTop: "5px",
-      marginBottom: "5px",
-    },
+    alignItems: "left",
+    flexDirection: "column",
+    width: "100%",
     [theme.breakpoints.up("xl")]: {
-      maxWidth: "1920px",
+      maxWidth: "3000px",
       margin: "0 auto",
       padding: "0px",
     },
   },
   copyright: {
-    color: "white",
-    fontFamily: "Roboto",
+    color: "#FFFFFF",
+    fontFamily: "Roboto,sans-serif",
     fontWeight: 400,
-    fontSize: "12px",
+    fontSize: "14px",
     textAlign: "left",
     fontStyle: "normal",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
+    lineHeight: "25px",
+    marginBottom: "10px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "17.6px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "5px",
+    [theme.breakpoints.between(0, 325)]: {
+      fontSize: "14px",
     },
   },
   barText: {
-    color: "#27AAE1",
+    color: "#A7E4F5",
     fontSize: "15px",
     height: "17px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
-      height: "12px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-      height: "7px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "5px",
-    },
-  },
-  text: {
-    textAlign: "right",
-    fontWeight: 700,
-    fontSize: "12px",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "5px",
-    },
+    alignItems: "left",
   },
 }))
 
@@ -94,24 +47,22 @@ const Copyright = () => {
   const { t } = useTranslation()
 
   return (
-    <Box className={classes.container}>
       <Box className={classes.copyContainer}>
         <Typography className={classes.copyright}>
           {" "}
           {t("home_copyright_label1")}
         </Typography>
+
         <Link href={`${PRIVACY_POLICY}`} >
+
           <a className={classes.copyright} >
-          {" "}
           {t("home_copyright_label2")}
-          
           <span className={classes.barText}>|</span>
-          
           {t("home_copyright_label3")}
           </a>
+
         </Link>
       </Box>
-    </Box>
   )
 }
 

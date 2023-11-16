@@ -20,12 +20,24 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.01em",
     color: "#193174",
     height: "100%",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "15px",
       height: "100%",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "11px",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "14px",
+      height: "100%",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "14px",
+      height: "100%",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      height: "100%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
       height: "inherit",
     },
   },
@@ -39,8 +51,16 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-end",
     color: "#27AAE1",
     marginBottom: "6px",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "14px",
+      lineHeight: "15px",
+    },
     [theme.breakpoints.down("md")]: {
-      fontSize: "15px",
+      fontSize: "14px",
+      lineHeight: "15px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
       lineHeight: "15px",
     },
   },
@@ -53,13 +73,21 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "22px",
     textAlign: "center",
     alignSelf: "flex-end",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "9px",
-      lineHeight: "9px",
+      fontSize: "12px",
+      lineHeight: "10px",
     },
   },
   iconsContainer: {
@@ -93,15 +121,15 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#FFFFFF",
     justifyContent: "space-between",
     width: "max-content",
-    height: "400px",
+    height: "300px",
     boxSizing: "border-box",
     [theme.breakpoints.down("lg")]: {
-      padding: "22px 35px 18px 35px",
-      gap: "14px",
-      height: "400px",
+      padding: "22px 35px 11px 35px",
+      gap: "11px",
+      height: "inherit",
     },
     [theme.breakpoints.down("md")]: {
-      padding: "22px 35px 18px 35px",
+      padding: "22px 35px 11px 35px",
       gap: "14px",
       height: "inherit",
     },
@@ -110,23 +138,22 @@ const useStyles = makeStyles(theme => ({
       gap: "9px",
       height: "inherit",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "inherit",
-      height: "inherit",
-    },
   },
   swiperSlide: {
     height: "600px",
     alignItems: "center",
     transform: "scale(1)",
+    [theme.breakpoints.between(1281, 3000)]: {
+      height: "450px",
+    },
     [theme.breakpoints.between(1201, 1280)]: {
-      height: "250px",
+      height: "300px",
     },
     [theme.breakpoints.between(901, 1200)]: {
-      height: "230px",
+      height: "250px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "225px",
+      height: "250px",
     },
     [theme.breakpoints.between(400, 549)]: {
       height: "210px",
@@ -135,6 +162,23 @@ const useStyles = makeStyles(theme => ({
       height: "250px",
     },
   },
+  swiper: {
+    width: "100%",
+    boxSizing: "content-box",
+    height: "auto",
+    [theme.breakpoints.up("lg")]: {
+      height: "450px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      height: "340px",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "330px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "330px",
+    },
+  }
 }))
 
   const CustomerReview = ({ reviews, bulletClass }) => {
@@ -177,13 +221,9 @@ const useStyles = makeStyles(theme => ({
               clickable: true,
             }}
             grabCursor={true}
-            style={{
-              width: "100%",
-              boxSizing: "content-box",
-            }}
             keyboard={{ enabled: true }}
             modules={[Pagination, Keyboard]}
-            className={bulletClass}
+            className={classes.swiper}
           >
             { projectDataAll
             ?.map((review, index) => (

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 import 'swiper/swiper-bundle.css';
+import { useRouter } from "next/router"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -109,7 +110,8 @@ const RelatedProjects = ({ bulletClass, projects }) => {
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
   const lang = i18n.language 
-
+  const router = useRouter();
+  const { Key } = router.query;
 
         return (
           <Swiper
@@ -142,7 +144,7 @@ const RelatedProjects = ({ bulletClass, projects }) => {
             {
               projects
               ?.filter(projects => projects?.locale?.includes(lang))
-              ?.filter((project) => project.title !== null )
+              ?.filter((project) => project.title !== null && project.Key !== Key)
               ?.map((el, index) => (
 
               <SwiperSlide key={index} className={classes.carousel}>
@@ -154,7 +156,7 @@ const RelatedProjects = ({ bulletClass, projects }) => {
                     <Typography className={classes.title}>
                       {el?.title}
                     </Typography>
-                    <Link href={`${PROJECTS}/${el?.Key}`} >
+                    <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`} >
                       <a className={classes.link}>
                       {t("common_lastestPosts_blogPost_button_readMore")}
                       </a>

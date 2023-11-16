@@ -43,6 +43,7 @@ import {
   CONTACT,
   HOME,
   PROJECTS,
+  SERVICES,
   WORK_WITH_US,
   ABOUT,
   BLOG,
@@ -278,8 +279,18 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
-                key="navbar-link-projects"
-                href={`${PROJECTS}`}>
+              key="navbar-link-projects"
+              href={`${PROJECTS}`}>
+
+              <a className={classes.resetLink}>
+              <Typography className={classes.textLink}>
+                {t("common_button_projects")}
+              </Typography>
+              </a>
+            </Link>,
+              <Link
+                key="navbar-link-services"
+                href={`${SERVICES}`}>
 
                 <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>

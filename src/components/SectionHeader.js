@@ -1,8 +1,10 @@
 import React from "react"
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
+// import Link from "next/link"
+// import { CONTACT } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -190,7 +192,7 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "50px 0px 20px 0px",
+      padding: "30px 0px 20px 0px",
       width: "auto",
       height: "auto",
       gap: "22px",
@@ -308,6 +310,10 @@ const useStyles = makeStyles(theme => ({
       width: "100%"
     },
   }),
+  link: {
+    textDecoration: "none",
+    borderRadius: "100px"
+  },
 }))
 
 export const SectionHeader = ({ title, desc, btn, little, img }) => {

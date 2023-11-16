@@ -7,6 +7,7 @@ import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
 import {
   CONTACT,
   HOME,
+  SERVICES,
   PROJECTS,
   WORK_WITH_US,
   ABOUT,
@@ -24,7 +25,6 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     width: "100%",
-    padding: "0px",
     backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
     zIndex: 9,
   }),
@@ -46,19 +46,23 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "100px",
     textDecoration: "none",
     border: "2px solid #FFFFFF",
+    [theme.breakpoints.up("xl")]: {
+      width: "200px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "140px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
     "&:hover": {
       background: "#FFFFFF",
       "& span": {
         color: "#1E2F97",
       },
-    },
-    [theme.breakpoints.down("lg")]: {
-      width: "140px",
-      height: " 35px",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "130px",
-      height: " 30px",
     },
   },
   linkTypography: props => ({
@@ -72,6 +76,15 @@ const useStyles = makeStyles(theme => ({
     color: props.scroll ? props.linkVariant : "#FFFFFF",
     position: "relative",
     textDecoration: "none !important",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: 18,
+    },
+    [theme.breakpoints.down("xl")]: {
+      fontSize: 12,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 10,
+    },
     "&::before, &::after": {
       content: "''",
       position: "absolute",
@@ -81,13 +94,6 @@ const useStyles = makeStyles(theme => ({
       content: "''",
       color: "#FFFFFF",
     },
-    [theme.breakpoints.down("lg")]: {
-      maxWidth: "auto",
-      fontSize: 14,
-    },
-    [theme.breakpoints.down("md")]: {
-      fontSize: 13,
-    },
   }),
   barContainer: {
     margin: 1,
@@ -96,17 +102,17 @@ const useStyles = makeStyles(theme => ({
     height: "6em",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: "40px",
+    gap: "30px",
     [theme.breakpoints.between(1280, 1300)]: {
       gap: "20px",
     },
     [theme.breakpoints.up("lg")]: {
       maxWidth: "auto",
       margin: "0 auto",
-      padding: "0px 60px",
+      padding: "0px 40px",
     },
     [theme.breakpoints.up("xl")]: {
-      maxWidth: "1920px",
+      maxWidth: "auto",
       margin: "0 auto",
       padding: "0px 60px",
     },
@@ -207,6 +213,13 @@ export const Navbar = ({
             </Typography>
             <Typography>
             <Link href={`${PROJECTS}`} >
+                <a className={`${classes.linkTypography} ${classes.effect}`}>
+                {t("common_button_projects")}
+                </a>
+              </Link>
+            </Typography>
+            <Typography>
+            <Link href={`${SERVICES}`} >
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
                 {t("common_button_services")}
                 </a>

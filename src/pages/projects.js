@@ -12,47 +12,53 @@ const SectionHeader = dynamic(
   { ssr: false },
 )
 
-const ServicesSection = dynamic(
-  () => import("../components/ServicesSection"),
-  { ssr: false },
-)
-
-const ProjectSection = dynamic(
-  () => import("../components/ProjectSection"),
-  { ssr: false },
-)
-
 const ContactSection = dynamic(
   () => import("../components/ContactSection"),
   { ssr: false },
 )
 
+const ProjectsTable = dynamic(
+  () => import("../components/ProjectsTable"),
+  { ssr: false },
+)
+
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-  const resProjects = await fetch(`${domain}projects?locale=all&populate=images&populate=galleryImages&populate=seo`)
-  const projects = await resProjects.json()
+  const resArticles = await fetch(`${domain}projects?populate=*`)
+  const projects = await resArticles.json()
+
   return { props: { projects } }
 }
 
 function Projects({ projects }) {
   const { t } = useTranslation()
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
-
+  // console.log(projects.data)
+  
   const projectsNew = [];
-  projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
+
+  projects?.data.map(({ 
+    attributes:{
+      Key,
+      createdAt,
+      description,
+      details,
+      galleryImages,
+      images,
+      locale,
+      localizations,
+      moreAbout,
+      publishedAt,
+      seo,
+      slug,
+      title,
+      updatedAt,
+    }} ) => {
+      
     const imagesArticles = [];
-    if(images.data){
+    if(images){
       images.data.map(({ attributes: { url }}) => {
         imagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    const galleryImagesArticles = [];
-    if(galleryImages.data){
-      galleryImages.data.map(({ attributes: { url }}) => {
-        galleryImagesArticles.push({
-          url//: `${domain}${url}`
+          url,//: `${domain}${url}`
         });
       });
     }
@@ -66,27 +72,25 @@ function Projects({ projects }) {
       createdAt,
       locale,
       images: imagesArticles,
-      galleryImages: galleryImagesArticles,
+      galleryImages,
       seo
     });
+    
   });
 
   return (
     <Layout>
       <Box overflow="hidden">
-        <SectionHeader
-          title={t("services_sectionHeader_title")}
+        <SectionHeader 
+          title={t("common_button_projects")}
           img={headerImage}
           btn={true}
           cls="textContainer"
         />
-        <ServicesSection />
-        <ProjectSection
-          title={t("services_projectSection_title")}
-          btn={false}
-          projects={projectsNew}
+        <ProjectsTable
+          AllArticles={projectsNew}
         />
-        <ContactSection />
+        <ContactSection/>
       </Box>
     </Layout>
   )

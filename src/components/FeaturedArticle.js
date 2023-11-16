@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     paddingBottom: "98px",
     overflow: "hidden",
+    [theme.breakpoints.down("lg")]: {
+      height: "auto",
+      padding: "0px 43px 58px 43px",
+    },
     [theme.breakpoints.down("md")]: {
       height: "708px",
       paddingBottom: "58px",
@@ -93,7 +97,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   cardContainer: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FFFFF",
     boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     overflow: "hidden",
@@ -101,11 +105,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     maxHeight: "750px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       width: "550px",
     },
-    [theme.breakpoints.down("sm")]: {
-      width: "425px",
+    [theme.breakpoints.down("md")]: {
+      width: "550px",
     },
     [theme.breakpoints.between(450, 600)]: {
       width: "325px",

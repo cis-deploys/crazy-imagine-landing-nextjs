@@ -68,30 +68,19 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     height: "auto",
-    marginTop: "83px",
     gap: "19px",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+    },
     [theme.breakpoints.down("md")]: {
-      marginTop:"40px",
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
       order: "2",
     },
     [theme.breakpoints.down("sm")]: {
-      alignItems: "center",
-      order: "2",
-    },
-  },
-  img2: {
-    marginTop: "83px",
-    display: "flex",
-    [theme.breakpoints.down("md")]: {
-      marginTop:"auto",
-      width: "100%",
-      justifyContent: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop:"auto",
       alignItems: "center",
       order: "2",
     },
@@ -106,7 +95,7 @@ const useStyles = makeStyles(theme => ({
      },
      [theme.breakpoints.down("md")]: {
       width: "100%",
-      padding: "30px 43px 0px",
+      padding: "0px 43px",
       flexDirection: "column",
       height: "auto",
      },
@@ -114,7 +103,7 @@ const useStyles = makeStyles(theme => ({
        height: "auto",
        flexDirection: "column",
        width: "100%",
-       padding: "10px 15px 0px",
+       padding: "0px 43px",
      },
   },
 }))
@@ -138,15 +127,17 @@ const ContactSection = ({ bgColor, bgImage }) => {
               {t("home_contacSection_subtitle")}
             </Typography>
             <Typography
-              className={isVisible ? classes.title2 : classes.title}
-            >{t("home_contacSection_title1")}</Typography>
+              className={isVisible ? 'title-blue' : 'title'}
+              style={{ marginTop: "7px", lineHeight: "25px", textAlign: "initial"}}
+            >
+              {t("home_contacSection_title1")}</Typography>
             <Typography
-              className={isVisible ? classes.title2 : classes.title}
-              style={{ marginTop: "-17px" }}
+              className={isVisible ? 'title-blue' : 'title'}
+              style={{ marginTop: "-17px", lineHeight: "5px", textAlign: "initial"}}
             >
               {t("home_contacSection_title2")}
             </Typography>
-            <Box className={classes.img2}>
+            <Box className={'image-component'}>
               <Image src={Satelite} width={352} height={234} alt="satellite" />
             </Box>
         </Grid>

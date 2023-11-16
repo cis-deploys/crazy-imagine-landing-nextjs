@@ -65,6 +65,12 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     lineHeight: "16px",
     textAlign: "right",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: 18,
+    },
+    [theme.breakpoints.down("xl")]: {
+      fontSize: 12,
+    },
     "& MuiInput-underline:hover:not(.Mui-disabled):before": {
       color: "white !important",
       borderBottom: "1px solid white !important",
