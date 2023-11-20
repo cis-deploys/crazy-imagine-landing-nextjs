@@ -32,10 +32,8 @@ export async function getServerSideProps() {
 
 function Projects({ projects }) {
   const { t } = useTranslation()
-  // console.log(projects.data)
   
   const projectsNew = [];
-  console.log(projects)
   projects?.data.map(({ 
     attributes:{
       Key,
@@ -65,13 +63,10 @@ function Projects({ projects }) {
     }
     if(types){
       types.data.map(({ attributes: { name }}) => {
-        typesArticles.push({
-          name,//: `${domain}${url}`
-        });
+        typesArticles.push( name );
       });
     }
     
-    // --------------------------- eliminar valores de prueba ----------------------------
     projectsNew.push({
       title,
       description,
