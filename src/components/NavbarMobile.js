@@ -3,7 +3,6 @@ import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 
-// COMPONENTS
 import LanguageModal from "./LanguageModal"
 
 import {
@@ -33,11 +32,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-// HOOKS HELPERS
 import { colorsIconos, colors } from "../helpers/navbarColors"
 import useScroll from "../hooks/useScroll"
 
-// STATIC
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
 import {
   CONTACT,
@@ -163,7 +160,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+  
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }))

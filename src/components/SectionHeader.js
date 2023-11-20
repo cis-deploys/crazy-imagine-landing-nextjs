@@ -3,8 +3,6 @@ import { Box, Typography, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
-// import Link from "next/link"
-// import { CONTACT } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
