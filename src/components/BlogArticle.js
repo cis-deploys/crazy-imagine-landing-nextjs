@@ -52,38 +52,6 @@ const useStyles = makeStyles(theme => ({
       padding: "11px 11px 10px 16px",
     },
   },
-  // wrapperTitle: {
-  //   visibility: "hidden",
-  // },
-  // wrapperTitle2: {
-  //   animation: `$myEffect 2000ms`,
-  //   fontFamily: "Nexa Bold",
-  //   fontStyle: "normal",
-  //   fontWeight: "900",
-  //   fontSize: "40px",
-  //   lineHeight: "40px",
-  //   textAlign: "center",
-  //   color: "#FFFFFF",
-  //   marginBottom: "38px",
-  //   [theme.breakpoints.down("md")]: {
-  //     fontSize: "28px",
-  //     lineHeight: "28px",
-  //   },
-  //   [theme.breakpoints.down("sm")]: {
-  //     fontSize: "22px",
-  //     lineHeight: "22px",
-  //   },
-  // },
-  // "@keyframes myEffect": {
-  //   "0%": {
-  //     opacity: 0,
-  //     transform: "translateY(-200%)",
-  //   },
-  //   "100%": {
-  //     opacity: 1,
-  //     transform: "translateY(0)",
-  //   },
-  // },
   wrapperContainer: {
     width: "75%",
     margin: "auto",

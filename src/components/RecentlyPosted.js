@@ -80,15 +80,6 @@ const RecentlyPosted = ({ articles: AllArticles }) => {
   const { i18n, t } = useTranslation()
   const lang = i18n.language 
 
-      // render={data => {
-        // const articles = data.article.edges
-        // const articlesFilter = articles.filter(({ node }) =>
-        //   node.locale.includes(lang)
-        // )
-        // const articlesSort = articlesFilter.sort((a, b) => {
-        //   return new Date(b.node.created_at) - new Date(a.node.created_at)
-        // })
-
         const articles = AllArticles
         const articlesFilter = articles.filter(article =>
           article.locale.includes(lang)

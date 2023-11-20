@@ -123,6 +123,7 @@ const useStyles = makeStyles(theme => ({
     width: "max-content",
     height: "300px",
     boxSizing: "border-box",
+    marginTop: "30px",
     [theme.breakpoints.down("lg")]: {
       padding: "22px 35px 11px 35px",
       gap: "11px",

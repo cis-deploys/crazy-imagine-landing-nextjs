@@ -181,8 +181,6 @@ const BlogKey = ({ articles, articlesAll }) => {
     const lang = i18n.language 
     const router = useRouter();
     const { Key } = router.query;
-
-    // const [projectData, setProjectData] = useState(articles.filter(({ locale }) => locale.includes(lang)) || []);
     
     const [projectData, setProjectData] = useState(articles
       ?.filter( project => project?.Key === Key && project?.Key !== null)

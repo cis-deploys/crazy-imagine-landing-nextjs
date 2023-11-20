@@ -32,7 +32,6 @@ export async function getServerSideProps() {
 
 function Projects({ projects }) {
   const { t } = useTranslation()
-  // console.log(projects.data)
   
   const projectsNew = [];
 
