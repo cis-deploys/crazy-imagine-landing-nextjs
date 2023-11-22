@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     domains: ['blogadmin.s3.amazonaws.com'],
   },
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
+
+  }
 
 }
 
