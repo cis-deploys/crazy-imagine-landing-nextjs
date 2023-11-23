@@ -52,7 +52,7 @@ const About = ({ aboutpage }) => {
         cls="textContainer"
       />
       <AboutSection />
-      <Imagen />
+      {/* <Imagen /> */}
       <ContactSection />
     </Layout>
   )
