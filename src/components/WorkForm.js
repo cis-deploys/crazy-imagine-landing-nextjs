@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "16px", 
   },
     [theme.breakpoints.down("md")]: {
-      "& .MuiSelect-select": {       // this is to refer to the prop provided by M-UI
+      "& .MuiSelect-select": {      
           fontSize: "12px",
         },
       width: "364px",
@@ -476,7 +476,6 @@ const WorkForm = () => {
 
   const onSubmitHandler = async(formData) => {
     const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
-    // const cvurl = curriculum.url;
 
     if (curriculum?.length === 1) {
       setShowButton(true)

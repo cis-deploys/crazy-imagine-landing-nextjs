@@ -2,9 +2,10 @@ import React, { useRef } from 'react'
 import { Box,  Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles";
 import littleImage from "../../public/littleTallerLogo.webp"
-import vettedvizImage from "../../public/vettedvizLogo.webp"
 import clientifyImage from "../../public/clientifyLogo.svg"
 import motorennImage from "../../public/motorennLogo.webp"
+import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
+import Sirge from "../../public/Sirge-Logo.webp"
 import orderingImage from "../../public/orderingLogo.webp"
 import piggyImage from "../../public/piggyBackLogo.webp"
 import { useIntersection } from "../hooks/useIntersection"
@@ -25,10 +26,11 @@ const useStyles = makeStyles(theme => ({
       gap: "50px",
       padding: "0 2%",
       paddingBottom: "4%",
+      flexWrap: "nowrap",
       [theme.breakpoints.between(0, 960)]: {
+        flexWrap: "wrap",
         flexDirection: "row",
         alignItems: "center",
-        padding: "0 20%",
         gap: "20px"
       },
     },
@@ -36,14 +38,14 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       justifyContent: "center",
       [theme.breakpoints.between(0, 960)]: {
-      width: "50%"
+        width: "40%",
       }
     },
     logo: {
       width: "100%",
       height: "auto",
       objectFit: 'contain',
-    }
+    },
 }))
 
 const Partners = () => {
@@ -81,6 +83,16 @@ const Partners = () => {
         <Box className={`${classes.containerImage}`}>
               <Image
                   className={`${classes.logo}`}
+                  src={motorennImage}
+                  alt='Motorenn logo'
+                  width={85}
+                  height={85}
+                  layout='fixed'
+              /> 
+        </Box>
+        <Box className={`${classes.containerImage}`}>
+              <Image
+                  className={`${classes.logo}`}
                   src={piggyImage}
                   alt='Piggyback logo'
                   width={71}
@@ -103,9 +115,9 @@ const Partners = () => {
         <Box className={`${classes.containerImage}`}>
               <Image
                   className={`${classes.logo}`}
-                  src={motorennImage}
-                  alt='Motorenn logo'
-                  width={85}
+                  src={EmpowerHR}
+                  alt='EmpowerHR logo'
+                  width={280}
                   height={85}
                   layout='fixed'
               /> 
@@ -113,10 +125,10 @@ const Partners = () => {
         <Box className={`${classes.containerImage}`}>
               <Image
                   className={`${classes.logo}`}
-                  src={vettedvizImage}
-                  alt='Vettedviz logo'
+                  src={Sirge}
+                  alt='Sirge logo'
                   width={280}
-                  height={106}
+                  height={66}
                   layout='fixed'
               /> 
         </Box>

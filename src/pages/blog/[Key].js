@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from "next/dynamic";
 
-// COMPONENTS
 import Layout from "../../components/Layout";
 import { Box } from '@mui/material';
 
