@@ -128,17 +128,17 @@ const useStyes = makeStyles(theme => ({
     alignItems: "center",
   },
   carousel: {
-    height: "600px",
+    height: "500px",
     alignItems: "center",
     transform: "scale(1)",
     [theme.breakpoints.between(1201, 1280)]: {
       height: "270px",
     },
     [theme.breakpoints.between(901, 1200)]: {
-      height: "230px",
+      height: "250px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "225px",
+      height: "240px",
     },
     [theme.breakpoints.between(400, 549)]: {
       height: "250px",

@@ -78,6 +78,11 @@ const useStyles = makeStyles(theme => ({
       fontSize: "30px",
       lineHeight: "30px",
     },
+    [theme.breakpoints.between(1281, 1949)]: {
+      padding: "20px 50px 0px 50px",
+      fontSize: "25px",
+      lineHeight: "25px",
+    },
     [theme.breakpoints.between(601, 1280)]: {
       padding: "20px 30px 0px 30px",
       fontSize: "18px",

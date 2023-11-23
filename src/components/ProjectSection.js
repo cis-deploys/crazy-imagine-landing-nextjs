@@ -128,11 +128,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    height: "600px",
+    height: "500px",
     alignItems: "center",
     transform: "scale(1)",
     [theme.breakpoints.between(1281, 3000)]: {
-      height: "auto",
+      height: "380px",
     },
     [theme.breakpoints.between(1201, 1280)]: {
       height: "270px",

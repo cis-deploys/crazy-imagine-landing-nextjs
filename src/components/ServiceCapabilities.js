@@ -20,10 +20,17 @@ const useStyles = makeStyles(theme => ({
     },
   },
   conta: {
-    visibility: "hidden",
-  },
-  conta2: {
     animation: `$myEffect 2000ms`,
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
   },
   subtitle2: {
     fontFamily: "Nexa Bold",
