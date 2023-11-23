@@ -15,7 +15,9 @@ import {
   faFileText,
   faEnvelopeOpen,
   faRocket,
-  faBriefcase
+  faBriefcase,
+  faHandshake,
+  faBuilding
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -52,18 +54,28 @@ const useStyles = makeStyles(theme => ({
     marginTop: '20px',
   },
   icon: {
-    fontSize: '2rem',
+    // fontSize: '2rem',
+    width: '35px',
+    height: '35px',
     [theme.breakpoints.down("xl")]: {
-      fontSize: '1.5rem',
+      // fontSize: '1.5rem',
+      width: '30px',
+      height: '30px',
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: '1rem',
+      // fontSize: '1rem',
+      width: '27px',
+      height: '27px',
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: '2rem',
+      // fontSize: '2rem',
+      width: '20px',
+      height: '20px',
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: '0.7rem',
+      // fontSize: '0.7rem',
+      width: '15px',
+      height: '15px',
     },
     
   },
@@ -159,7 +171,7 @@ const AboutSection = () => {
       icon: faCheckSquare
     },
     {
-      title: "Blog",
+      title: t("common_button_blog"),
       description: "Collaboration with our internal team",
       link: '/careers',
       icon: faFileText
@@ -182,12 +194,24 @@ const AboutSection = () => {
       link: '/references1',
       icon: faBriefcase
     },
+    {
+      title: "To create more",
+      description: t("about_aboutSection_description2"),
+      link: '/references1',
+      icon: faBuilding
+    },
+    {
+      title: "Workinng together",
+      description: t("about_aboutSection_description1"),
+      link: '/references1',
+      icon: faHandshake
+    },
   ];
 
   return (
     <>
       <Box className={classes.container}>
-        <AboutTitle
+        {/* <AboutTitle
           title={t("about_aboutSection_title1")}
           desc={t("about_aboutSection_description1")}
           img={aboutImage}
@@ -196,7 +220,7 @@ const AboutSection = () => {
           title={t("about_aboutSection_title2")}
           desc={t("about_aboutSection_description2")}
           img={aboutImage1}
-        />
+        /> */}
         <Box>
           <Grid container  className={classes.containerGrids}>
             {elements.map((e)=> (
