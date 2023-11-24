@@ -163,6 +163,11 @@
     "project_aboutProjects_title": "Sobre el proyecto",
     "project_aboutProjects_subtitle": "Más que un juego",
     "project_RelatedSection_title": "Proyectos relacionados",
+    "playBook_sectionHeader_title": "Libro de jugadas",
+    "playBook_title": "Nuestro proceso paso a paso para diseñar, desarrollar y mantener soluciones de software personalizadas excepcionales",
+    "design": "Diseño", 
+    "develop": "Desarrollo",
+    "maintain": "Mantener",
     "languageModal_select": "ES",
     "404-title": "Vaya, página no encontrada"
 }

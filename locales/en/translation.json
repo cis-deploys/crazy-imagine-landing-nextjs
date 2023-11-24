@@ -163,6 +163,11 @@
     "project_aboutProjects_title": "About the project",
     "project_aboutProjects_subtitle": "More than game",
     "project_RelatedSection_title": "Related Projects",
+    "playBook_sectionHeader_title": "Play Book",
+    "playBook_title": "Our step-by-step process for designing, developing, and maintaining exceptional custom software solutions",
+    "design": "Design", 
+    "develop": "Develop",
+    "maintain": "Maintain",
     "languageModal_select": "EN",
     "404-title": "Oops, Page Not Found"
 }
