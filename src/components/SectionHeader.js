@@ -3,8 +3,6 @@ import { Box, Typography, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
-// import Link from "next/link"
-// import { CONTACT } from "../navigation/sitemap"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -244,6 +242,13 @@ const useStyles = makeStyles(theme => ({
       height: "70%",
     },
   },
+  contactButton: {
+    background: "#797EF6",
+    margin: 0,
+    "&:hover": {
+      background: "#797EF6",
+    },
+  },
   "@keyframes myEffect": {
     "0%": {
       opacity: 0,
@@ -316,7 +321,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const SectionHeader = ({ title, desc, btn, little, img }) => {
+export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
   const classes = useStyles({ little, btn })
   const { t } = useTranslation()
 
@@ -326,6 +331,14 @@ export const SectionHeader = ({ title, desc, btn, little, img }) => {
         <Box className={classes.textContainer}>
           <Typography className={classes.title} variant="h1" component="h1"><span>{title}</span></Typography>
           <Typography className={classes.desc}>{desc}</Typography>
+          { button ? 
+            <Button component="a" href={`#${button.refID}`}
+              className={`button-component ${classes.contactButton} `}
+            >
+              <span>{button.text}</span>
+            </Button> 
+            : ''
+          }
         </Box>
         <Box className={classes.imgContainer}>
           <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" />

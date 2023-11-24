@@ -63,22 +63,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ProjectsMainSection = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     projects: allStrapiProjectsPage {
-  //       nodes {
-  //         mainTitle
-  //         image {
-  //           localFile {
-  //             childImageSharp {
-  //               gatsbyImageData(quality: 5, formats: [WEBP])
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
   const project = data.projects.nodes[0]
   const image = project.image.localFile
   const classes = useStyles()

@@ -13,9 +13,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "16px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "16px",
-    },
   },
   contactIconButton: {
     width: "30px",
@@ -24,19 +21,14 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "5px",
-    [theme.breakpoints.down("sm")]: {
-      width: "25px",
-      height: "25px",
-      },
-    [theme.breakpoints.down("xs")]: {
-    width: "25px",
-    height: "25px",
-    },
   },
   iconsContainer: {
     display: "flex",
-    alignSelf: "center",
-    gap: "20px",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    alignContent: "flex-start",
+    flexWrap: "wrap",
+    gap: "10px",
     [theme.breakpoints.down("xl")]: {
       gap: "8px",
     },

@@ -76,6 +76,11 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
   const { t } = useTranslation()
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
+  const button = {
+    refID: "contactSection",
+    text: t("common_button_contact_us")
+  }
+
   const projectsNew = [];
   const projectsEnNew = [];
   const articlesEnNew = [];
@@ -223,6 +228,7 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
           btn={true}
           img={headerImage}
           cls="textContainer"
+          button={button}
         />
         <HomeMainSection />
 
@@ -240,7 +246,9 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
 
         <LastestPosts articlesAll={ articlesNew?.concat(articlesEnNew) }/>
 
-        <ContactSection bgColor="#FFFFFF" />
+        <Box id="contactSection">
+          <ContactSection bgColor="#FFFFFF" />
+        </Box>
       </Box>
     </Layout>
   )

@@ -68,7 +68,6 @@ const ProductsServicesDialog = ({
             label="Plan"
             value={title}
             fullWidth
-          //   disabled
           />
           <ValidationError prefix="Plan" field="plan" errors={state.errors} />
         </DialogContent>

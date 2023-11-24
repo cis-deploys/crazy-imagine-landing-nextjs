@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 import Layout from "../components/Layout"
 
 import headerImage from "../../public/marciano.svg"
-import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -38,10 +37,6 @@ export async function getServerSideProps() {
 
 const About = ({ aboutpage }) => {
   const { t } = useTranslation()
-  // const title = aboutpage.title
-  // const metaTitle = aboutpage.SEO.metaTitle
-  // const metaDescription = aboutpage.SEO.metaDescription
-  // const keywords = aboutpage.SEO.keywords
 
   return (
     <Layout >
