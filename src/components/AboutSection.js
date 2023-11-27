@@ -115,13 +115,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       padding: '0px',
       "& > svg":{
-        padding: "12px",
+        padding: "10px",
         background: 'rgb(39, 170, 225)',
         borderRadius: "100%",
       },
     },
   },
   gridText: {
+    marginTop: '10px',
     fontStyle: "normal",
     fontFamily: 'HindVadodara',
     color: "#193174",
