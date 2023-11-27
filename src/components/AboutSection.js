@@ -137,6 +137,18 @@ const useStyles = makeStyles(theme => ({
       fontSize: '28px',
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
+      [theme.breakpoints.down("xl")]: {
+        fontSize: '25px',
+      },
+      [theme.breakpoints.between(960, 1280)]: {
+        fontSize: '20px',
+      },
+      [theme.breakpoints.between(600, 959)]: {
+        fontSize: '18px',
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: '18px',
+      },
     },
   },
 }))
@@ -161,49 +173,49 @@ const AboutSection = () => {
     {
       title: "Meet the team",
       description: "Collaboration with our internal team",
-      link: '/careers1',
+      link: '/meet_team',
       icon: faUsers
     },
     {
       title: "Playbook",
       description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
-      link: '/references1',
+      link: '/play-book',
       icon: faCheckSquare
     },
     {
       title: t("common_button_blog"),
       description: "Collaboration with our internal team",
-      link: '/careers',
+      link: '/blog',
       icon: faFileText
     },
     {
       title: "FAQ",
       description: "Collaboration with our internal team",
-      link: '/references',
+      link: '/faq',
       icon: faEnvelopeOpen
     },
     {
       title: "Mission",
       description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
-      link: '/careers1',
+      link: '/mission',
       icon: faRocket
     },
     {
       title: "Who we are",
       description: "We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive.",
-      link: '/references1',
+      link: '/who_we_are',
       icon: faBriefcase
     },
     {
       title: "To create more",
       description: t("about_aboutSection_description2"),
-      link: '/references1',
+      link: '/to_create_more',
       icon: faBuilding
     },
     {
       title: "Workinng together",
       description: t("about_aboutSection_description1"),
-      link: '/references1',
+      link: '/workinng_together',
       icon: faHandshake
     },
   ];
@@ -232,7 +244,7 @@ const AboutSection = () => {
                     </Grid>
                     <Grid lg={9} md={8} sm={8} xs={9}>
                       <Typography className={classes.gridTitle}>
-                        <Link href={`#`} >
+                        <Link href={e.link} >
                           <a className={``}>
                             {e.title}
                           </a>
