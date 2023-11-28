@@ -99,12 +99,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   wrapperTitle2: {
-    animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "30px",
-    lineHeight: "30px",
+    fontSize: "20px",
+    lineHeight: "20px",
     color: "#FFFFFF",
     marginBottom: "20px"
   },
@@ -219,10 +218,23 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontSize: "10px",
     color: "#193174",
+    "& .css-ov482b-MuiButtonBase-root-MuiPaginationItem-root": {
+      background: "#b2b6ff",
+      color: "transparent",
+      margin: "4px",
+      minWidth: "10px",
+      width: "10px",
+      height: "10px",
+      opacity: "0.2"
+    }, 
+    "& .Mui-selected": {
+      opacity: "1",
+      background: "#1e87f0",
+    },
   },
 }))
 
-const BlogArticle = ({ AllArticles }) => {
+const ProjectsTable = ({ AllArticles }) => {
   const classes = useStyles()
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -311,15 +323,17 @@ const BlogArticle = ({ AllArticles }) => {
           {t("common_button_projects")}
         </Typography>
         
-        <div className={classes.filter}>
-          <Typography className={classes.wrapperTitle2}>
-            Filtrar por:
-          </Typography>
-        </div>
+        {selectedOption[0]?
+          <Box className={classes.filter}>
+            <Typography className={classes.wrapperTitle2}>
+              Filtrar por:
+            </Typography>
+          </Box>
+        :""}
        
-        <div>
+        <Box>
           <form>
-            <div className="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <Box className="btn-group" role="group" aria-label="Basic checkbox toggle button group">
               <ToggleButtonGroup
                 value={selectedButtons}
                 onChange={handleButtonToggle}
@@ -343,12 +357,12 @@ const BlogArticle = ({ AllArticles }) => {
                   )
                 })}
               </ToggleButtonGroup>
-            </div>
+            </Box>
           </form>
-        </div> 
+        </Box> 
         
         <Box className={classes.wrapper}>
-          <Grid container spacing={3} sx={{ flexGrow: 1 }}  className={classes.container} justifyContent="space-between">
+          <Grid container spacing={3} sx={{ flexGrow: 1 }}  className={classes.container} justifyContent="flex-start">
           {
           projectDataAll.map(( el, index) => {
               const dataImage = el?.images[0]?.url
@@ -376,14 +390,17 @@ const BlogArticle = ({ AllArticles }) => {
           })}
           </Grid>
         </Box>
-        <Box className={classes.pagination}>
-            <Pagination count={calculatePage} page={currentPage} onChange={handlePageChange} color="primary" size="large" />
-        </Box>
-        
+        {calculatePage!==1? 
+          <Box className={classes.pagination}>
+            <Pagination count={calculatePage} page={currentPage} onChange={handlePageChange} color="primary" 
+              size="small" hideNextButton hidePrevButton
+            />
+          </Box> 
+        :""}
       </Box>
     </Box>
 
   )
 }
 
-export default BlogArticle
+export default ProjectsTable
