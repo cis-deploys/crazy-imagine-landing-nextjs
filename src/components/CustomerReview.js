@@ -14,22 +14,18 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "HindVadodara",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "18px",
+    fontSize: "14px",
     lineHeight: "100%",
-    textAlign: "center",
+    textAlign: "left",
     letterSpacing: "0.01em",
     color: "#193174",
     height: "100%",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "15px",
+      fontSize: "25px",
       height: "100%",
     },
-    [theme.breakpoints.down("xl")]: {
-      fontSize: "14px",
-      height: "100%",
-    },
-    [theme.breakpoints.down("lg")]: {
-      fontSize: "14px",
+    [theme.breakpoints.between(1280, 1921)]: {
+      fontSize: "17px",
       height: "100%",
     },
     [theme.breakpoints.down("md")]: {
@@ -45,17 +41,17 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "22px",
-    lineHeight: "22px",
+    fontSize: "18px",
+    lineHeight: "18px",
     textAlign: "center",
     alignSelf: "flex-end",
     color: "#27AAE1",
-    marginBottom: "6px",
+    height: "40px",
     [theme.breakpoints.down("xl")]: {
-      fontSize: "14px",
+      fontSize: "15px",
       lineHeight: "15px",
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       fontSize: "14px",
       lineHeight: "15px",
     },
@@ -69,10 +65,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "22px",
-    lineHeight: "22px",
+    fontSize: "18px",
+    lineHeight: "18px",
     textAlign: "center",
     alignSelf: "flex-end",
+    maxHeight: "36px",
+    height: "36px",
     [theme.breakpoints.down("xl")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -120,10 +118,14 @@ const useStyles = makeStyles(theme => ({
     gap: "20px",
     backgroundColor: "#FFFFFF",
     justifyContent: "space-between",
-    width: "max-content",
-    height: "300px",
+    width: "500px",
+    height: "400px",
     boxSizing: "border-box",
     marginTop: "30px",
+    [theme.breakpoints.between(1281, 1950)]: {
+      width: "420px",
+      height: "350px",
+    },
     [theme.breakpoints.down("lg")]: {
       padding: "22px 35px 11px 35px",
       gap: "11px",
@@ -166,12 +168,12 @@ const useStyles = makeStyles(theme => ({
   swiper: {
     width: "100%",
     boxSizing: "content-box",
-    height: "auto",
-    [theme.breakpoints.up("lg")]: {
-      height: "450px",
+    height: "500px",
+    [theme.breakpoints.up("xl")]: {
+      height: "550px",
     },
     [theme.breakpoints.down("lg")]: {
-      height: "340px",
+      height: "350px",
     },
     [theme.breakpoints.down("md")]: {
       height: "330px",
@@ -191,6 +193,20 @@ const useStyles = makeStyles(theme => ({
   const [projectDataAll, setProjectDataAll] = useState(reviews.filter(article =>
     article.locale.includes(lang)
   ));
+
+  const Words = (text, maxWords ) => {
+    if (!text || text.trim() === '') {
+      return null;
+    }
+
+    const words = text.split(' ');
+  
+    const truncatedText = words.slice(0, maxWords).join(' ');
+  
+    const displayText = words.length > maxWords ? `${truncatedText}...` : truncatedText;
+
+    return displayText;
+  }
 
   useEffect(() => {
       setProjectDataAll(reviews.filter(article =>
@@ -215,7 +231,7 @@ const useStyles = makeStyles(theme => ({
                 slidesPerView: 4,
               },
               1920: {
-                slidesPerView: 5,
+                slidesPerView: 4,
               }
             }}
             pagination={{
@@ -254,8 +270,8 @@ const useStyles = makeStyles(theme => ({
                     />
                   </Box>
                   <>
-                    <Typography className={classes.review}>
-                      {review.review}
+                    <Typography className={classes.review} >
+                      {Words(review.review, 25)}
                     </Typography>
                     <Box>
                       <Typography className={classes.customerName}>

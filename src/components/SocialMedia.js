@@ -8,7 +8,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(theme => ({
   contactIcon: {
-    fontSize: "20px",
+    fontSize: "25px",
     color: "#A7E4F5",
     [theme.breakpoints.down("sm")]: {
       fontSize: "16px",
@@ -49,7 +49,7 @@ export const SocialMedia = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <FontAwesomeIcon size="2x" icon={faTwitter} className={classes.contactIcon}/>
+        <FontAwesomeIcon size="2s" icon={faTwitter} className={classes.contactIcon}/>
       </a>
       <a
         className={classes.contactIconButton}

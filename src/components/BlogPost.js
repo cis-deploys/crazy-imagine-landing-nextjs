@@ -1,5 +1,5 @@
 import React from "react"
-import {  Box, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next"
 import Link from "next/link"
 import 'swiper/swiper-bundle.css';
 
-const useStyes = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -17,30 +17,26 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    width: "380px",
-    height: "fit-content",
-    [theme.breakpoints.up("xl")]: {
+    width: "420px",
+    height: "350px",
+    [theme.breakpoints.between(1921, 3000)]: {
       gap: "18px",
-      height: "fit-content",
-      width: "max-content"
+      height: "420px",
+      width: "500px"
     },
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.between(1281, 1920)]: {
       gap: "5px",
-      height: "235px",
-      width: "max-content"
+      height: "300px",
+      width: "420px"
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.between(600, 1280)]: {
       gap: "5px",
-      height: "230px",
+      height: "250px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "10px",
       height: "250px",
       width: "380px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      gap: "10px",
-      height: "250px",
     },
   },
   title: {
@@ -51,7 +47,6 @@ const useStyes = makeStyles(theme => ({
     lineHeight: "20px",
     color: "#193174",
     display: "-webkit-box",
-  
     overflow: "hidden",
     textOverflow: "ellipsis",
     "-webkit-line-clamp": 3, /* number of lines to show */
@@ -59,7 +54,6 @@ const useStyes = makeStyles(theme => ({
     "-webkit-box-orient": "vertical",
     "-moz-box-orient": "vertical",
     boxOrient: "vertical",
-    //width:"100%",
     height: "60px",
     textTransform: "uppercase",
     [theme.breakpoints.down("lg")]: {
@@ -67,10 +61,10 @@ const useStyes = makeStyles(theme => ({
       lineHeight: "16px",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "16px",
-      lineHeight: "16px",
+      fontSize: "15px",
+      lineHeight: "15px",
     },
-    [theme.breakpoints.down(300, 0)]: {
+    [theme.breakpoints.between(0, 450)]: {
       fontSize: "14px",
       lineHeight: "14px",
     },
@@ -102,11 +96,12 @@ const useStyes = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
-      height: "100px"
+      height: "60px"
     },
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
+      height: "70px"
     },
     [theme.breakpoints.down("sm")]: {
       gap: "8px",
@@ -131,26 +126,26 @@ const useStyes = makeStyles(theme => ({
     height: "500px",
     alignItems: "center",
     transform: "scale(1)",
-    [theme.breakpoints.between(1201, 1280)]: {
-      height: "270px",
+    [theme.breakpoints.between(1281, 1920)]: {
+      height: "300px",
     },
-    [theme.breakpoints.between(901, 1200)]: {
-      height: "250px",
+    [theme.breakpoints.between(901, 1280)]: {
+      height: "300px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "240px",
+      height: "260px",
     },
     [theme.breakpoints.between(400, 549)]: {
       height: "250px",
     },
     [theme.breakpoints.between(200, 400)]: {
-      height: "250px",
+      height: "260px",
     },
   },
 }))
 
 const BlogPost = ({ bulletClass, articles: AllArticles }) => {
-  const classes = useStyes()
+  const classes = useStyles()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
   SwiperCore.use([Keyboard])
@@ -183,7 +178,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
           slidesPerView: 4,
         },
         1920: {
-          slidesPerView: 5,
+          slidesPerView: 4,
         }
       }}
       pagination={{
@@ -212,15 +207,16 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
                   backgroundRepeat: "no-repeat", 
                   backgroundSize: "cover", 
                   backgroundPosition: "center", 
-                  height: "200px", 
+                  height: "250px", 
                   width: "310",
                   }} />
+
               <Box className={classes.textContainer}>
                 <Typography className={classes.title}>
                   {el?.title}
                 </Typography>
                 <Link
-                  href={`${BLOG}/${el?.Key}`} >
+                  href={`${BLOG}/[Key].js`} as={`${BLOG}/${el?.Key}`} >
                   <a className={classes.link}>
                   {t("common_lastestPosts_blogPost_button_readMore")}
                   </a>

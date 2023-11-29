@@ -28,8 +28,12 @@ body {
   background: #FFFFFF;
   box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
   border-radius: 14px;
-  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
-    width: 314px;
+  @media only screen and (min-width: 1951px) and (max-width: 3000px) {
+    width: 500px;
+    height: 196px !important;
+  }
+  @media only screen and (min-width: 1281px) and (max-width: 1950px) {
+    width: 350px;
     height: auto !important;
   }
   @media only screen and (max-width: 1280px) {
@@ -70,11 +74,15 @@ body {
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
-  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
-    width: 314px;
-    height: 185px;
+  @media only screen and (min-width: 1951px) and (max-width: 3000px) {
+    width: 500px;
+    height: auto !important;
     padding-left: 10px;
     padding-right: 10px;
+  }
+  @media only screen and (min-width: 1281px) and (max-width: 1950px) {
+    width: 350px;
+    height: auto !important;
   }
   @media only screen and (max-width: 1280px) {
     width: 270px;
@@ -118,19 +126,15 @@ body {
   width: 90%;
   justify-content: center;
   align-items: center;
-  gap: 59px;
   height: 100%;
   margin-top: 10px;
   @media only screen and (min-width: 601px) and (max-width: 959px) {
-    gap: 10px;
     height: auto;
     margin-top: 30px;
-    margin-bottom: 35px;
     width: 80%;
   }
   @media only screen and (max-width: 600px) {
     flex-direction: row;
-    gap: 0px;
     width: 80%;
     margin-top: 10px;
   };
@@ -144,15 +148,16 @@ body {
   gap: 20px;
   width: 45%;
   white-space: pre-line;
+  margin-left: 20px;
   @media only screen and (min-width: 1920px){
     margin-top: 9px;
     margin-bottom: 9px;
     width: 40%;
-    gap: 14px;
   };
   @media only screen and (max-width: 960px) {
     margin-top: 9px;
     margin-bottom: 9px;
+    margin-left: 10px;
     width: 40%;
     gap: 14px;
   }
@@ -289,9 +294,9 @@ body {
     margin-bottom: 61px;
     margin-top: 10px;
       > span  {
-        font-size: 20px;
-        line-height: 18px;
-        padding: 14px 20px 12px 20px;
+        font-size: 25px;
+        line-height: 20px;
+        padding: 20px 25px 20px 25px;
       }
 
   }

@@ -11,7 +11,7 @@ const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "0px 0px 10px",
+    padding: "55px 48px 0px 43px",
     gap: "15px",
     justifyContent: "center",
     backgroundColor: "#193174",
@@ -19,21 +19,26 @@ const useStyes = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    height: "800px",
-    [theme.breakpoints.up("lg")]: {
-      padding: "55px 43px 0px 43px",
+    height: "700px",
+    [theme.breakpoints.between(1925, 3000)]: {
+      padding: "55px 200px 0px 200px",
       gap: "16px",
       height: "700px",
+    },
+    [theme.breakpoints.between(1280, 1920)]: {
+      padding: "55px 48px 0px 43px",
+      gap: "16px",
+      height: "600px",
     },
     [theme.breakpoints.down("lg")]: {
       padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "460px",
+      height: "500px",
     },
     [theme.breakpoints.down("md")]: {
       padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "460px",
+      height: "430px",
     },
     [theme.breakpoints.down("sm")]: {
       padding: "20px 43px 0px 43px",

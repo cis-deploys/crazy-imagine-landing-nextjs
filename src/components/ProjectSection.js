@@ -22,16 +22,16 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    [theme.breakpoints.up("xl")]: {
+    [theme.breakpoints.between(1951, 3000)]: {
       height: "900px",
-      padding: "10px 48px",
+      padding: "10px 205px",
     },
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.between(1280, 1950)]: {
       height: "750px",
       padding: "10px 48px",
     },
     [theme.breakpoints.down("lg")]: {
-      height: "670px",
+      height: "600px",
       padding: "20px 40px",
     },
     [theme.breakpoints.down("md")]: {
@@ -48,20 +48,24 @@ const useStyles = makeStyles(theme => ({
     },
   },
   carouselContainer: {
-    boxShadow: "3px 0px 3px 3px rgba(0, 0, 0, 0.1)",
+    boxShadow: "2px 3px 12px 2px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     width: "max-content",
     height: "fit-content",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.between(1281, 3000)]: {
-      width: "460px",
-      height: "320px"
+    [theme.breakpoints.between(1951, 3000)]: {
+      width: "500px",
+      height: "420px"
+    },
+    [theme.breakpoints.between(1280, 1950)]: {
+      width: "450px",
+      height: "350px"
     },
     [theme.breakpoints.down("lg")]: {
       width: "360px",
-      height: "240px"
+      height: "250px"
     },
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
@@ -72,7 +76,6 @@ const useStyles = makeStyles(theme => ({
       marginTop: "20px",
       width: "350px",
       height: "260px",
-      boxShadow: "2px 0px 2px 2px rgba(0, 0, 0, 0.1)",
     },
   },
   titleCarousel: {
@@ -131,14 +134,11 @@ const useStyles = makeStyles(theme => ({
     height: "500px",
     alignItems: "center",
     transform: "scale(1)",
-    [theme.breakpoints.between(1281, 3000)]: {
-      height: "380px",
-    },
     [theme.breakpoints.between(1201, 1280)]: {
       height: "270px",
     },
     [theme.breakpoints.between(901, 1200)]: {
-      height: "240px",
+      height: "250px",
     },
     [theme.breakpoints.between(550, 900)]: {
       height: "270px",
@@ -156,10 +156,6 @@ const useStyles = makeStyles(theme => ({
     gap: "26px",
     padding: "28px 0 38px 28px",
     backgroundColor: "white",
-    [theme.breakpoints.up("xl")]: {
-      gap: "20px",
-      padding: "20px 0 27px 20px",
-    },
     [theme.breakpoints.down("lg")]: {
       gap: "15px",
       padding: "20px 0 27px 20px",
@@ -210,7 +206,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                 slidesPerView: 4,
               },
               1920: {
-                slidesPerView: 5,
+                slidesPerView: 4,
               }
             }}
             pagination={{
@@ -240,7 +236,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
-                      <Image src={dataImage} alt={title} width={310} height="200px"/>
+                      <Image src={dataImage} alt={title} width={350} height="250px"/>
 
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
@@ -261,7 +257,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             {btn && (
               <Link href={`${PROJECTS}`} >
 
-                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "45px" }}>   
+                <a style={{ textDecoration: "none", alignSelf: "center", margin: "30px" }}>   
                 <Button className={'button-component'}>
                   <span>{t("home_projectSection_button")}</span>
                 </Button>

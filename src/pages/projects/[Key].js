@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import dynamic from "next/dynamic";
 
 import Layout from "../../components/Layout"
-import i18n from "../../../i18n"
 
 const ProjectsKey = dynamic(
   () => import("../../components/ProjectsKey"),

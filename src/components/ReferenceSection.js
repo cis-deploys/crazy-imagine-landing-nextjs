@@ -14,14 +14,15 @@ const useStyes = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     overflow: "hidden",
-    padding: "58px 60px",
-    [theme.breakpoints.up("lg")]: {
-      padding: "55px 30px",
-      height: "600px",
+    padding: "58px 48px",
+    height: "700px",
+    [theme.breakpoints.between(1921, 3000)]: {
+      padding: "55px 200px",
+      height: "700px",
     },
     [theme.breakpoints.down("lg")]: {
-      padding: "55px 30px",
-      height: "480px",
+      padding: "55px 48px",
+      height: "500px",
     },
     [theme.breakpoints.down("md")]: {
       padding: "55px 43px",
@@ -45,6 +46,7 @@ const ReferenceSection = ({ reviews }) => {
       <Typography
         ref={ref}
         className={isVisible ? 'title-white' : 'title'}
+        style={{ marginBottom: "10px" }}
       >
         {t("home_referenceSection_title")}
 

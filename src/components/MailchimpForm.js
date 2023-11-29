@@ -68,23 +68,22 @@ const useStyles = makeStyles(theme => ({
     fontSize: "19px",
     fontWeight: "400",
     lineHeight: "18px",    
-    marginBottom: "50px",
+    marginBottom: "40px",
     textAlign: "center",
-    padding: "0 50px",
+    padding: "10px 40px",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
       lineHeight: "20px",
-      marginBottom: "40px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "16px",
-      marginBottom: "40px",
+      marginBottom: "20px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "12px",
       lineHeight: "14px",
-      marginBottom: "40px",
+      marginBottom: "10px",
     },
   },
   inputContainer: {
@@ -97,7 +96,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("xl")]: {
       width: "100%",
       margin: "auto",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     [theme.breakpoints.down("md")]: {
       width: "90%",

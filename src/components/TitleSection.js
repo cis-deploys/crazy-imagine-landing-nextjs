@@ -15,7 +15,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     gap: "5px",
     height: "100%",
-    marginTop: "50px",
+    marginTop: "20px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10px",
+    },
   },
   titleContainer: {
     alignSelf: "flex-start",
@@ -37,8 +40,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "41px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "18px",
-      lineHeight: "18px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
   },
   blueTitle2: {
@@ -58,8 +61,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "41px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
   },
   desc: {
@@ -142,7 +145,7 @@ export const TitleSection = ({ desc }) => {
         </Typography>
       </Box>
     </Box>
-    <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "50px"}}>
+    <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "30px"}}>
       <Typography ref={ref} className={classes.desc2}>
           {desc}
       </Typography>

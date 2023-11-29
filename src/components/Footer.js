@@ -259,7 +259,7 @@ const Footer = () => {
           <Typography className={classes.titleTypography}>
            {t("home_footer_socialMedia")}
           </Typography>
-            <Box maxWidth={200}>
+            <Box>
             <SocialMedia/>
             </Box>
           </Box>

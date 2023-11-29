@@ -183,6 +183,12 @@ const useStyles = makeStyles(theme => ({
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
+    [theme.breakpoints.down("lg")]: {
+      padding: "70px 0px 50px 50px",
+      gap: "32px",
+      width: "auto",
+      height: "auto",
+    },
     [theme.breakpoints.down("md")]: {
       padding: "20px 0px 50px 50px",
       gap: "32px",
@@ -190,18 +196,10 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "30px 0px 20px 0px",
+      padding: "5px 10px 20px 10px",
       width: "auto",
       height: "auto",
       gap: "22px",
-      background: props.little ? "#27AAE1" : "transparent",
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "0px 0px 0px 0px",
-      width: "auto",
-      height: "auto",
-      gap: "14px",
-      justifyContent: "center",
       background: props.little ? "#27AAE1" : "transparent",
     },
   }),
@@ -218,13 +216,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       marginRight: props.little ? "50px" : "0px",
-      marginBottom: "40px",
-      height: "70%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginRight: props.little ? "5px" : "0px",
-      marginBottom: "30px",
-      height: "70%",
+      marginBottom: "50px",
+      height: "65%",
     },
   }),
   img: {
@@ -277,12 +270,12 @@ const useStyles = makeStyles(theme => ({
       fontWeight: "600",
       fontSize: "40px",
     },
-    [theme.breakpoints.between(0, 600)]: {
+    [theme.breakpoints.between(377, 600)]: {
       lineHeight: props.little ? "41px" : "30px",
       fontSize: props.little ? "21px" : "25px",
       fontWeight: 100,
     },
-    [theme.breakpoints.between(0, 350)]: {
+    [theme.breakpoints.between(0, 376)]: {
       lineHeight: props.little ? "31px" : "20px",
       fontSize: props.little ? "21px" : "20px",
       fontWeight: 100,
@@ -298,13 +291,18 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      lineHeight: "inherit",
+      width: "100%"
+    },
+    [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "inherit",
       width: "100%"
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "11px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "8px",
       lineHeight: "inherit",
       width: "100%"
     },

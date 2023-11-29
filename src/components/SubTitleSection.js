@@ -7,25 +7,21 @@ import { useIntersection } from "../hooks/useIntersection"
 const useStyles = makeStyles(theme => ({
   container: {
     width: "100%",
-    gap: "59px",
+    gap: "40px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     overflow: "hidden",
-    marginBottom: "52px",
-    marginTop: "34px",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
+      gap: "20px",
       height: "auto",
-      marginTop: "17px",
-      marginBottom: "17px",
+      marginBottom: "20px",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       height: "auto",
-      marginTop: "17px",
-      marginBottom: "17px",
     },
   },
   textContainer: {
@@ -38,16 +34,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       width: "79%",
       gap: "10px",
-      marginBottom: "17px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "10px",
       width: "79%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "86%",
-      gap: "4px",
-      marginBottom: "17px",
     },
   },
   title2: {
@@ -94,10 +84,6 @@ const useStyles = makeStyles(theme => ({
   },
   img2: {
     animation: `$myEffect 2000ms`,
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "-27px",
-      width: "80%",
-    },
     [theme.breakpoints.down("sm")]: {
       width: "80%",
     },

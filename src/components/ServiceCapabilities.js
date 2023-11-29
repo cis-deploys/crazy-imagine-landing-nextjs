@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    gap: "59px",
     height: "100%",
     marginTop: "30px",
     [theme.breakpoints.between(0, 600)]: {

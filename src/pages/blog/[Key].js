@@ -24,8 +24,9 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const { Key } = query;
 
-  const resArticlesAll = await fetch(`${domain}articles?locale=all&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticlesAll = await fetch(`${domain}articles?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
   const articlesAll = await resArticlesAll.json();
+
   const resArticlesAllEs = await fetch(`${domain}articles?locale=en&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)//falta restringuir seo
   const articlesAllEs = await resArticlesAllEs.json();
 

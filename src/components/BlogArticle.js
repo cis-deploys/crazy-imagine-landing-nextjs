@@ -53,24 +53,23 @@ const useStyles = makeStyles(theme => ({
     },
   },
   wrapperContainer: {
-    width: "75%",
+    width: "80%",
     margin: "auto",
     paddingTop: "83px",
     paddingBottom: "83px",
     display: "flex",
     flexDirection: "column",
+    alignContent: "center",
     [theme.breakpoints.up("xl")]: {
-      width: "45%",
+      width: "80%",
       paddingTop: "40px",
     },
     [theme.breakpoints.down("md")]: {
       paddingTop: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "20px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "10px",
+      width: "70%",
+      paddingTop: "40px",
     },
   },
   wrapperContainerSection: {

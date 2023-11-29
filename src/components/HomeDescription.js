@@ -68,15 +68,14 @@ const useStyles = makeStyles(theme => ({
   desc: {
     fontFamily: "HindVadodara",
     fontWeight: "600",
-    //whiteSpace: "pre-line",
     fontSize: "30px",
     lineHeight: "39px",
     paddingTop: "40px",
     color: "#193174",
     textAlign: "center",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "30px",
-      lineHeight: "30px",
+      fontSize: "28px",
+      lineHeight: "28px",
     },
     [theme.breakpoints.between(1281, 1949)]: {
       padding: "20px 50px 0px 50px",

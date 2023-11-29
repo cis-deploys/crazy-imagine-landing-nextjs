@@ -162,7 +162,7 @@ export const LanguageModal = () => {
     const selectedLanguage = event.target.value;
 
     i18n.changeLanguage(selectedLanguage);
-    router.push(router.pathname, router.pathname, { locale: event.target.value })
+    router.push(router.pathname, router.asPath, { locale: event.target.value })
   };
 
   return (

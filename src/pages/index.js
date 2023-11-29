@@ -1,7 +1,6 @@
 import { Box } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 import Layout from "../components/Layout"
 
@@ -234,12 +233,13 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
 
         <ReferenceSection reviews={ reviewsNew }/>
 
-        <ProjectSection
+        <ProjectSection           
           title={t("home_projectSection_title")}
           btn={true}
           size={true}
           projects={projectsNew.concat(projectsEnNew)}
-        />
+          />
+
         <MailchimpForm />
 
         <Partners />
