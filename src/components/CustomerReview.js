@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "14px",
     lineHeight: "100%",
     textAlign: "left",
-    letterSpacing: "0.01em",
+    letterSpacing: "0.02em",
     color: "#193174",
     height: "200px",
     minHeight: "100px",
@@ -48,6 +48,9 @@ const useStyles = makeStyles(theme => ({
       marginTop: "10px"
     },
   },
+  containerCustomer: {
+    height: "50px",
+  },
   customerName: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -57,7 +60,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     alignSelf: "flex-end",
     color: "#27AAE1",
-    height: "40px",
+    marginBottom: "5px",
     [theme.breakpoints.down("xl")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -65,12 +68,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       fontSize: "14px",
       lineHeight: "15px",
-      height: "20px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "12px",
       lineHeight: "12px",
-      height: "20px",
     },
   },
   customerOcupation: {
@@ -82,8 +83,6 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "18px",
     textAlign: "center",
     alignSelf: "flex-end",
-    maxHeight: "36px",
-    height: "36px",
     [theme.breakpoints.down("xl")]: {
       fontSize: "15px",
       lineHeight: "15px",
@@ -219,7 +218,7 @@ const useStyles = makeStyles(theme => ({
     color: "#797EF6",
     background: "none",
     paddingLeft: "20px",
-    display: "inline-block",
+    display: "flex",
     width: "100%",
     [theme.breakpoints.down("xl")]: {
       fontSize: "11px",
@@ -369,7 +368,9 @@ const CustomerReview = ({ reviews, bulletClass }) => {
                     </Typography>
                   </>
                 )}
-                <Box>
+              </Box>
+
+                <Box className={classes.containerCustomer}>
                   <Typography className={classes.customerName}>
                     {review.name}
                   </Typography>
@@ -379,7 +380,7 @@ const CustomerReview = ({ reviews, bulletClass }) => {
                 </Box>
               </Box>
 
-          </Box>
+
         </SwiperSlide>
       ))}
     </Swiper>

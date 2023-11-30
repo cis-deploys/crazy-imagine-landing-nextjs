@@ -49,20 +49,24 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "24px",
     color: "#193174",
     textAlign: "center",
-    whiteSpace: "pre-line",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
       lineHeight: "25px",
     },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
+    [theme.breakpoints.between(1281, 1920)]: {
+      padding: "20px 50px 0px 50px",
+      fontSize: "23px",
+      lineHeight: "23px",
+    },
+    [theme.breakpoints.between(601, 1280)]: {
+      padding: "20px 30px 0px 30px",
+      fontSize: "16px",
       lineHeight: "17px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
       textAlign: "justify",
       lineHeight: "17px",
-      whiteSpace: "normal",
     },
 },
   desc: {
@@ -70,7 +74,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "600",
     fontSize: "30px",
     lineHeight: "39px",
-    paddingTop: "40px",
+    paddingTop: "30px",
     color: "#193174",
     textAlign: "center",
     [theme.breakpoints.up("xl")]: {
