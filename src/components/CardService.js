@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 const useStyles = makeStyles(theme => ({
   list: {
     margin: "20px 40px 46px",
-    textAlign: "justify",
+    textAlign: "left",
     [theme.breakpoints.down("md")]: {
       margin: "20px 30px 31px"
     },
@@ -21,16 +21,20 @@ const useStyles = makeStyles(theme => ({
     fontfamily: "HindVadodara",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "18px",
+    fontSize: "22px",
     lineHeight: "140%",
     letterspacing: "0.02em",
     color: "#193174",
     "&::marker": {
       color: "#797EF6",
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xl")]: {
       marginBottom: "14px",
-      fontSize: "16px",
+      fontSize: "18px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      marginBottom: "14px",
+      fontSize: "14px",
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "12px",
@@ -84,6 +88,7 @@ const CardService = ({ icon, title, contentList }) => {
   const { t } = useTranslation()
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
+  
   return (
     <CardContent
       ref={ref}
@@ -102,7 +107,7 @@ const CardService = ({ icon, title, contentList }) => {
         className={classes.readMoreButton}
         onClick={() => setListVisible(!isListVisible)}
       >
-        {isListVisible ? t("readLess") : t("readMore")}
+        { isListVisible ? t("readLess") : t("readMore")}
       </Button>
       </CardContent>
   )

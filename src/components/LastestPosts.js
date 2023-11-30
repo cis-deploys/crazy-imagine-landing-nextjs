@@ -59,14 +59,16 @@ const useStyes = makeStyles(theme => ({
     lineHeight: "15px",
     letterspacing: "0.1em",
     color: "#888DFF",
-    marginBottom: "auto",
+    marginBottom: "5px",
     [theme.breakpoints.up("xl")]: {
       fontSize: "20px",
       lineHeight: "18px",
+      marginBottom: "20px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
+      marginBottom: "5px",
     },
   },
   "@keyframes myEffectos": {

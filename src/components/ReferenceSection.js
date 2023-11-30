@@ -46,7 +46,7 @@ const ReferenceSection = ({ reviews }) => {
       <Typography
         ref={ref}
         className={isVisible ? 'title-white' : 'title'}
-        style={{ marginBottom: "10px" }}
+        style={{ marginBottom: "15px" }}
       >
         {t("home_referenceSection_title")}
 

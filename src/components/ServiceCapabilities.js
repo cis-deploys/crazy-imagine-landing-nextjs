@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
     whiteSpace: "pre-line",
-    textAlign: "justify",
+    textAlign: "left",
     [theme.breakpoints.up("xl")]: {
       fontSize: "30px",
     },
@@ -100,7 +100,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.01em",
     color: "#193174",
     whiteSpace: "pre-line",
-    textAlign: "justify",
+    textAlign: "left",
     [theme.breakpoints.between(601, 3000)]: {
       display: "none",
     },
@@ -157,7 +157,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
         <Box
           sx={{
             padding: "0px 30px",
-            textAlign: "center",
+            textAlign: "left",
             width: "100%",
             marginBottom: "50px",
           }}
