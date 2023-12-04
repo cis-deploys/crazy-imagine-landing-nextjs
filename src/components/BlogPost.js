@@ -1,5 +1,4 @@
 import React from "react"
-import { Box, Typography } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { useRouter } from "next/router"
