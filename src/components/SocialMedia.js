@@ -49,7 +49,7 @@ export const SocialMedia = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <FontAwesomeIcon size="2s" icon={faTwitter} className={classes.contactIcon}/>
+        <FontAwesomeIcon size="2x" icon={faTwitter} className={classes.contactIcon}/>
       </a>
       <a
         className={classes.contactIconButton}
