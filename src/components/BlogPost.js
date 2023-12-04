@@ -1,12 +1,13 @@
 import React from "react"
-import {  Box, Typography } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
+import { useRouter } from "next/router"
+import { Pagination } from "swiper"
+import {  Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { BLOG } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
 import Link from "next/link"
+import { useTranslation } from "react-i18next"
+import { BLOG } from "../navigation/sitemap"
 import 'swiper/swiper-bundle.css';
 
 const useStyes = makeStyles(theme => ({
@@ -154,11 +155,15 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
   SwiperCore.use([Keyboard])
+  const router = useRouter();
+  const { Key } = router.query;
 
   const articles = AllArticles
-  const articlesFilter = articles?.filter(article =>
-    article?.locale?.includes(lang)
-  ) || []
+  const articlesFilter =
+    articles
+      ?.filter(article => article?.locale?.includes(lang))
+      ?.filter(article => article?.title !== null && article.Key !== Key) || []
+
   const articlesSort = articlesFilter
     ?.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
