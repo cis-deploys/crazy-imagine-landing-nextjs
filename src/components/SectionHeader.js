@@ -204,6 +204,13 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     borderRadius: "100px"
   },
+  contactButton: {
+    background: "#797EF6 !important",
+    margin: 0,
+    "&:hover": {
+      background: "#797EF6 !important",
+    },
+  },
 }))
 
 export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
@@ -218,7 +225,7 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
           <Typography className={classes.desc}>{desc}</Typography>
           { button ? 
             <Button component="a" href={`#${button.refID}`}
-              className="button-component"
+            className={`button-component ${classes.contactButton} `}
             >
               <span>{button.text}</span>
             </Button> 
