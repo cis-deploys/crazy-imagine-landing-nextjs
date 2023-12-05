@@ -125,7 +125,7 @@ export const TitleSection = ({ desc }) => {
   const { t } = useTranslation();
   return (
     <Box className={classes.container1}>
-    <Box className={'container-white-component'}>
+    <Box className="container-white-component">
       <Box className={classes.imgContainer}>
         <Image
           src={mainImage}
@@ -135,7 +135,7 @@ export const TitleSection = ({ desc }) => {
           alt="Title"
         />
       </Box>
-      <Box className={'text-container-white-component'}>
+      <Box className="text-container-white-component">
         <Box className={classes.titleContainer}>
           <Typography className={classes.title2}>{t("home_homeMainSection_titleSection_title")}</Typography>
           <Typography className={classes.blueTitle2}>{t("home_homeMainSection_titleSection_blueTitle")}</Typography>

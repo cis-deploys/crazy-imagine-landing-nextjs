@@ -53,7 +53,7 @@ const Partners = () => {
 
   return (
     <Box className={classes.section}>
-      <Typography className={'title-blue'}>
+      <Typography className="title-blue">
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>

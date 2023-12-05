@@ -356,7 +356,7 @@ const ContactForm = () => {
           </Grid>
           <Grid item xs={12}>
             <Button
-              className={'button-component'}
+              className="button-component"
               type="submit"
             >
             <span>{t("common_button_contact_us")}</span>

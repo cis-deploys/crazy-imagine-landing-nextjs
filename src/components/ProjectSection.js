@@ -185,7 +185,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
       return (
         <Box className={classes.container}>
-          <Typography className={'title-blue'}>
+          <Typography className="title-blue">
             {title}
           </Typography>
           <Swiper
@@ -256,7 +256,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
               <Link href={`${PROJECTS}`} >
 
                 <a style={{ textDecoration: "none", alignSelf: "center", margin: "30px" }}>   
-                <Button className={'button-component'}>
+                <Button className="button-component">
                   <span>{t("home_projectSection_button")}</span>
                 </Button>
                 </a>

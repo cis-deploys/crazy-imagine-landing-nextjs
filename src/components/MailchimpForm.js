@@ -263,7 +263,7 @@ const MailchimpForm = () => {
 
   return (
     <Box className={classes.containerForm}>
-        <Typography className={'title-white'}>
+        <Typography className="title-white">
           {t("home_mailChimp_title")}
         </Typography>
         <Typography className={isVisible ? classes.subTitleMail2 : classes.subTitleMail}>
@@ -310,7 +310,7 @@ const MailchimpForm = () => {
           <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
           <Button
             type="submit"
-            className={'button-component'}
+            className="button-component"
           >
             <span>{t("home_mailChimp_button")}</span>
           </Button>

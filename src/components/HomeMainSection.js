@@ -67,7 +67,7 @@ const HomeMainSection = () => {
       <Link href={`${PROJECTS}`} style={{ textDecoration: "none" }} >
         <a>
         <Button
-          className={'button-component'}
+          className="button-component"
         >
           <span>{t("common_button_get_started")}</span>
         </Button>

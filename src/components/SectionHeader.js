@@ -218,9 +218,9 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
           <Typography className={classes.desc}>{desc}</Typography>
           { button ? 
             <Button component="a" href={`#${button.refID}`}
-              className={'button-component'}
+              className="button-component"
             >
-              <span>{button.text}</span>
+              <span>{button.text}</span>one
             </Button> 
             : ''
           }

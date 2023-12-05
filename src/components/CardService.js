@@ -95,7 +95,7 @@ const CardService = ({ icon, title, contentList }) => {
       className={isVisible ? 'containerServices2' : 'cardContainer'}
     >
       <FontAwesomeIcon icon={icon} className={classes.icon} />
-      <Typography className={'title-card'}>{title}</Typography>
+      <Typography className="title-card">{title}</Typography>
       <ul className={classes.list} style={{ display: isListVisible ? "block" : "none" }}>
         {contentList?.map((value, index) => (
           <li key={index} className={classes.listItem}>

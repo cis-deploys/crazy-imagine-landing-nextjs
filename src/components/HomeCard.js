@@ -27,11 +27,11 @@ const HomeCard = ({ title, icon }) => {
   const classes = useStyles()
 
   return (
-    <Card className={'cardContainerHome2'}
+    <Card className="cardContainerHome2"
     >
-      <CardContent className={'cardContentHome'}>
+      <CardContent className="cardContentHome">
         <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
-        <Typography className={'title-card'}>{title}</Typography>
+        <Typography className="title-card">{title}</Typography>
       </CardContent>
     </Card>
   )

@@ -232,7 +232,7 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
               <Link href={`${PROJECTS}`} >
 
                 <a style={{ textDecoration: "none", alignSelf: "center", margin: "30px" }}>   
-                <Button className={'button-component'}>
+                <Button className="button-component">
                   <span>{t("home_projectSection_button")}</span>
                 </Button>
                 </a>

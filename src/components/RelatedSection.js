@@ -107,7 +107,7 @@ const RelatedSection = ({ projects }) => {
   return (
     <Box className={classes.container}>
       <Typography
-        className={'title-white'}>
+        className="title-white">
       {t("project_RelatedSection_title")}
       </Typography>
 

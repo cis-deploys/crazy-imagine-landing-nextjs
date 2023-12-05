@@ -118,17 +118,17 @@ const ContactSection = ({ bgColor, bgImage }) => {
               {t("home_contacSection_subtitle")}
             </Typography>
             <Typography
-              className={'title-blue'}
+              className="title-blue"
               style={{ marginTop: "7px", lineHeight: "25px", textAlign: "initial"}}
             >
               {t("home_contacSection_title1")}</Typography>
             <Typography
-              className={'title-blue' }
+              className="title-blue"
               style={{ marginTop: "-17px", lineHeight: "5px", textAlign: "initial"}}
             >
               {t("home_contacSection_title2")}
             </Typography>
-            <Box className={'image-component'}>
+            <Box className="image-component">
               <Image src={Satelite} width={352} height={234} alt="satellite" />
             </Box>
         </Grid>

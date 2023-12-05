@@ -41,7 +41,7 @@ const ReferenceSection = ({ reviews }) => {
   return (
     <Box className={classes.referenceContainer}>
       <Typography
-        className={'title-white'}
+        className="title-white"
         style={{ marginBottom: "15px" }}>
           
         {t("home_referenceSection_title")}

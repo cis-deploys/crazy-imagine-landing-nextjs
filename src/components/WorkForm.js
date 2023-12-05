@@ -737,7 +737,7 @@ const WorkForm = () => {
                </Select> 
               }
             /> 
-            <Button className={'button-component'} type="submit" disabled={showButton}>
+            <Button className="button-component" type="submit" disabled={showButton}>
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

@@ -179,7 +179,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
         <Typography
-          className={'title-white'}
+          className="title-white"
         >
           {t("blog_blogArticle_title")}
         </Typography>
@@ -215,7 +215,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
           <Button
             onClick={() => { loadArticles(articles.length) }}
             style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
-            className={'button-component'}
+            className="button-component"
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>
