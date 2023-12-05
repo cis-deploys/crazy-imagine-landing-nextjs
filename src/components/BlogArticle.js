@@ -142,10 +142,6 @@ const useStyles = makeStyles(theme => ({
 
 const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
-  const ref1 = useRef()
-  const isVisible1 = useIntersection(ref1, "0px")
   const [load, setLoad] = useState(6)
   const [buttonLoad, setButtonLoad] = useState(true)
   const loadArticles = length => {
@@ -183,9 +179,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
         <Typography
-          ref={ref}
-          className={
-            isVisible ? 'title-white' : 'title'}
+          className={'title-white'}
         >
           {t("blog_blogArticle_title")}
         </Typography>
@@ -219,10 +213,9 @@ const BlogArticle = ({ articles: AllArticles }) => {
         </Box>
         { buttonLoad && (
           <Button
-            ref={ref1}
             onClick={() => { loadArticles(articles.length) }}
             style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
-            className={ isVisible1 ? 'button-component' : 'button' }
+            className={'button-component'}
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Typography } from "@mui/material"
 import RelatedProjects from "../components/RelatedProjects"
 import { PROJECTS } from "../navigation/sitemap"
@@ -46,9 +46,6 @@ const useStyles = makeStyles(theme => ({
       height: "460px",
     },
   },
-  link: {
-    visibility: "hidden",
-  },
   link2: {
     animation: `$myEffectos 5000ms`,
     fontFamily: "Nexa Bold",
@@ -91,8 +88,6 @@ const useStyles = makeStyles(theme => ({
 
 const RelatedSection = ({ projects }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   const { i18n, t } = useTranslation();
     
   const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
@@ -110,16 +105,16 @@ const RelatedSection = ({ projects }) => {
     }, [i18n.language]);
     
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Typography
-        className={isVisible ? 'title-white' : 'title'}>
+        className={'title-white'}>
       {t("project_RelatedSection_title")}
       </Typography>
 
       <Link 
       href={`${PROJECTS}`} >
         
-      <a className={isVisible ? classes.link2 : classes.link}>
+      <a className={classes.link2 }>
         {t("common_lastestPosts_button_allBlogs")}
         </a>
       </Link>

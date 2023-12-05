@@ -141,7 +141,7 @@ export const AboutTitle = ({ title, desc, img }) => {
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title2}>{title}</Typography>
-        <Typography ref={ref} className={classes.desc2}>{desc}</Typography>
+        <Typography className={classes.desc2}>{desc}</Typography>
       </Box>
     </Box>
   )

@@ -302,6 +302,7 @@ body {
   @media only screen and (min-width: 1920px){
     margin-bottom: 61px;
     margin-top: 10px;
+    border-radius: 100px;
       > span  {
         font-size: 25px;
         line-height: 20px;
@@ -310,8 +311,9 @@ body {
 
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-    margin-bottom: 61px;
+      margin-bottom: 61px;
       margin-top: 34px;
+      border-radius: 100px;
       > span {
         font-size: 10px;
         line-height: 14px;
@@ -321,6 +323,7 @@ body {
   @media only screen and (max-width: 959px) {
     margin-bottom: 20px;
     margin-top: 24px;
+    border-radius: 100px;
     > span {
       font-size: 10px;
       line-height: 14px;
@@ -330,7 +333,7 @@ body {
 }
 
 .button-component:hover {
-  background-color: #30AADE;
+  background-color: #797EF6;
 };
 
 @keyframes myEffect-image-component {

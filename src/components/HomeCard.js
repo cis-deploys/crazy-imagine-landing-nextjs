@@ -25,13 +25,9 @@ const useStyles = makeStyles(theme => ({
 
 const HomeCard = ({ title, icon }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
 
   return (
-    <Card
-      ref={ref}
-      className={isVisible ? 'cardContainerHome2' : 'cardContainer'}
+    <Card className={'cardContainerHome2'}
     >
       <CardContent className={'cardContentHome'}>
         <FontAwesomeIcon icon={icon} className={classes.cardIcon} />

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import axios from "axios"
 import * as yup from "yup"
@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next"
 import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
-import { useIntersection } from "../hooks/useIntersection"
 import emailjs from '@emailjs/browser';
 
 const useStyles = makeStyles(theme => ({
@@ -189,9 +188,6 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       alignItems: "center",
     },
-  },
-  formContainer: {
-    visibility: "hidden",
   },
   formContainer2: {
     animation: `$myEffect 2000ms`,
@@ -412,8 +408,6 @@ const useStyles = makeStyles(theme => ({
 
 const WorkForm = () => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation()
   const [fileIsLoaded, setFileIsLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState("")
@@ -597,7 +591,7 @@ const WorkForm = () => {
 
   return (
     <Box className={classes.container}>
-      <Box ref={ref} className={classes.containerInfo}>
+      <Box className={classes.containerInfo}>
         <WorkInfo />
       </Box>
       <Box className={classes.container1}>
@@ -611,9 +605,7 @@ const WorkForm = () => {
         ></Box>
         <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
           <Box
-            className={
-              isVisible ? classes.formContainer2 : classes.formContainer
-            }
+            className={classes.formContainer2}
           >
             <Box className={classes.shortContainer}>
               <TextField

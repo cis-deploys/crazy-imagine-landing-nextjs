@@ -103,14 +103,12 @@ const useStyles = makeStyles(theme => ({
 
 const HomeDescription = () => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation();
   
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Box
-        className={isVisible ? classes.textContainer2 : classes.textContainer}
+        className={classes.textContainer2}
       >
         <Typography className={classes.text}>
           {t("home_homeDescription_text")}

@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import { Box,  Typography, Grid } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles";
@@ -6,12 +6,8 @@ import Image from 'next/image';
 import ContactForm from "./ContactForm"
 import Section from "./Section"
 import Satelite from "../../public/satelite.svg"
-import { useIntersection } from "../hooks/useIntersection"
 
 const useStyles = makeStyles(theme => ({
-  title: {
-    visibility: "hidden",
-  },
   title2: {
     animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
@@ -40,9 +36,6 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
       transform: "translateX(0)",
     },
-  },
-  subtitle: {
-    visibility: "hidden",
   },
   subtitle2: {
     animation: `$myEffect 2000ms`,
@@ -110,8 +103,6 @@ const useStyles = makeStyles(theme => ({
 
 const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation()
   return (
     <Section
@@ -119,20 +110,20 @@ const ContactSection = ({ bgColor, bgImage }) => {
       backgroundImage={bgImage ? bgImage : ""}
       backgroundColor={bgColor ? bgColor : ""}
     >
-      <Grid container spacing={0} ref={ref} className={classes.container}>
+      <Grid container spacing={0} className={classes.container}>
         <Grid item sm={12} md={4} className={classes.textContainer}>
             <Typography
-              className={isVisible ? classes.subtitle2 : classes.subtitle}
+              className={classes.subtitle2}
             >
               {t("home_contacSection_subtitle")}
             </Typography>
             <Typography
-              className={isVisible ? 'title-blue' : 'title'}
+              className={'title-blue'}
               style={{ marginTop: "7px", lineHeight: "25px", textAlign: "initial"}}
             >
               {t("home_contacSection_title1")}</Typography>
             <Typography
-              className={isVisible ? 'title-blue' : 'title'}
+              className={'title-blue' }
               style={{ marginTop: "-17px", lineHeight: "5px", textAlign: "initial"}}
             >
               {t("home_contacSection_title2")}

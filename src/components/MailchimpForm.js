@@ -262,8 +262,8 @@ const MailchimpForm = () => {
   }
 
   return (
-    <Box ref={ref} className={classes.containerForm}>
-        <Typography className={isVisible ? 'title-white' : 'title'}>
+    <Box className={classes.containerForm}>
+        <Typography className={'title-white'}>
           {t("home_mailChimp_title")}
         </Typography>
         <Typography className={isVisible ? classes.subTitleMail2 : classes.subTitleMail}>

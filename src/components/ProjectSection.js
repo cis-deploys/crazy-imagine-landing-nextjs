@@ -169,8 +169,6 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
   const lang = i18n.language
@@ -186,8 +184,8 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   }, [i18n.language]);
 
       return (
-        <Box ref={ref} className={classes.container}>
-          <Typography className={isVisible ? 'title-blue' : 'title'}>
+        <Box className={classes.container}>
+          <Typography className={'title-blue'}>
             {title}
           </Typography>
           <Swiper

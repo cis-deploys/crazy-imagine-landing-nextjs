@@ -94,8 +94,6 @@ const useStyes = makeStyles(theme => ({
 
 const LastestPosts = ({ articles, articlesAll }) => {
   const classes = useStyes()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   const { i18n, t } = useTranslation();
     
   const [projectDataAll, setProjectDataAll] = useState(articlesAll.filter(article =>
@@ -113,16 +111,16 @@ const LastestPosts = ({ articles, articlesAll }) => {
     }, [i18n.language]);
 
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Typography
 
-        className={isVisible ? 'title-white' : 'title'}>
+        className={'title-white'}>
         {t("home_lastestPosts_title")}
 
         </Typography>
       <Link href={`${BLOG}`} style={{ textDecoration: "none" }}>
 
-        <a className={isVisible ? classes.link2 : classes.link}>
+        <a className={classes.link2}>
         {t("common_lastestPosts_button_allBlogs")}
         </a>
 
