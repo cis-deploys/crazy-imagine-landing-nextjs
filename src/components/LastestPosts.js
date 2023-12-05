@@ -113,7 +113,7 @@ const LastestPosts = ({ articles, articlesAll }) => {
   return (
     <Box className={classes.container}>
       <Typography
-        className="title-white">
+        className="title-white !important">
         {t("home_lastestPosts_title")}
 
         </Typography>

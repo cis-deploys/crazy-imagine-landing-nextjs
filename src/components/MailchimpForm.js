@@ -57,9 +57,6 @@ const useStyles = makeStyles(theme => ({
       
     },
   },
-  subTitleMail: {
-    visibility: "hidden",
-  },
   subTitleMail2: {
     animation: `$myEffectSubTitleMail 2000ms`,
     color: "#FFFFFF",
@@ -212,8 +209,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MailchimpForm = () => {
-    const ref = useRef()
-    const isVisible = useIntersection(ref, "0px")
     const { t } = useTranslation();
     const classes = useStyles({})
     const schema = yup.object().shape({
@@ -263,10 +258,10 @@ const MailchimpForm = () => {
 
   return (
     <Box className={classes.containerForm}>
-        <Typography className="title-white">
+        <Typography className="title-white !important" >
           {t("home_mailChimp_title")}
         </Typography>
-        <Typography className={isVisible ? classes.subTitleMail2 : classes.subTitleMail}>
+        <Typography className={classes.subTitleMail2}>
           {t("home_mailChimp_subTitle")}
         </Typography>
       <form onSubmit={handleSubmit(submit)}>
