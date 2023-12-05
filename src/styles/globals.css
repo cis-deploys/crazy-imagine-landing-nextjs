@@ -66,10 +66,6 @@ body {
   }
 }
 
-.cardContainer {
-  visibility: hidden;
-}
-
 .cardContainerHome2 {
   animation: myEffectosCard-container 2000ms;
   background-color: #FFFFFF;
@@ -210,10 +206,6 @@ body {
   }
 }
 
-.title {
-  visibility: hidden;
-}
-
 .title-blue {
   animation: myEffect-title 2000ms;
   font-family: Nexa Bold;
@@ -276,17 +268,13 @@ body {
   }
 }
 
-.button {
-  visibility: hidden;
-}
-
 .button-component {
   animation: myEffectbutton 2000ms;
   background: #797EF6;
-  border-radius: 100px;
+  border-radius: 100px !important;
   margin-bottom: 87px;
   margin-top: 48px;
-  > span {
+  & > span {
     font-family: Nexa Bold;
     font-style: normal;
     font-weight: 400;
@@ -303,7 +291,7 @@ body {
     margin-bottom: 61px;
     margin-top: 10px;
     border-radius: 100px;
-      > span  {
+    & > span  {
         font-size: 25px;
         line-height: 20px;
         padding: 20px 25px 20px 25px;
@@ -314,7 +302,7 @@ body {
       margin-bottom: 61px;
       margin-top: 34px;
       border-radius: 100px;
-      > span {
+    & > span {
         font-size: 10px;
         line-height: 14px;
         padding: 10px 14px 8px 14px;
@@ -324,7 +312,7 @@ body {
     margin-bottom: 20px;
     margin-top: 24px;
     border-radius: 100px;
-    > span {
+  & > span {
       font-size: 10px;
       line-height: 14px;
       padding: 10px 14px 8px 14px;

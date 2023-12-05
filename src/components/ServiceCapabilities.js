@@ -132,7 +132,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container1}>
-        <Box className={"container-white-component"}>
+        <Box className="container-white-component">
           {img && (
             <Box className={classes.imgContainer}>
               <Image
@@ -144,7 +144,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
               />
             </Box>
           )}
-          <Box className={"text-container-white-component"}>
+          <Box className="text-container-white-component">
             <Typography className={classes.subtitle2}>
               {t("common_button_capabilities")}
             </Typography>

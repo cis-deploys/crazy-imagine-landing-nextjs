@@ -220,7 +220,7 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
             <Button component="a" href={`#${button.refID}`}
               className="button-component"
             >
-              <span>{button.text}</span>one
+              <span>{button.text}</span>
             </Button> 
             : ''
           }
