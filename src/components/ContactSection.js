@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
+    textAlign: "center",
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
@@ -61,7 +62,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     height: "auto",
-    gap: "19px",
     [theme.breakpoints.up("xl")]: {
       width: "100%",
       justifyContent: "center",
@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
      padding: "0px 60px",
      height: "550px",
      alignItems: "end",
-     [theme.breakpoints.down("lg")]: { 
+     [theme.breakpoints.down("lg")]: {
        padding: "0px 60px",
      },
      [theme.breakpoints.down("md")]: {
@@ -119,12 +119,10 @@ const ContactSection = ({ bgColor, bgImage }) => {
             </Typography>
             <Typography
               className="title-blue"
-              style={{ marginTop: "7px", lineHeight: "25px", textAlign: "initial"}}
             >
               {t("home_contacSection_title1")}</Typography>
             <Typography
               className="title-blue"
-              style={{ marginTop: "-17px", lineHeight: "5px", textAlign: "initial"}}
             >
               {t("home_contacSection_title2")}
             </Typography>

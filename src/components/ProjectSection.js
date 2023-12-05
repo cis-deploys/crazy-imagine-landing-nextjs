@@ -38,12 +38,12 @@ const useStyles = makeStyles(theme => ({
       height: "550px",
       padding: "30px 43px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "580px",
+    [theme.breakpoints.between(381, 470)]: {
+      height: "560px",
       padding: "0px 43px",
     },
-    [theme.breakpoints.down("xs")]: {
-      height: "480px",
+    [theme.breakpoints.between(0, 380)]: {
+      height: "500px",
       padding: "0px 43px",
     },
   },
@@ -185,7 +185,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
       return (
         <Box className={classes.container}>
-          <Typography className="title-blue">
+          <Typography className="title-blue" style={{ marginBottom: "15px" }}>
             {title}
           </Typography>
           <Swiper
@@ -255,7 +255,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             {btn && (
               <Link href={`${PROJECTS}`} >
 
-                <a style={{ textDecoration: "none", alignSelf: "center", margin: "30px" }}>   
+                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "30px" }}>   
                 <Button className="button-component">
                   <span>{t("home_projectSection_button")}</span>
                 </Button>
