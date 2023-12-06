@@ -38,12 +38,12 @@ export const StyleComponent = makeStyles((theme) => ({
           height: "fit-content",
           minHeight: "170px",
         },
-        [theme.breakpoints.between(451, 960)]: {
+        [theme.breakpoints.between(377, 960)]: {
           width: "270px",
           height: "fit-content",
           minHeight: "150px",
         },
-        [theme.breakpoints.between(0, 450)]: {
+        [theme.breakpoints.between(0, 376)]: {
           width: "240px",
           height: "fit-content",
           minHeight: "100px",
@@ -83,13 +83,13 @@ export const StyleComponent = makeStyles((theme) => ({
           width: "350px",
           height: "auto",
         },
-        [theme.breakpoints.between(376, 1280)]: {
+        [theme.breakpoints.between(377, 1280)]: {
           width: "270px",
           height: "150px",
           paddingLeft: "10px",
           paddingRight: "10px",
         },
-        [theme.breakpoints.between(0, 375)]: {
+        [theme.breakpoints.between(0, 376)]: {
           width: "240px",
           height: "130px",
           paddingLeft: "10px",
