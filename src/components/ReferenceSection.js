@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import CustomerReview from "./CustomerReview"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyes = makeStyles(theme => ({
   referenceContainer: {
@@ -36,12 +37,13 @@ const useStyes = makeStyles(theme => ({
 
 const ReferenceSection = ({ reviews }) => {
   const classes = useStyes()
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
 
   return (
     <Box className={classes.referenceContainer}>
       <Typography
-        className="title-white !important"
+        className={classesComponent.titleWhite}
         style={{ marginBottom: "15px" }}>
           
         {t("home_referenceSection_title")}

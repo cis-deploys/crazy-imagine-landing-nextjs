@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 import { useIntersection } from "../hooks/useIntersection"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container1: {
@@ -126,25 +127,26 @@ const useStyles = makeStyles(theme => ({
 
 const ServiceCapabilities = ({ title, desc, img }) => {
   const classes = useStyles({ img })
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation()
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container1}>
-        <Box className="container-white-component">
+        <Box className={classesComponent.containerWhiteComponent}>
           {img && (
             <Box className={classes.imgContainer}>
               <Image
                 src={img}
                 width={314}
                 height={357}
-                className={isVisible ? "image-component" : "image"}
+                className={isVisible ? classesComponent.imageComponent : classesComponent.image}
                 alt={`${title}`}
               />
             </Box>
           )}
-          <Box className="text-container-white-component">
+          <Box className={classesComponent.textContainerWhiteComponent}>
             <Typography className={classes.subtitle2}>
               {t("common_button_capabilities")}
             </Typography>

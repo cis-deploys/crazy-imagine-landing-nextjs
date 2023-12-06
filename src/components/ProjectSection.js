@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
@@ -6,7 +6,6 @@ import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
 import { useTranslation } from "react-i18next"
-import { useIntersection } from "../hooks/useIntersection"
 import { makeStyles } from "@mui/styles"
 import "../styles/Swiper.module.css"
 import "../styles/swiper-bullet.module.css"
@@ -14,6 +13,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -59,9 +59,13 @@ const useStyles = makeStyles(theme => ({
       width: "500px",
       height: "420px"
     },
-    [theme.breakpoints.between(1280, 1950)]: {
+    [theme.breakpoints.between(1501, 1950)]: {
       width: "450px",
       height: "350px"
+    },
+    [theme.breakpoints.between(1280, 1500)]: {
+      width: "450px",
+      height: "300px"
     },
     [theme.breakpoints.down("lg")]: {
       width: "360px",
@@ -169,6 +173,7 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
+  const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
   const lang = i18n.language
@@ -185,7 +190,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
       return (
         <Box className={classes.container}>
-          <Typography className="title-blue" style={{ marginBottom: "15px" }}>
+          <Typography className={classesComponent.titleBlue} style={{ marginBottom: "15px" }}>
             {title}
           </Typography>
           <Swiper
@@ -256,7 +261,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
               <Link href={`${PROJECTS}`} >
 
                 <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "30px" }}>   
-                <Button className="button-component">
+                <Button className={classesComponent.buttonComponent}>
                   <span>{t("home_projectSection_button")}</span>
                 </Button>
                 </a>

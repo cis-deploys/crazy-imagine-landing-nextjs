@@ -8,6 +8,7 @@ import { PROJECTS } from "../navigation/sitemap"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
+import { StyleComponent } from "./StyleComponent"
 
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +39,9 @@ const useStyles = makeStyles(theme => ({
 
 const HomeMainSection = () => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const { t } = useTranslation();
+
   return (
     <Box className={classes.container}>
       <TitleSection
@@ -67,7 +70,7 @@ const HomeMainSection = () => {
       <Link href={`${PROJECTS}`} style={{ textDecoration: "none" }} >
         <a>
         <Button
-          className="button-component"
+          className={classesComponent.buttonComponent}
         >
           <span>{t("common_button_get_started")}</span>
         </Button>

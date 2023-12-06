@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
 import emailjs from '@emailjs/browser';
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -408,6 +409,7 @@ const useStyles = makeStyles(theme => ({
 
 const WorkForm = () => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
   const [fileIsLoaded, setFileIsLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState("")
@@ -737,7 +739,7 @@ const WorkForm = () => {
                </Select> 
               }
             /> 
-            <Button className="button-component" type="submit" disabled={showButton}>
+            <Button className={classesComponent.buttonComponent} type="submit" disabled={showButton}>
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

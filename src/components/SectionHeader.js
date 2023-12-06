@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -215,6 +216,7 @@ const useStyles = makeStyles(theme => ({
 
 export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
   const classes = useStyles({ little, btn })
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
 
   return (
@@ -225,7 +227,7 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
           <Typography className={classes.desc}>{desc}</Typography>
           { button ? 
             <Button component="a" href={`#${button.refID}`}
-            className={`button-component ${classes.contactButton} `}
+            className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
             >
               <span>{button.text}</span>
             </Button> 

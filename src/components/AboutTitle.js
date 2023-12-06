@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
 import { useIntersection } from "../hooks/useIntersection"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -131,13 +132,14 @@ const useStyles = makeStyles(theme => ({
 
 export const AboutTitle = ({ title, desc, img }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
 
   return (
     <Box className={classes.container}>
       <Box className={classes.imgContainer}>
-        <Image className={isVisible ? 'image-component' : 'image'} src={img} alt="" />
+        <Image className={isVisible ? classesComponent.imageComponent : classesComponent.image} src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title2}>{title}</Typography>

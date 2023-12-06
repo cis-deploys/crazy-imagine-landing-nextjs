@@ -6,6 +6,7 @@ import Image from 'next/image';
 import ContactForm from "./ContactForm"
 import Section from "./Section"
 import Satelite from "../../public/satelite.svg"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   title2: {
@@ -103,7 +104,9 @@ const useStyles = makeStyles(theme => ({
 
 const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
+
   return (
     <Section
       width="100%"
@@ -118,15 +121,15 @@ const ContactSection = ({ bgColor, bgImage }) => {
               {t("home_contacSection_subtitle")}
             </Typography>
             <Typography
-              className="title-blue"
+              className={classesComponent.titleBlue}
             >
               {t("home_contacSection_title1")}</Typography>
             <Typography
-              className="title-blue"
+              className={classesComponent.titleBlue}
             >
               {t("home_contacSection_title2")}
             </Typography>
-            <Box className="image-component">
+            <Box className={classesComponent.imageComponent}>
               <Image src={Satelite} width={352} height={234} alt="satellite" />
             </Box>
         </Grid>

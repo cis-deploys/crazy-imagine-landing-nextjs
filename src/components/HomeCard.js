@@ -1,8 +1,8 @@
-import React, { useRef } from "react"
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useIntersection } from "../hooks/useIntersection"
 import { makeStyles } from "@mui/styles"
 import { Card, CardContent, Typography } from "@mui/material"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   cardIcon: {
@@ -25,13 +25,14 @@ const useStyles = makeStyles(theme => ({
 
 const HomeCard = ({ title, icon }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
 
   return (
-    <Card className="cardContainerHome2"
+    <Card className={classesComponent.cardContainerHome2}
     >
-      <CardContent className="cardContentHome">
+      <CardContent className={classesComponent.cardContentHome}>
         <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
-        <Typography className="title-card">{title}</Typography>
+        <Typography className={classesComponent.titleCard}>{title}</Typography>
       </CardContent>
     </Card>
   )

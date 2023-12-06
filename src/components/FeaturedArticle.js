@@ -6,6 +6,7 @@ import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -158,39 +159,6 @@ const useStyles = makeStyles(theme => ({
       gap: "5px"
     },
   },
-  titleCard: {
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "20px",
-    paddingLeft: "26px",
-    lineHeight: "20px",
-    color: "#193174",
-    textTransform: "uppercase",
-    display: "-webkit-box",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    "-webkit-line-clamp": 2, /* number of lines to show */
-    lineClamp: 2,
-    "-webkit-box-orient": "vertical",
-    "-moz-box-orient": "vertical",
-    boxOrient: "vertical",
-    [theme.breakpoints.down("xl")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
-      paddingLeft: "18px",
-    },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "16px",
-      lineHeight: "16px",
-      paddingLeft: "9px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "10px",
-      lineHeight: "10px",
-      paddingLeft: "9px",
-    },
-  },
   link: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
@@ -236,6 +204,7 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t, i18n } = useTranslation()
@@ -282,7 +251,7 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             height={614}
           />
           <Box className={classes.textContainer}>
-            <Typography className={classes.titleCard}>
+            <Typography className={classesComponent.titleCard}>
               {projectDataAll[0]?.title}
             </Typography>
             <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[0]?.Key}`} >
@@ -304,7 +273,7 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             height={614}
           />
           <Box className={classes.textContainer}>
-            <Typography className={classes.titleCard}>
+            <Typography className={classesComponent.titleCard}>
               {projectDataAll[1]?.title}
             </Typography>
             <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[1]?.Key}`} >

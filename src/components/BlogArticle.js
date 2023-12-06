@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import { BLOG } from "../navigation/sitemap"
-import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -142,6 +142,7 @@ const useStyles = makeStyles(theme => ({
 
 const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const [load, setLoad] = useState(6)
   const [buttonLoad, setButtonLoad] = useState(true)
   const loadArticles = length => {
@@ -179,7 +180,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
         <Typography
-          className="title-white"
+          className={classesComponent.titleWhite}
         >
           {t("blog_blogArticle_title")}
         </Typography>
@@ -215,7 +216,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
           <Button
             onClick={() => { loadArticles(articles.length) }}
             style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
-            className="button-component"
+            className={classesComponent.buttonComponent}
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>

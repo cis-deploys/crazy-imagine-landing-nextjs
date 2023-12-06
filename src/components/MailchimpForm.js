@@ -1,14 +1,14 @@
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { Box,  Typography, TextField, Button } from "@mui/material"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next"
-import { useIntersection } from "../hooks/useIntersection"
 import Swal from "sweetalert2"
 import axios from "axios"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -211,6 +211,7 @@ const useStyles = makeStyles(theme => ({
 const MailchimpForm = () => {
     const { t } = useTranslation();
     const classes = useStyles({})
+    const classesComponent = StyleComponent()
     const schema = yup.object().shape({
         name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
         email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
@@ -258,7 +259,7 @@ const MailchimpForm = () => {
 
   return (
     <Box className={classes.containerForm}>
-        <Typography className="title-white !important" >
+        <Typography className={classesComponent.titleWhite} >
           {t("home_mailChimp_title")}
         </Typography>
         <Typography className={classes.subTitleMail2}>
@@ -305,7 +306,7 @@ const MailchimpForm = () => {
           <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
           <Button
             type="submit"
-            className="button-component"
+            className={classesComponent.buttonComponent}
           >
             <span>{t("home_mailChimp_button")}</span>
           </Button>

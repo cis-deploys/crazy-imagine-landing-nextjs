@@ -5,7 +5,7 @@ import { PROJECTS } from "../navigation/sitemap"
 import { useTranslation } from "react-i18next"
 import Link from "next/link"
 import { makeStyles } from "@mui/styles"
-import { useIntersection } from "../hooks/useIntersection"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -88,6 +88,7 @@ const useStyles = makeStyles(theme => ({
 
 const RelatedSection = ({ projects }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
     
   const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
@@ -107,7 +108,7 @@ const RelatedSection = ({ projects }) => {
   return (
     <Box className={classes.container}>
       <Typography
-        className="title-white !important">
+        className={classesComponent.titleWhite}>
       {t("project_RelatedSection_title")}
       </Typography>
 

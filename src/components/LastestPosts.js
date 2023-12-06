@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import BlogPost from "./BlogPost"
 import { BLOG } from "../navigation/sitemap"
-import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyes = makeStyles(theme => ({
   container: {
@@ -94,6 +94,7 @@ const useStyes = makeStyles(theme => ({
 
 const LastestPosts = ({ articles, articlesAll }) => {
   const classes = useStyes()
+  const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
     
   const [projectDataAll, setProjectDataAll] = useState(articlesAll.filter(article =>
@@ -113,7 +114,7 @@ const LastestPosts = ({ articles, articlesAll }) => {
   return (
     <Box className={classes.container}>
       <Typography
-        className="title-white !important">
+        className={classesComponent.titleWhite}>
         {t("home_lastestPosts_title")}
 
         </Typography>

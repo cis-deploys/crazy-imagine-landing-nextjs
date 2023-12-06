@@ -14,6 +14,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -147,6 +148,7 @@ const useStyles = makeStyles(theme => ({
 
 const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
@@ -232,7 +234,7 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
               <Link href={`${PROJECTS}`} >
 
                 <a style={{ textDecoration: "none", alignSelf: "center", margin: "30px" }}>   
-                <Button className="button-component">
+                <Button className={classesComponent.buttonComponent}>
                   <span>{t("home_projectSection_button")}</span>
                 </Button>
                 </a>

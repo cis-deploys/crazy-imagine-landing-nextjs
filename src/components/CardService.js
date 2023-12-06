@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@mui/styles"
-import { Box, Typography, Button, Card, CardContent } from "@mui/material"
+import { Typography, Button, CardContent } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next";
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   list: {
@@ -84,6 +85,7 @@ const useStyles = makeStyles(theme => ({
 }))
 const CardService = ({ icon, title, contentList }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const { t } = useTranslation()
   const isVisible = useIntersection(ref, "0px")
@@ -92,10 +94,10 @@ const CardService = ({ icon, title, contentList }) => {
   return (
     <CardContent
       ref={ref}
-      className={isVisible ? 'containerServices2' : 'cardContainer'}
+      className={isVisible ? classesComponent.containerServices2 : classesComponent.cardContainer}
     >
       <FontAwesomeIcon icon={icon} className={classes.icon} />
-      <Typography className="title-card">{title}</Typography>
+      <Typography className={ classesComponent.titleCard }>{title}</Typography>
       <ul className={classes.list} style={{ display: isListVisible ? "block" : "none" }}>
         {contentList?.map((value, index) => (
           <li key={index} className={classes.listItem}>

@@ -10,6 +10,7 @@ import orderingImage from "../../public/orderingLogo.webp"
 import piggyImage from "../../public/piggyBackLogo.webp"
 import { useTranslation } from "react-i18next"
 import Image from 'next/image'
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
     section: {
@@ -49,11 +50,12 @@ const useStyles = makeStyles(theme => ({
 
 const Partners = () => {
     const classes = useStyles()
+    const classesComponent = StyleComponent()
     const { t } = useTranslation();
 
   return (
     <Box className={classes.section}>
-      <Typography className="title-blue">
+      <Typography className={classesComponent.titleBlue}>
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>
