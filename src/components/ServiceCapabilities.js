@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 import { useIntersection } from "../hooks/useIntersection"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container1: {
@@ -12,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    gap: "59px",
     height: "100%",
     marginTop: "30px",
     [theme.breakpoints.between(0, 600)]: {
@@ -20,10 +20,17 @@ const useStyles = makeStyles(theme => ({
     },
   },
   conta: {
-    visibility: "hidden",
-  },
-  conta2: {
     animation: `$myEffect 2000ms`,
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
   },
   subtitle2: {
     fontFamily: "Nexa Bold",
@@ -73,7 +80,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02em",
     color: "#193174",
     whiteSpace: "pre-line",
-    textAlign: "justify",
+    textAlign: "left",
     [theme.breakpoints.up("xl")]: {
       fontSize: "30px",
     },
@@ -94,7 +101,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.01em",
     color: "#193174",
     whiteSpace: "pre-line",
-    textAlign: "justify",
+    textAlign: "left",
     [theme.breakpoints.between(601, 3000)]: {
       display: "none",
     },
@@ -120,25 +127,26 @@ const useStyles = makeStyles(theme => ({
 
 const ServiceCapabilities = ({ title, desc, img }) => {
   const classes = useStyles({ img })
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation()
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container1}>
-        <Box className={"container-white-component"}>
+        <Box className={classesComponent.containerWhiteComponent}>
           {img && (
             <Box className={classes.imgContainer}>
               <Image
                 src={img}
                 width={314}
                 height={357}
-                className={isVisible ? "image-component" : "image"}
+                className={isVisible ? classesComponent.imageComponent : classesComponent.image}
                 alt={`${title}`}
               />
             </Box>
           )}
-          <Box className={"text-container-white-component"}>
+          <Box className={classesComponent.textContainerWhiteComponent}>
             <Typography className={classes.subtitle2}>
               {t("common_button_capabilities")}
             </Typography>
@@ -151,7 +159,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
         <Box
           sx={{
             padding: "0px 30px",
-            textAlign: "center",
+            textAlign: "left",
             width: "100%",
             marginBottom: "50px",
           }}

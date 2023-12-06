@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   backgroundIn: props => ({
@@ -74,106 +75,6 @@ const useStyles = makeStyles(theme => ({
       height: props.little ? "370px" : "350px",
     },
   }),
-  buttonLeft: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: "100px",
-    color: "#1E2F97",
-    padding: "14px 20px 12px 20px",
-    border: "2px solid #FFFFFF",
-    "&:hover": {
-      background: "transparent",
-      color: "#FFFFFF",
-    },
-    "& > span": {
-      fontSize: "12px",
-      lineHeight: "10px",
-      fontFamily: "Nexa",
-      fontStyle: "normal",
-      fontWeight: 900,
-      textAlign: "center",
-      letterSpacing: "0.05em",
-    },
-    [theme.breakpoints.down("md")]: {
-      padding: "5px 5px 5px 5px",
-      "& > span": {
-        fontSize: "12px",
-        lineHeight: "inherit",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      padding: "6px 6px 6px 6px",
-      border: "1px solid #FFFFFF",
-      "& > span": {
-        fontSize: "9px",
-        lineHeight: "inherit",
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "3px 3px 3px 3px",
-      border: "1px solid #FFFFFF",
-      borderRadius: "8px",
-      "& > span": {
-        fontSize: "7px",
-        lineHeight: "inherit",
-      },
-    },
-  },
-  buttonRight: {
-    border: "2px solid #FFFFFF",
-    boxSizing: "border-box",
-    color: "#FFFFFF",
-    borderRadius: "100px",
-    padding: "14px 20px 12px 20px",
-    "& > span": {
-      fontSize: "12px",
-      lineHeight: "10px",
-      fontFamily: "Nexa",
-      fontStyle: "normal",
-      fontWeight: 900,
-      textAlign: "center",
-      letterSpacing: "0.05em",
-    },
-    "&:hover": {
-      background: "#FFFFFF",
-      color: "#1E2F97",
-    },
-    [theme.breakpoints.down("md")]: {
-      padding: "5px 5px 5px 5px",
-      "& > span": {
-        fontSize: "12px",
-        lineHeight: "inherit",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      padding: "6px 6px 6px 6px",
-      border: "1px solid #FFFFFF",
-      "& > span": {
-        fontSize: "9px",
-        lineHeight: "inherit",
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "4px 4px 4px 4px",
-      border: "1px solid #FFFFFF",
-      borderRadius: "8px",
-      "& > span": {
-        fontSize: "7px",
-        lineHeight: "inherit",
-      },
-    },
-  },
-  buttonContainer: {
-    display: "flex",
-    flexDirection: "row",
-    gap: "12px",
-    [theme.breakpoints.down("sm")]: {
-      gap: "3px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      gap: "5px",
-      marginBottom: "5px",
-    },
-  },
   textContainer: props => ({
     backgroundColor: "#27AAE1",
     display: "flex",
@@ -183,6 +84,12 @@ const useStyles = makeStyles(theme => ({
     gap: "42px",
     justifyContent: props.little ? "center" : "flex-start",
     alignItems: "flex-start",
+    [theme.breakpoints.down("lg")]: {
+      padding: "70px 0px 50px 50px",
+      gap: "32px",
+      width: "auto",
+      height: "auto",
+    },
     [theme.breakpoints.down("md")]: {
       padding: "20px 0px 50px 50px",
       gap: "32px",
@@ -190,18 +97,10 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "30px 0px 20px 0px",
+      padding: "5px 10px 20px 10px",
       width: "auto",
       height: "auto",
       gap: "22px",
-      background: props.little ? "#27AAE1" : "transparent",
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "0px 0px 0px 0px",
-      width: "auto",
-      height: "auto",
-      gap: "14px",
-      justifyContent: "center",
       background: props.little ? "#27AAE1" : "transparent",
     },
   }),
@@ -218,13 +117,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       marginRight: props.little ? "50px" : "0px",
-      marginBottom: "40px",
-      height: "70%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginRight: props.little ? "5px" : "0px",
-      marginBottom: "30px",
-      height: "70%",
+      marginBottom: "50px",
+      height: "65%",
     },
   }),
   img: {
@@ -240,13 +134,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       width: "300%",
       height: "70%",
-    },
-  },
-  contactButton: {
-    background: "#797EF6",
-    margin: 0,
-    "&:hover": {
-      background: "#797EF6",
     },
   },
   "@keyframes myEffect": {
@@ -267,28 +154,22 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "81px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+    [theme.breakpoints.down("lg")]: {
+      lineHeight: "70px",
+      fontWeight: "600",
+      fontSize: "70px",
+    },
     [theme.breakpoints.down("md")]: {
       lineHeight: "40px",
       fontWeight: "600",
       fontSize: "40px",
     },
-    [theme.breakpoints.down("sm")]: {
-      lineHeight: props.little ? "51px" : "40px",
-      fontSize: props.little ? "23px" : "30px",
-      fontWeight: props.little ? 600 : 400,
-    },
-    [theme.breakpoints.down("xs")]: {
-      whiteSpace: "normal",
-      lineHeight: props.little ? "51px" : "40px",
-      fontSize: props.little ? "23px" : "30px",
-      fontWeight: 100,
-    },
-    [theme.breakpoints.between(0, 400)]: {
+    [theme.breakpoints.between(377, 600)]: {
       lineHeight: props.little ? "41px" : "30px",
       fontSize: props.little ? "21px" : "25px",
       fontWeight: 100,
     },
-    [theme.breakpoints.between(0, 350)]: {
+    [theme.breakpoints.between(0, 376)]: {
       lineHeight: props.little ? "31px" : "20px",
       fontSize: props.little ? "21px" : "20px",
       fontWeight: 100,
@@ -304,13 +185,18 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#E3FFFF",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "15px",
+      lineHeight: "inherit",
+      width: "100%"
+    },
+    [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "inherit",
       width: "100%"
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "11px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "8px",
       lineHeight: "inherit",
       width: "100%"
     },
@@ -319,10 +205,18 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     borderRadius: "100px"
   },
+  contactButton: {
+    background: "#797EF6 !important",
+    margin: 0,
+    "&:hover": {
+      background: "#797EF6 !important",
+    },
+  },
 }))
 
 export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
   const classes = useStyles({ little, btn })
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
 
   return (
@@ -333,7 +227,7 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
           <Typography className={classes.desc}>{desc}</Typography>
           { button ? 
             <Button component="a" href={`#${button.refID}`}
-              className={`button-component ${classes.contactButton} `}
+            className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
             >
               <span>{button.text}</span>
             </Button> 

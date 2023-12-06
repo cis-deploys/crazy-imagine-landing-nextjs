@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import dynamic from "next/dynamic";
 
 import Layout from "../../components/Layout"
-import i18n from "../../../i18n"
 import { NextSeo } from 'next-seo';
 
 const ProjectsKey = dynamic(

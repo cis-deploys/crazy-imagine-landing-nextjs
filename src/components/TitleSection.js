@@ -5,6 +5,7 @@ import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container1: {
@@ -13,11 +14,11 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    gap: "59px",
+    gap: "5px",
     height: "100%",
-    marginTop: "50px",
-    [theme.breakpoints.between(0, 600)]: {
-      gap: "5px",
+    marginTop: "20px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10px",
     },
   },
   titleContainer: {
@@ -40,8 +41,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "41px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "18px",
-      lineHeight: "18px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
   },
   blueTitle2: {
@@ -61,8 +62,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "41px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
   },
   desc: {
@@ -96,13 +97,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "17px",
-    letterSpacing: "0.03em",
+    letterSpacing: "0.02em",
+    textAlign: "justify",
     color: "#193174",
     [theme.breakpoints.between(601, 3000)]: {
       display: "none",
-    },
-    [theme.breakpoints.between(0, 600)]: {
-      display: "unset",
     },
   },
   imgContainer: {
@@ -122,22 +121,23 @@ const useStyles = makeStyles(theme => ({
 
 export const TitleSection = ({ desc }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation();
   return (
     <Box className={classes.container1}>
-    <Box className={'container-white-component'}>
+    <Box className={classesComponent.containerWhiteComponent}>
       <Box className={classes.imgContainer}>
         <Image
           src={mainImage}
           width={314}
           height={357}
-          className={isVisible ? 'image-component' : 'image'}
+          className={isVisible ? classesComponent.imageComponent : classesComponent.image}
           alt="Title"
         />
       </Box>
-      <Box className={'text-container-white-component'}>
+      <Box className={classesComponent.textContainerWhiteComponent}>
         <Box className={classes.titleContainer}>
           <Typography className={classes.title2}>{t("home_homeMainSection_titleSection_title")}</Typography>
           <Typography className={classes.blueTitle2}>{t("home_homeMainSection_titleSection_blueTitle")}</Typography>
@@ -147,7 +147,7 @@ export const TitleSection = ({ desc }) => {
         </Typography>
       </Box>
     </Box>
-    <Box sx={{ padding: "0px 30px", textAlign: "center", width: "90%", marginBottom: "50px"}}>
+    <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "30px"}}>
       <Typography ref={ref} className={classes.desc2}>
           {desc}
       </Typography>

@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import { BLOG } from "../navigation/sitemap"
-import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -53,24 +53,23 @@ const useStyles = makeStyles(theme => ({
     },
   },
   wrapperContainer: {
-    width: "75%",
+    width: "80%",
     margin: "auto",
     paddingTop: "83px",
     paddingBottom: "83px",
     display: "flex",
     flexDirection: "column",
+    alignContent: "center",
     [theme.breakpoints.up("xl")]: {
-      width: "45%",
+      width: "80%",
       paddingTop: "40px",
     },
     [theme.breakpoints.down("md")]: {
       paddingTop: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "20px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "10px",
+      width: "70%",
+      paddingTop: "40px",
     },
   },
   wrapperContainerSection: {
@@ -143,10 +142,7 @@ const useStyles = makeStyles(theme => ({
 
 const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
-  const ref1 = useRef()
-  const isVisible1 = useIntersection(ref1, "0px")
+  const classesComponent = StyleComponent()
   const [load, setLoad] = useState(6)
   const [buttonLoad, setButtonLoad] = useState(true)
   const loadArticles = length => {
@@ -184,9 +180,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
         <Typography
-          ref={ref}
-          className={
-            isVisible ? 'title-white' : 'title'}
+          className={classesComponent.titleWhite}
         >
           {t("blog_blogArticle_title")}
         </Typography>
@@ -220,10 +214,9 @@ const BlogArticle = ({ articles: AllArticles }) => {
         </Box>
         { buttonLoad && (
           <Button
-            ref={ref1}
             onClick={() => { loadArticles(articles.length) }}
             style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
-            className={ isVisible1 ? 'button-component' : 'button' }
+            className={classesComponent.buttonComponent}
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>

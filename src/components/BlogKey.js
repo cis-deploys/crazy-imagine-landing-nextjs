@@ -151,7 +151,7 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       flexDirection: "row",
       background: "white",
-      padding: "10% 5%",
+      padding: "5% 5%",
       gap: "50px",
       [theme.breakpoints.down("md")]: {
         flexDirection: "column-reverse",

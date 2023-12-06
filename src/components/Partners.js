@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Box,  Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles";
 import littleImage from "../../public/littleTallerLogo.webp"
@@ -8,9 +8,9 @@ import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
 import Sirge from "../../public/Sirge-Logo.webp"
 import orderingImage from "../../public/orderingLogo.webp"
 import piggyImage from "../../public/piggyBackLogo.webp"
-import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next"
 import Image from 'next/image'
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
     section: {
@@ -50,13 +50,12 @@ const useStyles = makeStyles(theme => ({
 
 const Partners = () => {
     const classes = useStyles()
-    const ref = useRef()
-    const isVisible = useIntersection(ref, "0px")
+    const classesComponent = StyleComponent()
     const { t } = useTranslation();
 
   return (
     <Box className={classes.section}>
-      <Typography ref={ref} className={isVisible ? 'title-blue' : 'title'}>
+      <Typography className={classesComponent.titleBlue}>
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>

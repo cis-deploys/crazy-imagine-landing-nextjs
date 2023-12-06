@@ -6,327 +6,329 @@ body {
 
 /*Components---------------------------------------------------------------*/
 
-@keyframes myEffectCard-service {
+/* @keyframes myEffectCard-service {
   0% {
-    opacity: 0;
-    transform: translateY(200%);
+    opacity: 0 !important;
+    transform: translateY(200%) !important;
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
 }
 
 .containerServices2 {
   animation: myEffectCard-service 2000ms;
-  width: 314px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #FFFFFF;
-  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
-  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
-    width: 314px;
-    height: auto !important;
+  width: 314px !important;
+  height: fit-content !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background: #FFFFFF !important;
+  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06) !important;
+  border-radius: 14px !important;
+  @media only screen and (min-width: 1951px) and (max-width: 3000px) {
+    width: 500px !important;
+    height: fit-content !important;
+    min-height: 197px !important;
   }
-  @media only screen and (max-width: 1280px) {
-    width: 270px;
-    height: auto !important;
+  @media only screen and (min-width: 1281px) and (max-width: 1950px) {
+    width: 350px !important;
+    height: fit-content !important;
+    min-height: 197px !important;
   }
-  @media only screen and (max-width: 375px) {
-    width: 240px;
-    height: auto !important;
+  @media only screen and (min-width: 961px) and (max-width: 1280px) {
+    width: 300px !important;
+    height: fit-content !important;
+    min-height: 170px !important;
+  }
+  @media only screen and (max-width: 960px) {
+    width: 270px !important;
+    height: fit-content !important;
+    min-height: 150px !important;
+  }
+  @media only screen and (max-width: 450px) {
+    width: 240px !important;
+    height: fit-content !important;
+    min-height: 100px !important;
   }
 }
 @keyframes myEffectosCard-container {
   0% {
-    opacity: 0;
+    opacity: 0 !important;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.5 !important;
   }
   100% {
-    opacity: 1;
+    opacity: 1 !important;
   }
-}
-
-.cardContainer {
-  visibility: hidden;
 }
 
 .cardContainerHome2 {
   animation: myEffectosCard-container 2000ms;
-  background-color: #FFFFFF;
-  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  height: 185px;
-  width: 314px;
-  justify-content: center;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  @media only screen and (min-width: 1281px) and (max-width: 3000px) {
-    width: 314px;
-    height: 185px;
-    padding-left: 10px;
-    padding-right: 10px;
+  background-color: #FFFFFF !important;
+  box-shadow: 10px 10px 100px 3px rgba(0, 0, 0, 0.06) !important;
+  border-radius: 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 185px !important;
+  width: 314px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding-left: 10px  !important;
+  padding-right: 10px  !important;
+  @media only screen and (min-width: 1951px) and (max-width: 3000px) {
+    width: 500px !important;
+    height: auto !important;
+    padding-left: 10px !important;
+    padding-right: 10px  !important;
+  }
+  @media only screen and (min-width: 1281px) and (max-width: 1950px) {
+    width: 350px  !important;
+    height: auto !important;
   }
   @media only screen and (max-width: 1280px) {
-    width: 270px;
-    height: 150px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 270px !important;
+    height: 150px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
   @media only screen and (max-width: 375px) {
-    width: 240px;
-    height: 130px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 240px !important;
+    height: 130px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
 }
 
 .cardContentHome {
-  width: 314px;
-  height: 185px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: "10px";
+  width: 314px !important;
+  height: 185px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: "10px" !important;
   @media only screen and (min-width: 1281px) and (max-width: 3000px) {
-    width: 314px;
-    height: 185px;
+    width: 314px !important;
+    height: 185px !important;
   }
   @media only screen and (max-width: 1280px) {
-    width: 250px;
-    height: 150px;
+    width: 250px !important;
+    height: 150px !important;
   }
   @media only screen and (max-width: 375px) {
-    width: 240px;
-    height: 130px;
+    width: 240px !important;
+    height: 130px !important;
   }
 }
 
 .container-white-component {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  justify-content: center;
-  align-items: center;
-  gap: 59px;
-  height: 100%;
-  margin-top: 10px;
+  display: flex !important;
+  flex-direction: row !important;
+  width: 90% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100% !important;
+  margin-top: 10px !important;
   @media only screen and (min-width: 601px) and (max-width: 959px) {
-    gap: 10px;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 35px;
-    width: 80%;
+    height: auto !important;
+    margin-top: 30px !important;
+    width: 80% !important;
   }
   @media only screen and (max-width: 600px) {
-    flex-direction: row;
-    gap: 0px;
-    width: 80%;
-    margin-top: 10px;
+    flex-direction: row !important;
+    width: 80% !important;
+    margin-top: 10px !important;
   };
 }
 
 .text-container-white-component {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
-  width: 45%;
-  white-space: pre-line;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 20px !important;
+  width: 45% !important;
+  white-space: pre-line !important;
+  margin-left: 20px !important;
   @media only screen and (min-width: 1920px){
-    margin-top: 9px;
-    margin-bottom: 9px;
-    width: 40%;
-    gap: 14px;
+    margin-top: 9px !important;
+    margin-bottom: 9px !important;
+    width: 40% !important;
   };
   @media only screen and (max-width: 960px) {
-    margin-top: 9px;
-    margin-bottom: 9px;
-    width: 40%;
-    gap: 14px;
+    margin-top: 9px !important;
+    margin-bottom: 9px !important;
+    margin-left: 10px !important;
+    width: 40% !important;
+    gap: 14px !important;
   }
 }
 
 .title-card {
-  font-family: Nexa Bold;
-  font-style: normal;
-  font-weight: 700;
-  width: 150px;
-  font-size: 28px;
-  line-height: 28px;
-  text-align: center;
-  color: #193174;
-  margin-top: 10px;
+  font-family: Nexa Bold !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  width: 150px !important;
+  font-size: 28px !important;
+  line-height: 28px !important;
+  text-align: center !important;
+  color: #193174 !important;
+  margin-top: 10px !important;
   @media only screen and (min-width: 1920px){
-    width: 220px;
-    font-size: 28px;
-    line-height: 28px;
+    width: 220px !important;
+    font-size: 28px !important;
+    line-height: 28px !important;
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-    width: 220px;
-    font-size: 20px;
-    line-height: 28px;
+    width: 220px !important;
+    font-size: 20px !important;
+    line-height: 28px !important;
   }
   @media only screen and (max-width: 959px) {
-    width: 220px;
-    font-size: 15px;
-    line-height: 15px;
+    width: 220px !important;
+    font-size: 15px !important;
+    line-height: 15px !important;
   }
 }
 
 @keyframes myEffect-title {
   0% {
-    opacity: 0;
-    transform: translateY(-200%);
+    opacity: 0 !important;
+    transform: translateY(-200%) !important;
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
-}
-
-.title {
-  visibility: hidden;
 }
 
 .title-blue {
-  animation: myEffect-title 2000ms;
-  font-family: Nexa Bold;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 40px;
-  margin-top: 20px;
-  text-align: center;
-  color: #193173;
-  padding-bottom: 20px ;
+  animation: myEffect-title 2000ms !important;
+  font-family: Nexa Bold !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 40px !important;
+  line-height: 40px !important;
+  margin-top: 20px !important;
+  text-align: center !important;
+  color: #193173 !important;
   @media only screen and (min-width: 1920px){
-    font-size: 40px;
-    line-height: 38px;
+    font-size: 40px !important;
+    line-height: 38px !important;
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-    font-size: 35px;
-    line-height: 32px;
+    font-size: 35px !important;
+    line-height: 32px !important;
   }
   @media only screen and (max-width: 959px) {
-    font-size: 25px;
-    line-height: 28px;
-    margin-bottom: 0px;
+    font-size: 25px !important;
+    line-height: 28px !important;
   }
 }
 
 .title-white {
-  animation: myEffect-title 2000ms;
-  font-family: Nexa Bold;
-  font-style: normal;
-  font-weight: 700;
-  text-align: center;
-  color: #FFFFFF;
-  white-space: pre-line;
+  animation: myEffect-title 2000ms !important;
+  font-family: Nexa Bold !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 40px !important;
+  line-height: 40px !important;
+  text-align: center !important;
+  color: #FFFFFF !important;
+  white-space: pre-line !important;
   @media only screen and (min-width: 1920px){
-      font-size: 40px;
-      line-height: 38px;
-      margin-bottom: 0px;
+      font-size: 40px !important;
+      line-height: 38px !important;
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-      font-size: 35px;
-      line-height: 32px;
-      margin-bottom: 0px;
+      font-size: 35px !important;
+      line-height: 32px !important;
   }
   @media only screen and (max-width: 959px) {
-      font-size: 25px;
-      line-height: 28px;
-      margin-bottom: 0px;
+      font-size: 25px !important;
+      line-height: 28px !important;
     }
 };
 
 @keyframes myEffectbutton {
   0% {
-    opacity: 0;
-    transform: translateY(200%);
+    opacity: 0 !important;
+    transform: translateY(200%) !important;
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
-}
-
-.button {
-  visibility: hidden;
 }
 
 .button-component {
-  animation: myEffectbutton 2000ms;
-  background: #797EF6;
-  border-radius: 100px;
-  margin-bottom: 87px;
-  margin-top: 48px;
-  > span {
-    font-family: Nexa Bold;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    padding: 14px 20px 12px 20px;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #FFFFFF;
+  animation: myEffectbutton 2000ms!important;
+  background: #797EF6 !important;
+  border-radius: 100px !important;
+  margin-bottom: 87px !important;
+  margin-top: 48px !important;
+  & > span {
+    font-family: Nexa Bold !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    padding: 14px 20px 12px 20px !important;
+    line-height: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    text-align: center !important;
+    letter-spacing: 0.05em !important;
+    color: #FFFFFF !important;
   };
   @media only screen and (min-width: 1920px){
-    margin-bottom: 61px;
-    margin-top: 10px;
-      > span  {
-        font-size: 20px;
-        line-height: 18px;
-        padding: 14px 20px 12px 20px;
+    margin-bottom: 61px !important;
+    margin-top: 10px !important;
+    border-radius: 100px !important;
+    & > span  {
+        font-size: 25px !important;
+        line-height: 20px !important;
+        padding: 20px 25px 20px 25px !important;
       }
 
   }
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-    margin-bottom: 61px;
-      margin-top: 34px;
-      > span {
-        font-size: 10px;
-        line-height: 14px;
-        padding: 10px 14px 8px 14px;
+      margin-bottom: 61px !important;
+      margin-top: 34px !important;
+      border-radius: 100px !important;
+    & > span {
+        font-size: 15px !important;
+        line-height: 14px !important;
+        padding: 10px 14px 8px 14px !important;
       };
   }
   @media only screen and (max-width: 959px) {
-    margin-bottom: 20px;
-    margin-top: 24px;
-    > span {
-      font-size: 10px;
-      line-height: 14px;
-      padding: 10px 14px 8px 14px;
+    margin-bottom: 20px !important;
+    margin-top: 24px !important;
+    border-radius: 100px !important;
+  & > span {
+      font-size: 10px !important;
+      line-height: 14px !important;
+      padding: 10px 14px 8px 14px !important;
     };
   }
 }
 
 .button-component:hover {
-  background-color: #30AADE;
+  background-color: #27AAE1 !important;
 };
 
 @keyframes myEffect-image-component {
   0% {
-    opacity: 0;
-    transform: translateX(-200%);
+    opacity: 0 !important;
+    transform: translateX(-200%) !important;
   }
   100% {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1 !important;
+    transform: translateX(0) !important;
   }
 }
 
@@ -334,20 +336,20 @@ body {
   display: none;
 }
 .image-component {
-  animation: myEffect-image-component 2000ms;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  animation: myEffect-image-component 2000ms !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   @media only screen and (min-width: 1920px){
-    width: 100%;
+    width: 100% !important;
   };
   @media only screen and (min-width: 960px) and (max-width: 1919px) {
-    width: 80%;
+    width: 80% !important;
   };
   @media only screen and (max-width: 959px) {
-    width: 60%;
+    width: 60% !important;
   }
-}
+} */
 
 /* Carrousel -------------------------------------------------------*/
 

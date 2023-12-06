@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     fontFamily: "Roboto,sans-serif",
     fontWeight: 400,
-    fontSize: "14px",
+    fontSize: "12px",
     textAlign: "left",
     fontStyle: "normal",
     lineHeight: "25px",

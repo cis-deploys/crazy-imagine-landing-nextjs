@@ -264,12 +264,13 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
 
         <ReferenceSection reviews={ reviewsNew }/>
 
-        <ProjectSection
+        <ProjectSection           
           title={t("home_projectSection_title")}
           btn={true}
           size={true}
           projects={projectsNew.concat(projectsEnNew)}
-        />
+          />
+
         <MailchimpForm />
 
         <Partners />

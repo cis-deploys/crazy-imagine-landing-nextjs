@@ -7,12 +7,12 @@ import { makeStyles } from "@mui/styles"
 const useStyles = makeStyles(theme => ({
   container: {
     height: "auto",
-    paddingTop: "50px",
+    padding: "0px 10px",
     width: "100%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.between(0, 3000)]: {
       height: "auto",
-      paddingTop: "50px",
-      paddingBottom: "50px",
+      paddingTop: "30px",
+      paddingBottom: "30px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "80%",
@@ -49,57 +49,66 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "24px",
     color: "#193174",
     textAlign: "center",
-    whiteSpace: "pre-line",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
       lineHeight: "25px",
     },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
+    [theme.breakpoints.between(1281, 1920)]: {
+      padding: "20px 50px 0px 50px",
+      fontSize: "23px",
+      lineHeight: "23px",
+    },
+    [theme.breakpoints.between(601, 1280)]: {
+      padding: "20px 30px 0px 30px",
+      fontSize: "16px",
       lineHeight: "17px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
+      textAlign: "justify",
       lineHeight: "17px",
-      whiteSpace: "normal",
     },
 },
   desc: {
     fontFamily: "HindVadodara",
     fontWeight: "600",
-    whiteSpace: "pre-line",
     fontSize: "30px",
     lineHeight: "39px",
-    paddingTop: "40px",
+    paddingTop: "30px",
     color: "#193174",
     textAlign: "center",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "30px",
-      lineHeight: "30px",
+      fontSize: "28px",
+      lineHeight: "28px",
     },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "21px",
-      lineHeight: "27px",
+    [theme.breakpoints.between(1281, 1949)]: {
+      padding: "20px 50px 0px 50px",
+      fontSize: "25px",
+      lineHeight: "25px",
+    },
+    [theme.breakpoints.between(601, 1280)]: {
+      padding: "20px 30px 0px 30px",
+      fontSize: "18px",
+      lineHeight: "25px",
     },
     [theme.breakpoints.down("sm")]: {
       paddingTop: "25px",
       fontSize: "15px",
-      lineHeight: "17px",
+      lineHeight: "18px",
       whiteSpace: "normal",
+      textAlign: "justify",
     },
   },
 }))
 
 const HomeDescription = () => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation();
   
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Box
-        className={isVisible ? classes.textContainer2 : classes.textContainer}
+        className={classes.textContainer2}
       >
         <Typography className={classes.text}>
           {t("home_homeDescription_text")}

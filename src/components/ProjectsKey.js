@@ -3,7 +3,6 @@ import { Box, Typography } from "@mui/material"
 import HeroProjectsSection from "./HeroProjectsSection"
 import AboutProjects from "./AboutProjects"
 import GalleryProjects from "./GalleryProjects"
-
 import RelatedSection from "./RelatedSection"
 import ContactSection from "./ContactSection"
 import { useTranslation } from "react-i18next"
@@ -116,7 +115,9 @@ const ProjectsKey = ({projects, projectsAll}) => {
             description={projectData[0]?.moreAbout}
           />
         </>
+        
         <RelatedSection projects={ projectDataAll }/>
+
         <ContactSection />
       </Box>
     </>
