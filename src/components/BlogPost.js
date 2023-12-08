@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     width: "420px",
     height: "350px",
-    [theme.breakpoints.between(1921, 3000)]: {
+    [theme.breakpoints.between(1921, 4000)]: {
       gap: "18px",
       height: "420px",
       width: "500px"

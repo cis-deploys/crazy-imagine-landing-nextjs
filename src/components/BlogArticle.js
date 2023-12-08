@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: "83px",
     display: "flex",
     flexDirection: "column",
-    alignContent: "center",
+    alignContent: "flex-start",
     [theme.breakpoints.up("xl")]: {
       width: "80%",
       paddingTop: "40px",
@@ -129,7 +129,7 @@ const useStyles = makeStyles(theme => ({
   wrapper: {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "left",
     background: "transparent",
     marginTop: "50px",
     marginBottom: "50px",
@@ -143,20 +143,21 @@ const useStyles = makeStyles(theme => ({
 const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const [load, setLoad] = useState(6)
-  const [buttonLoad, setButtonLoad] = useState(true)
-  const loadArticles = length => {
-    if (length > load) setLoad(load + 2)
-    if (length <= load) setButtonLoad(false)
-  }
-
   const { t, i18n } = useTranslation()
   const lang = i18n.language
+  const [load, setLoad] = useState(5)
+  const [buttonLoad, setButtonLoad] = useState(true)
 
+  const loadArticles = length => {
+    if (length > load) setLoad(load + 5)
+    if (length = load) setButtonLoad(false)
+  }
+
+  
   const articles = AllArticles
   const articlesFilter = articles.filter(article =>
     article.locale.includes(lang)
-  )
+    )
 
     const [projectDataAll, setProjectDataAll] = useState(articlesFilter
       .sort((a, b) => {

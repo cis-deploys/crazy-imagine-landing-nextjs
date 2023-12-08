@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
       padding: "40px 40px",
     },
     [theme.breakpoints.between(0, 324)]: {
-      padding: "0px 10px",
+      padding: "0px 5px",
     },
   },
   containerCard: {
@@ -47,8 +47,14 @@ const useStyles = makeStyles(theme => ({
       margin: "0px 40px",
       gap: "20px",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.between(325, 450)]: {
       height: "auto",
+      padding: "0px 0px 20px 0px",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.between(0, 324)]: {
+      height: "auto",
+      width: "229px",
       padding: "0px 0px 20px 0px",
       flexDirection: "column",
     },
@@ -154,8 +160,8 @@ const useStyles = makeStyles(theme => ({
       gap: "5px"
     },
     [theme.breakpoints.between(0, 325)]: {
-      width: "auto",
-      height: "auto",
+      width: "225px",
+      height: "200px",
       gap: "5px"
     },
   },
@@ -174,6 +180,11 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: "9px",
       lineHeight: "11px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "11px",
+      paddingLeft: "9px",
+      lineHeight: "11px",
+    },
   },
   img: {
     height: "auto",
@@ -182,7 +193,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     gap: "19px",
-    padding: "6px 25px 22px 27px",
+    width: "100%",
+    padding: "6px 25px 22px 26px",
     height: "98px",
     [theme.breakpoints.down("lg")]: {
       gap: "13px",
@@ -198,6 +210,36 @@ const useStyles = makeStyles(theme => ({
       gap: "8px",
       padding: "11px 11px 10px 16px",
       height: "70px"
+    },
+  },
+  titleCard: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    width: "150px",
+    fontSize: "28px",
+    lineHeight: "20px",
+    textAlign: "left",
+    color: "#193174",
+    [theme.breakpoints.between(1920, 4000)]: {
+      width: "100%",
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      width: "400px",
+      fontSize: "20px",
+      lineHeight: "17px",
+    },
+    [theme.breakpoints.between(600, 959)]: {
+      width: "230px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.between(0, 559)]: {
+      width: "200px",
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
 }))
@@ -251,7 +293,7 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             height={614}
           />
           <Box className={classes.textContainer}>
-            <Typography className={classesComponent.titleCard}>
+            <Typography className={classes.titleCard}>
               {projectDataAll[0]?.title}
             </Typography>
             <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[0]?.Key}`} >
@@ -273,7 +315,7 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             height={614}
           />
           <Box className={classes.textContainer}>
-            <Typography className={classesComponent.titleCard}>
+            <Typography className={classes.titleCard}>
               {projectDataAll[1]?.title}
             </Typography>
             <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[1]?.Key}`} >

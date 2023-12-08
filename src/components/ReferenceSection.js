@@ -16,7 +16,7 @@ const useStyes = makeStyles(theme => ({
     overflow: "hidden",
     padding: "58px 48px",
     height: "700px",
-    [theme.breakpoints.between(1921, 3000)]: {
+    [theme.breakpoints.between(1921, 4000)]: {
       padding: "55px 200px",
       height: "700px",
     },

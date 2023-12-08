@@ -15,6 +15,7 @@ import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     width: "420px",
     height: "350px",
-    [theme.breakpoints.between(1921, 3000)]: {
+    [theme.breakpoints.between(1921, 4000)]: {
       gap: "18px",
       height: "420px",
       width: "500px"
@@ -154,15 +155,17 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
   const lang = i18n.language
+  const router = useRouter();
+  const { Key } = router.query;
 
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
-    project.locale.includes(lang)
-  ));
+  const [projectDataAll, setProjectDataAll] = useState(projects
+    ?.filter( project => project?.Key !== Key && project?.Key !== null)
+    .filter(project => project.locale.includes(lang)));
   
   useEffect(() => {
-      setProjectDataAll(projects.filter(project =>
-        project.locale.includes(lang)
-      ));
+      setProjectDataAll(projects
+        ?.filter( project => project?.Key !== Key && project?.Key !== null)
+        .filter(project => project.locale.includes(lang)));
   }, [i18n.language]);
 
       return (
@@ -190,7 +193,7 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
             }}
             slidesPerView={"auto"}
             grabCursor={true}
-            loop={true}
+            loop={false}
             modules={[Pagination]}
             style={{
               width: "100%",

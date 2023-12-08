@@ -361,7 +361,7 @@ const ContactForm = () => {
               className={classesComponent.buttonComponent}
               type="submit"
             >
-            <span>{t("common_button_contact_us")}</span>
+            <span>{t("common_button_contact_SUBMIT")}</span>
             </Button>
           </Grid>
         </Grid>

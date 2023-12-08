@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     height: "auto",
     padding: "0px 10px",
     width: "100%",
-    [theme.breakpoints.between(0, 3000)]: {
+    [theme.breakpoints.between(0, 4000)]: {
       height: "auto",
       paddingTop: "30px",
       paddingBottom: "30px",
@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
-      textAlign: "justify",
+      textAlign: "left",
       lineHeight: "17px",
     },
 },
@@ -96,7 +96,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       lineHeight: "18px",
       whiteSpace: "normal",
-      textAlign: "justify",
+      textAlign: "left",
     },
   },
 }))

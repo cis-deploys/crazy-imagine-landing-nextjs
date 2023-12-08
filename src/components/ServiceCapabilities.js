@@ -102,7 +102,7 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     whiteSpace: "pre-line",
     textAlign: "left",
-    [theme.breakpoints.between(601, 3000)]: {
+    [theme.breakpoints.between(601, 4000)]: {
       display: "none",
     },
     [theme.breakpoints.between(0, 600)]: {

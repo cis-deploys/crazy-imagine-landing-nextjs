@@ -22,7 +22,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    [theme.breakpoints.between(1951, 3000)]: {
+    [theme.breakpoints.between(3000, 4000)]: {
+      height: "900px",
+      padding: "10px 200px",
+    },    
+    [theme.breakpoints.between(1951, 2999)]: {
       height: "900px",
       padding: "10px 205px",
     },
@@ -55,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.between(1951, 3000)]: {
+    [theme.breakpoints.between(1951, 4000)]: {
       width: "500px",
       height: "420px"
     },
@@ -210,15 +214,15 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
               },
               1920: {
                 slidesPerView: 4,
-              }
+              },
             }}
             pagination={{
               clickable: true,
             }}
-            slidesPerView={"auto"}
+            //slidesPerView={"auto"}
             grabCursor={true}
-            loop={true}
-            modules={[Pagination]}
+            loop={false}
+            modules={[Pagination, Keyboard]}
             style={{
               width: "100%",
               boxSizing: "content-box",
