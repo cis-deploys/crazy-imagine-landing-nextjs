@@ -172,7 +172,7 @@ const useStyles = makeStyles(theme => ({
     height: "600px",
     alignItems: "center",
     transform: "scale(1)",
-    [theme.breakpoints.between(1281, 3000)]: {
+    [theme.breakpoints.between(1281, 4000)]: {
       height: "450px",
     },
     [theme.breakpoints.between(1201, 1280)]: {

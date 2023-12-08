@@ -79,7 +79,7 @@ function IndexPage({ projects, projectsEn, articles, articlesEn, reviews, homepa
 
   const button = {
     refID: "contactSection",
-    text: t("common_button_contact_us")
+    text: t("common_button_SCHEDULE_A_CALL")
   }
 
   const projectsNew = [];

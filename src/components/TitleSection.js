@@ -82,6 +82,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
+      textAlign: "left"
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
@@ -98,9 +99,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: "14px",
     lineHeight: "17px",
     letterSpacing: "0.02em",
-    textAlign: "justify",
+    textAlign: "left",
     color: "#193174",
-    [theme.breakpoints.between(601, 3000)]: {
+    [theme.breakpoints.between(601, 4000)]: {
       display: "none",
     },
   },

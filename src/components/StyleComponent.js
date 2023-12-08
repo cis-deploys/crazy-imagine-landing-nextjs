@@ -23,7 +23,7 @@ export const StyleComponent = makeStyles((theme) => ({
         background: "#FFFFFF",
         boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
         borderRadius: "14px",
-        [theme.breakpoints.between(1951, 3000)]: {
+        [theme.breakpoints.between(1951, 4000)]: {
           width: "500px",
           height: "fit-content",
           minHeight: "197px",
@@ -73,7 +73,7 @@ export const StyleComponent = makeStyles((theme) => ({
         alignItems: "center",
         paddingLeft: "10px",
         paddingRight: "10px",
-        [theme.breakpoints.between(1951, 3000)]: {
+        [theme.breakpoints.between(1951, 4000)]: {
           width: "500px",
           height: "auto",
           paddingLeft: "10px",
@@ -104,7 +104,7 @@ export const StyleComponent = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         marginTop: "10px",
-        [theme.breakpoints.between(1281, 3000)]: {
+        [theme.breakpoints.between(1281, 4000)]: {
           width: "314px",
           height: "185px",
         },
@@ -145,7 +145,7 @@ export const StyleComponent = makeStyles((theme) => ({
         width: "45%",
         whiteSpace: "pre-line",
         marginLeft: "20px",
-        [theme.breakpoints.between(1920, 3000)]: {
+        [theme.breakpoints.between(1920, 4000)]: {
           marginTop: "9px",
           marginBottom: "9px",
           width: "40%",
@@ -168,8 +168,8 @@ export const StyleComponent = makeStyles((theme) => ({
         textAlign: "center",
         color: "#193174",
         marginTop: "10px",
-        [theme.breakpoints.between(1920, 3000)]: {
-          width: "220px",
+        [theme.breakpoints.between(1920, 4000)]: {
+          width: "100%",
           fontSize: "28px",
           lineHeight: "28px",
         },
@@ -204,7 +204,7 @@ export const StyleComponent = makeStyles((theme) => ({
         marginTop: "20px",
         textAlign: "center",
         color: "#193173",
-        [theme.breakpoints.between(1920, 3000)]: {
+        [theme.breakpoints.between(1920, 4000)]: {
           fontSize: "40px",
           lineHeight: "38px",
         },
@@ -228,7 +228,7 @@ export const StyleComponent = makeStyles((theme) => ({
         textAlign: "center",
         color: "#FFFFFF",
         whiteSpace: "pre-line",
-        [theme.breakpoints.between(1920, 3000)]: {
+        [theme.breakpoints.between(1920, 4000)]: {
             fontSize: "40px",
             lineHeight: "38px",
         },
@@ -275,14 +275,14 @@ export const StyleComponent = makeStyles((theme) => ({
           letterSpacing: "0.05em",
           color: "#FFFFFF",
         },
-        [theme.breakpoints.between(1920, 3000)]: {
+        [theme.breakpoints.between(1920, 4000)]: {
           marginBottom: "61px",
           marginTop: "10px",
           borderRadius: "100px",
           "& > span":  {
-              fontSize: "25px",
-              lineHeight: "20px",
-              padding: "20px 25px 20px 25px",
+              fontSize: "17px",
+              lineHeight: "10px",
+              padding: "15px 17px 15px 17px",
             }
         },
         [theme.breakpoints.between(960, 1919)]: {
@@ -326,7 +326,7 @@ export const StyleComponent = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        [theme.breakpoints.between(1920, 3000)]: {
+        [theme.breakpoints.between(1920, 4000)]: {
           width: "100%",
         },
         [theme.breakpoints.between(960, 1919)]: {

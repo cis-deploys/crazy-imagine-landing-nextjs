@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     width: "100%",
     [theme.breakpoints.up("xl")]: {
-      maxWidth: "3000px",
+      maxWidth: "4000px",
       margin: "0 auto",
       padding: "0px",
     },

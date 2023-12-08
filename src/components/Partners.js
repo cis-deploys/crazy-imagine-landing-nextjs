@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
       justifyContent: "center",
       [theme.breakpoints.between(0, 960)]: {
         width: "40%",
+        marginTop: "10px",
       }
     },
     logo: {

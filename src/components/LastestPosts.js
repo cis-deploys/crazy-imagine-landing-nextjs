@@ -20,7 +20,7 @@ const useStyes = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     height: "700px",
-    [theme.breakpoints.between(1925, 3000)]: {
+    [theme.breakpoints.between(1925, 4000)]: {
       padding: "55px 200px 0px 200px",
       gap: "16px",
       height: "700px",
@@ -50,7 +50,7 @@ const useStyes = makeStyles(theme => ({
     visibility: "hidden",
   },
   link2: {
-    animation: `$myEffectos 5000ms`,
+    animation: `$myEffectos 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",

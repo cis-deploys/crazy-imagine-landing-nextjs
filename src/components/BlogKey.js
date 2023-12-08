@@ -40,13 +40,14 @@ const useStyles = makeStyles(theme => ({
       width: "90%",
       paddingTop: "60px",
       margin: "90px auto 0px auto",
+      [theme.breakpoints.up("xl")]: {
+        margin: "0px auto 0px auto",
+        width: "67%",
+      },
       [theme.breakpoints.down("md")]: {
         margin: "0px auto 0px auto",
       },
       [theme.breakpoints.down("sm")]: {
-        margin: "0px auto 0px auto",
-      },
-      [theme.breakpoints.down("xs")]: {
         margin: "0px auto 0px auto",
       },
     },
@@ -153,20 +154,19 @@ const useStyles = makeStyles(theme => ({
       background: "white",
       padding: "5% 5%",
       gap: "50px",
+      [theme.breakpoints.up("xl")]: {
+        flexDirection: "row",
+        padding: "5% 17%",
+        gap: "70px",
+      },
       [theme.breakpoints.down("md")]: {
-        flexDirection: "column-reverse",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         gap: "20px",
       },
       [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "10px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        flexDirection: "column",
+        flexDirection: "column-reverse",
         justifyContent: "center",
         alignItems: "center",
         gap: "10px",

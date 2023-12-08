@@ -376,7 +376,7 @@ const useStyles = makeStyles(theme => ({
     padding: 4,
   },
   formAnimation: {
-    //animation: `$fadeIn ease 5000ms`,
+    //animation: `$fadeIn ease 3000ms`,
   },
   successfullAlert: {
     backgroundColor: "transparent",

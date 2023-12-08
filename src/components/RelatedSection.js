@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     height: "700px",
-    [theme.breakpoints.between(1925, 3000)]: {
+    [theme.breakpoints.between(1925, 4000)]: {
       padding: "55px 205px 0px 205px",
       gap: "16px",
       height: "800px",
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   link2: {
-    animation: `$myEffectos 5000ms`,
+    animation: `$myEffectos 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -91,16 +91,16 @@ const RelatedSection = ({ projects }) => {
   const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
     
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
-    project.locale.includes(i18n.language)
-    ))?.sort((a, b) => {
+  const [projectDataAll, setProjectDataAll] = useState(projects
+    .filter(project => project.locale.includes(i18n.language)))
+    ?.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     }); 
 
     useEffect(() => {
-      setProjectDataAll(projects.filter(project =>
-        project.locale.includes(i18n.language)
-        ))?.sort((a, b) => {
+      setProjectDataAll(projects
+        .filter(project =>project.locale.includes(i18n.language)))
+        ?.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         });
     }, [i18n.language]);
