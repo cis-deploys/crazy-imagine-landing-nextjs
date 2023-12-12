@@ -71,6 +71,7 @@ const HomeMainSection = () => {
         <a>
         <Button
           className={classesComponent.buttonComponent}
+          style={{ marginBottom: "20px" }}
         >
           <span>{t("common_button_get_started")}</span>
         </Button>

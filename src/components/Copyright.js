@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "17.6px",
     },
     [theme.breakpoints.between(0, 325)]: {
-      fontSize: "14px",
+      fontSize: "13px",
     },
   },
   barText: {

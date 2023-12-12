@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     height: "350px",
     [theme.breakpoints.between(1921, 4000)]: {
       gap: "18px",
-      height: "420px",
+      height: "410px",
       width: "500px"
     },
     [theme.breakpoints.between(1281, 1920)]: {
@@ -58,16 +58,16 @@ const useStyles = makeStyles(theme => ({
     height: "60px",
     textTransform: "uppercase",
     [theme.breakpoints.down("lg")]: {
-      fontSize: "15px",
-      lineHeight: "16px",
+      fontSize: "12px",
+      lineHeight: "12px",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
-    },
-    [theme.breakpoints.between(0, 450)]: {
       fontSize: "14px",
       lineHeight: "14px",
+    },
+    [theme.breakpoints.between(0, 450)]: {
+      fontSize: "12px",
+      lineHeight: "13px",
     },
   },
   link: {
@@ -80,6 +80,10 @@ const useStyles = makeStyles(theme => ({
     color: "#888DFF",
     marginTop: "auto",
     textDecoration: "none",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -95,8 +99,8 @@ const useStyles = makeStyles(theme => ({
     padding: "6px 25px 22px 27px",
     height: "100px",
     [theme.breakpoints.down("lg")]: {
-      gap: "13px",
-      padding: "18px 18px 16px 26px",
+      gap: "5px",
+      padding: "10px 18px 10px 26px",
       height: "60px"
     },
     [theme.breakpoints.down("md")]: {

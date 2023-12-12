@@ -76,7 +76,7 @@ const useStyles = makeStyles(theme => ({
       padding: "14px 4px 10px 4px",
     },
     [theme.breakpoints.between(0, 325)]: {
-      width: "250px",
+      width: "220px",
       padding: "14px 4px 10px 4px",
     },
 
@@ -130,8 +130,8 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
     },
     [theme.breakpoints.between(0, 450)]: {
-      fontSize: "14px",
-      maxWidth: "300px"
+      fontSize: "13px",
+      maxWidth: "270px"
     },
   },
   info: {
@@ -163,7 +163,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa",
     fontWeight: "700",
     lineHeight: "16px",
-    fontSize: "14px",
+    fontSize: "13px",
     textDecoration: "none",
     position: "relative",
     "&::before, &::after": {

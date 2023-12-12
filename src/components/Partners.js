@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box,  Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles";
-import littleImage from "../../public/littleTallerLogo.webp"
+import littleImage from "../../public/littleTallerLogo.png"
 import clientifyImage from "../../public/clientifyLogo.svg"
 import motorennImage from "../../public/motorennLogo.webp"
 import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       minHeight: "100px",
       justifyContent: "space-around",
       alignItems: "flex-end",
-      gap: "50px",
+      gap: "40px",
       padding: "0 2%",
       paddingBottom: "4%",
       flexWrap: "nowrap",
@@ -65,8 +65,8 @@ const Partners = () => {
                   className={`${classes.logo}`}
                   src={littleImage}
                   alt='Little Taller logo'
-                  width={85}
-                  height={85}
+                  width={150}
+                  height={90}
                   layout='fixed'
               /> 
         </Box>
