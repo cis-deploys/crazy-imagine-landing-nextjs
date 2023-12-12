@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     padding: "45px 0px",
-    marginTop: "90px",
+    marginTop: "30px",
     maxHeight: "850px",
     width: '100%',
     height: '100%',
