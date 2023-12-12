@@ -68,19 +68,23 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "40px",
     textAlign: "center",
     padding: "10px 40px",
+    width: "600px",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
       lineHeight: "20px",
+      width: "800px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "16px",
       marginBottom: "20px",
+      width: "600px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "12px",
       lineHeight: "14px",
       marginBottom: "10px",
+      width: "300px",
     },
   },
   inputContainer: {
@@ -90,6 +94,7 @@ const useStyles = makeStyles(theme => ({
     padding: "50px",
     borderRadius: "30px",
     flexDirection: "column",
+    height: "270px",
     [theme.breakpoints.up("xl")]: {
       width: "100%",
       margin: "auto",
@@ -103,21 +108,21 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(376, 450)]: {
       width: "auto",
-      padding: "70px",
+      padding: "50px",
       flexDirection: "column",
-      height: "370px"
+      height: "330px"
     },
     [theme.breakpoints.between(326, 376)]: {
       width: "auto",
       padding: "50px",
       flexDirection: "column",
-      height: "350px"
+      height: "320px"
     },
     [theme.breakpoints.between(0, 325)]: {
       width: "auto",
       padding: "30px",
       flexDirection: "column",
-      height: "320px"
+      height: "300px"
     },
   },
 
@@ -126,7 +131,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    padding: "50px 0",
+    padding: "30px 0",
     backgroundImage: `url('/background.svg')`,
     backgroundSize: "cover",
     backgroundRepeat: "norepeat",

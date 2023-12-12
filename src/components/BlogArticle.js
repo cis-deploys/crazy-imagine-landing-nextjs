@@ -44,8 +44,8 @@ const useStyles = makeStyles(theme => ({
     padding: "6px 25px 22px 37px",
     height: "100%",
     [theme.breakpoints.down("md")]: {
-      gap: "13px",
-      padding: "18px 18px 16px 26px",
+      gap: "10px",
+      padding: "5px 18px 16px 26px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "8px",
@@ -63,6 +63,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("xl")]: {
       width: "80%",
       paddingTop: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "70%",
+      paddingTop: "40px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingTop: "40px",
+      width: "80%",
     },
     [theme.breakpoints.down("md")]: {
       paddingTop: "40px",
@@ -122,8 +130,8 @@ const useStyles = makeStyles(theme => ({
     color: "#888DFF",
     textDecoration: "none",
     [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
-      lineHeight: "11px",
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
   wrapper: {
@@ -134,6 +142,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: "50px",
     marginBottom: "50px",
     gap: "21px",
+    [theme.breakpoints.between(2560, 3000)]: {
+      paddingLeft: "25px",
+    },
+    [theme.breakpoints.between(1280, 2559)]: {
+      paddingLeft: "10px",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },

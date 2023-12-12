@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xl")]: {
       gap: "8px",
     },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "15px",
+    [theme.breakpoints.down("sm")]: {
+      gap: "5px",
     },
   }
 }))

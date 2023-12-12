@@ -200,17 +200,16 @@ export const StyleComponent = makeStyles((theme) => ({
         fontStyle: "normal",
         fontWeight: "700",
         fontSize: "40px",
-        lineHeight: "40px",
-        marginTop: "20px",
+        lineHeight: "45px",
         textAlign: "center",
         color: "#193173",
         [theme.breakpoints.between(1920, 4000)]: {
           fontSize: "40px",
-          lineHeight: "38px",
+          lineHeight: "45px",
         },
         [theme.breakpoints.between(960, 1919)]: {
           fontSize: "35px",
-          lineHeight: "32px",
+          lineHeight: "38px",
         },
         [theme.breakpoints.between(0, 959)]: {
           fontSize: "25px",
@@ -257,8 +256,6 @@ export const StyleComponent = makeStyles((theme) => ({
         animation: `myEffectbutton 2000ms`,
         background: "#797EF6",
         borderRadius: "100px",
-        marginBottom: "87px",
-        marginTop: "48px",
         "&:hover": {
             backgroundColor: "#27AAE1",
           },
@@ -276,8 +273,6 @@ export const StyleComponent = makeStyles((theme) => ({
           color: "#FFFFFF",
         },
         [theme.breakpoints.between(1920, 4000)]: {
-          marginBottom: "61px",
-          marginTop: "10px",
           borderRadius: "100px",
           "& > span":  {
               fontSize: "17px",
@@ -286,8 +281,6 @@ export const StyleComponent = makeStyles((theme) => ({
             }
         },
         [theme.breakpoints.between(960, 1919)]: {
-            marginBottom: "61px",
-            marginTop: "34px",
             borderRadius: "100px",
             "& > span": {
               fontSize: "15px",
@@ -296,8 +289,6 @@ export const StyleComponent = makeStyles((theme) => ({
             }
         },
         [theme.breakpoints.between(0, 959)]: {
-          marginBottom: "20px",
-          marginTop: "24px",
           borderRadius: "100px",
           "& > span": {
             fontSize: "10px",

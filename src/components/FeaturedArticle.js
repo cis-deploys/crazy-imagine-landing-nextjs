@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
       margin: "0px 40px",
       gap: "20px",
     },
-    [theme.breakpoints.between(325, 450)]: {
+    [theme.breakpoints.between(325, 600)]: {
       height: "auto",
       padding: "0px 0px 20px 0px",
       flexDirection: "column",
@@ -181,9 +181,9 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "11px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "11px",
+      fontSize: "10px",
       paddingLeft: "9px",
-      lineHeight: "11px",
+      lineHeight: "10px",
     },
   },
   img: {
@@ -236,7 +236,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "12px",
       lineHeight: "12px",
     },
-    [theme.breakpoints.between(0, 559)]: {
+    [theme.breakpoints.between(0, 599)]: {
       width: "200px",
       fontSize: "10px",
       lineHeight: "10px",

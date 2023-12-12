@@ -6,6 +6,7 @@ import CardService from "./CardService";
 import ServiceCapabilities from "./ServiceCapabilities";
 import fullStackImage from "../../public/laptop-purple.svg";
 import qualitySupport from "../../public/quality-blue.svg";
+import userExperience from "../../public/user_experience.svg";
 import {
   faBagShopping,
   faChartBar,
@@ -84,6 +85,7 @@ const ServicesSection = () => {
         <ServiceCapabilities
           title={t("common_capabilities_title2")}
           desc={t("common_capabilities_description2")}
+          img={userExperience}
         />
         <Box className={`${classes.cardContainer}`}>
           <CardService 

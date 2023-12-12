@@ -23,15 +23,19 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     [theme.breakpoints.between(3000, 4000)]: {
-      height: "900px",
+      height: "800px",
       padding: "10px 200px",
     },    
-    [theme.breakpoints.between(1951, 2999)]: {
-      height: "900px",
+    [theme.breakpoints.between(1920, 2999)]: {
+      height: "780px",
       padding: "10px 205px",
     },
-    [theme.breakpoints.between(1280, 1950)]: {
-      height: "750px",
+    [theme.breakpoints.between(1700, 1919)]: {
+      height: "700px",
+      padding: "10px 48px",
+    },
+    [theme.breakpoints.between(1280, 1700)]: {
+      height: "600px",
       padding: "10px 48px",
     },
     [theme.breakpoints.down("lg")]: {
@@ -39,11 +43,11 @@ const useStyles = makeStyles(theme => ({
       padding: "20px 40px",
     },
     [theme.breakpoints.down("md")]: {
-      height: "550px",
-      padding: "30px 43px",
+      height: "520px",
+      padding: "0px 43px",
     },
     [theme.breakpoints.between(381, 470)]: {
-      height: "560px",
+      height: "500px",
       padding: "0px 43px",
     },
     [theme.breakpoints.between(0, 380)]: {
@@ -76,12 +80,10 @@ const useStyles = makeStyles(theme => ({
       height: "250px"
     },
     [theme.breakpoints.down("md")]: {
-      marginTop: "40px",
       width: "350px",
       height: "260px"
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "20px",
       width: "350px",
       height: "260px",
     },
@@ -90,8 +92,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "24px",
-    lineHeight: "24px",
+    fontSize: "20px",
+    lineHeight: "20px",
     color: "#193174",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
@@ -139,23 +141,23 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    height: "500px",
+    height: "550px",
     alignItems: "center",
     transform: "scale(1)",
-    [theme.breakpoints.between(1201, 1280)]: {
-      height: "270px",
+    [theme.breakpoints.between(1281, 1920)]: {
+      height: "450px",
     },
-    [theme.breakpoints.between(901, 1200)]: {
-      height: "250px",
+    [theme.breakpoints.between(901, 1280)]: {
+      height: "380px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "270px",
+      height: "360px",
     },
     [theme.breakpoints.between(400, 549)]: {
-      height: "350px",
+      height: "370px",
     },
     [theme.breakpoints.between(200, 400)]: {
-      height: "270px",
+      height: "360px",
     },
   },
   textContainer: {
@@ -194,7 +196,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
       return (
         <Box className={classes.container}>
-          <Typography className={classesComponent.titleBlue} style={{ marginBottom: "15px" }}>
+          <Typography className={classesComponent.titleBlue} style={{ marginTop: "30px"}}>
             {title}
           </Typography>
           <Swiper
@@ -261,18 +263,18 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   </SwiperSlide>
                 )
               })}
-            {btn && (
-              <Link href={`${PROJECTS}`} >
-
-                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "30px" }}>   
-                <Button className={classesComponent.buttonComponent}>
-                  <span>{t("home_projectSection_button")}</span>
-                </Button>
-                </a>
-
-              </Link>
-            )}
           </Swiper>
+              {btn && (
+                <Link href={`${PROJECTS}`} >
+  
+                  <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "30px" }}>   
+                  <Button className={classesComponent.buttonComponent}>
+                    <span>{t("home_projectSection_button")}</span>
+                  </Button>
+                  </a>
+  
+                </Link>
+              )}
         </Box>
       )
 }

@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
-    marginTop: "30px",
+    marginTop: "0px",
     [theme.breakpoints.between(0, 600)]: {
       gap: "5px",
     },
@@ -110,6 +110,17 @@ const useStyles = makeStyles(theme => ({
       display: "unset",
     },
   },
+  containerDesc2: {
+    padding: "0px 30px",
+    textAlign: "left",
+    width: "90%",
+    marginBottom: "20px",
+    [theme.breakpoints.between(0, 450)]: {
+      padding: "0px 40px",
+      textAlign: "left",
+      width: "90%",
+  },
+},
   imgContainer: {
     display: "flex",
     justifyContent: "center",
@@ -156,14 +167,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
             </Typography>
           </Box>
         </Box>
-        <Box
-          sx={{
-            padding: "0px 30px",
-            textAlign: "left",
-            width: "100%",
-            marginBottom: "50px",
-          }}
-        >
+        <Box className={classes.containerDesc2} >
           <Typography ref={ref} className={classes.desc2}>
             {desc}
           </Typography>

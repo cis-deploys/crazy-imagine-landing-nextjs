@@ -110,10 +110,15 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end",
     marginRight: props.little ? "100px" : "0px",
     height: "auto",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.up("xl")]: {
       marginRight: props.little ? "50px" : "0px",
       marginTop: "40px",
-      height: "90%",
+      height: "100%",
+    },
+    [theme.breakpoints.down("xl")]: {
+      marginRight: props.little ? "50px" : "0px",
+      marginTop: "70px",
+      height: "70%",
     },
     [theme.breakpoints.down("sm")]: {
       marginRight: props.little ? "50px" : "0px",

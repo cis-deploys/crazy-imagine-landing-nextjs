@@ -8,13 +8,20 @@ const useStyles = makeStyles(theme => ({
   container: {
     height: "auto",
     padding: "0px 10px",
-    width: "100%",
-    [theme.breakpoints.between(0, 4000)]: {
+    width: "90%",
+    [theme.breakpoints.between(2562, 4000)]: {
       height: "auto",
       paddingTop: "30px",
       paddingBottom: "30px",
+      width: "55%",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.between(2150, 2561)]: {
+      width: "70%",
+      height: "auto",
+      paddingTop: "30px",
+      paddingBottom: "10px",
+    },
+    [theme.breakpoints.between(0, 2149)]: {
       width: "80%",
       height: "auto",
       paddingTop: "30px",
@@ -78,10 +85,10 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     textAlign: "center",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
-    [theme.breakpoints.between(1281, 1949)]: {
+    [theme.breakpoints.between(1281, 1919)]: {
       padding: "20px 50px 0px 50px",
       fontSize: "25px",
       lineHeight: "25px",

@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "50px",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "25px",
-      lineHeight: "30px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
     },
   },
   "@keyframes myEffect": {
