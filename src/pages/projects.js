@@ -17,8 +17,8 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-const ProjectsTable = dynamic(
-  () => import("../components/ProjectsTable"),
+const TableProjects = dynamic(
+  () => import("../components/TableProjects"),
   { ssr: false },
 )
 
@@ -93,7 +93,7 @@ function Projects({ projects }) {
           btn={true}
           cls="textContainer"
         />
-        <ProjectsTable
+        <TableProjects
           AllArticles={projectsNew}
         />
         <ContactSection/>
