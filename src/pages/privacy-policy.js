@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Layout from "../components/Layout"
 
 import headerImage from "../../public/rocket.svg"
+import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -30,7 +31,11 @@ const PrivacyPolicy = () => {
   const { t } = useTranslation()
   return (
     <Layout>
-
+      <NextSeo
+        title={`Crazy Imagine Software | Privacy Policy`}
+        description={`Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!`}
+        keywords={`crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support`}
+      />
       <SectionHeader
         title={t("privacyPolicy_title")}
         img={headerImage}

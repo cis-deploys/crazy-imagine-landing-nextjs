@@ -9,7 +9,7 @@ import aboutImage1 from "../../public/antenaBackground.svg"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "1137px",
+    height: "800px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

@@ -4,6 +4,7 @@ import { BLOG } from "../navigation/sitemap"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -27,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     padding: "24px",
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      padding: "18px",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
       padding: "18px",
@@ -35,14 +40,14 @@ const useStyles = makeStyles(theme => ({
   layout: {
     width: "30%",
     flexDirection: "row",
+    [theme.breakpoints.up("xl")]: {
+      width: "30%",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
     [theme.breakpoints.down("sm")]: {
       width: "80%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "90%",
     },
   },
   listTitle: {
@@ -79,19 +84,13 @@ const RecentlyPosted = ({ articles: AllArticles }) => {
   const classes = useStyles()
   const { i18n, t } = useTranslation()
   const lang = i18n.language 
-
-      // render={data => {
-        // const articles = data.article.edges
-        // const articlesFilter = articles.filter(({ node }) =>
-        //   node.locale.includes(lang)
-        // )
-        // const articlesSort = articlesFilter.sort((a, b) => {
-        //   return new Date(b.node.created_at) - new Date(a.node.created_at)
-        // })
+  const router = useRouter();
+  const { Key } = router.query;
 
         const articles = AllArticles
-        const articlesFilter = articles.filter(article =>
-          article.locale.includes(lang)
+        const articlesFilter = articles
+        ?.filter( project => project?.Key !== Key && project?.Key !== null)
+        .filter(article => article.locale.includes(lang)
         )
         const articlesSort = articlesFilter
           .sort((a, b) => {
@@ -114,7 +113,7 @@ const RecentlyPosted = ({ articles: AllArticles }) => {
                         <Typography className={classes.listTitle}>
                           {el?.title}
                         </Typography>
-                        <Link href={`${BLOG}/${el?.Key}`} >
+                        <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${el?.Key}`} >
                           <a className={classes.link}>
                           {t("common_lastestPosts_blogPost_button_readMore")}
                           </a>

@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
 import { useIntersection } from "../hooks/useIntersection"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,8 +13,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "59px",
-    marginTop: "144px",
-    marginBottom: "52px",
+    marginTop: "50px",
     overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
@@ -64,6 +64,11 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     width: "526px",
+    [theme.breakpoints.down("lg")]: {
+      fontWeight: "auto",
+      fontSize: "50px",
+      lineHeight: "50px",
+    },
     [theme.breakpoints.down("md")]: {
       fontWeight: "auto",
       fontSize: "53px",
@@ -74,12 +79,6 @@ const useStyles = makeStyles(theme => ({
       fontWeight: "auto",
       fontSize: "28px",
       lineHeight: "28px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      fontWeight: "auto",
-      fontSize: "22px",
-      lineHeight: "22px",
     },
   },
   "@keyframes myEffecto": {
@@ -97,7 +96,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc2: {
-    //animation: `$myEffectos 2000ms`,
     fontFamily: "HindVadodara",
     fontStyle: "normal",
     fontWeight: "400",
@@ -134,17 +132,18 @@ const useStyles = makeStyles(theme => ({
 
 export const AboutTitle = ({ title, desc, img }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
 
   return (
     <Box className={classes.container}>
       <Box className={classes.imgContainer}>
-        <Image className={isVisible ? 'image-component' : 'image'} src={img} alt="" />
+        <Image className={isVisible ? classesComponent.imageComponent : classesComponent.image} src={img} alt="" />
       </Box>
       <Box className={classes.textContainer}>
         <Typography className={classes.title2}>{title}</Typography>
-        <Typography ref={ref} className={classes.desc2}>{desc}</Typography>
+        <Typography className={classes.desc2}>{desc}</Typography>
       </Box>
     </Box>
   )

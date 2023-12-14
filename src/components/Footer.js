@@ -1,21 +1,9 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faBuilding,
-  faEnvelopeOpen,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faEnvelopeOpen, faPhone } from "@fortawesome/free-solid-svg-icons"
 import { Box,  Typography } from "@mui/material"
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
-import Section from "./Section"
-import {
-  HOME,
-  PROJECTS,
-  WORK_WITH_US,
-  ABOUT,
-  CONTACT,
-  BLOG,
-} from "../navigation/sitemap"
+import { HOME, PROJECTS, WORK_WITH_US, ABOUT, CONTACT, SERVICES, BLOG } from "../navigation/sitemap"
 import { useTranslation } from "react-i18next"
 import { SocialMedia } from "./SocialMedia"
 import Copyright from "./Copyright"
@@ -24,137 +12,90 @@ import { makeStyles } from "@mui/styles";
 import Link from "next/link"
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  root: {
-    "& .MuiLink-root": {
-      "&:hover": {
-        color: "white",
-      },
-    },
-  },
-  contactIcon: {
-    fontSize: "20px",
-    color: "white",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "16px",
-    },
-  },
-  contactIconButton: {
-    width: "30px",
-    height: "30px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "5px",
-    [theme.breakpoints.down("xs")]: {
-      width: "25px",
-      height: "25px",
-    },
-  },
-  infoIcon: {
-    color: "#27AAE1",
-    marginTop: 3,
-    alingSelf: "center",
-    size:"1x",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
-      size: "1x"
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "14px",
-      size:"1x"
+  footer: {
+    backgroundColor: "#193174",
+    paddingTop: "80px",
+    paddingBottom: "80px",
+    display: "block",
+    position: "relative",
+    [theme.breakpoints.between(0, 450)]: {
+      paddingTop: "40px",
+      paddingBottom: "40px",
     },
   },
   footerContainer: {
+    width: "100%",
     display: "flex",
-    height: "192px",
-    flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "space-between",
-    padding: "0px 60px",
+    marginLeft: "auto",
+    marginRight: "auto",
     [theme.breakpoints.up("xl")]: {
-      maxWidth: "3000px",
-      margin: "0 auto",
-      padding: "0px 60px",
+      maxWidth: "1640px",
       flexDirection: "row",
     },
     [theme.breakpoints.down("lg")]: {
-      maxWidth: "1440px",
-      margin: "0 auto",
-      padding: "0px 60px",
       flexDirection: "row",
     },
     [theme.breakpoints.down("md")]: {
-      width: "100%",
       height: "auto",
-      padding: "0px 43px",
-      justifyContent: "space-between",
+      flexDirection: "row",
+      flexWrap: 'wrap',
     },
     [theme.breakpoints.down("sm")]: {
-      width: "100%",
-      height: "auto",
-      flexDirection: "column",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
+      width: "90%",
       height: "auto",
       flexDirection: "column",
     },
   },
-  effect: {
-    paddingTop: "10px",
-    "&::before": {
-      left: "0",
-      bottom: "-2px",
-      width: "100%",
-      height: "3px",
-      background: "white",
-      transform: "scaleX(0)",
+  footerColumn: {
+    display: "flex",
+    width: "25%",
+    paddingLeft: "35px",
+    paddingRight: "35px",
+    flexDirection: "column",
+    [theme.breakpoints.between(451, 960)]: {
+      paddingLeft: "35px",
+      paddingRight: "35px",
+      width: "45%",
     },
-    "&:hover::before": {
-      transform: "scaleX(1)",
+    [theme.breakpoints.between(0, 450)]: {
+      paddingLeft: "20px",
+      paddingRight: "20px",
+      width: "auto",
     },
   },
-  logoContainer: {
+  Container1: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "left",
     justifyContent: "center",
-    gap: "20px",
     height: "100%",
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      gap: "0px",
-      marginBottom: "-45px",
-      marginTop: "15px",
-      padding: "14px 4px 45px 4px",
+    [theme.breakpoints.between(326, 450)]: {
+      width: "max-content",
+      padding: "14px 4px 10px 4px",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      gap: "0px",
-      marginBottom: "-45px",
-      marginTop: "15px",
-      padding: "14px 4px 45px 4px",
+    [theme.breakpoints.between(0, 325)]: {
+      width: "220px",
+      padding: "14px 4px 10px 4px",
     },
+
   },
-  linkContainer: {
+  titleTypography: {
+    fontFamily: "Nexa",
+    fontStyle: "normal",
+    fontSize: "20px",
+    color: "#FFFFFF",
     display: "flex",
-    flexDirection: "row",
-    height: "50%",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    gap: "50px",
-    [theme.breakpoints.between(1280, 1450)]: {
-      gap: "20px",
-    },
-    [theme.breakpoints.between(0, 1300)]: {
-      visibility: "hidden",
-      width: "0px",
-      display: "none",
-    },
+    textAlign: "left",
+    letterSpacing: "0.1em",
+    textDecoration: "none",
+    margin: "10px 0px 20px",
+  },
+  image: {
+    display: "flex",
+    width: "245px",
+    height: "55px",
   },
   infoContainer: {
     display: "flex",
@@ -167,21 +108,30 @@ const useStyles = makeStyles(theme => ({
       width: "auto",
       borderLeft: "0px solid #233B7E",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.between(0, 450)]: {
       padding: "4px 0px 4px 4px",
-      marginBottom: "15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "4px 0px 4px 4px",
-      marginBottom: "15px",
+      marginBottom: "10px",
     },
   },
-  iconsContainer: {
+  infoTypography: {
+    color: "#FFFFFF",
+    fontStyle: "normal",
+    fontFamily: "Roboto,sans-serif",
+    fontWeight: "400",
+    fontSize: "14px",
+    lineHeight: "25px",
+    marginBottom: "10px",
     display: "flex",
-    alignSelf: "center",
-    gap: "21px",
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "15px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "17.6px",
+      lineHeight: "1.8rem",
+    },
+    [theme.breakpoints.between(451, 1920)]: {
+      fontSize: "14px",
+    },
+    [theme.breakpoints.between(0, 450)]: {
+      fontSize: "13px",
+      maxWidth: "270px"
     },
   },
   info: {
@@ -193,13 +143,27 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "8px",
     },
   },
+  infoIcon: {
+    color: "#A7E4F5",
+    marginTop: 3,
+    alingSelf: "center",
+    size:"1x",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
+      size: "1x"
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14px",
+      size:"1x"
+    },
+  },
   linkTypography: {
     color: "#FFFFFF",
     fontStyle: "normal",
     fontFamily: "Nexa",
     fontWeight: "700",
     lineHeight: "16px",
-    fontSize: "14px",
+    fontSize: "13px",
     textDecoration: "none",
     position: "relative",
     "&::before, &::after": {
@@ -214,109 +178,59 @@ const useStyles = makeStyles(theme => ({
       fontSize: "18px",
     },
   },
-  infoTypography: {
-    color: "#FFFFFF",
-    fontStyle: "normal",
-    fontFamily: "HindVadodara",
-    fontWeight: "400",
-    fontSize: "14px",
-    [theme.breakpoints.up("xl")]: {
-      fontSize: "15px",
-    },
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "15px",
-    },
-    [theme.breakpoints.down("lg")]: {
-      fontSize: "15px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "10px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "10px",
-    },
-  },
-  footerSection: {
-    [theme.breakpoints.down("xs")]: {
-      height: "auto",
-    },
-  }
+  
 }));
 
-const Footer = ({ height = "192px" }) => {
+const Footer = () => {
   const classes = useStyles()
   const { t } = useTranslation()
 
+  const formatText = (text) => {
+    return text?.charAt(0).toUpperCase() + text.substring(1, text.lenght).toLowerCase();
+  }
+
   return (
-    <Section
-      backgroundColor="#193174"
-      width="100%"
-      component="footer"
-      height={height}
-      sx={{ margin: "0 auto" }}
-    >
+    <Box component="footer" className={classes.footer}>
+
       <Box className={classes.footerContainer}>
-        <Box className={classes.logoContainer}>
-          <Link href={`${HOME}`}  >
-            <a className={classes.linkTypography}>
-            <Image src={CrazyImageLogo} alt="footerImage" width={245} height={55}/>
+      
+        <Box className={classes.footerColumn} order={1}>
+          <Box className={classes.Container1}>
+          <Link href={`${HOME}`}>
+            <a style={{ margin: "10px 0px 10px"}}>
+            <Image src={CrazyImageLogo} alt="footerImage" className={classes.image}/>
             </a>
           </Link>
-          <SocialMedia />
+          <Typography className={classes.infoTypography} style={{ marginBottom: "10px"}}>
+            {t("home_footer_text")}
+          </Typography>
+          <Copyright />
+          </Box>
         </Box>
-        <Box className={classes.linkContainer}>
-          <Typography>
-          <Link href={`${ABOUT}`} >
-                <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_about")}
-                </a>
-              </Link>
-          </Typography>
-          <Typography>
-          <Link href={`${PROJECTS}`} >
-                <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_services")}
-                </a>
-              </Link>
-          </Typography>
-          <Typography>
-          <Link href={`${BLOG}`} >
-                <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_blog")}
-                </a>
-              </Link>
-          </Typography>
-          <Typography>
-          <Link href={`${WORK_WITH_US}`} >
-                <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_work_with_us")}
-                </a>
-              </Link>
-          </Typography>
-          <Typography>
-          <Link href={`${CONTACT}`} >
-                <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("home_footer_button_contact")}
-                </a>
-              </Link>
-          </Typography>
-        </Box>
-        <Box className={classes.infoContainer}>
-          <Box className={classes.info}>
+
+        <Box className={classes.footerColumn} order={2}>
+          <Box className={classes.Container1}>
+            <Typography className={classes.titleTypography}>
+            {t("home_footer_location")}
+            </Typography>
+        <Box className={classes.info}>
             <FontAwesomeIcon
               icon={faBuilding}
               className={classes.infoIcon}
               size="1x"
             />
-            <Box style={{ flexDirection: "column" }}>
+            <Box style={{ flexDirection: "column", }}>
               <Typography className={classes.infoTypography}>
                 {t("home_footer_direction1")}
               </Typography>
               <Typography className={classes.infoTypography}>
                 {t("home_footer_direction2")}
               </Typography>
+              <Typography className={classes.infoTypography}>
+                {t("home_footer_direction3")}
+              </Typography>
             </Box>
-          </Box>
+        </Box>
           <Box className={classes.info}>
             <FontAwesomeIcon
               icon={faEnvelopeOpen}
@@ -337,10 +251,79 @@ const Footer = ({ height = "192px" }) => {
               +13203229488
             </Typography>
           </Box>
+          </Box>
         </Box>
+
+        <Box className={classes.footerColumn} order={3}>
+          <Box className={classes.Container1}>
+          <Typography className={classes.titleTypography}>
+           {t("home_footer_socialMedia")}
+          </Typography>
+            <Box>
+            <SocialMedia/>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box className={classes.footerColumn} order={4}>
+          <Box className={classes.Container1}>
+            <Typography className={classes.titleTypography}>
+              {t("home_footer_link")}
+            </Typography>
+
+            <Typography>
+              <Link href={`${ABOUT}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("common_button_about"))}
+                </a>
+              </Link>
+          </Typography>
+
+          <Typography>
+              <Link href={`${PROJECTS}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("common_button_projects"))}
+                </a>
+              </Link>
+          </Typography>
+
+          <Typography>
+              <Link href={`${SERVICES}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("common_button_services"))}
+                </a>
+              </Link>
+          </Typography>
+
+          <Typography>
+              <Link href={`${BLOG}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("common_button_blog"))}
+                </a>
+              </Link>
+          </Typography>
+
+          <Typography>
+              <Link href={`${WORK_WITH_US}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("common_button_work_with_us"))}
+                </a>
+              </Link>
+          </Typography>
+
+          <Typography style={{ textTransform: "capitalize" }}>
+              <Link href={`${CONTACT}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("home_footer_button_contact"))}
+                </a>
+              </Link>
+          </Typography>
+
+          </Box>
+        </Box>
+
       </Box>
-      <Copyright />
-    </Section>
+    </Box>
   )
 }
 

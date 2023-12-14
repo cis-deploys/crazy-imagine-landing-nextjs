@@ -5,60 +5,20 @@ import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    width: "90%",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "59px",
-    height: "100%",
-    marginTop: "50px",
-    [theme.breakpoints.down("md")]: {
-      gap: "10px",
-      height: "auto",
-      marginTop: "35px",
-      marginBottom: "35px",
-      width:"80%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-      gap: "0px",
-      width: "70%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column ",
-    },
-  },
-  textContainer: {
+  container1: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    width: "100%",
     justifyContent: "center",
-    gap: "20px",
-    width: "45%",
-    whiteSpace: "pre-line",
-    [theme.breakpoints.up("xl")]: {
-      marginTop: "9px",
-      marginBottom: "9px", 
-      width: "40%",
-      gap: "14px",
-    },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "9px",
-      marginBottom: "9px", 
-      width: "40%",
-      gap: "14px",
-    },
+    alignItems: "center",
+    gap: "5px",
+    height: "100%",
+    marginTop: "20px",
     [theme.breakpoints.down("sm")]: {
-      gap: "9px",
-      width: "55%",
-      paddingRight: "30px"
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "50%",
+      marginTop: "10px",
     },
   },
   titleContainer: {
@@ -81,8 +41,8 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "41px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "29px",
-      lineHeight: "29px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
   },
   blueTitle2: {
@@ -102,11 +62,13 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "41px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "29px",
-      lineHeight: "29px",
+      fontSize: "25px",
+      lineHeight: "25px",
     },
   },
-  desc2: {
+  desc: {
+    display: "flex",
+    flexDirection: "row",
     fontFamily: "HindVadodara",
     fontStyle: "normal",
     fontWeight: "400",
@@ -120,45 +82,32 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
+      textAlign: "left"
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "14px",
+      flexDirection: "row",
+      display: 'none',
     },
   },
-  // img: {
-  //   visibility: "hidden",
-  // },
-  // img2: {
-  //   animation: `$myEffect 2000ms`,
-  //   width: "314px",
-  //   height: "357px",
-  //   [theme.breakpoints.down("lg")]: {
-  //     width: "auto",
-  //     height: "auto",
-  //   },
-  //   [theme.breakpoints.down("md")]: {
-  //     width: "70%",
-  //     height: "70%",
-  //     alignItems: "center",
-  //   },
-  //   [theme.breakpoints.between(200, 600)]: {
-  //     width: "45%",
-  //   },
-  //   [theme.breakpoints.between(0, 200)]: {
-  //     width: "55%",
-  //   },
-  // },
-  // "@keyframes myEffect": {
-  //   "0%": {
-  //     opacity: 0,
-  //     transform: "translateX(-200%)",
-  //   },
-  //   "100%": {
-  //     opacity: 1,
-  //     transform: "translateX(0)",
-  //   },
-  // },
+  desc2: {
+    display: "flex",
+    flexDirection: "row",
+    fontFamily: "HindVadodara",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "14px",
+    lineHeight: "17px",
+    letterSpacing: "0.02em",
+    textAlign: "left",
+    color: "#193174",
+    [theme.breakpoints.between(601, 4000)]: {
+      display: "none",
+    },
+  },
   imgContainer: {
     display: "flex",
-    justifyContent: "center",
-    
+    justifyContent: "center",  
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
       width: "40%",
@@ -166,40 +115,44 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center",
       width: "40%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "inherit",
-      justifyContent: "center",
-      marginTop: "10px",
+      marginRight: "10px"
     },
   },
 }))
 
 export const TitleSection = ({ desc }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation();
   return (
-    <Box className={classes.container}>
+    <Box className={classes.container1}>
+    <Box className={classesComponent.containerWhiteComponent}>
       <Box className={classes.imgContainer}>
         <Image
           src={mainImage}
           width={314}
           height={357}
-          className={isVisible ? 'image-component' : 'image'}
+          className={isVisible ? classesComponent.imageComponent : classesComponent.image}
           alt="Title"
         />
       </Box>
-      <Box className={classes.textContainer}>
+      <Box className={classesComponent.textContainerWhiteComponent}>
         <Box className={classes.titleContainer}>
           <Typography className={classes.title2}>{t("home_homeMainSection_titleSection_title")}</Typography>
           <Typography className={classes.blueTitle2}>{t("home_homeMainSection_titleSection_blueTitle")}</Typography>
         </Box>
-        <Typography ref={ref} className={classes.desc2}>
+        <Typography ref={ref} className={classes.desc}>
           {desc}
         </Typography>
       </Box>
+    </Box>
+    <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "30px"}}>
+      <Typography ref={ref} className={classes.desc2}>
+          {desc}
+      </Typography>
+    </Box>
     </Box>
   )
 }

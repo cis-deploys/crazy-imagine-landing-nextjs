@@ -4,8 +4,6 @@ import PropTypes from "prop-types"
 
 import { Box, Hidden } from "@mui/material"
  
-// COMPONENTS
-import SEO from "./seo"
 import { useRouter } from "next/router"
 
 const Navbar = dynamic(
@@ -31,7 +29,6 @@ const Layout = ({ children }) => {
   }
   return (
     <>
-      <SEO />
       <Hidden lgDown>
         <Navbar variant="secondary" color={navbarColor} />
       </Hidden>
@@ -40,10 +37,6 @@ const Layout = ({ children }) => {
       </Hidden>
       <Box
         sx={{
-          // maxWidth: {
-          //   lg: 1280,
-          //   xl: "auto",
-          // },
           width: '100%',
           margin: {
             lg: "0 auto",
