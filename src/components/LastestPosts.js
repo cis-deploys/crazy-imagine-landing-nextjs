@@ -1,17 +1,17 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import BlogPost from "./BlogPost"
 import { BLOG } from "../navigation/sitemap"
-import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyes = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: "0px 0px 10px",
+    padding: "55px 48px 0px 43px",
     gap: "15px",
     justifyContent: "center",
     backgroundColor: "#193174",
@@ -19,33 +19,43 @@ const useStyes = makeStyles(theme => ({
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    height: "800px",
-    [theme.breakpoints.up("lg")]: {
-      padding: "55px 43px 0px 43px",
+    height: "700px",
+    [theme.breakpoints.between(1925, 4000)]: {
+      padding: "55px 208px 0px 208px",
       gap: "16px",
       height: "700px",
+    },
+    [theme.breakpoints.between(1280, 1920)]: {
+      padding: "55px 48px 0px 43px",
+      gap: "16px",
+      height: "540px",
     },
     [theme.breakpoints.down("lg")]: {
       padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "460px",
+      height: "480px",
     },
     [theme.breakpoints.down("md")]: {
       padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "460px",
+      height: "430px",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.between(326, 460)]: {
       padding: "20px 43px 0px 43px",
       gap: "16px",
-      height: "460px",
+      height: "420px",
+    },
+    [theme.breakpoints.between(0, 325)]: {
+      padding: "20px 43px 0px 43px",
+      gap: "10px",
+      height: "430px",
     },
   },
   link: {
     visibility: "hidden",
   },
   link2: {
-    animation: `$myEffectos 5000ms`,
+    animation: `$myEffectos 3000ms`,
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "400",
@@ -54,14 +64,16 @@ const useStyes = makeStyles(theme => ({
     lineHeight: "15px",
     letterspacing: "0.1em",
     color: "#888DFF",
-    marginBottom: "auto",
+    marginBottom: "5px",
     [theme.breakpoints.up("xl")]: {
       fontSize: "20px",
       lineHeight: "18px",
+      marginBottom: "20px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
+      marginBottom: "5px",
     },
   },
   "@keyframes myEffectos": {
@@ -87,8 +99,7 @@ const useStyes = makeStyles(theme => ({
 
 const LastestPosts = ({ articles, articlesAll }) => {
   const classes = useStyes()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
+  const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
     
   const [projectDataAll, setProjectDataAll] = useState(articlesAll.filter(article =>
@@ -106,16 +117,15 @@ const LastestPosts = ({ articles, articlesAll }) => {
     }, [i18n.language]);
 
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box className={classes.container}>
       <Typography
-
-        className={isVisible ? 'title-white' : 'title'}>
+        className={classesComponent.titleWhite}>
         {t("home_lastestPosts_title")}
 
         </Typography>
       <Link href={`${BLOG}`} style={{ textDecoration: "none" }}>
 
-        <a className={isVisible ? classes.link2 : classes.link}>
+        <a className={classes.link2}>
         {t("common_lastestPosts_button_allBlogs")}
         </a>
 

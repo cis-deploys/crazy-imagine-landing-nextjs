@@ -32,7 +32,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "15px",
       width: "100%",
-      //flexDirection: "column",
       justifyContent: "space-between",
       padding: "50px 43px 0px 43px",
       height: "fit-content",
@@ -68,7 +67,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "15px",
       width: "100%",
-      //flexDirection: "column",
       justifyContent: "space-between",
       padding: "50px 43px 0px 43px",
       height: "fit-content",

@@ -11,10 +11,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     padding: "60px",
     [theme.breakpoints.down("md")]: {
-      padding: "75px 43px",
+      padding: "75px 45px 20px 45px",
     },
-    [theme.breakpoints.down("xs")]: {
-      padding: "75px 15px",
+    [theme.breakpoints.down("sm")]: {
+      padding: "25px 35px",
     },
   },
   title: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(0, 600)]: {
       flexDirection: "column",
-      padding: "0px 15px",
+      padding: "0px 35px",
     },
   },
 }))
@@ -64,8 +64,6 @@ const useStyles = makeStyles(theme => ({
 const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()
   const { t } = useTranslation()
-
-
 
   return (
     <>

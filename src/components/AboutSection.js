@@ -23,6 +23,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const useStyles = makeStyles(theme => ({
   container: {
+<<<<<<< HEAD
+=======
+    height: "800px",
+    display: "flex",
+>>>>>>> 606a7cdfd6580786784236280ee0f652435d92a1
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",

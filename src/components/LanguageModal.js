@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from "react-i18next"
 import {  Box, FormControl, Select, MenuItem } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles(theme => ({
   button2: {
@@ -154,11 +155,14 @@ const useStyles = makeStyles(theme => ({
 
 export const LanguageModal = () => {
   const classes = useStyles()
-  const { i18n, t } = useTranslation();  
+  const { i18n, t } = useTranslation()
+  const router = useRouter()  
  
   const handleChange = (event) => {
-    if (event.target.value === "ES") { i18n.changeLanguage("es"); }
-    if (event.target.value === "EN") { i18n.changeLanguage("en"); }
+    const selectedLanguage = event.target.value;
+
+    i18n.changeLanguage(selectedLanguage);
+    router.push(router.pathname, router.asPath, { locale: event.target.value })
   };
 
   return (
@@ -166,21 +170,16 @@ export const LanguageModal = () => {
       <Box sx={{ border: 'none' }}>
         <FormControl className={ classes.formControl } variant="standard">
           <Select
-            value={t("languageModal_select")}
+            value={i18n.language} 
             onChange={handleChange}
             className={`${classes.selectEmpty} ${classes.effect}`}
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
           >
-            <MenuItem value={t("languageModal_select")} className={ classes.item }>
-              {t("languageModal_select")}
-            </MenuItem>
-            {(t("languageModal_select") === "ES") ?
-              <MenuItem value="EN" className={ classes.item }>EN</MenuItem>
-              :
-              <MenuItem value="ES" className={ classes.item }>ES</MenuItem>
-            }
+            <MenuItem value="en">EN</MenuItem>
+            <MenuItem value="es">ES</MenuItem>
           </Select>
+
         </FormControl>
       </Box>
     </>

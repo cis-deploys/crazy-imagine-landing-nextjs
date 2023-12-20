@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import axios from "axios"
 import * as yup from "yup"
@@ -10,8 +10,8 @@ import { useTranslation } from "react-i18next"
 import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
-import { useIntersection } from "../hooks/useIntersection"
 import emailjs from '@emailjs/browser';
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "16px", 
   },
     [theme.breakpoints.down("md")]: {
-      "& .MuiSelect-select": {       // this is to refer to the prop provided by M-UI
+      "& .MuiSelect-select": {      
           fontSize: "12px",
         },
       width: "364px",
@@ -189,9 +189,6 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       alignItems: "center",
     },
-  },
-  formContainer: {
-    visibility: "hidden",
   },
   formContainer2: {
     animation: `$myEffect 2000ms`,
@@ -379,7 +376,7 @@ const useStyles = makeStyles(theme => ({
     padding: 4,
   },
   formAnimation: {
-    //animation: `$fadeIn ease 5000ms`,
+    //animation: `$fadeIn ease 3000ms`,
   },
   successfullAlert: {
     backgroundColor: "transparent",
@@ -412,8 +409,7 @@ const useStyles = makeStyles(theme => ({
 
 const WorkForm = () => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
   const [fileIsLoaded, setFileIsLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState("")
@@ -476,7 +472,6 @@ const WorkForm = () => {
 
   const onSubmitHandler = async(formData) => {
     const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
-    // const cvurl = curriculum.url;
 
     if (curriculum?.length === 1) {
       setShowButton(true)
@@ -598,7 +593,7 @@ const WorkForm = () => {
 
   return (
     <Box className={classes.container}>
-      <Box ref={ref} className={classes.containerInfo}>
+      <Box className={classes.containerInfo}>
         <WorkInfo />
       </Box>
       <Box className={classes.container1}>
@@ -612,9 +607,7 @@ const WorkForm = () => {
         ></Box>
         <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
           <Box
-            className={
-              isVisible ? classes.formContainer2 : classes.formContainer
-            }
+            className={classes.formContainer2}
           >
             <Box className={classes.shortContainer}>
               <TextField
@@ -746,7 +739,7 @@ const WorkForm = () => {
                </Select> 
               }
             /> 
-            <Button className={'button-component'} type="submit" disabled={showButton}>
+            <Button className={classesComponent.buttonComponent} type="submit" disabled={showButton}>
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

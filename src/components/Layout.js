@@ -4,8 +4,6 @@ import PropTypes from "prop-types"
 
 import { Box, Hidden } from "@mui/material"
  
-// COMPONENTS
-import SEO from "./seo"
 import { useRouter } from "next/router"
 
 const Navbar = dynamic(
@@ -31,7 +29,6 @@ const Layout = ({ children }) => {
   }
   return (
     <>
-      <SEO />
       <Hidden lgDown>
         <Navbar variant="secondary" color={navbarColor} />
       </Hidden>
