@@ -23,11 +23,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const useStyles = makeStyles(theme => ({
   container: {
-<<<<<<< HEAD
-=======
     height: "800px",
     display: "flex",
->>>>>>> 606a7cdfd6580786784236280ee0f652435d92a1
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",
@@ -164,30 +161,30 @@ const AboutSection = () => {
   const { t } = useTranslation()
 
   const elements = [
-    {
-      title: "Careers",
-      description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
-      link: '/careers',
-      icon: faDesktop
-    },
-    {
-      title: "References",
-      description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
-      link: '/references',
-      icon: faUser
-    },
+    // {
+    //   title: "Careers",
+    //   description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
+    //   link: '/careers',
+    //   icon: faDesktop
+    // },
+    // {
+    //   title: "References",
+    //   description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
+    //   link: '/references',
+    //   icon: faUser
+    // },
     {
       title: "Meet the team",
       description: "Collaboration with our internal team",
-      link: '/meet_team',
+      link: '/meet-team',
       icon: faUsers
     },
-    {
-      title: "Playbook",
-      description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
-      link: '/play-book',
-      icon: faCheckSquare
-    },
+    // {
+    //   title: "Playbook",
+    //   description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
+    //   link: '/play-book',
+    //   icon: faCheckSquare
+    // },
     {
       title: t("common_button_blog"),
       description: "Collaboration with our internal team",
@@ -200,16 +197,16 @@ const AboutSection = () => {
       link: '/faq',
       icon: faEnvelopeOpen
     },
-    {
-      title: "Mission",
-      description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
-      link: '/mission',
-      icon: faRocket
-    },
+    // {
+    //   title: "Mission",
+    //   description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
+    //   link: '/mission',
+    //   icon: faRocket
+    // },
     {
       title: "Who we are",
       description: "We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive.",
-      link: '/who_we_are',
+      link: '/about-us',
       icon: faBriefcase
     },
     {
@@ -221,7 +218,7 @@ const AboutSection = () => {
     {
       title: "Workinng together",
       description: t("about_aboutSection_description1"),
-      link: '/workinng_together',
+      link: '/services',
       icon: faHandshake
     },
   ];
