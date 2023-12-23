@@ -8,8 +8,8 @@ import { StyleComponent } from "./StyleComponent"
 const useStyes = makeStyles(theme => ({
   referenceContainer: {
     textAlign: "center",
-    background: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    background: "white",
+
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
@@ -43,14 +43,14 @@ const ReferenceSection = ({ reviews }) => {
   return (
     <Box className={classes.referenceContainer}>
       <Typography
-        className={classesComponent.titleWhite}
-        style={{ marginBottom: "15px" }}>
-          
-        {t("home_referenceSection_title")}
-
+        className={classesComponent.titleBlue}
+        style={{ marginBottom: "15px" }}
+      >
+        {t("Best_developers")}
       </Typography>
-      
-      <CustomerReview reviews={ reviews }/>
+      {console.log("reviews ", reviews)}
+
+      {/* <CustomerReview reviews={reviews} /> */}
     </Box>
   )
 }
