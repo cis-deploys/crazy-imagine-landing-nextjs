@@ -7,6 +7,15 @@ import mainImage from "../../public/Group619.svg"
 import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
+  gridContainer:{
+    marginBottom: '60px',
+    [theme.breakpoints.down("md")]: {
+      marginBottom: '45px',
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: '15px',
+    },
+  },
   container: {
     display: "flex",
     flexDirection: "column",
@@ -29,17 +38,22 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "58px",
     color: "#193174",
     alignSelf: "flex-start",
+    height: "100%",
     [theme.breakpoints.up("xl")]: {
       fontSize: "60px",
       lineHeight: "60px",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "41px",
-      lineHeight: "41px",
+      fontSize: "35px",
+      lineHeight: "35px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "25px",
       lineHeight: "25px",
+    },
+    "@media (max-width: 335px)": {
+      fontSize: "19px",
+      lineHeight: "19px",
     },
   },
   blueTitle2: {
@@ -63,27 +77,102 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "15px",
     },
   },
+  textBox:{
+    position: "absolute",
+    bottom: 0,
+    textAlign: "end",
+    paddingBottom: "30px",
+    right: "0",
+    width: "100%",
+    [theme.breakpoints.down("md")]: {
+      textAlign: "start",
+      display: "fixed",
+      position: "realtive",
+      paddingBottom: "5px",
+      letf: "0",
+      marginTop: "10px",
+    },
+  }, 
+  textBoxLeft:{
+    position: "absolute",
+    bottom: 0,
+    textAlign: "start",
+    paddingBottom: "30px",
+    width: "100%",
+    [theme.breakpoints.down("md")]: {
+      position: "relative",
+      paddingBottom: "5px",
+      width: "100%",
+    },
+  },
+  contentLeft:{
+    position: "relative",
+    padding: '15px', 
+    textAlign: 'end',
+    marginRight: '25px',
+    minHeight: "40px",
+    minWidth: "40px",
+    [theme.breakpoints.down("md")]: {
+      textAlign: "start",
+      marginRight: '1px',
+      padding: '2px', 
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginRight: '0px',
+      padding: '3px',
+      textAlign: "start",
+      position: "relative",
+      width: "100%",
+      height: "100%"
+    },
+  },
+  contentRight:{
+    padding: '5px', 
+    textAlign: 'start', 
+    marginLeft: '25px',
+    position: "relative",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: '0px',
+      padding: '3px',
+    },
+  },
+  textRenponsiveRight:{
+    "@media (max-width: 959px)": {
+      display: "none",
+    },
+  },
+  textRenponsiveSmallscreen:{
+    position: "relative", 
+    marginTop: "10px",
+    marginBottom: '5px',
+    width: "100%",
+    "@media (min-width: 960px)": {
+      display: "none",
+    },
+  },
 }))
 
 const MeetTeamSection = ({members}) => {
   const classes = useStyles()
   const { t } = useTranslation()
-console.log(members)
+
   return (
     <Box className={classes.container}>
       
       {members.map(e => (
-        <Grid container justifyContent="center" style={{display: 'relative'}} key={e.order}>
+        <Grid container justifyContent="center" key={e.order} className={classes.gridContainer}>
           {e.order % 2 === 0? 
             <>
-            <Grid md={5} sm={6} style={{padding: '15px', textAlign: 'end'}} item >
-              <Box style={{height: '45%'}}/>
-              <Box style={{height: '55%'}}>
-                <Typography className={classes.title2}>{e.name}</Typography>
-                <Typography className={classes.blueTitle2} >{e.role}</Typography>
-              </Box>  
+            <Grid md={5} sm={6} item className={classes.contentLeft}>
+              <div  className={`${classes.textBox}`} >
+                <Box style={{height: '45%'}}/>
+                <Box style={{height: '55%'}}>
+                  <Typography className={classes.title2}>{e.name}</Typography>
+                  <Typography className={classes.blueTitle2} >{e.role}</Typography>
+                </Box> 
+              </div>
             </Grid>
-            <Grid md={5} sm={6} style={{padding: '5px', textAlign: 'start'}} item >
+            <Grid md={5} sm={6} className={classes.contentRight} item >
               <Image
                 src={e.avatar[0] ? e.avatar[0].url: mainImage}
                 width={314}
@@ -94,7 +183,16 @@ console.log(members)
           </>
         : 
           <>
-            <Grid md={5} sm={6} style={{padding: '5px', textAlign: 'end'}} item >
+            <Grid md={5} sm={6} className={classes.textRenponsiveSmallscreen} item >
+              <div className={classes.textBoxLeft}>
+                <Box style={{height: '45%'}}/>
+                <Box style={{height: '55%'}}>
+                  <Typography className={classes.title2}>{e.name}</Typography>
+                  <Typography className={classes.blueTitle2}>{e.role}</Typography>
+                </Box>  
+              </div>
+            </Grid> 
+            <Grid md={5} sm={6} item className={classes.contentLeft} style={{right: '0'}}>
               <Image
                 src={e.avatar[0] ? e.avatar[0].url: mainImage}
                 width={314}
@@ -102,13 +200,15 @@ console.log(members)
                 alt="Title"
               />
             </Grid>
-            <Grid md={5} sm={6} style={{padding: '15px', textAlign: 'start'}} item >
-              <Box style={{height: '45%'}}/>
-              <Box style={{height: '55%'}}>
-                <Typography className={classes.title2} >{e.name}</Typography>
-                <Typography className={classes.blueTitle2}>{e.role}</Typography>
-              </Box>  
-            </Grid>
+            <Grid md={5} sm={6} item className={`${classes.contentRight} ${classes.textRenponsiveRight}`}>
+              <div className={classes.textBoxLeft}>
+                <Box style={{height: '45%'}}/>
+                <Box style={{height: '55%'}}>
+                  <Typography className={classes.title2}>{e.name}</Typography>
+                  <Typography className={classes.blueTitle2}>{e.role}</Typography>
+                </Box> 
+              </div>
+            </Grid> 
           </>
         }
         </Grid>
