@@ -80,7 +80,7 @@ const References = ({ referencespage, categoryReviews, reviews }) => {
         img={headerImage}
         cls="textContainer"
       />
-      {console.log("categoryReviews.data", reviews.data)}
+      {/* {console.log("categoryReviews.data", reviews.data)} */}
       {/* {console.log("categoryReviews", categoryReviews)} */}
       {categoryReviews.data.map(cat => {
         return <CarCategoryReview categoryReview={cat} reviews={reviews} />

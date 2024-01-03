@@ -4,11 +4,12 @@ import NextImage from "next/image"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
 import ReactStars from "react-stars"
+import React, { useState } from "react"
 
 import RestoreIcon from "@mui/icons-material/Restore"
 import { format, parseISO } from "date-fns"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCalendarDays } from "@fortawesome/free-solid-svg-icons"
+import { faCalendarDays, faCode } from "@fortawesome/free-solid-svg-icons"
 import Avatar from "@mui/material/Avatar"
 
 const useStyles = makeStyles(theme => ({
@@ -240,7 +241,7 @@ const useStyles = makeStyles(theme => ({
   nameReviewer: {
     fontFamily: "Nexa ",
     fontStyle: "normal",
-    fontWeight: "700",
+    fontWeight: "400",
     fontSize: "15px",
 
     textAlign: "center",
@@ -251,8 +252,6 @@ const useStyles = makeStyles(theme => ({
 
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
-      marginTop: "54px",
-      marginBottom: "10px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
@@ -268,7 +267,7 @@ const useStyles = makeStyles(theme => ({
   nameOcupation: {
     fontFamily: "Nexa",
     fontStyle: "normal",
-    fontWeight: "700",
+    fontWeight: "400",
     fontSize: "15px",
 
     textAlign: "center",
@@ -279,8 +278,6 @@ const useStyles = makeStyles(theme => ({
 
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
-      marginTop: "54px",
-      marginBottom: "10px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
@@ -315,10 +312,6 @@ const CarCategoryReview = ({ categoryReview, reviews }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
   const { t } = useTranslation()
-
-  const customDescription2 =
-    "The project was done with Next.js and Node.js with Express. A startup for buying/selling luxury used cars "
-  const iconProject = "</>"
 
   const searchProject = () => {
     let existsReview = null
@@ -455,12 +448,15 @@ const CarCategoryReview = ({ categoryReview, reviews }) => {
             alignItems: "center",
           }}
         >
-          <Typography
-            className={classes.iconProject}
-            style={{ marginRight: "10px" }}
-          >
-            {iconProject}
-          </Typography>
+          <FontAwesomeIcon
+            icon={faCode}
+            style={{
+              marginRight: "10px",
+              fontSize: "40px",
+              color: "#193174",
+              marginTop: "40px",
+            }}
+          />
           <Box
             style={{
               display: "flex",
