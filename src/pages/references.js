@@ -2,13 +2,44 @@ import dynamic from "next/dynamic"
 import { useTranslation } from "react-i18next"
 import Layout from "../components/Layout"
 import headerImage from "../../public/marciano.svg"
-import ReferenceSection from "../components/ReferenceSection"
+
 import { NextSeo } from "next-seo"
 import React, { useEffect, useState } from "react"
+
 const SectionHeader = dynamic(() => import("../components/SectionHeader"), {
   ssr: false,
 })
-const References = ({ referencespage }) => {
+const CarCategoryReview = dynamic(
+  () => import("../components/CarCategoryReview"),
+  {
+    ssr: false,
+  }
+)
+export async function getServerSideProps() {
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+
+  const resCategoryReviews = await fetch(
+    `${domain}category-reviews?locale=all&populate=slug&populate=reviews`
+  )
+  const categoryReviews = await resCategoryReviews.json()
+
+  const resReviews = await fetch(
+    `${domain}reviews?locale=all&populate=avatar=slug&populate=project`
+  )
+  const reviews = await resReviews.json()
+  // const resProjects = await fetch(
+  //   `${domain}projects?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`
+  // )
+  // const projects = await resProjects.json()
+
+  const resReferencespage = await fetch(
+    `${domain}references-page?locale=all&populate=seo&populate=title`
+  )
+  const referencespage = await resReferencespage.json()
+
+  return { props: { referencespage, categoryReviews, reviews } }
+}
+const References = ({ referencespage, categoryReviews, reviews }) => {
   const { t } = useTranslation()
   const [metaTitle, setMetaTitle] = useState()
   const [metaDescription, setMetaDescription] = useState()
@@ -16,15 +47,12 @@ const References = ({ referencespage }) => {
   const [title, setTitle] = useState()
 
   useEffect(() => {
-    referencespage?.data.map(({ attributes: { seo, title } }) => {
-      if (seo) {
-        setMetaTitle(seo?.metaTitle),
-          setMetaDescription(seo?.metaDescription),
-          setKeywords(seo?.keywords)
-      }
-      setTitle(title)
-    })
+    setMetaTitle(referencespage.data?.attributes.seo?.metaTitle),
+      setMetaDescription(referencespage.data?.attributes.seo?.metaDescription),
+      setKeywords(referencespage.data?.attributes.seo?.keywords)
+    setTitle(referencespage.data?.attributes.title)
   }, [])
+
   return (
     <Layout>
       <NextSeo
@@ -45,14 +73,18 @@ const References = ({ referencespage }) => {
           url: "https://crazyimagine.com",
         }}
       />
+
       <SectionHeader
         title={t("References")}
         btn={false}
         img={headerImage}
         cls="textContainer"
       />
-
-      <ReferenceSection />
+      {console.log("categoryReviews.data", reviews.data)}
+      {/* {console.log("categoryReviews", categoryReviews)} */}
+      {categoryReviews.data.map(cat => {
+        return <CarCategoryReview categoryReview={cat} reviews={reviews} />
+      })}
     </Layout>
   )
 }
