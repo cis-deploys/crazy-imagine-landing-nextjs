@@ -326,5 +326,107 @@ export const StyleComponent = makeStyles((theme) => ({
         [theme.breakpoints.between(0, 959)]: {
           width: "60%",
         }
-      }
+      },
+      TypographyTitleFilter: {
+        fontFamily: "Nexa",
+        fontSize: "18px",
+        lineHeight: "20px",
+        color: "#696969",
+        padding: "2px 0px",
+        textTransform: "capitalize",
+      },
+      ButtonFilter: {
+        backgroundColor: "#FFFFFF",
+        gap: "10px",
+        borderRadius: "100px",
+        [theme.breakpoints.between(481, 960)]: {
+          width: "500px"
+        },
+        [theme.breakpoints.between(381, 480)]: {
+          width: "350px"
+        },
+        [theme.breakpoints.between(351, 380)]: {
+          width: "300px"
+        },
+        [theme.breakpoints.between(0, 350)]: {
+          width: "250px"
+        },
+      },
+      labelSelect: {
+        fontFamily: "Nexa Bold",
+        fontSize: "18px",
+        color: "#27AAE1",
+        paddingLeft: "20px",
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "20px",
+        },
+      },
+      buttonClose: {
+        display: "flex",
+        justifyContent: "flex-end",
+      },
+      IconButtonFilter: {
+        display: "flex",
+        justifyContent: "space-between",
+        margin: "5px",
+      },
+      containerFilterDrawer: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+      TypographyFilter: {
+        fontFamily: "Nexa Bold",
+        fontSize: "18px",
+        lineHeight: "20px",
+        color: "#696969",
+        padding: "2px 0px",
+        textTransform: "capitalize",
+        margin: "20px",
+      },
+      buttonShowFilter: {
+        backgroundColor: "#797EF6",
+        width: "140px",
+        height: "45px",
+        color: "#FFFFFF",
+        fontFamily: "Nexa Bold",
+        fontSize: "12px",
+        borderRadius: "100px",
+      },
+      containerGridSwiper: {
+        display: "flex",
+        width: "100%",
+        position: "relative",
+        flexDirection: "row",
+        height: "auto",
+      },
+      containerCardSwiper: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "26px",
+        flex: "1 0 40%",
+        background: "#FFFFFF",
+        borderRadius: "14px",
+        overflow: "hidden",
+        height: "fit-content",
+        maxWidth: "400px",
+        [theme.breakpoints.between(2550, 4000)]: {
+          gap: "18px",
+          maxWidth: "400px",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        },
+        [theme.breakpoints.down("md")]: {
+          gap: "18px",
+          maxWidth: "380px",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          margin: "auto",
+          padding: "auto",
+        },
+        [theme.breakpoints.down("sm")]: {
+          gap: "13px",
+          maxWidth: "300px",
+        },
+      },
 }));
