@@ -97,7 +97,7 @@ const useStyes = makeStyles(theme => ({
   },
 }))
 
-const LastestPosts = ({ articles, articlesAll }) => {
+const LastestPosts = ({ articlesAll }) => {
   const classes = useStyes()
   const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();

@@ -6,7 +6,6 @@ import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
-import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -246,7 +245,6 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
-  const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t, i18n } = useTranslation()

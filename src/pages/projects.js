@@ -52,18 +52,11 @@ function Projects({ projects, projectsPage }) {
     attributes:{
       Key,
       createdAt,
-      description,
-      details,
-      galleryImages,
       images,
       locale,
-      localizations,
       moreAbout,
-      publishedAt,
       seo,
-      slug,
       title,
-      updatedAt,
       project_types: types,
     }} ) => {
     const imagesProjects = [];
@@ -85,15 +78,10 @@ function Projects({ projects, projectsPage }) {
     newProjectsArray.push({
       id,
       title,
-      description,
-      details,
-      moreAbout,
-      slug,
       Key,
       createdAt,
       locale,
       images: imagesProjects,
-      galleryImages,
       seo,
       types: typesProjects, 
     });
