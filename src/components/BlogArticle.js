@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
@@ -101,7 +101,7 @@ const useStyles = makeStyles(theme => ({
     display: "-webkit-box",
     boxOrient: "vertical",
     lineClamp: "2",
-    height: "36px",
+    height: "40px",
     [theme.breakpoints.down("md")]: {
       fontSize: "16px",
       lineHeight: "16px",

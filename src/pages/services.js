@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
 import dynamic from 'next/dynamic'
 import { Box } from "@mui/material"
@@ -31,7 +31,7 @@ const ContactSection = dynamic(
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=all&populate=images&populate=galleryImages&populate=seo`)
+  const resProjects = await fetch(`${domain}projects?locale=all&populate=images&populate=seo`)
   const projects = await resProjects.json()
 
   return { props: { projects } }
@@ -43,7 +43,7 @@ function Services({ projects }) {
 
   const projectsNew = [];
 
-  projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
+  projects.data.map(({ attributes: { title, Key, createdAt, locale, images, seo}}) => {
     const imagesArticles = [];
     if(images.data){
       images.data.map(({ attributes: { url }}) => {
@@ -52,25 +52,13 @@ function Services({ projects }) {
         });
       });
     }
-    const galleryImagesArticles = [];
-    if(galleryImages.data){
-      galleryImages.data.map(({ attributes: { url }}) => {
-        galleryImagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
+
     projectsNew.push({
       title,
-      description,
-      details,
-      moreAbout,
-      slug,
       Key,
       createdAt,
       locale,
       images: imagesArticles,
-      galleryImages: galleryImagesArticles,
       seo
     });
 
