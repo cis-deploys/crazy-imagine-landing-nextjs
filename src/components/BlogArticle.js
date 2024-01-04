@@ -159,15 +159,31 @@ const BlogArticle = ({ articles: AllArticles }) => {
   const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
-  const [load, setLoad] = useState(5)
+  const [load, setLoad] = useState(getInitialLoad())
   const [buttonLoad, setButtonLoad] = useState(true)
 
-  const loadArticles = length => {
-    if (length > load) setLoad(load + 5)
-    if (length = load) setButtonLoad(false)
+  useEffect(() => {
+    const handleResize = () => {
+      setLoad(getInitialLoad());
+      setButtonLoad(true);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const loadArticles = (length) => {
+    if (length > load) setLoad(load + getInitialLoad());
+    if (length = load) setButtonLoad(false);
+  };
+
+  function getInitialLoad() {
+    return window.innerWidth >= 3000 ? 5 : 4;
   }
 
-  
   const articles = AllArticles
   const articlesFilter = articles.filter(article =>
     article.locale.includes(lang)

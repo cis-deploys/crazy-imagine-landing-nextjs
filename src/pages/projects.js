@@ -5,7 +5,7 @@ import { Box } from "@mui/material"
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/robot.svg"
+import headerImage from "../../public/image_project_page.svg"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
@@ -26,13 +26,15 @@ const TableProjects = dynamic(
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resArticles = await fetch(`${domain}projects?populate=*`)
-  const projects = await resArticles.json()
+  const resProjects = await fetch(`${domain}projects?populate=title&populate=project_types&populate=images`)
+  const projects = await resProjects.json()
     
   const resProjectspage = await fetch(`${domain}projectspage?populate=seo&populate=mainTitle`)
   const projectsPage = await resProjectspage.json()
 
-  return { props: { projects, projectsPage } }
+  return { props: { 
+    projects,
+     projectsPage } }
 }
 
 function Projects({ projects, projectsPage }) {
@@ -43,11 +45,10 @@ function Projects({ projects, projectsPage }) {
   const [keywords, setKeywords] = useState();
   const [ mainTitle, setMainTitle ] = useState(); 
   
-  const projectsNew = [];
-
-  useEffect(() => {
+  const newProjectsArray = [];
 
   projects?.data.map(({ 
+    id,
     attributes:{
       Key,
       createdAt,
@@ -65,22 +66,24 @@ function Projects({ projects, projectsPage }) {
       updatedAt,
       project_types: types,
     }} ) => {
-    const imagesArticles = [];
-    const typesArticles = [];
+    const imagesProjects = [];
+    const typesProjects = [];
+
     if(images){
       images.data.map(({ attributes: { url }}) => {
-        imagesArticles.push({
+        imagesProjects.push({
           url,//: `${domain}${url}`
         });
       });
     }
     if(types){
       types.data.map(({ attributes: { name }}) => {
-        typesArticles.push( name );
+        typesProjects.push( name );
       });
     }
     
-    projectsNew.push({
+    newProjectsArray.push({
+      id,
       title,
       description,
       details,
@@ -89,14 +92,12 @@ function Projects({ projects, projectsPage }) {
       Key,
       createdAt,
       locale,
-      images: imagesArticles,
+      images: imagesProjects,
       galleryImages,
       seo,
-      types: typesArticles, 
+      types: typesProjects, 
     });
   });
-
-}, [])
 
 useEffect(() => {
   setMetaTitle(projectsPage.data?.attributes.seo?.metaTitle),
@@ -124,9 +125,7 @@ useEffect(() => {
           btn={true}
           cls="textContainer"
         />
-        <TableProjects
-          AllArticles={projectsNew}
-        />
+            <TableProjects projectsData={ newProjectsArray }/>
         <ContactSection/>
       </Box>
     </Layout>

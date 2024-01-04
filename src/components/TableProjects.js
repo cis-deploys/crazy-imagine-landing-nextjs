@@ -1,162 +1,149 @@
-import React, {  useState, useEffect } from "react"
-import { Box, 
-    Grid, 
-    Typography, 
-    Pagination, 
-    FormControl, 
-    InputLabel, 
-    Select, 
-    OutlinedInput, 
-    MenuItem, 
-    Checkbox, 
-    ListItemText } from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import { useTranslation } from "react-i18next"
-import { PROJECTS } from "../navigation/sitemap"
-import Link from "next/link"
-import Image from "next/image"
+import React, { useState, useEffect } from "react"
 
-const QUANTITYPAGE = 12;
+import { useTranslation } from "react-i18next"
+import Link from "next/link"
+
+import "swiper/swiper.min.css"
+import "swiper/css"
+
+import {
+  Box,
+  Checkbox,
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  FormGroup,
+  FormControlLabel,
+  Hidden,
+  Grid,
+  Card,
+  CardContent,
+} from "@mui/material"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import { makeStyles } from "@mui/styles"
+import CardMedia from "@mui/material/CardMedia"
+
+import { PROJECTS } from "../navigation/sitemap"
+import FilterProjectMovil from "./FilterProjectMovil"
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    padding: '2px',
-    margin: '6px',
-    width: '100%',
-    position: 'relative'
-  },
-  container2: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "26px",
-    flex: "1 0 40%",
-    background: "#FFFFFF",
-    borderRadius: "14px",
-    overflow: "hidden",
-    height: "fit-content",
-    maxWidth: "480px",
-    [theme.breakpoints.down("md")]: {
-      gap: "18px",
-      maxWidth: "380px",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      margin: "auto",
-      padding: "auto"
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "13px",
-    },
-  },
-  containerItem:{
-    backgroundClip: 'padding-box',
-    padding: '9px',
-    marginBottom: '9px',
-  },
-  SelectFilters: {
-    fontFamily: '"Roboto", sans-serif',
-    fontSize: "18px",
-    color: "white",
-    margin: "5px",
-    marginLeft: "5px",
-    background: "rgba(0,0,0,0.5)",
-    border: "2px solid #FFFFFF",
-    "&:hover": {
-      background: "tranparend",
-      border: "none"
-    },
-    "&.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected": {
-      background: "#30AADE",
-    },
-  },
-  activeButton: {
-    background: "#30AADE",
-    border: "none",
-    color: "white",
-  },
-  inactiveButton: {
-    background: "rgba(0,0,0,0.5)",
-  },
-  textContainer: {
-    background: "#FFFFFF",
-    padding: "6px 25px 22px 37px",
-    [theme.breakpoints.down("md")]: {
-      gap: "13px",
-      padding: "18px 18px 16px 26px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gap: "8px",
-      padding: "11px 11px 10px 16px",
-    },
-  },
-  wrapperTitle2: {
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "20px",
-    color: "#FFFFFF",
-    marginBottom: "20px"
-  },
-  wrapperTitle: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "900",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    color: "#FFFFFF",
-    marginBottom: "38px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
-  wrapperContainer: {
+  ContainerSection: {
     width: "100%",
-    margin: "auto",
-    padding: "5px",
-    position: 'relative',
-    maxWidth: "2300px",
-    display: "flex",
-    flexDirection: "column",
-    [theme.breakpoints.down("md")]: {
-      paddingTop: "40px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      padding: "20px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "10px",
-    },
-  },
-  wrapperContainerSection: {
-    width: "100%",
-    padding: "50px",
+    height: "auto",
     backgroundColor: "#193174",
     backgroundImage: `url('/background.svg')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    [theme.breakpoints.down("sm")]: {
-      padding: "10px",
+    display: "flex",
+    flexDirection: "row",
+    padding: "50px 0px",
+    [theme.breakpoints.down("md")]: {
+      padding: "30px 0px",
+      flexDirection: "column",
     },
   },
-  title: {
+  containerProject: {
+    display: "flex",
+    padding: "0px 43px",
+    flexDirection: "column",
+    order: 2,
+    width: "80%",
+    height: "auto",
+    [theme.breakpoints.up("xl")]: {
+      width: "85%",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "85%",
+      flexDirection: "column",
+      alignItems: "center",
+      padding: "0px 30px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
+  ron: {
+    "& > div:first-of-type": {
+      height: "250px",
+    },
+  },
+  cardProject: {
+    maxWidth: "500px",
+    borderRadius: "14px",
+    [theme.breakpoints.between(2500, 4000)]: {
+      width: "500px",
+    },
+    [theme.breakpoints.between(1951, 2499)]: {
+      width: "400px",
+    },
+    [theme.breakpoints.between(1280, 1950)]: {
+      width: "330px",
+    },
+    [theme.breakpoints.between(960, 1279)]: {
+      width: "235px",
+    },
+  },
+  cardMediaProject: {
+    height: "190px",
+    [theme.breakpoints.between(2500, 4000)]: {
+      height: "250px",
+    },
+    [theme.breakpoints.between(1900, 2499)]: {
+      height: "250px",
+    },
+    [theme.breakpoints.between(1280, 1450)]: {
+      height: "190px",
+    },
+    [theme.breakpoints.between(960, 1279)]: {
+      height: "169px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "190px",
+    },
+  },
+  cardContentProject: {
+    height: "110px",
+    [theme.breakpoints.between(2500, 4000)]: {
+      height: "120px",
+      padding: "28px 0px 28px 28px"
+    },
+    [theme.breakpoints.between(1280, 2499)]: {
+      height: "100px",
+    },
+    [theme.breakpoints.between(960, 1279)]: {
+      height: "100px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "91px",
+    },
+  },
+  containerItemProjects: {
+    backgroundClip: "border-box",
+    marginBottom: "9px",
+    color: "#FFFFFF",
+  },
+  textContainer: {
+    background: "#FFFFFF",
+    padding: "6px 25px 22px 37px",
+    height: "100px",
+    [theme.breakpoints.down("md")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+      height: "80px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "50px",
+      gap: "8px",
+      padding: "11px 11px 10px 16px",
+    },
+  },
+  titleProject: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -181,7 +168,7 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "10px",
     },
   },
-  link: {
+  linkProject: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
@@ -195,202 +182,448 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "11px",
     },
   },
-  wrapper: {
-    gap: "21px",
-    padding: '5px',
-    margin: '10px'
-  },
-  pagination: {
+  containerSelect: {
     display: "flex",
-    flexWrap: "wrap",
+    flexDirection: "row",
+    paddingLeft: "30px",
+    order: 1,
+    width: "20%",
     justifyContent: "center",
-    background: "transparent",
-    gap: "21px",
-    marginTop: "40px",
-    fontFamily: "Nexa Bold",
-    fontSize: "10px",
-    color: "#193174",
-    "& .css-ov482b-MuiButtonBase-root-MuiPaginationItem-root": {
-      background: "#b2b6ff",
-      color: "transparent",
-      margin: "4px",
-      minWidth: "10px",
-      width: "10px",
-      height: "10px",
-      opacity: "0.2"
-    }, 
-    "& .Mui-selected": {
-      opacity: "1",
-      background: "#1e87f0",
+    marginBottom: "90px",
+    [theme.breakpoints.up("xl")]: {
+      width: "15%",
+      flexDirection: "column",
+      alignItems: "center",
     },
+    [theme.breakpoints.down("lg")]: {
+      width: "25%",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      padding: "20px",
+      flexDirection: "column",
+      alignItems: "center",
+      marginBottom: "5px",
+    },
+  },
+  TypographyTitleFilter: {
+    fontFamily: "Nexa Bold",
+    fontSize: "25px",
+    display: "flex",
+    textAlign: "center",
+    color: "#696969",
+    marginBottom: "20px",
+  },
+  containerFilter: {
+    display: "flex",
+    backgroundColor: "#FFFFFF",
+    padding: "20px",
+    flexDirection: "column",
+    borderRadius: "20px",
+    width: "100%",
+    height: "100%",
+  },
+  SelectFilters: {
+    display: "flex",
+    marginLeft: "5px",
+    backgroundColor: "#FFFFFF",
+    borderRadius: "10px",
+    border: "2px solid #FFFFFF",
+    "&:hover": {
+      background: "tranparend",
+      border: "none",
+    },
+    "&.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected": {
+      background: "#30AADE",
+    },
+  },
+  formSelect: {
+    margin: "3",
+    width: "350px",
+    [theme.breakpoints.between(2550, 4000)]: {
+      width: "600px",
+    },
+    [theme.breakpoints.between(381, 460)]: {
+      width: "310px",
+    },
+    [theme.breakpoints.between(0, 380)]: {
+      width: "240px",
+    },
+  },
+  labelSelect: {
+    fontFamily: "Nexa Bold",
+    fontSize: "18px",
+    color: "#27AAE1",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "20px",
+    },
+  },
+  activeButton: {
+    background: "#30AADE",
+    border: "none",
+    color: "white",
+  },
+  inactiveButton: {
+    background: "rgba(0,0,0,0.5)",
+  },
+  link: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "12px",
+    lineHeight: "12px",
+    letterSpacing: "0.1em",
+    color: "#888DFF",
+    textDecoration: "none",
+    userSelect: "none",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "16px",
+      lineHeight: "11px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "11px",
+      lineHeight: "11px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "9px",
+      lineHeight: "9px",
+    },
+  },
+  titleCarousel: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    fontSize: "20px",
+    lineHeight: "20px",
+    color: "#193174",
+    userSelect: "none",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "25px",
+      lineHeight: "18px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "18px",
+      lineHeight: "18px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontWeight: "18px",
+      fontSize: "18px",
+      lineHeight: "18px",
+      width: "90%",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    },
+    [theme.breakpoints.between(0, 300)]: {
+      fontWeight: "18px",
+      fontSize: "18px",
+      lineHeight: "18px",
+    },
+  },
+  dragger: {
+    transition: "transform 0.1s ease-in-out",
   },
 }))
 
-const TableProjects = ({ AllArticles }) => {
+const dotParticlesStyles = (page, selectedPage) => {
+  return {
+    backgroundColor: page === selectedPage ? "blue" : "lightblue",
+    cursor: "pointer",
+    borderRadius: "50%",
+    width: "8px",
+    height: "8px",
+    marginRight: "10px",
+  }
+}
+
+const dotStyles = {
+  marginTop: "40px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "50px",
+  width: "100%",
+}
+
+function createNumberArray(dynamicNumber) {
+  return Array.from({ length: dynamicNumber }, (_, index) => index + 1)
+}
+
+const TableProjects = ({ projectsData }) => {
   const classes = useStyles()
-
-  const [currentPage, setCurrentPage] = useState(1);
-
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 
-  const articles = AllArticles
-  const articlesFilter = articles.filter(article =>
-    article.locale.includes(lang)
+  const projects = projectsData
+  const projectsFilter = projects.filter(project =>
+    project.locale.includes(lang)
   )
-  const [calculatePage, setCalculatePage] = useState(Math.ceil(articles.length / QUANTITYPAGE));
 
-  const [projectDataAll, setProjectDataAll] = useState(articlesFilter
-    .sort((a, b) => {
+  const [projectDataAll, setProjectDataAll] = useState(
+    projectsFilter.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     })
-  );
+  )
 
-  const [selectedOption, setSelectedOption] = useState([]);
-  const [selectedButtons, setSelectedButtons] = useState([]);
+  const [checkboxOption, setCheckboxOption] = useState([])
 
-  const handlePageChange = (event, value, ) => {
-    setCurrentPage(value);
-  };
-
-  const handleButtonToggle = (event, newSelected) => {
-    setCurrentPage(1);
-    setSelectedButtons(newSelected);
-    if(!newSelected[0]){
-      loadingPage(articlesFilter);
-      setCalculatePage(Math.ceil(articles.length / QUANTITYPAGE));
-    }else{
-      const filteredObjects = articlesFilter.filter((obj) => 
-        ( obj.types.some(type => newSelected.includes(type.replace(/\s+/g, '').toLowerCase())) )
-      );
-      setCalculatePage(Math.ceil(filteredObjects.length / QUANTITYPAGE));
-      loadingPage(filteredObjects);
-    }
-  };
+  const handleButton = (event, valueSelected) => {
+    setCheckboxOption(prev => {
+      const filtersSelected = prev.map(obj => {
+        if (obj.type === valueSelected.type) {
+          return { ...obj, checked: !valueSelected.checked }
+        }
+        return obj
+      })
+      return filtersSelected
+    })
+  }
 
   const loadingSelectedOption = () => {
-    const types = articlesFilter.sort((a, b) => {return new Date(b.created_at) - new Date(a.created_at)})
-      .map(object => object.types) 
-      .flat();
+    const types = projectsFilter
+      .sort((a, b) => {
+        return new Date(b.created_at) - new Date(a.created_at)
+      })
+      .map(object => object.types)
+      .flat()
 
     const uniqueTypes = types.filter((value, index, self) => {
-      return value && self.indexOf(value) === index;
-    });
-    setSelectedOption(uniqueTypes); 
-  };
+      return value && self.indexOf(value) === index
+    })
+    const filters = uniqueTypes.map(item => {
+      return { type: item, checked: false }
+    })
 
-  const loadingPage = (elements = []) =>{
-    const inicio = (currentPage - 1) * QUANTITYPAGE;
-      const fin = inicio + QUANTITYPAGE;
-      const articles = elements.slice(inicio, fin);
-
-      setProjectDataAll(articles
-          .sort((a, b) => {
-            return new Date(b.created_at) - new Date(a.created_at)
-          })
-      );
+    setCheckboxOption(filters)
   }
 
   useEffect(() => {
-      if(!selectedOption[0]){
-        loadingSelectedOption();
+    const filters = checkboxOption.filter(item => item.checked)
+    const filteredTecnologies = filters.map(item => item.type) || []
+
+    let filteredProjects = []
+    filteredTecnologies.forEach(tecnology => {
+      projectsFilter.map(project => {
+        if (project.types[0] === tecnology) {
+          filteredProjects.push(project)
+        }
+      })
+    })
+
+    if (filteredProjects.length > 0) {
+      setProjectDataAll(
+        filteredProjects.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at)
+        })
+      )
+    } else {
+      setProjectDataAll(
+        projectsFilter.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at)
+        })
+      )
+    }
+  }, [checkboxOption])
+
+  useEffect(() => {
+    if (!checkboxOption[0]) {
+      loadingSelectedOption()
+    }
+  }, [i18n.language])
+
+  const [page, setPage] = useState(1)
+  const [itemsPerPage, setItemsPerPage] = useState(6)
+  const totalPages = Math.ceil(projectDataAll.length / itemsPerPage)
+  const pagesArray = createNumberArray(totalPages)
+
+  const handleChangePage = value => {
+    setPage(value)
+  }
+
+  const startIndex = (page - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const visibleData = projectDataAll.slice(startIndex, endIndex)
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (windowSize.width < 600) setItemsPerPage(1)
+    if (windowSize.width > 600 && windowSize.width < 960) setItemsPerPage(2)
+    if (windowSize.width > 960 && windowSize.width < 1280) setItemsPerPage(3)
+    if (windowSize.width > 1280) setItemsPerPage(6)
+  }, [windowSize])
+
+  const [onStartPosition, setOnStartPosition] = useState(0)
+  const [onEndPosition, setOnEndPosition] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+
+  const onDragGrid = event => {
+    setOnStartPosition(event.pageX)
+    setIsDragging(true)
+  }
+
+  const onEnd = event => {
+    setOnEndPosition(event.pageX)
+    setIsDragging(false)
+  }
+
+  const draggerElement = document.getElementById("draggedElement")
+
+  useEffect(() => {
+    if (isDragging) {
+      if (draggerElement) {
+        draggerElement.classList.add("classes.dragged")
       }
+    } else {
+      if (onStartPosition !== 0 && onEndPosition !== 0) {
+        if (onStartPosition > onEndPosition) {
+          if (page + 1 <= totalPages) setPage(page + 1)
+        }
 
-      if(selectedButtons[0]){
-        loadingPage(articlesFilter.filter((obj) => 
-          ( obj.types.some(type => newSelected.includes(type.replace(/\s+/g, '').toLowerCase())) )
-        ));
-      }else{
-        loadingPage(AllArticles);
+        if (onStartPosition < onEndPosition) {
+          if (page - 1 > 0) setPage(page - 1)
+        }
+
+        if (draggerElement) {
+          draggerElement.classList.remove("classes.dragged")
+        }
       }
+    }
+  }, [onEndPosition])
 
-  }, [i18n.language, currentPage]);
-
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 5.5 + ITEM_PADDING_TOP,
-      width: 350,
-    },
-  },
-};
+  const handleTouchStart = event => {
+    setOnStartPosition(event.targetTouches[0].screenX)
+  }
+  const handleTouchEnd = event => {
+    setOnEndPosition(event.changedTouches[0].screenX)
+  }
 
   return (
-    <Box className={classes.wrapperContainerSection } style={{ display: "flex", flexDirection: "row", padding: "40px", gap: "5px"}}>
+    <Box className={classes.ContainerSection}>
+      <Box className={classes.containerSelect}>
+        <Hidden mdDown>
+          <Box className={classes.containerFilter}>
+            <Typography className={classes.TypographyTitleFilter}>
+              {t("project_page_filter")}
+            </Typography>
 
-    <Box style={{ display: "flex", flexDirection: "row", width: "30%"}}>
-        <FormControl sx={{ m: 5, width: 350 }}>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography className={classes.labelSelect}>
+                  {t("project_filter_tecnologys")}
+                </Typography>
+              </AccordionSummary>
 
-            <InputLabel id="demo-multiple-checkbox-label">Tecnologys</InputLabel>
+              <AccordionDetails>
+                {checkboxOption.map(e => {
+                  return (
+                    <FormGroup key={e.type}>
+                      <FormControlLabel
+                        checked={e.checked}
+                        label={e.type}
+                        control={<Checkbox value={e.checked} />}
+                        onChange={ev => handleButton(ev, e)}
+                      />
+                    </FormGroup>
+                  )
+                })}
+              </AccordionDetails>
+            </Accordion>
+          </Box>
+        </Hidden>
 
-        <Select
-          className={ classes.SelectFilters }
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={selectedButtons}
-          onChange={handleButtonToggle}
-          input={<OutlinedInput label="Tecnologys" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
+        <Hidden mdUp>
+          <FilterProjectMovil
+            checkboxOption={checkboxOption}
+            setCheckboxOption={setCheckboxOption}
+          />
+        </Hidden>
+      </Box>
+
+      <Box className={classes.containerProject}>
+        <Grid
+          container
+          key={"grid-container-projects"}
+          spacing={2}
+          onDragStart={onDragGrid}
+          onDragEnd={onEnd}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          draggable="true"
+          sx={{
+            cursor: "pointer",
+            display: 'flex',
+            flexDirection: 'row',
+          }}
         >
-          {selectedOption.map((e)=>{
-            function convert(e){
-              return e.replace(/\s+/g, '').toLowerCase()
-            }
-        return (
-
-            <MenuItem key={e} value={convert(e)} onChange={handleButtonToggle}>
-              <Checkbox checked={selectedOption.indexOf(e) > -1} />
-              <ListItemText primary={e} />
-            </MenuItem>
-
-            )
-          })}
-        </Select>
-
-      </FormControl> 
-            </Box>
-
-    <Box style={{ display: "flex", flexDirection: "row", width: "70%"}}>
-        <Grid container spacing={3} sx={{ flexGrow: 1 }}  className={classes.container} justifyContent="flex-start">
-          {
-          projectDataAll.map(( el, index) => {
-              const dataImage = el?.images[0]?.url
-              const title = el?.images[0]?.title
-            return(
-            <Grid item xs={12} sm={6} md={4} lg={6} xl={6} key={index} className={classes.containerItem} >
-              <Box component="article" className={classes.container2}>
-                <Image className={classes.ron} src={dataImage} alt={title} width={580} height={250}/>
-                <Box className={classes.textContainer}>
-                  <Typography className={classes.title}>
-                    {el?.title}
+          {visibleData.map(cardProject => (
+            <Grid item xs={12} sm={6} md={4} lg={4} key={cardProject.id}>
+              <Card className={classes.cardProject}>
+                <CardMedia
+                  className={classes.cardMediaProject}
+                  image={cardProject.images[0].url}
+                  title="Previous Projects"
+                />
+                <CardContent className={classes.cardContentProject}>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    className={classes.titleCarousel}
+                  >
+                    {cardProject.title}
                   </Typography>
-                  <Link href={`${PROJECTS}/${el?.Key}`} >
-
+                  <Link
+                    href={`${PROJECTS}/[Key].js`}
+                    as={`${PROJECTS}/${cardProject.Key}`}
+                  >
                     <a className={classes.link}>
-                    {t("common_lastestPosts_blogPost_button_readMore")}
+                      {t("common_projectSection_button_viewProject")}
                     </a>
-
                   </Link>
-                </Box>
-              </Box>
+                </CardContent>
+              </Card>
             </Grid>
-            
-          )
-          })}
+          ))}
+        </Grid>
+          <Grid>
+          <Box sx={dotStyles}>
+            {pagesArray.map(itemGrid => (
+              <Box
+                component="div"
+                key={itemGrid}
+                sx={dotParticlesStyles(itemGrid, page)}
+                onClick={() => handleChangePage(item)}
+              ></Box>
+            ))}
+          </Box>
           </Grid>
-        </Box>
-         {calculatePage!==1? 
-          <Box className={classes.pagination}>
-             <Pagination count={calculatePage} page={currentPage} onChange={handlePageChange} color="primary" 
-               size="small" hideNextButton hidePrevButton
-             />
-           </Box> 
-         :""}
-            </Box>
+      </Box>
+    </Box>
   )
 }
 
