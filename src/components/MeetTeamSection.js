@@ -8,12 +8,12 @@ import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
   gridContainer:{
-    marginBottom: '60px',
+    marginBottom: '70px',
     [theme.breakpoints.down("md")]: {
-      marginBottom: '45px',
+      marginBottom: '55px',
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: '15px',
+      marginBottom: '25px',
     },
   },
   container: {
@@ -40,8 +40,8 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-start",
     height: "100%",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "60px",
-      lineHeight: "60px",
+      fontSize: "70px",
+      lineHeight: "70px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "35px",
@@ -64,6 +64,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "40px",
     color: "#27AAE1",
     alignSelf: "flex-start",
+    marginTop: "7px",
     [theme.breakpoints.up("xl")]: {
       fontSize: "50px",
       lineHeight: "50px",
@@ -71,10 +72,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "31px",
       lineHeight: "31px",
+      marginTop: "6px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
       lineHeight: "15px",
+      marginTop: "5px",
     },
   },
   textBox:{
@@ -155,13 +158,14 @@ const useStyles = makeStyles(theme => ({
 const MeetTeamSection = ({members}) => {
   const classes = useStyles()
   const { t } = useTranslation()
+  members.sort((a, b) => a.id - b.id);
 
   return (
     <Box className={classes.container}>
       
       {members.map(e => (
-        <Grid container justifyContent="center" key={e.order} className={classes.gridContainer}>
-          {e.order % 2 === 0? 
+        <Grid container justifyContent="center" key={e.id} className={classes.gridContainer}>
+          {e.id % 2 === 0? 
             <>
             <Grid md={5} sm={6} item className={classes.contentLeft}>
               <div  className={`${classes.textBox}`} >

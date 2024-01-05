@@ -191,12 +191,12 @@ const AboutSection = () => {
       link: '/blog',
       icon: faFileText
     },
-    {
-      title: "FAQ",
-      description: "Collaboration with our internal team",
-      link: '/faq',
-      icon: faEnvelopeOpen
-    },
+    // {
+    //   title: "FAQ",
+    //   description: "Collaboration with our internal team",
+    //   link: '/faq',
+    //   icon: faEnvelopeOpen
+    // },
     // {
     //   title: "Mission",
     //   description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
@@ -209,12 +209,12 @@ const AboutSection = () => {
       link: '/about-us',
       icon: faBriefcase
     },
-    {
-      title: "To create more",
-      description: t("about_aboutSection_description2"),
-      link: '/to_create_more',
-      icon: faBuilding
-    },
+    // {
+    //   title: "To create more",
+    //   description: t("about_aboutSection_description2"),
+    //   link: '/to_create_more',
+    //   icon: faBuilding
+    // },
     {
       title: "Workinng together",
       description: t("about_aboutSection_description1"),
