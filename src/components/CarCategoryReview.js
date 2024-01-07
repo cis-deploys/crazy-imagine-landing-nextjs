@@ -435,7 +435,7 @@ const CarCategoryReview = ({ review, index }) => {
           />
           <Box className={classes.boxTextProjectCategory}>
             <Typography className={classes.projectCategoryTitle}>
-              Project Category
+              {t("Project Category")}
             </Typography>
             <Box className={classes.boxConteProjectCategor}>
               {review?.attributes?.category_reviews?.data?.map((cat, index) => {
@@ -467,10 +467,10 @@ const CarCategoryReview = ({ review, index }) => {
 
             <Box className={classes.boxProjectDuration}>
               <Typography className={classes.textProjectDuration}>
-                Project Duration
+                {t("Project Duration")}
               </Typography>
               <Typography className={classes.textProjectDuration}>
-                {projectDuration}
+                {projectDuration} {t("Hours")}
               </Typography>
             </Box>
           </Box>
@@ -480,7 +480,7 @@ const CarCategoryReview = ({ review, index }) => {
             <RestoreIcon className={classes.iconProjectSize} />
             <Box className={classes.boxTextProjectsize}>
               <Typography className={classes.textProjectSize}>
-                Project Size
+                {t("Project Size")}
               </Typography>
               <Typography className={classes.textProjectSize}>
                 {projectSize}
@@ -500,7 +500,7 @@ const CarCategoryReview = ({ review, index }) => {
         </Typography>
         <Box className={classes.dateContainer}>
           <Typography className={classes.date}>
-            {formatMonthYear(review?.attributes?.publishedAt) ?? "None"}
+            {formatMonthYear(review?.attributes?.createdAt) ?? "None"}
           </Typography>
           <Box className={classes.borderBottom}></Box>
         </Box>
@@ -561,7 +561,9 @@ const CarCategoryReview = ({ review, index }) => {
         </Box> */}
 
         <Box className={classes.containerComment}>
-          <Typography className={classes.subtitle}>Comment List</Typography>
+          <Typography className={classes.subtitle}>
+            {t("Comment List")}
+          </Typography>
           <Typography className={classes.commentReview}>
             {review.attributes.review}
           </Typography>
@@ -569,7 +571,7 @@ const CarCategoryReview = ({ review, index }) => {
 
         <Box className={classes.contentReviewer}>
           <Typography className={classes.subtitleReviewer}>
-            The reviewer
+            {t("The reviewer")}
           </Typography>
           <Box style={{ display: "flex", alignItems: "flex-start" }}>
             <Avatar

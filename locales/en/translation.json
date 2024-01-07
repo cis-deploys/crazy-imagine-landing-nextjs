@@ -178,5 +178,11 @@
    "Quality":"Quality",
    "Schedule":"Schedule",
    "Cost":"Cost",
-   "Willing_to_Refer":"Willing to Refer"
+   "Willing_to_Refer":"Willing to Refer",
+   "Comment List":"Comment List",
+   "The reviewer":"The reviewer",
+   "Project Duration":"Project Duration",
+   "Project Size":" Project Size",
+   "Project Category":"Project Category",
+   "Hours":"Hours"
 }

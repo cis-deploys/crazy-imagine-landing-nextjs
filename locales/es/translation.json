@@ -178,7 +178,13 @@
     "Quality":"Calidad",
     "Schedule":"Cronograma",
     "Cost":"Costo",
-    "Willing_to_Refer":"Dispuesto a referir"
+    "Willing_to_Refer":"Dispuesto a referir",
+    "Comment List":" Lista de comentarios",
+    "The reviewer":"El revisor",
+    "Project Duration":"Duracion del proyecto",
+    "Project Size":"Tamaño del proyecto",
+    "Project Category":"Categoria del proyecto",
+    "Hours":"Horas"
 
 
 }
