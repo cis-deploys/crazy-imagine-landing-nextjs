@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import { useTranslation } from "react-i18next"
 import Layout from "../components/Layout"
-import headerImage from "../../public/marciano.svg"
+import headerImage from "../../public/references.svg"
 
 import { NextSeo } from "next-seo"
 import React, { useEffect, useState } from "react"
@@ -24,13 +24,9 @@ export async function getServerSideProps() {
   const categoryReviews = await resCategoryReviews.json()
 
   const resReviews = await fetch(
-    `${domain}reviews?locale=all&populate=avatar=slug&populate=project`
+    `${domain}reviews?locale=all&populate=avatar=slug&populate=project&populate=category_reviews`
   )
   const reviews = await resReviews.json()
-  // const resProjects = await fetch(
-  //   `${domain}projects?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`
-  // )
-  // const projects = await resProjects.json()
 
   const resReferencespage = await fetch(
     `${domain}references-page?locale=all&populate=seo&populate=title`
@@ -73,18 +69,18 @@ const References = ({ referencespage, categoryReviews, reviews }) => {
           url: "https://crazyimagine.com",
         }}
       />
-
+      {console.log("categoryReviews ", categoryReviews)}
       <SectionHeader
         title={t("References")}
         btn={false}
         img={headerImage}
         cls="textContainer"
       />
-      {/* {console.log("categoryReviews.data", reviews.data)} */}
-      {/* {console.log("categoryReviews", categoryReviews)} */}
-      {categoryReviews.data.map(cat => {
-        return <CarCategoryReview categoryReview={cat} reviews={reviews} />
-      })}
+      {reviews.data
+        .filter(r => r?.attributes?.locale === "en")
+        .map((rev, index) => {
+          return <CarCategoryReview key={index} review={rev} index={index} />
+        })}
     </Layout>
   )
 }

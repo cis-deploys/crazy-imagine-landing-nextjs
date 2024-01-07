@@ -5,6 +5,7 @@ import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
 import ReactStars from "react-stars"
 import React, { useState } from "react"
+import Chip from "@mui/material/Chip"
 
 import RestoreIcon from "@mui/icons-material/Restore"
 import { format, parseISO } from "date-fns"
@@ -21,8 +22,7 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     alignItems: "start",
     marginBottom: "16px",
-    paddingBottom: "100px",
-    paddingTop: "30px",
+    paddingBottom: "10px",
 
     [theme.breakpoints.down("lg")]: {
       padding: "0px 60px",
@@ -32,14 +32,12 @@ const useStyles = makeStyles(theme => ({
       padding: "0px 43px",
       flexDirection: "column",
       height: "auto",
-      marginRight: "-50px",
     },
     [theme.breakpoints.down("sm")]: {
       height: "auto",
       flexDirection: "column",
       width: "100%",
       padding: "0px 43px",
-      marginRight: "-50px",
     },
   },
   container2: {
@@ -48,8 +46,7 @@ const useStyles = makeStyles(theme => ({
     padding: "0px 90px",
     height: "max-content",
     alignItems: "start",
-    paddingBottom: "100px",
-    paddingTop: "30px",
+    paddingBottom: "10px",
 
     [theme.breakpoints.down("lg")]: {
       padding: "0px 60px",
@@ -59,14 +56,12 @@ const useStyles = makeStyles(theme => ({
       padding: "0px 43px",
       flexDirection: "column",
       height: "auto",
-      marginRight: "-50px",
     },
     [theme.breakpoints.down("sm")]: {
       height: "auto",
       flexDirection: "column",
       width: "100%",
       padding: "0px 43px",
-      marginRight: "-50px",
     },
   },
   title: {
@@ -78,14 +73,12 @@ const useStyles = makeStyles(theme => ({
     textAlign: "left",
     color: "#193174",
     marginTop: "78px",
-    marginBottom: "35px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.between("sm", "md")]: {
       fontSize: "28px",
       lineHeight: "28px",
       marginTop: "54px",
-      marginBottom: "65px",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.between("xs", "sm")]: {
       fontSize: "21px",
       lineHeight: "21px",
       marginTop: "20px",
@@ -101,12 +94,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "left",
     color: "#193174",
     marginTop: "78px",
-    marginBottom: "35px",
+    paddingBottom: "35px",
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineHeight: "28px",
       marginTop: "54px",
-      marginBottom: "65px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "21px",
@@ -118,9 +110,6 @@ const useStyles = makeStyles(theme => ({
   dateContainer: {
     position: "relative",
     marginBottom: "25px",
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "35px",
-    },
   },
   date: {
     fontFamily: "Nexa",
@@ -130,10 +119,11 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "22px",
     color: "#193174",
     marginBottom: "10px",
+    paddingTop: "8px",
+
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
-      marginBottom: "35px",
     },
   },
 
@@ -171,7 +161,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
-      marginBottom: "35px",
     },
   },
   subtitle: {
@@ -186,14 +175,13 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "18px",
     [theme.breakpoints.down("md")]: {
       fontSize: "22px",
-      marginTop: "54px",
       marginBottom: "10px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "18px",
     },
   },
-  comment: {
+  commentReview: {
     fontFamily: "HindVadodara", //Nexa Bold HindVadodara
     fontStyle: "normal",
     fontWeight: "400",
@@ -204,7 +192,23 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "15px",
-      marginBottom: "35px",
+    },
+  },
+
+  boxProjects: {
+    marginTop: "10px",
+  },
+  commentProject: {
+    fontFamily: "HindVadodara", //Nexa Bold HindVadodara
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "22px",
+    lineHeight: "22px",
+    color: "#193174",
+    marginBottom: "10px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "15px",
+      lineHeight: "15px",
     },
   },
   calification: {
@@ -219,24 +223,63 @@ const useStyles = makeStyles(theme => ({
     marginTop: "40px",
     color: "#193174",
   },
-  projectCategory: {
+  projectCategoryTitle: {
     color: "#193174",
-    fontFamily: "HindVadodara",
-    marginTop: "50px",
+    fontFamily: "Nexa Bold",
+    marginBottom: "7px",
+    fontWeight: "700",
+    fontStyle: "normal",
   },
   categoryProject: {
     color: "#193174",
     fontFamily: "HindVadodara",
-    fontSize: "20px",
+    fontSize: "15px",
   },
-  projectTime: {
+  boxPrincProjectDuration: {
+    display: "flex",
+    alignItems: "flex-start",
+    paddingTop: "16px",
+  },
+  boxProjectDuration: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  textProjectDuration: {
     color: "#193174",
-    fontFamily: "HindVadodara",
+    fontFamily: "Nexa Bold",
+    marginBottom: "7px",
+    fontWeight: "700",
+    fontStyle: "normal",
+  },
+  boxProjectsize: {
+    display: "flex",
+    alignItems: "flex-start",
+    paddingTop: "16px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      marginTop: 0,
+    },
+  },
+  boxTextProjectsize: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  textProjectSize: {
+    color: "#193174",
+    fontFamily: "Nexa Bold",
+    marginBottom: "7px",
+    fontWeight: "700",
+    fontStyle: "normal",
   },
   containerCategory: {
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     width: "100%",
+    marginBottom: "8px",
     minHeight: "max-content",
+    [theme.breakpoints.between("xs", "sm")]: {
+      boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
+      width: "100%",
+      minHeight: "max-content",
+    },
   },
   nameReviewer: {
     fontFamily: "Nexa ",
@@ -269,18 +312,17 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "15px",
-
     textAlign: "center",
     color: "#193174",
-
     marginBottom: 0,
     marginLeft: "24px",
-
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
+      textAlign: "left",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
+      textAlign: "left",
     },
   },
   subtitleReviewer: {
@@ -295,11 +337,66 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "18px",
     [theme.breakpoints.down("md")]: {
       fontSize: "22px",
-      marginTop: "54px",
       marginBottom: "10px",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "18px",
+    },
+  },
+  containerComment: {
+    paddingTop: "16px",
+  },
+  box1ProjectCategory: {
+    display: "flex",
+    alignItems: "flex-start",
+    paddingTop: "16px",
+    height: "max-content",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "flex",
+      alignItems: "center",
+    },
+  },
+  boxTextProjectCategory: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "start",
+    },
+  },
+
+  boxConteProjectCategory: {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 1,
+    p: 1,
+  },
+  iconProjectCategory: {
+    marginRight: "10px",
+    fontSize: "40px",
+    color: "#193174",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "none",
+    },
+  },
+  iconProjectDuration: {
+    fontSize: "40px",
+    marginRight: "10px",
+    color: "#193174",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "none",
+    },
+  },
+  iconProjectSize: {
+    fontSize: "40px",
+    color: "#193174",
+    marginRight: "10px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "none",
     },
   },
 }))
@@ -308,214 +405,219 @@ function formatMonthYear(date) {
   return format(parseISO(date), "MMMM yyyy")
 }
 
-const CarCategoryReview = ({ categoryReview, reviews }) => {
+const CarCategoryReview = ({ review, index }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
   const { t } = useTranslation()
 
-  const searchProject = () => {
-    let existsReview = null
-    categoryReview?.attributes.reviews?.data?.find(review => {
-      existsReview = reviews?.data?.find(re => review.id === re.id)
-    })
-    return existsReview
-  }
-
-  return (
-    <Grid container className={classes.containerCategory}>
-      <Grid item xs={12} sm={12} md={6} lg={6} className={classes.container}>
-        {categoryReview?.attributes.reviews?.data?.map(r => {
-          return (
-            <>
-              <Typography className={classes.title}>
-                {r.attributes.name}
-              </Typography>
-              <Box className={classes.dateContainer}>
-                <Typography className={classes.date}>
-                  {formatMonthYear(r?.attributes?.publishedAt) ?? "None"}
-                </Typography>
-                <Box className={classes.borderBottom}></Box>
-              </Box>
-              <Box
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  style={{ marginRight: "10px" }}
-                  className={classes.calification}
-                >
-                  5.0
-                </Typography>
-                <ReactStars
-                  count={5}
-                  value={5}
-                  size={40}
-                  color2={"#ffd84c"}
-                  edit={false}
-                />
-              </Box>
-              <Box className={classes.ratingBox}>
-                <Box style={{ flexDirection: "column", marginRight: "40px" }}>
-                  <Typography className={classes.ratingReferences}>
-                    {t("Quality")}
-                  </Typography>
-                  <Typography variant="h4" className={classes.calification}>
-                    5.0
-                  </Typography>
-                </Box>
-                <Box style={{ flexDirection: "column", marginRight: "40px" }}>
-                  <Typography className={classes.ratingReferences}>
-                    {t("Schedule")}
-                  </Typography>
-                  <Typography variant="h4" className={classes.calification}>
-                    5.0
-                  </Typography>
-                </Box>
-                <Box style={{ flexDirection: "column", marginRight: "40px" }}>
-                  <Typography className={classes.ratingReferences}>
-                    {t("Cost")}
-                  </Typography>
-                  <Typography variant="h4" className={classes.calification}>
-                    5.0
-                  </Typography>
-                </Box>
-                <Box style={{ flexDirection: "column", marginRight: "40px" }}>
-                  <Typography className={classes.ratingReferences}>
-                    {t("Willing_to_Refer")}
-                  </Typography>
-                  <Typography variant="h4" className={classes.calification}>
-                    5.0
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Box style={{ marginTop: "10px" }}>
-                <Typography className={classes.subtitle}>
-                  Comment List
-                </Typography>
-                <Typography className={classes.comment}>
-                  {r.attributes.review}
-                </Typography>
-              </Box>
-
-              <Box className={classes.contentReviewer}>
-                <Typography className={classes.subtitleReviewer}>
-                  The reviewer
-                </Typography>
-                <Box style={{ display: "flex", alignItems: "flex-start" }}>
-                  <Avatar
-                    alt={r.attributes.name}
-                    src="/static/images/avatar/1.jpg"
-                    sx={{ width: 56, height: 56 }}
-                  />
-                  <Box
-                    style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <Typography className={classes.nameReviewer}>
-                      {r.attributes.name}
-                    </Typography>
-                    <Typography className={classes.nameOcupation}>
-                      {r.attributes.ocupation}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </>
-          )
-        })}
-      </Grid>
+  const renderInfoProject = () => {
+    const projectDuration =
+      review?.attributes?.project?.data?.attributes?.project_duration
+    const projectSize =
+      review?.attributes?.project?.data?.attributes?.project_size
+    return (
       <Grid item xs={12} sm={12} md={6} lg={6} className={classes.container2}>
         <Typography className={classes.title2}>
-          {searchProject()?.attributes?.project?.data?.attributes?.title ?? ""}
+          {review?.attributes?.project?.data?.attributes?.title ?? ""}
         </Typography>
 
-        <Box style={{ marginTop: "10px" }}>
-          <Typography className={classes.comment}>
-            {searchProject()?.attributes?.project?.data?.attributes?.details ??
-              ""}
+        <Box className={classes.boxProject}>
+          <Typography className={classes.commentProject}>
+            {review?.attributes?.project?.data?.attributes?.details ?? ""}
           </Typography>
         </Box>
-        <Box
+        {console.log("review ", review)}
+
+        <Box className={classes.box1ProjectCategory}>
+          <FontAwesomeIcon
+            icon={faCode}
+            className={classes.iconProjectCategory}
+          />
+          <Box className={classes.boxTextProjectCategory}>
+            <Typography className={classes.projectCategoryTitle}>
+              Project Category
+            </Typography>
+            <Box className={classes.boxConteProjectCategor}>
+              {review?.attributes?.category_reviews?.data?.map((cat, index) => {
+                const color = index % 2 === 0 ? "primary" : "secondary"
+
+                return (
+                  <Chip
+                    key={cat?.id}
+                    sx={{ marginRight: 1, mb: 1 }}
+                    label={
+                      <Typography color="white">
+                        {cat?.attributes?.Name}
+                      </Typography>
+                    }
+                    color={color}
+                  />
+                )
+              })}
+            </Box>
+          </Box>
+        </Box>
+
+        {projectDuration && (
+          <Box className={classes.boxPrincProjectDuration}>
+            <FontAwesomeIcon
+              icon={faCalendarDays}
+              className={classes.iconProjectDuration}
+            />
+
+            <Box className={classes.boxProjectDuration}>
+              <Typography className={classes.textProjectDuration}>
+                Project Duration
+              </Typography>
+              <Typography className={classes.textProjectDuration}>
+                {projectDuration}
+              </Typography>
+            </Box>
+          </Box>
+        )}
+        {projectSize && (
+          <Box className={classes.boxProjectsize}>
+            <RestoreIcon className={classes.iconProjectSize} />
+            <Box className={classes.boxTextProjectsize}>
+              <Typography className={classes.textProjectSize}>
+                Project Size
+              </Typography>
+              <Typography className={classes.textProjectSize}>
+                {projectSize}
+              </Typography>
+            </Box>
+          </Box>
+        )}
+      </Grid>
+    )
+  }
+
+  const renderInfoReview = () => {
+    return (
+      <Grid item xs={12} sm={12} md={6} lg={6} className={classes.container}>
+        <Typography className={classes.title}>
+          {review.attributes.name}
+        </Typography>
+        <Box className={classes.dateContainer}>
+          <Typography className={classes.date}>
+            {formatMonthYear(review?.attributes?.publishedAt) ?? "None"}
+          </Typography>
+          <Box className={classes.borderBottom}></Box>
+        </Box>
+        {/* <Box
           style={{
             display: "flex",
             alignItems: "center",
           }}
         >
-          <FontAwesomeIcon
-            icon={faCode}
-            style={{
-              marginRight: "10px",
-              fontSize: "40px",
-              color: "#193174",
-              marginTop: "40px",
-            }}
-          />
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-            }}
+          <Typography
+            variant="h3"
+            style={{ marginRight: "10px" }}
+            className={classes.calification}
           >
-            <Typography className={classes.projectCategory}>
-              Development
+            5.0
+          </Typography>
+          <ReactStars
+            count={5}
+            value={5}
+            size={40}
+            color2={"#ffd84c"}
+            edit={false}
+          />
+        </Box> */}
+        {/* <Box className={classes.ratingBox}>
+          <Box style={{ flexDirection: "column", marginRight: "40px" }}>
+            <Typography className={classes.ratingReferences}>
+              {t("Quality")}
             </Typography>
-            <Typography className={classes.categoryProject}>
-              {categoryReview?.attributes?.Development ?? "None"}
+            <Typography variant="h4" className={classes.calification}>
+              5.0
             </Typography>
           </Box>
-        </Box>
-        <Box
-          style={{ display: "flex", alignItems: "center", marginTop: "50px" }}
-        >
-          <FontAwesomeIcon
-            icon={faCalendarDays}
-            style={{ fontSize: "40px", marginRight: "10px", color: "#193174" }}
-          />
+          <Box style={{ flexDirection: "column", marginRight: "40px" }}>
+            <Typography className={classes.ratingReferences}>
+              {t("Schedule")}
+            </Typography>
+            <Typography variant="h4" className={classes.calification}>
+              5.0
+            </Typography>
+          </Box>
+          <Box style={{ flexDirection: "column", marginRight: "40px" }}>
+            <Typography className={classes.ratingReferences}>
+              {t("Cost")}
+            </Typography>
+            <Typography variant="h4" className={classes.calification}>
+              5.0
+            </Typography>
+          </Box>
+          <Box style={{ flexDirection: "column", marginRight: "40px" }}>
+            <Typography className={classes.ratingReferences}>
+              {t("test")}
+            </Typography>
+            <Typography variant="h4" className={classes.calification}>
+              5.0
+            </Typography>
+          </Box>
+        </Box> */}
 
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Typography className={classes.projectTime}>
-              Project Duration
-            </Typography>
-            <Typography className={classes.categoryProject}>
-              {formatMonthYear(categoryReview?.attributes?.publishedAt) ??
-                "None"}
-            </Typography>
-          </Box>
+        <Box className={classes.containerComment}>
+          <Typography className={classes.subtitle}>Comment List</Typography>
+          <Typography className={classes.commentReview}>
+            {review.attributes.review}
+          </Typography>
         </Box>
-        <Box
-          style={{ display: "flex", alignItems: "center", marginTop: "50px" }}
-        >
-          <RestoreIcon
-            style={{ fontSize: "40px", color: "#193174", marginRight: "10px" }}
-          />
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Typography className={classes.projectTime}>
-              Project Size
-            </Typography>
-            <Typography className={classes.categoryProject}>
-              $25,000 to Date
-            </Typography>
+
+        <Box className={classes.contentReviewer}>
+          <Typography className={classes.subtitleReviewer}>
+            The reviewer
+          </Typography>
+          <Box style={{ display: "flex", alignItems: "flex-start" }}>
+            <Avatar
+              alt={review.attributes.name}
+              src=""
+              sx={{ width: 56, height: 56 }}
+            />
+            <Box
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                flexDirection: "column",
+              }}
+            >
+              <Typography className={classes.nameReviewer}>
+                {review.attributes.name}
+              </Typography>
+              <Typography className={classes.nameOcupation}>
+                {review.attributes.ocupation}
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Grid>
+    )
+  }
+
+  const renderFinish = () => {
+    if (index % 2 == 0) {
+      return (
+        <>
+          {renderInfoReview()}
+          {renderInfoProject()}
+        </>
+      )
+    } else {
+      return (
+        <>
+          {renderInfoProject()}
+          {renderInfoReview()}
+        </>
+      )
+    }
+  }
+
+  return (
+    <Grid container className={classes.containerCategory}>
+      {renderFinish()}
     </Grid>
   )
 }
