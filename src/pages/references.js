@@ -92,7 +92,13 @@ const References = ({ referencespage, reviews }) => {
         .sort((a, b) => b.id - a.id)
         .map((rev, index) => {
           if (index < 6) {
-            return <CarCategoryReview key={index} review={rev} index={index} />
+            if (
+              rev?.attributes?.project?.data != null &&
+              rev?.attributes?.category_reviews?.data?.length > 0
+            )
+              return (
+                <CarCategoryReview key={index} review={rev} index={index} />
+              )
           }
         })}
     </Layout>
