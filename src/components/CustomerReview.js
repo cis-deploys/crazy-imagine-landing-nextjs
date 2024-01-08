@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
       height: "130px",
       minHeight: "130px",
       maxHeight: "100%",
-      marginTop: "10px"
+      marginTop: "10px",
     },
   },
   containerCustomer: {
@@ -251,13 +251,19 @@ const CustomerReview = ({ reviews, bulletClass }) => {
   }
 
   const handleTextInTheArray = () => {
-    const newReviews = reviews.filter(article => article.locale.includes(lang))
-    const newArray = newReviews.map(card => {
-      if (handleTextLimits(card.review, 35))
-        return { ...card, exceedLimit: true, showFullText: false }
-      return { ...card, exceedLimit: false, showFullText: false }
-    })
-    return newArray
+    if (reviews) {
+      const newReviews = reviews?.filter(article =>
+        article.locale.includes(lang)
+      )
+      const newArray = newReviews.map(card => {
+        if (handleTextLimits(card.review, 35))
+          return { ...card, exceedLimit: true, showFullText: false }
+        return { ...card, exceedLimit: false, showFullText: false }
+      })
+      return newArray
+    } else {
+      return []
+    }
   }
 
   const [projectDataAll, setProjectDataAll] = useState(handleTextInTheArray())
@@ -322,65 +328,65 @@ const CustomerReview = ({ reviews, bulletClass }) => {
       {projectDataAll?.map((review, index) => (
         <SwiperSlide key={index} className={classes.swiperSlide}>
           <Box className={classes.containerInfo}>
-          <Box>
-            <Box className={classes.iconsContainer}>
-              <FontAwesomeIcon
-                size="1x"
-                icon={faStar}
-                className={classes.icon}
-              />
-              <FontAwesomeIcon
-                size="1x"
-                icon={faStar}
-                className={classes.icon}
-              />
-              <FontAwesomeIcon
-                size="1x"
-                icon={faStar}
-                className={classes.icon}
-              />
-              <FontAwesomeIcon
-                size="1x"
-                icon={faStar}
-                className={classes.icon}
-              />
+            <Box>
+              <Box className={classes.iconsContainer}>
+                <FontAwesomeIcon
+                  size="1x"
+                  icon={faStar}
+                  className={classes.icon}
+                />
+                <FontAwesomeIcon
+                  size="1x"
+                  icon={faStar}
+                  className={classes.icon}
+                />
+                <FontAwesomeIcon
+                  size="1x"
+                  icon={faStar}
+                  className={classes.icon}
+                />
+                <FontAwesomeIcon
+                  size="1x"
+                  icon={faStar}
+                  className={classes.icon}
+                />
+              </Box>
+
+              {review.exceedLimit ? (
+                <>
+                  <Typography className={classes.review}>
+                    {review.showFullText
+                      ? review.review
+                      : Words(review.review, 35)}
+                  </Typography>
+
+                  <Button
+                    className={classes.readMoreButton}
+                    onClick={() => {
+                      handleShowFullText(index)
+                    }}
+                  >
+                    {review.showFullText ? t("readLess") : t("readMore")}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Typography className={classes.review}>
+                    {review.review}
+                  </Typography>
+                </>
+              )}
             </Box>
 
-                {review.exceedLimit ? (
-                  <>
-                    <Typography className={classes.review} >
-                      {review.showFullText ? review.review : Words(review.review, 35)}
-                    </Typography>
-
-                    <Button
-                      className={classes.readMoreButton}
-                      onClick={() => {
-                        handleShowFullText(index)
-                      }}
-                    >
-                      {review.showFullText ? t("readLess") : t("readMore")}
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Typography className={classes.review}>
-                      {review.review}
-                    </Typography>
-                  </>
-                )}
-              </Box>
-
-                <Box className={classes.containerCustomer}>
-                  <Typography className={classes.customerName}>
-                    {review.name}
-                  </Typography>
-                  <Typography className={classes.customerOcupation}>
-                    {review.ocupation}
-                  </Typography>
-                </Box>
-              </Box>
-
-
+            <Box className={classes.containerCustomer}>
+              <Typography className={classes.customerName}>
+                {review.name}
+              </Typography>
+              <Typography className={classes.customerOcupation}>
+                {review.ocupation}
+              </Typography>
+            </Box>
+          </Box>
         </SwiperSlide>
       ))}
     </Swiper>

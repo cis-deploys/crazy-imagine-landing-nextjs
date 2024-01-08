@@ -44,13 +44,12 @@ const ReferenceSection = ({ reviews }) => {
     <Box className={classes.referenceContainer}>
       <Typography
         className={classesComponent.titleWhite}
-        style={{ marginBottom: "15px" }}>
-          
+        style={{ marginBottom: "15px" }}
+      >
         {t("home_referenceSection_title")}
-
       </Typography>
-      
-      <CustomerReview reviews={ reviews }/>
+
+      <CustomerReview reviews={reviews} />
     </Box>
   )
 }

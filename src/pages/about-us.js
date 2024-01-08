@@ -76,7 +76,7 @@ useEffect(() => {
         cls="textContainer"
       />
       <AboutSection />
-      <Imagen />
+      {/* <Imagen /> */}
       <ContactSection />
     </Layout>
   )

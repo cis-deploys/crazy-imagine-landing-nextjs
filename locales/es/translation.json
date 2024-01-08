@@ -151,6 +151,7 @@
     "workWithUs_workForm_textField_button2": "ENVIAR",
     "contactUs_sectionHeader_title": "Imaginemos\nJuntos",
     "contactUs_sectionHeader_metaDescription": "Desarrollo de Aplicaciones Web, Desarrollo de Aplicaciones Móviles, Equipos Remotos Dedicados para Empresas. Tecnologías-Basadas en Javascript, React js, Angular js, Vue js, React Native, Ionic, y PHP.",
+    "meetTheTeam_sectionHeader_title": "Conozce al equipo",
     "privacyPolicy_title": "Política de Privacidad",
     "privacyPolicy_sectionHeader_metaDescription": "Política de privacidad de Crazy Imagine - Desarrollo de software para empresas",
     "privacyPolicy_paragraph1": "El presente Política de Privacidad establece los términos en que Crazy Imagine usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. Esta compañía está comprometida con la seguridad de los datos de sus usuarios. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento. Sin embargo, esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.",
@@ -174,5 +175,19 @@
     "project_filter_tecnologys": "Tecnologías",
     "project_filter_button_show": "Mostrar Resultados",
     "languageModal_select": "ES",
-    "404-title": "Vaya, página no encontrada"
+    "404-title": "Vaya, página no encontrada",
+    "References":"Referencias de clientes",
+    "Best_developers":"¡Los mejores desarrolladores con los que he trabajado en más de 30 años!",
+    "Quality":"Calidad",
+    "Schedule":"Cronograma",
+    "Cost":"Costo",
+    "Willing_to_Refer":"Dispuesto a referir",
+    "Comment List":" Lista de comentarios",
+    "The reviewer":"El revisor",
+    "Project Duration":"Duracion del proyecto",
+    "Project Size":"Tamaño del proyecto",
+    "Project Category":"Categoria del proyecto"
+ 
+
+
 }
