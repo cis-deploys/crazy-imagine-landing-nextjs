@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "22px",
     lineHeight: "31px",
     color: "#27AAE1",
-    marginBottom: "99px",
+    marginBottom: "10px",
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "22px",
@@ -57,7 +57,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "330px",
     width: "80%",
     paddingTop: "60px",
     margin: "70px auto 0px auto",

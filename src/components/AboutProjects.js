@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     padding: "60px",
+    "& > div:first-of-type":{
+      maxWidth: "1060px",
+    },
     [theme.breakpoints.down("md")]: {
       padding: "75px 45px 20px 45px",
     },
@@ -68,8 +71,10 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   return (
     <>
       <Box className={classes.container}>
-        <Typography className={classes.title}>{t("project_aboutProjects_title")}</Typography>
-        <Typography className={classes.description}>{aboutProject}</Typography>
+        <Box>
+          <Typography className={classes.title}>{t("project_aboutProjects_title")}</Typography>
+          <Typography className={classes.description}>{aboutProject}</Typography>
+        </Box>
       </Box>
       <Box className={classes.imgContainer}>
         <Image
