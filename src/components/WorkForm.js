@@ -476,6 +476,8 @@ const WorkForm = () => {
     if (curriculum?.length === 1) {
       setShowButton(true)
 
+      console.log("data", data.curriculum[0])
+      const fileTest =  data.curriculum[0]
       const formData = new FormData()
       formData.append("files", curriculum[0])
       axios
@@ -547,7 +549,11 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
+<<<<<<< HEAD
         const res = await axios.post(`${domain}curriculums`, { data: sendData });
+=======
+        const res = await axios.post(`${domain}curriculums`, {data: sendData})
+>>>>>>> dev
 
         if (res.status === 200) {
           setFormStatus("well")
