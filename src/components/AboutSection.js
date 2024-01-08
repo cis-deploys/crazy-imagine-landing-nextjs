@@ -23,12 +23,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "800px",
+    height: "auto",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",
-    marginBottom: '20px',
+    marginBottom: '10px',
+    marginTop: '50px',
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       height: "auto",
