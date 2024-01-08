@@ -426,7 +426,6 @@ const CarCategoryReview = ({ review, index }) => {
             {review?.attributes?.project?.data?.attributes?.details ?? ""}
           </Typography>
         </Box>
-        {console.log("review ", review)}
 
         <Box className={classes.box1ProjectCategory}>
           <FontAwesomeIcon
@@ -470,7 +469,7 @@ const CarCategoryReview = ({ review, index }) => {
                 {t("Project Duration")}
               </Typography>
               <Typography className={classes.textProjectDuration}>
-                {projectDuration} {t("Hours")}
+                {projectDuration}
               </Typography>
             </Box>
           </Box>
