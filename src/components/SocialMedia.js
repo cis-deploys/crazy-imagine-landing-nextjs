@@ -8,7 +8,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(theme => ({
   contactIcon: {
-    fontSize: "20px",
+    fontSize: "25px",
     color: "#A7E4F5",
     [theme.breakpoints.down("sm")]: {
       fontSize: "16px",
@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xl")]: {
       gap: "8px",
     },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "15px",
+    [theme.breakpoints.down("sm")]: {
+      gap: "5px",
     },
   }
 }))

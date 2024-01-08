@@ -17,13 +17,10 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: '100%',
     [theme.breakpoints.down("md")]: {
-      padding: "25px 43px",
+      padding: "10px 43px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "25px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "25px 15px",
+      padding: "10px 35px",
     },
   },
 }))
