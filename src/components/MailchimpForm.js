@@ -8,10 +8,7 @@ import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next"
 import Swal from "sweetalert2"
 import axios from "axios"
-<<<<<<< HEAD
 import { StyleComponent } from "./StyleComponent"
-=======
->>>>>>> dev
 
 const useStyles = makeStyles(theme => ({
   root: {

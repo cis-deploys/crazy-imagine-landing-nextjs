@@ -549,11 +549,7 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
-<<<<<<< HEAD
         const res = await axios.post(`${domain}curriculums`, { data: sendData });
-=======
-        const res = await axios.post(`${domain}curriculums`, {data: sendData})
->>>>>>> dev
 
         if (res.status === 200) {
           setFormStatus("well")
