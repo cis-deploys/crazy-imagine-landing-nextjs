@@ -9,25 +9,53 @@ import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "auto",
     backgroundColor: "#FFFFFF",
+    padding: "0px 83px",
+    overflow: "hidden",
+    height: "auto",
+    [theme.breakpoints.down("lg")]: {
+      padding: "40px 40px",
+    },
+    [theme.breakpoints.between(325, 450)]: {
+      padding: "40px 40px",
+    },
+    [theme.breakpoints.between(0, 324)]: {
+      padding: "0px 5px",
+    },
+  },
+  containerCard: {
+    height: "auto",
+    width: "auto",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: "98px",
-    overflow: "hidden",
+    gap: "20px",
+    margin: "0px 144px",
+    paddingBottom: "50px",
     [theme.breakpoints.down("lg")]: {
       height: "auto",
-      padding: "0px 43px 58px 43px",
+      margin: "0px 60px",
+      width: "fit-content",
+      gap: "20px",
     },
     [theme.breakpoints.down("md")]: {
-      height: "708px",
-      paddingBottom: "58px",
-    },
-    [theme.breakpoints.down("sm")]: {
       height: "auto",
-      paddingBottom: "38px",
+      width: "auto",
+      paddingBottom: "20px",
+      margin: "0px 40px",
+      gap: "20px",
+    },
+    [theme.breakpoints.between(325, 600)]: {
+      height: "auto",
+      padding: "0px 0px 20px 0px",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.between(0, 324)]: {
+      height: "auto",
+      width: "229px",
+      padding: "0px 0px 20px 0px",
+      flexDirection: "column",
     },
   },
   title: {
@@ -40,10 +68,12 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     fontSize: "40px",
     lineHeight: "40px",
-    marginTop: "84px",
+    marginTop: "50px",
     textAlign: "center",
     color: "#193173",
     marginBottom: "47px",
+    display: "flex",
+    flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineHeight: "28px",
@@ -101,43 +131,37 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "19.9387px 19.9387px 199.387px 5.98162px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     overflow: "hidden",
-    width: "980px",
+    width: "100%",
     display: "flex",
     flexDirection: "column",
-    maxHeight: "750px",
-    [theme.breakpoints.down("lg")]: {
-      width: "550px",
+    height: "fit-content",
+    gap: "26px",
+    [theme.breakpoints.up("xl")]: {
+      width: "980px",
+      height: "600px"
     },
-    [theme.breakpoints.down("md")]: {
-      width: "550px",
+    [theme.breakpoints.down("xl")]: {
+      width: "600px",
+      height: "400px"
     },
-    [theme.breakpoints.between(450, 600)]: {
-      width: "325px",
+    [theme.breakpoints.between(960, 1280)]: {
+      width: "400px",
+      height: "332px",
     },
-    [theme.breakpoints.between(350, 450)]: {
-      width: "280px",
+    [theme.breakpoints.between(400, 959)]: {
+      width: "300px",
+      height: "250px",
+      gap: "5px"
     },
-    [theme.breakpoints.between(0, 350)]: {
-      width: "80%",
+    [theme.breakpoints.between(326, 399)]: {
+      width: "262px",
+      height: "220px",
+      gap: "5px"
     },
-  },
-  titleCard: {
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "28px",
-    paddingLeft: "26px",
-    lineHeight: "28px",
-    color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
-      paddingLeft: "18px",
-    },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "15px",
-      lineHeight: "15px",
-      paddingLeft: "9px",
+    [theme.breakpoints.between(0, 325)]: {
+      width: "225px",
+      height: "200px",
+      gap: "5px"
     },
   },
   link: {
@@ -155,6 +179,11 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: "9px",
       lineHeight: "11px",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "10px",
+      paddingLeft: "9px",
+      lineHeight: "10px",
+    },
   },
   img: {
     height: "auto",
@@ -162,15 +191,54 @@ const useStyles = makeStyles(theme => ({
   textContainer: {
     display: "flex",
     flexDirection: "column",
-    gap: "26px",
-    padding: "28px 0 38px 28px",
+    gap: "19px",
+    width: "100%",
+    padding: "6px 25px 22px 26px",
+    height: "98px",
+    [theme.breakpoints.down("lg")]: {
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+      height: "100px"
+    },
     [theme.breakpoints.down("md")]: {
-      gap: "18px",
-      padding: "20px 0 27px 20px",
+      gap: "13px",
+      padding: "18px 18px 16px 26px",
+      height: "88px"
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "18px",
-      padding: "12px 0 18px 12px",
+      gap: "8px",
+      padding: "11px 11px 10px 16px",
+      height: "70px"
+    },
+  },
+  titleCard: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    width: "150px",
+    fontSize: "28px",
+    lineHeight: "20px",
+    textAlign: "left",
+    color: "#193174",
+    [theme.breakpoints.between(1920, 4000)]: {
+      width: "100%",
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      width: "400px",
+      fontSize: "20px",
+      lineHeight: "17px",
+    },
+    [theme.breakpoints.between(600, 959)]: {
+      width: "230px",
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
+    [theme.breakpoints.between(0, 599)]: {
+      width: "200px",
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
 }))
@@ -190,7 +258,7 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
     .sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     })
-    .slice(0, 1)
+    .slice(0, 2)
       
     const [projectDataAll, setProjectDataAll] = useState(featureArticle);
 
@@ -203,15 +271,16 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             .sort((a, b) => {
               return new Date(b.created_at) - new Date(a.created_at)
             })
-            .slice(0, 1)
+            .slice(0, 2)
             setProjectDataAll(featureArticle);
     }, [i18n.language]);
 
   return (
-    <Box ref={ref} className={classes.container}>
+    <Box ref={ref} className={ classes.container }>
       <Typography className={isVisible ? classes.title2 : classes.title}>
         {t("blog_featuredArticle_title")}
       </Typography>
+      <Box className={classes.containerCard}>
       <Box className={classes.cardContainer}>
         <>
           <Image
@@ -232,8 +301,32 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             </Link>
           </Box>
         </>
+        </Box>
+
+        <Box className={classes.cardContainer}>
+        <>
+          <Image
+            className={classes.img}
+            alt="Feature Article"
+            src={projectDataAll[1]?.image[0]?.url}
+            width={982}
+            height={614}
+          />
+          <Box className={classes.textContainer}>
+            <Typography className={classes.titleCard}>
+              {projectDataAll[1]?.title}
+            </Typography>
+            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[1]?.Key}`} >
+              <a style={{ textDecoration: "none" }} className={classes.link}>
+                {t("common_lastestPosts_blogPost_button_readMore")}
+              </a>
+            </Link>
+          </Box>
+        </>
+        </Box>
+        </Box>
+
       </Box>
-    </Box>
   )
 }
 

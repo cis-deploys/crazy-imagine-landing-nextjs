@@ -1,16 +1,16 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Box,  Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles";
-import littleImage from "../../public/littleTallerLogo.webp"
+import littleImage from "../../public/littleTallerLogo.png"
 import clientifyImage from "../../public/clientifyLogo.svg"
 import motorennImage from "../../public/motorennLogo.webp"
 import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
 import Sirge from "../../public/Sirge-Logo.webp"
 import orderingImage from "../../public/orderingLogo.webp"
 import piggyImage from "../../public/piggyBackLogo.webp"
-import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next"
 import Image from 'next/image'
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
     section: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       minHeight: "100px",
       justifyContent: "space-around",
       alignItems: "flex-end",
-      gap: "50px",
+      gap: "40px",
       padding: "0 2%",
       paddingBottom: "4%",
       flexWrap: "nowrap",
@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
       justifyContent: "center",
       [theme.breakpoints.between(0, 960)]: {
         width: "40%",
+        marginTop: "10px",
       }
     },
     logo: {
@@ -50,13 +51,12 @@ const useStyles = makeStyles(theme => ({
 
 const Partners = () => {
     const classes = useStyles()
-    const ref = useRef()
-    const isVisible = useIntersection(ref, "0px")
+    const classesComponent = StyleComponent()
     const { t } = useTranslation();
 
   return (
     <Box className={classes.section}>
-      <Typography ref={ref} className={isVisible ? 'title-blue' : 'title'}>
+      <Typography className={classesComponent.titleBlue}>
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>
@@ -65,8 +65,8 @@ const Partners = () => {
                   className={`${classes.logo}`}
                   src={littleImage}
                   alt='Little Taller logo'
-                  width={85}
-                  height={85}
+                  width={150}
+                  height={90}
                   layout='fixed'
               /> 
         </Box>

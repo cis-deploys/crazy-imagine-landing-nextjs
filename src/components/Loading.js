@@ -6,14 +6,20 @@ import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
     container: {
-        width: "100wh",
-        height: "100vh",
+        width: "100%",
+        height: "auto",
         marginTop: "auto",
         display: "flex",
         justifyContent: "center",
         marginBottom: "auto",
         alignItems: "center",
         flexDirection: "column",
+    },
+    containerImage: {
+        width: "500px",
+        height: "500px",
+        display: "flex",
+        justifyContent: "center",
     },
     img2: {
         width: "140px",
@@ -42,8 +48,10 @@ const Loading = () => {
     const classes = useStyles()
     return (
         <Box className={classes.container}>
-            <Image src={Imagen} alt="logo" className={classes.img2} />
-            <div className={classes.preloader}></div>
+            <Box className={classes.containerImage}>
+            <Image src={Imagen} alt="logo" loading="lazy" className={classes.img2} />
+            {/* <div className={classes.preloader}></div> */}
+            </Box>
         </Box>
     );
 }

@@ -4,8 +4,8 @@ import PropTypes from "prop-types"
 
 import { Box, Hidden } from "@mui/material"
  
-import SEO from "./seo"
 import { useRouter } from "next/router"
+import GoogleAdsTag from "./GoogleAdsTag"
 
 const Navbar = dynamic(
   () => import("./Navbar"),
@@ -30,13 +30,13 @@ const Layout = ({ children }) => {
   }
   return (
     <>
-      <SEO />
       <Hidden lgDown>
         <Navbar variant="secondary" color={navbarColor} />
       </Hidden>
       <Hidden lgUp>
         <NavbarMobile color={navbarColor} />
       </Hidden>
+      <GoogleAdsTag/>
       <Box
         sx={{
           width: '100%',
