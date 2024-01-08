@@ -3,7 +3,6 @@ import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 
-// COMPONENTS
 import LanguageModal from "./LanguageModal"
 
 import {
@@ -33,16 +32,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-// HOOKS HELPERS
 import { colorsIconos, colors } from "../helpers/navbarColors"
 import useScroll from "../hooks/useScroll"
 
-// STATIC
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
 import {
   CONTACT,
   HOME,
   PROJECTS,
+  SERVICES,
   WORK_WITH_US,
   ABOUT,
   BLOG,
@@ -53,9 +51,9 @@ const useStyles = makeStyles(theme => ({
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
-    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
+    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
       [theme.breakpoints.down("xs")]: {
-    backgroundColor: props.scroll ? "transparent" : "rgba(25, 49, 116, 0.87)",
+    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
     },
   }),
   navbarMobileIcons: props => ({
@@ -162,7 +160,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+  
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }))
@@ -180,6 +178,7 @@ const icons = [
 export const NavbarMobile = ({
   variant = "secondary",
   variantIcons = "secondary",
+  color = "transparent",
 }) => {
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
@@ -197,12 +196,13 @@ export const NavbarMobile = ({
     scroll,
     linkVariant,
     iconsVariant,
+    color,
   })
 
   return (
     <>
       <AppBar
-        color="transparent"
+        color={color}
         position="fixed"
         className={classes.container}
       >
@@ -231,6 +231,7 @@ export const NavbarMobile = ({
             </IconButton>
           </Box>
         </Toolbar>
+        
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -276,8 +277,18 @@ export const NavbarMobile = ({
                 </a>
               </Link>,
               <Link
-                key="navbar-link-projects"
-                href={`${PROJECTS}`}>
+              key="navbar-link-projects"
+              href={`${PROJECTS}`}>
+
+              <a className={classes.resetLink}>
+              <Typography className={classes.textLink}>
+                {t("common_button_projects")}
+              </Typography>
+              </a>
+            </Link>,
+              <Link
+                key="navbar-link-services"
+                href={`${SERVICES}`}>
 
                 <a className={classes.resetLink}>
                 <Typography className={classes.textLink}>

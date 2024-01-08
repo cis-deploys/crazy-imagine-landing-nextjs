@@ -136,7 +136,6 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
       <Link
         href={`${PROJECTS}`}
         className={classes.link}
-        
       >
         {t("common_capabilities_button_services")}
       </Link>

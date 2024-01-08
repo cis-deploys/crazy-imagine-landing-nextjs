@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useTranslation } from "react-i18next"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,8 +25,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       lineHeight: "140%",
       color: "#193173", 
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
+      },
+      [theme.breakpoints.down("lg")]: {
+        fontSize: "14px",
+      },
       [theme.breakpoints.down("sm")]: {
-        fontSize: "10px",
+        fontSize: "12px",
       },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
@@ -46,11 +53,17 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "10px",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
       },
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
+      [theme.breakpoints.down("lg")]: {
+        fontSize: "14px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "13px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "12px",
       },
     },
     [theme.breakpoints.down("xs")]: {
@@ -83,10 +96,6 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     lineHeight: "140%",
     textAlign: "left",
-    "&::hover": {
-      // display: "none !important",
-      // color: "transparent !important",
-    },
     "& .MuiInput-underline:before": {
       backgroundColor: "transparent",
     },
@@ -97,7 +106,6 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
     },
     "& svg": {
-      //display: "none",
       backgroung: "transparent",
     },
   },
@@ -148,42 +156,6 @@ const useStyles = makeStyles(theme => ({
       width: "auto",
     },
   },
-  formButton: {
-    backgroundColor: "#797EF6",
-    marginTop: "23px",
-    borderRadius: "100px",
-    alignSelf: "flex-start",
-    alignItems: "center",
-    padding: "14px 20px 12px 20px",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: 400,
-      fontSize: "14px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
-      },
-    },
-    [theme.breakpoints.down("md")]: {
-      margin: "auto",
-      display: "flex",
-      textAlign: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      margin: "auto",
-      display: "flex",
-      textAlign: "center",
-    },
-  },
   snackColor: {
     fontSize: "bold",
     backgroundColor: "white !important",
@@ -197,6 +169,7 @@ const useStyles = makeStyles(theme => ({
 
 const ContactForm = () => {
   const classes = useStyles({})
+  const classesComponent = StyleComponent()
   const form = useRef();
   const { t } = useTranslation()
   const [typeProject, setTypeProject] = useState("")
@@ -222,7 +195,6 @@ const ContactForm = () => {
   })
 
   const sendEmail = (e) => {
-    console.log("email", email)
     const userEmail = {
       ...e,
       typeProject,
@@ -386,10 +358,10 @@ const ContactForm = () => {
           </Grid>
           <Grid item xs={12}>
             <Button
-              className={classes.formButton}
+              className={classesComponent.buttonComponent}
               type="submit"
             >
-            <span>{t("common_button_contact_us")}</span>
+            <span>{t("common_button_contact_SUBMIT")}</span>
             </Button>
           </Grid>
         </Grid>

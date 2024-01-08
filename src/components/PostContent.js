@@ -29,14 +29,13 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     width: "60%",
+    [theme.breakpoints.up("xl")]: {
+      width: "70%",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "100%",
-      order: 1,
-    },
-    [theme.breakpoints.down("xs")]: {
       width: "100%",
       order: 1,
     },

@@ -1,15 +1,16 @@
 import React from "react"
-import {  Box, Typography } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
+import { useRouter } from "next/router"
+import { Pagination } from "swiper"
+import {  Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { BLOG } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
 import Link from "next/link"
+import { useTranslation } from "react-i18next"
+import { BLOG } from "../navigation/sitemap"
 import 'swiper/swiper-bundle.css';
 
-const useStyes = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -17,14 +18,26 @@ const useStyes = makeStyles(theme => ({
     background: "#FFFFFF",
     borderRadius: "14px",
     overflow: "hidden",
-    width: "380px",
-    height: "fit-content",
-    [theme.breakpoints.down("md")]: {
+    width: "420px",
+    height: "350px",
+    [theme.breakpoints.between(1921, 4000)]: {
       gap: "18px",
-      height: "inherit",
+      height: "410px",
+      width: "500px"
+    },
+    [theme.breakpoints.between(1281, 1920)]: {
+      gap: "5px",
+      height: "300px",
+      width: "420px"
+    },
+    [theme.breakpoints.between(600, 1280)]: {
+      gap: "5px",
+      height: "250px",
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "13px",
+      gap: "10px",
+      height: "250px",
+      width: "380px",
     },
   },
   title: {
@@ -35,7 +48,6 @@ const useStyes = makeStyles(theme => ({
     lineHeight: "20px",
     color: "#193174",
     display: "-webkit-box",
-  
     overflow: "hidden",
     textOverflow: "ellipsis",
     "-webkit-line-clamp": 3, /* number of lines to show */
@@ -43,16 +55,19 @@ const useStyes = makeStyles(theme => ({
     "-webkit-box-orient": "vertical",
     "-moz-box-orient": "vertical",
     boxOrient: "vertical",
-    //width:"100%",
     height: "60px",
     textTransform: "uppercase",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "16px",
-      lineHeight: "16px",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
     },
-    [theme.breakpoints.down(300, 0)]: {
+    [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "14px",
+    },
+    [theme.breakpoints.between(0, 450)]: {
+      fontSize: "12px",
+      lineHeight: "13px",
     },
   },
   link: {
@@ -65,6 +80,10 @@ const useStyes = makeStyles(theme => ({
     color: "#888DFF",
     marginTop: "auto",
     textDecoration: "none",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "12px",
+      lineHeight: "12px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -79,9 +98,15 @@ const useStyes = makeStyles(theme => ({
     gap: "19px",
     padding: "6px 25px 22px 27px",
     height: "100px",
+    [theme.breakpoints.down("lg")]: {
+      gap: "5px",
+      padding: "10px 18px 10px 26px",
+      height: "60px"
+    },
     [theme.breakpoints.down("md")]: {
       gap: "13px",
       padding: "18px 18px 16px 26px",
+      height: "70px"
     },
     [theme.breakpoints.down("sm")]: {
       gap: "8px",
@@ -101,28 +126,43 @@ const useStyes = makeStyles(theme => ({
     width: "100%",
     boxSizing: "content-box",
     alignItems: "center",
-    [theme.breakpoints.between(0, 600)]: {
-      width: "65%",
-    },
   },
   carousel: {
-    height: "400px",
-    [theme.breakpoints.down("md")]: {
+    height: "500px",
+    alignItems: "center",
+    transform: "scale(1)",
+    [theme.breakpoints.between(1281, 1920)]: {
       height: "300px",
+    },
+    [theme.breakpoints.between(901, 1280)]: {
+      height: "300px",
+    },
+    [theme.breakpoints.between(550, 900)]: {
+      height: "260px",
+    },
+    [theme.breakpoints.between(400, 549)]: {
+      height: "250px",
+    },
+    [theme.breakpoints.between(200, 400)]: {
+      height: "260px",
     },
   },
 }))
 
 const BlogPost = ({ bulletClass, articles: AllArticles }) => {
-  const classes = useStyes()
+  const classes = useStyles()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
   SwiperCore.use([Keyboard])
+  const router = useRouter();
+  const { Key } = router.query;
 
   const articles = AllArticles
-  const articlesFilter = articles?.filter(article =>
-    article?.locale?.includes(lang)
-  ) || []
+  const articlesFilter =
+    articles
+      ?.filter(article => article?.locale?.includes(lang))
+      ?.filter(article => article?.title !== null && article.Key !== Key) || []
+
   const articlesSort = articlesFilter
     ?.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
@@ -132,7 +172,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   return (
 
     <Swiper
-      spaceBetween={30}
+      spaceBetween={50}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -140,24 +180,29 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
         600: {
           slidesPerView: 2,
         },
-        900: {
-          slidesPerView: 4,
+        960: {
+          slidesPerView: 3,
         },
-        1440: {
+        1280: {
           slidesPerView: 4,
         },
         1920: {
-          slidesPerView: 5
+          slidesPerView: 4,
         }
       }}
       pagination={{
         clickable: true,
-        dynamicBullets: true,
+        //dynamicBullets: true,
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
+      style={{
+        width: "100%",
+        boxSizing: "content-box",
+        height: "inherit"
+      }}
       modules={[ Pagination, Keyboard ]}
-      className={`${classes.slider} ${bulletClass}`}
+      className={bulletClass}
     >
       {
         articlesSort.map(( el, index) => (
@@ -165,13 +210,22 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
           <Box className={classes.container}>
             <>
               <Box
-                style={{ backgroundImage: `url(${el?.image[0]?.url})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", height: "250px", width: "310" }} />
+                style={{ 
+                  backgroundImage: `url(${el?.image[0]?.url})`, 
+                  objectFit: "contain", 
+                  backgroundRepeat: "no-repeat", 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center", 
+                  height: "250px", 
+                  width: "310",
+                  }} />
+
               <Box className={classes.textContainer}>
                 <Typography className={classes.title}>
                   {el?.title}
                 </Typography>
                 <Link
-                  href={`${BLOG}/${el?.Key}`} >
+                  href={`${BLOG}/[Key].js`} as={`${BLOG}/${el?.Key}`} >
                   <a className={classes.link}>
                   {t("common_lastestPosts_blogPost_button_readMore")}
                   </a>

@@ -1,7 +1,7 @@
 import { I18nextProvider } from "react-i18next"
+import "../styles/globals.css"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
-import "../styles/globals.css"
 import "../styles/Swiper.module.css"
 import "../styles/swiper-bullet.module.css"
 

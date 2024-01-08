@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import { Box,  Typography, Grid } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles";
@@ -6,12 +6,9 @@ import Image from 'next/image';
 import ContactForm from "./ContactForm"
 import Section from "./Section"
 import Satelite from "../../public/satelite.svg"
-import { useIntersection } from "../hooks/useIntersection"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
-  title: {
-    visibility: "hidden",
-  },
   title2: {
     animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
@@ -26,9 +23,9 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "50px",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "25px",
-      lineHeight: "30px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "20px",
+      lineHeight: "20px",
     },
   },
   "@keyframes myEffect": {
@@ -41,9 +38,6 @@ const useStyles = makeStyles(theme => ({
       transform: "translateX(0)",
     },
   },
-  subtitle: {
-    visibility: "hidden",
-  },
   subtitle2: {
     animation: `$myEffect 2000ms`,
     fontFamily: "Nexa Bold",
@@ -54,6 +48,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#797EF6",
+    textAlign: "center",
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
       lineHeight: "20px",
@@ -68,30 +63,18 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     height: "auto",
-    marginTop: "83px",
-    gap: "19px",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+    },
     [theme.breakpoints.down("md")]: {
-      marginTop:"40px",
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
       order: "2",
     },
     [theme.breakpoints.down("sm")]: {
-      alignItems: "center",
-      order: "2",
-    },
-  },
-  img2: {
-    marginTop: "83px",
-    display: "flex",
-    [theme.breakpoints.down("md")]: {
-      marginTop:"auto",
-      width: "100%",
-      justifyContent: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop:"auto",
       alignItems: "center",
       order: "2",
     },
@@ -101,12 +84,12 @@ const useStyles = makeStyles(theme => ({
      padding: "0px 60px",
      height: "550px",
      alignItems: "end",
-     [theme.breakpoints.down("lg")]: { 
+     [theme.breakpoints.down("lg")]: {
        padding: "0px 60px",
      },
      [theme.breakpoints.down("md")]: {
       width: "100%",
-      padding: "30px 43px 0px",
+      padding: "0px 43px",
       flexDirection: "column",
       height: "auto",
      },
@@ -114,39 +97,39 @@ const useStyles = makeStyles(theme => ({
        height: "auto",
        flexDirection: "column",
        width: "100%",
-       padding: "10px 15px 0px",
+       padding: "0px 43px",
      },
   },
 }))
 
 const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
+
   return (
     <Section
       width="100%"
       backgroundImage={bgImage ? bgImage : ""}
       backgroundColor={bgColor ? bgColor : ""}
     >
-      <Grid container spacing={0} ref={ref} className={classes.container}>
+      <Grid container spacing={0} className={classes.container}>
         <Grid item sm={12} md={4} className={classes.textContainer}>
             <Typography
-              className={isVisible ? classes.subtitle2 : classes.subtitle}
+              className={classes.subtitle2}
             >
               {t("home_contacSection_subtitle")}
             </Typography>
             <Typography
-              className={isVisible ? classes.title2 : classes.title}
-            >{t("home_contacSection_title1")}</Typography>
+              className={classesComponent.titleBlue}
+            >
+              {t("home_contacSection_title1")}</Typography>
             <Typography
-              className={isVisible ? classes.title2 : classes.title}
-              style={{ marginTop: "-17px" }}
+              className={classesComponent.titleBlue}
             >
               {t("home_contacSection_title2")}
             </Typography>
-            <Box className={classes.img2}>
+            <Box className={classesComponent.imageComponent}>
               <Image src={Satelite} width={352} height={234} alt="satellite" />
             </Box>
         </Grid>

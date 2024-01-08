@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
@@ -6,143 +6,102 @@ import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
 import { useTranslation } from "react-i18next"
-import { useIntersection } from "../hooks/useIntersection"
 import { makeStyles } from "@mui/styles"
 import "../styles/Swiper.module.css"
 import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
+import 'swiper/swiper-bundle.css';
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "830px",
-    padding: "0px 60px",
+    height: "fit-content",
+    padding: "30px 60px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    [theme.breakpoints.between(3000, 4000)]: {
+      height: "800px",
+      padding: "10px 200px",
+    },    
+    [theme.breakpoints.between(1920, 2999)]: {
+      height: "780px",
+      padding: "10px 205px",
+    },
+    [theme.breakpoints.between(1700, 1919)]: {
+      height: "700px",
+      padding: "10px 48px",
+    },
+    [theme.breakpoints.between(1280, 1700)]: {
+      height: "600px",
+      padding: "10px 48px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      height: "600px",
+      padding: "20px 40px",
+    },
     [theme.breakpoints.down("md")]: {
-      height: "550px",
+      height: "520px",
       padding: "0px 43px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "400px",
-      padding: "0px 15px",
+    [theme.breakpoints.between(381, 470)]: {
+      height: "500px",
+      padding: "0px 43px",
     },
-    [theme.breakpoints.down("xs")]: {
-      height: "400px",
-      padding: "0px 15px",
-    },
-  },
-  title: {
-    visibility: "hidden",
-  },
-  title2: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "40px",
-    lineHeight: "40px",
-    marginTop: "84px",
-    textAlign: "center",
-    color: "#193173",
-    marginBottom: "47px",
-    [theme.breakpoints.down("md")]: {
-      fontWeight: "28px",
-      fontSize: "28px",
-      lineHeight: "28px",
-      marginTop: "55px",
-      marginBottom: "33px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontWeight: "22px",
-      fontSize: "22px",
-      lineHeight: "22px",
-      marginTop: "34px",
-      marginBottom: "0px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontWeight: "22px",
-      fontSize: "22px",
-      lineHeight: "22px",
-      marginTop: "34px",
-      marginBottom: "0px",
+    [theme.breakpoints.between(0, 380)]: {
+      height: "500px",
+      padding: "0px 43px",
     },
   },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
-  button: props => ({
-    display: props.btn ? "initial" : "none",
-    background: "#797EF6",
-    borderRadius: "100px",
-    padding: "14px 20px 12px 20px",
-    alignSelf: "center",
-    marginBottom: "60px",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      lineHeight: "14px",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.down("md")]: {
-      padding: "10px 14px 8px 14px",
-      marginTop: "15px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      padding: "6px 9px 5px 9px",
-      marginTop: "15px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-  }),
   carouselContainer: {
-    boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
+    boxShadow: "2px 3px 12px 2px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
-    width: "535px",
-    height: "auto",
+    width: "max-content",
+    height: "fit-content",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.between(1951, 4000)]: {
+      width: "500px",
+      height: "410px"
+    },
+    [theme.breakpoints.between(1501, 1950)]: {
+      width: "450px",
+      height: "350px"
+    },
+    [theme.breakpoints.between(1280, 1500)]: {
+      width: "450px",
+      height: "300px"
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "360px",
+      height: "250px"
+    },
     [theme.breakpoints.down("md")]: {
-      width: "400px",
+      width: "350px",
+      height: "260px"
     },
     [theme.breakpoints.down("sm")]: {
-      width: "325px",
+      width: "350px",
+      height: "260px",
     },
   },
   titleCarousel: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "24px",
-    lineHeight: "24px",
+    fontSize: "20px",
+    lineHeight: "20px",
     color: "#193174",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "20px",
-      lineHeight: "20px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "25px",
+      lineHeight: "18px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "22px",
+      lineHeight: "18px",
     },
     [theme.breakpoints.down("md")]: {
       fontWeight: "18px",
@@ -168,6 +127,10 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.1em",
     color: "#888DFF",
     textDecoration: "none",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "16px",
+      lineHeight: "11px",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "11px",
@@ -178,8 +141,23 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    [theme.breakpoints.between(0, 400)]: {
-      width: "75%",
+    height: "550px",
+    alignItems: "center",
+    transform: "scale(1)",
+    [theme.breakpoints.between(1281, 1920)]: {
+      height: "430px",
+    },
+    [theme.breakpoints.between(901, 1280)]: {
+      height: "380px",
+    },
+    [theme.breakpoints.between(550, 900)]: {
+      height: "360px",
+    },
+    [theme.breakpoints.between(400, 549)]: {
+      height: "370px",
+    },
+    [theme.breakpoints.between(200, 400)]: {
+      height: "360px",
     },
   },
   textContainer: {
@@ -188,49 +166,72 @@ const useStyles = makeStyles(theme => ({
     gap: "26px",
     padding: "28px 0 38px 28px",
     backgroundColor: "white",
+    [theme.breakpoints.down("lg")]: {
+      gap: "15px",
+      padding: "20px 0 27px 20px",
+    },
     [theme.breakpoints.down("md")]: {
-      gap: "18px",
+      gap: "15px",
       padding: "20px 0 27px 20px",
     },
   },
 }))
 
-const ProjectSection = ({ title, btn, size, projects }) => {
+const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
+  const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
   const lang = i18n.language
 
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(article =>
-    article.locale.includes(lang)
+  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
+    project.locale.includes(lang)
   ));
   
   useEffect(() => {
-      setProjectDataAll(projects.filter(article =>
-        article.locale.includes(lang)
+      setProjectDataAll(projects.filter(project =>
+        project.locale.includes(lang)
       ));
   }, [i18n.language]);
 
       return (
-        <Box ref={ref} className={classes.container}>
-          <Typography className={isVisible ? classes.title2 : classes.titleStyles}>
+        <Box className={classes.container}>
+          <Typography className={classesComponent.titleBlue} style={{ marginTop: "30px"}}>
             {title}
           </Typography>
           <Swiper
-            slidesPerView={"auto"}
-            centeredSlides={true}
             spaceBetween={50}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                },
+              600: {
+                slidesPerView: 2,
+              },
+              960: {
+                slidesPerView: 3,
+              },
+              1280: {
+                slidesPerView: 4,
+              },
+              1920: {
+                slidesPerView: 4,
+              },
+            }}
             pagination={{
               clickable: true,
             }}
-            //autoplay={{ delay: 1000 }}
+            //slidesPerView={"auto"}
             grabCursor={true}
-            loop={true}
-            modules={[Pagination]}
+            loop={false}
+            modules={[Pagination, Keyboard]}
+            style={{
+              width: "100%",
+              boxSizing: "content-box",
+              height: "auto"
+            }}
             keyboard={{ enabled: true }}
-            className={`${classes.container} purpleBullet`}
+            className={bulletClass}
           >
 
             { projectDataAll
@@ -244,7 +245,7 @@ const ProjectSection = ({ title, btn, size, projects }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
-                      <Image src={dataImage} alt={title} width={538} height={252}/>
+                      <Image src={dataImage} alt={title} width={350} height="250px"/>
 
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
@@ -262,20 +263,18 @@ const ProjectSection = ({ title, btn, size, projects }) => {
                   </SwiperSlide>
                 )
               })}
-            {btn && (
-              <Link href={`${PROJECTS}`} >
-
-                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
-                  
-                <Button className={classes.button}>
-                  <span>{t("home_projectSection_button")}</span>
-                </Button>
-
-                </a>
-
-              </Link>
-            )}
           </Swiper>
+              {btn && (
+                <Link href={`${PROJECTS}`} >
+  
+                  <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "30px" }}>   
+                  <Button className={classesComponent.buttonComponent}>
+                    <span>{t("home_projectSection_button")}</span>
+                  </Button>
+                  </a>
+  
+                </Link>
+              )}
         </Box>
       )
 }

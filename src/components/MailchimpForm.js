@@ -1,14 +1,17 @@
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { Box,  Typography, TextField, Button } from "@mui/material"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next"
-import { useIntersection } from "../hooks/useIntersection"
 import Swal from "sweetalert2"
 import axios from "axios"
+<<<<<<< HEAD
+import { StyleComponent } from "./StyleComponent"
+=======
+>>>>>>> dev
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +28,12 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       color: "#193173",
       fontStyle: "normal",
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "18px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "16px",
+      },
       [theme.breakpoints.down("sm")]: {
         fontSize: "10px",
       },
@@ -51,31 +60,6 @@ const useStyles = makeStyles(theme => ({
       
     },
   },
-  titleMail: {
-    visibility: "hidden",
-  },
-  titleMail2: {
-    animation: `$myEffectTitleMail 2000ms`,
-    lineHeight: "40px",    
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "50px",
-    marginBottom: "30px",
-    color: "#FFFFFF",
-    textAlign: "center",
-    fontFamily: "Nexa Bold",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "30px",
-      marginBottom: "20px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "30px",
-      marginBottom: "10px",
-    },
-  },
-  subTitleMail: {
-    visibility: "hidden",
-  },
   subTitleMail2: {
     animation: `$myEffectSubTitleMail 2000ms`,
     color: "#FFFFFF",
@@ -84,19 +68,26 @@ const useStyles = makeStyles(theme => ({
     fontSize: "19px",
     fontWeight: "400",
     lineHeight: "18px",    
-    marginBottom: "50px",
+    marginBottom: "40px",
     textAlign: "center",
-    padding: "0 50px",
-    [theme.breakpoints.down("sm")]: {
+    padding: "10px 40px",
+    width: "600px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "25px",
+      lineHeight: "20px",
+      width: "800px",
+    },
+    [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "16px",
-      marginBottom: "40px",
+      marginBottom: "20px",
+      width: "600px",
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "8px",
-      lineHeight: "10px",
-      marginBottom: "30px",
-      padding: "0 15px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "12px",
+      lineHeight: "14px",
+      marginBottom: "10px",
+      width: "300px",
     },
   },
   inputContainer: {
@@ -106,63 +97,54 @@ const useStyles = makeStyles(theme => ({
     padding: "50px",
     borderRadius: "30px",
     flexDirection: "column",
+    height: "270px",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      margin: "auto",
+      flexDirection: "column",
+    },
     [theme.breakpoints.down("md")]: {
       width: "90%",
       padding: "40px",
       margin: "auto",
       flexDirection: "column"
     },
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
+    [theme.breakpoints.between(376, 450)]: {
+      width: "auto",
+      padding: "50px",
+      flexDirection: "column",
+      height: "330px"
+    },
+    [theme.breakpoints.between(326, 376)]: {
+      width: "auto",
+      padding: "50px",
+      flexDirection: "column",
+      height: "320px"
+    },
+    [theme.breakpoints.between(0, 325)]: {
+      width: "auto",
       padding: "30px",
-      flexDirection: "column"
+      flexDirection: "column",
+      height: "300px"
     },
   },
-  formButton: {
-    padding: "14px 20px 12px 20px",
-    margin: "auto",
-    marginTop: "23px",
-    alignSelf: "flex-start",
-    borderRadius: "100px",
-    backgroundColor: "#797EF6",
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      display: "flex",
-      letterSpacing: "0.05em",
-      textAlign: "center",
-      alignItems: "center",
-      fontStyle: "normal",
-      fontWeight: 400,
-      fontSize: "14px",
-      color: "#FFFFFF",
-      fontFamily: "Nexa Bold",
-      lineHeight: "14px",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
-      },
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "auto",
-      marginTop: "10px",
-      padding: "10px 10px 10px 10px",
-    },
-  },
+
   containerForm: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    padding: "50px 0",
+    padding: "30px 0",
     backgroundImage: `url('/background.svg')`,
     backgroundSize: "cover",
     backgroundRepeat: "norepeat",
     backgroundPosition: "center",
     overflow: "hidden",
+    [theme.breakpoints.up("xl")]: {
+      width: "auto",
+      height: "auto",
+      flexDirection: "column",
+    },
     [theme.breakpoints.down("md")]: {
       width: "auto",
     },
@@ -171,15 +153,14 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
       flexDirection: "column",
     },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      width: "auto",
-      height: "auto",
-    },
   },
   inputShort: {
     width: "250px",
     display: "flex",
+    [theme.breakpoints.up("xl")]: {
+      width: "100%",
+      flexDirection: "column"
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
       flexDirection: "column"
@@ -236,61 +217,60 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MailchimpForm = () => {
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation();
-  const classes = useStyles({})
-  const schema = yup.object().shape({
-      name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
-      email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
-      lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
+    const { t } = useTranslation();
+    const classes = useStyles({})
+    const classesComponent = StyleComponent()
+    const schema = yup.object().shape({
+        name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
+        email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
+        lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
+      })
+      const {
+        formState: { errors },
+        handleSubmit,
+        register, 
+        reset,
+      } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange",
+      })
+      
+  
+  const submit = async (e) => {
+    const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+    await axios.post(`${domain}mailchimps`, {
+      "data":{
+        email: e.email,
+        name:  e.name,
+        lastname: e.lastName,
+      }
     })
-    const {
-      formState: { errors },
-      handleSubmit,
-      register, 
-      reset,
-    } = useForm({
-      resolver: yupResolver(schema),
-      mode: "onChange",
+    .then(({ data }) => {
+
+      Swal.fire(
+        t("home_mailchimp_swalSuccess_title"),
+        t("home_mailchimp_swalSuccess_text"),
+        "success"
+      
+        )
     })
-    
+    .catch(error => {
+      Swal.fire({
+        icon: "error",
+        title: t("home_contacSection_contactForm_swalError_title"),
+        text: t("home_contacSection_contactForm_swalError_text"),
+      })
 
-const submit = async (e) => {
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-  await axios.post(`${domain}mailchimps`, {
-    "data":{
-      email: e.email,
-      name:  e.name,
-      lastname: e.lastName,
-    }
-  })
-  .then(({ data }) => {
-
-    Swal.fire(
-      t("home_mailchimp_swalSuccess_title"),
-      t("home_mailchimp_swalSuccess_text"),
-      "success"
-    
-      )
-  })
-  .catch(error => {
-    Swal.fire({
-      icon: "error",
-      title: t("home_contacSection_contactForm_swalError_title"),
-      text: t("home_contacSection_contactForm_swalError_text"),
-    })
-
-  });
-  reset()
-}
+    });
+    reset()
+  }
 
   return (
-    <Box ref={ref} className={classes.containerForm}>
-        <Typography className={isVisible ? classes.titleMail2 : classes.titleMail}>
+    <Box className={classes.containerForm}>
+        <Typography className={classesComponent.titleWhite} >
           {t("home_mailChimp_title")}
         </Typography>
-        <Typography className={isVisible ? classes.subTitleMail2 : classes.subTitleMail}>
+        <Typography className={classes.subTitleMail2}>
           {t("home_mailChimp_subTitle")}
         </Typography>
       <form onSubmit={handleSubmit(submit)}>
@@ -331,12 +311,14 @@ const submit = async (e) => {
             helperText={errors.email?.message}
             variant="standard"
           />
+          <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
           <Button
             type="submit"
-            className={classes.formButton}
+            className={classesComponent.buttonComponent}
           >
             <span>{t("home_mailChimp_button")}</span>
           </Button>
+          </a>
         </Box>
       </form>
     </Box>

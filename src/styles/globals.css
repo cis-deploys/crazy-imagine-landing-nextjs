@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0px;
+  scroll-behavior: smooth;
 }
 
 /* Carrousel -------------------------------------------------------*/
@@ -21,20 +22,21 @@ body {
 }
 
 .swiper-pagination-bullet {
-  width: 11px;
-  height: 11px;
+  width: 20px;
+  height: 15px;
 }
 
 .swiper-pagination {
   position: static;
-  padding: 20px 0px;
+  padding: 10px;
   order: 2;
 }
+
 /* swiper-bullet ---------------------------------------------------*/
 
 .purpleBullet {
-  --swiper-theme-color: #1A3174;
-  --swiper-pagination-bullet-inactive-color: #B2B6FF;
+  --swiper-theme-color: #ebeffa;
+  --swiper-pagination-bullet-inactive-color: rgb(39, 170, 225);
   }
 
 @media only screen and (min-width: 940px) and (max-width: 1279px) {
@@ -61,10 +63,6 @@ body {
   --swiper-theme-color: #ffffff;
   --swiper-pagination-bullet-inactive-color: #b2b6ff;
 }
-
-
-
-
 
 /* typography ------------------------------------------------------*/
 

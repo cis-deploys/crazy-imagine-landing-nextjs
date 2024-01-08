@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import { BLOG } from "../navigation/sitemap"
-import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -44,61 +44,40 @@ const useStyles = makeStyles(theme => ({
     padding: "6px 25px 22px 37px",
     height: "100%",
     [theme.breakpoints.down("md")]: {
-      gap: "13px",
-      padding: "18px 18px 16px 26px",
+      gap: "10px",
+      padding: "5px 18px 16px 26px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "8px",
       padding: "11px 11px 10px 16px",
     },
   },
-  wrapperTitle: {
-    visibility: "hidden",
-  },
-  wrapperTitle2: {
-    animation: `$myEffect 2000ms`,
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "900",
-    fontSize: "40px",
-    lineHeight: "40px",
-    textAlign: "center",
-    color: "#FFFFFF",
-    marginBottom: "38px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "28px",
-      lineHeight: "28px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
-  },
-  "@keyframes myEffect": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(-200%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
   wrapperContainer: {
-    width: "75%",
+    width: "80%",
     margin: "auto",
     paddingTop: "83px",
     paddingBottom: "83px",
     display: "flex",
     flexDirection: "column",
+    alignContent: "flex-start",
+    [theme.breakpoints.up("xl")]: {
+      width: "80%",
+      paddingTop: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "70%",
+      paddingTop: "40px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingTop: "40px",
+      width: "80%",
+    },
     [theme.breakpoints.down("md")]: {
       paddingTop: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "20px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "10px",
+      width: "70%",
+      paddingTop: "40px",
     },
   },
   wrapperContainerSection: {
@@ -122,7 +101,7 @@ const useStyles = makeStyles(theme => ({
     display: "-webkit-box",
     boxOrient: "vertical",
     lineClamp: "2",
-    height: "36px",
+    height: "40px",
     [theme.breakpoints.down("md")]: {
       fontSize: "16px",
       lineHeight: "16px",
@@ -151,98 +130,64 @@ const useStyles = makeStyles(theme => ({
     color: "#888DFF",
     textDecoration: "none",
     [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
-      lineHeight: "11px",
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
   wrapper: {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "left",
     background: "transparent",
+    marginTop: "50px",
+    marginBottom: "50px",
     gap: "21px",
+    [theme.breakpoints.between(2560, 3000)]: {
+      paddingLeft: "25px",
+    },
+    [theme.breakpoints.between(1280, 2559)]: {
+      paddingLeft: "10px",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
-    },
-  },
-  loadButton: {
-    visibility: "hidden",
-  },
-  loadButton2: {
-    background: "#797EF6",
-    borderRadius: "100px",
-    alignSelf: "center",
-    marginTop: "71px",
-    animation: `$myEffecto 2000ms`,
-    "&:hover": {
-      backgroundColor: "#30AADE",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      padding: "14px 20px 12px 20px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "50px",
-      marginBottom: "75px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "10px",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "40px",
-      marginBottom: "70px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      "& > span": {
-        fontSize: "9px",
-        lineHeight: "9px",
-      },
-      marginTop: "30px",
-      marginBottom: "45px",
-    },
-  },
-  "@keyframes myEffecto": {
-    "0%": {
-      opacity: 0,
-      transform: "translateY(300%)",
-    },
-    "100%": {
-      opacity: 1,
-      transform: "translateY(0)",
     },
   },
 }))
 
 const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
-  const ref1 = useRef()
-  const isVisible1 = useIntersection(ref1, "0px")
-  const [load, setLoad] = useState(6)
-  const [buttonLoad, setButtonLoad] = useState(true)
-  const loadArticles = length => {
-    if (length > load) setLoad(load + 2)
-    if (length <= load) setButtonLoad(false)
-  }
-
+  const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
+  const [load, setLoad] = useState(getInitialLoad())
+  const [buttonLoad, setButtonLoad] = useState(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setLoad(getInitialLoad());
+      setButtonLoad(true);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const loadArticles = (length) => {
+    if (length > load) setLoad(load + getInitialLoad());
+    if (length = load) setButtonLoad(false);
+  };
+
+  function getInitialLoad() {
+    return window.innerWidth >= 3000 ? 5 : 4;
+  }
 
   const articles = AllArticles
   const articlesFilter = articles.filter(article =>
     article.locale.includes(lang)
-  )
+    )
 
     const [projectDataAll, setProjectDataAll] = useState(articlesFilter
       .sort((a, b) => {
@@ -266,10 +211,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
         <Typography
-          ref={ref}
-          className={
-            isVisible ? classes.wrapperTitle2 : classes.wrapperTitle
-          }
+          className={classesComponent.titleWhite}
         >
           {t("blog_blogArticle_title")}
         </Typography>
@@ -303,9 +245,9 @@ const BlogArticle = ({ articles: AllArticles }) => {
         </Box>
         { buttonLoad && (
           <Button
-            ref={ref1}
             onClick={() => { loadArticles(articles.length) }}
-            className={ isVisible1 ? classes.loadButton2 : classes.loadButton }
+            style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
+            className={classesComponent.buttonComponent}
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>

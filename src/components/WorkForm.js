@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import axios from "axios"
 import * as yup from "yup"
@@ -10,7 +10,8 @@ import { useTranslation } from "react-i18next"
 import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
-import { useIntersection } from "../hooks/useIntersection"
+import emailjs from '@emailjs/browser';
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,8 +22,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
+      },
       [theme.breakpoints.down("md")]: {
-        fontSize: "10px",
+        fontSize: "15px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "12px",
       },
     },
      "& .MuiTypography-body1": {
@@ -32,6 +39,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "13px",
       lineHeight: "140%",
       color: "#193173",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "17px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "15px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "11px",
+      },
     },
     "& .MuiFormLabel-root": {
       fontFamily: "HindVadodara",
@@ -40,9 +56,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-      [theme.breakpoints.down("md")]: {
-        fontSize: "10px",
-      },
+        [theme.breakpoints.up("xl")]: {
+          fontSize: "18px",
+        },
+        [theme.breakpoints.down("md")]: {
+          fontSize: "12px",
+        },
+        [theme.breakpoints.down("md")]: {
+          fontSize: "10px",
+        },
     },
     "& .MuiInput-underline:before": {
       borderBottom: "1px #D6D6D6 solid !important",
@@ -85,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "16px", 
   },
     [theme.breakpoints.down("md")]: {
-      "& .MuiSelect-select": {       // this is to refer to the prop provided by M-UI
+      "& .MuiSelect-select": {      
           fontSize: "12px",
         },
       width: "364px",
@@ -167,15 +189,6 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "80%",
-      gap: "20px",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-  },
-  formContainer: {
-    visibility: "hidden",
   },
   formContainer2: {
     animation: `$myEffect 2000ms`,
@@ -194,12 +207,6 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "15px",
-      padding: "4px",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    [theme.breakpoints.down("xs")]: {
       marginTop: "15px",
       padding: "4px",
       justifyContent: "center",
@@ -281,31 +288,6 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "10px",
     },
   },
-  attachButton: {
-    border: "2px solid #797EF6",
-    borderRadius: "100px",
-    padding: "14px 20px 12px 20px",
-    marginBottom: "15px",
-    color: "#797EF6",
-    cursor: "pointer",
-    fontFamily: "Nexa Bold",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "14px",
-    lineHeight: "14px",
-    textAlign: "center",
-    letterSpacing: "0.05em",
-    "&:hover": {
-      backgroundColor: "#797EF6",
-      color: "white",
-    },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "9px",
-      padding: "10px 14px 8px 14px",
-      fontSize: "10px",
-      lineHeight: "10px",
-    },
-  },
   formInput: {
     height: 1,
     width: "520px",
@@ -319,9 +301,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: "226px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "189px",
     },
   },
   shortInput: {
@@ -337,10 +316,6 @@ const useStyles = makeStyles(theme => ({
       width: "104px",
       alignItems: "center",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "86px",
-      alignItems: "center",
-    },
   },
   shortContainer: {
     display: "flex",
@@ -350,7 +325,6 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
       marginBottom: "30px",
-      //width: "80%"
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "30px",
@@ -379,6 +353,15 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: "0.05em",
       color: "#FFFFFF",
     },
+    [theme.breakpoints.up("xl")]: {
+      marginTop: "16px",
+      marginBottom: "25px",
+      padding: "10px 14px 8px 14px",
+      "& > span": {
+        fontSize: "15px",
+        lineHeight: "10px",
+      },
+    },
     [theme.breakpoints.down("md")]: {
       marginTop: "16px",
       marginBottom: "25px",
@@ -393,7 +376,7 @@ const useStyles = makeStyles(theme => ({
     padding: 4,
   },
   formAnimation: {
-    //animation: `$fadeIn ease 5000ms`,
+    //animation: `$fadeIn ease 3000ms`,
   },
   successfullAlert: {
     backgroundColor: "transparent",
@@ -426,8 +409,7 @@ const useStyles = makeStyles(theme => ({
 
 const WorkForm = () => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
+  const classesComponent = StyleComponent()
   const { t } = useTranslation()
   const [fileIsLoaded, setFileIsLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState("")
@@ -452,14 +434,14 @@ const WorkForm = () => {
     phone: yup.string().matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, t("workWithUs_workForm_schemaYup_phone2")).required(t("workWithUs_workForm_schemaYup_phone")),
     linkedin: yup.string(),
     website: yup.string().url(),
-    curriculum: yup.mixed()
-        .required(t("workWithUs_workForm_schemaYup_curriculum1"))
-        .test("fileSize", t("workWithUs_workForm_schemaYup_curriculum2"), (value, context) => {
-          return value && value[0] && value[0].size <= 2097152;
-        })
-        .test("type", t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
-          return value && value[0] && ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'].includes(value[0].type);
-        }),
+    curriculum: yup.mixed().test('fileSize', 'El archivo debe tener un tamaño máximo de 2 MB', (value) => {
+      if (!value) return true;
+      return value && value[0] && value[0].size <= 2097152;
+    }).test('type', t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
+      if (!value) return true;
+      const allowedTypes = ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'];
+      return typeof value === 'object' && value[0]?.type && ('application/pdf' === value[0].type || 'application/msword' === value[0].type || 'image/jpeg' === value[0].type || 'image/jpg' === value[0].type);
+    }),
     reference: yup.string(),
   });
               
@@ -478,64 +460,84 @@ const WorkForm = () => {
   const watchCurriculum = watch("curriculum");
 
   useEffect(() => {
-    if (watchCurriculum?.length > 0 && ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'].includes(watchCurriculum[0].type) && watchCurriculum[0].size <= 2097152 ) {
+    if (watchCurriculum?.length > 0 && ('application/pdf' === watchCurriculum[0].type || 'application/msword' === watchCurriculum[0].type || 'image/jpeg' === watchCurriculum[0].type || 'image/jpg' === watchCurriculum[0].type) && watchCurriculum[0].size <= 2097152) {
       setFileIsLoaded(true)
     } else {
       setFileIsLoaded(false)
     }
   }, [watchCurriculum])
 
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL;
+  const domainurl = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
-  const onSubmitHandler = async data => {
+  const onSubmitHandler = async(formData) => {
+    const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
 
-    if (data.curriculum?.length === 1) {
+    if (curriculum?.length === 1) {
       setShowButton(true)
 
       console.log("data", data.curriculum[0])
       const fileTest =  data.curriculum[0]
       const formData = new FormData()
-      formData.append("files", fileTest)
-      console.log('formData: ', formData);
+      formData.append("files", curriculum[0])
       axios
         .post(`${domain}upload`, formData)
         .then(async response => {
-          const file = response.data[0].id
-          console.log("file", response.data[0].id)
+          const file = response.data[0].id;
+          const cvurl = response.data[0].url;
+          
           const sendData = {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            phone: data.phone,
-            linkedin: data.linkedin,
-            website: data.website,
-            reference: data.reference,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phone: phone,
+            linkedin: linkedin,
+            website: website,
+            reference: reference,
             curriculum: file,
           }
-          const res = await axios.post(`${domain}curriculums`, {data: sendData})
+          const res = await axios.post(`${domain}curriculums`, { data: sendData })
+        
+          if (res.status === 200) {
+            setFormStatus("well")
+            setShowButton(false)
+            setFileIsLoaded(false)
 
-      if (res.status === 200) {
-        setFormStatus("well")
-        setShowButton(false)
-        setFileIsLoaded(false)
-        Swal.fire(
-        t("home_contacSection_contactForm_swalSuccess_title"),
-        t("workWithUs_workForm_submit_success"),
-        "success"
-        )
-        reset()
-      }
-    })
-    .catch(error => {
-      console.log(error.message, "error")
-      setFormStatus("bad")
-      setShowButton(false)
-      Swal.fire({
-      icon: "error",
-      title: t("home_contacSection_contactForm_swalError_title"),
-      text: t("workWithUs_workForm_submit_error"),
-    })
-    })
+            const userEmail = {
+              name: firstName,
+              lastname: lastName,
+              email: email,
+              phone: phone,
+              linkedin: linkedin,
+              website: website,
+              reference: reference,
+              file: cvurl,//`${domainurl}${cvurl}`,
+            }
+
+            emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
+            .then((result) => {
+
+            }, (error) => {
+
+            });
+
+            Swal.fire(
+            t("home_contacSection_contactForm_swalSuccess_title"),
+            t("workWithUs_workForm_submit_success"),
+            "success"
+            )
+            reset()
+          }
+        })
+        .catch(error => {
+          setFormStatus("bad")
+          setShowButton(false)
+          Swal.fire({
+          icon: "error",
+          title: t("home_contacSection_contactForm_swalError_title"),
+          text: t("workWithUs_workForm_submit_error"),
+        })
+        })
     } else {
       if (data.website !== "") {
         const sendData = {
@@ -547,17 +549,40 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
+<<<<<<< HEAD
+        const res = await axios.post(`${domain}curriculums`, { data: sendData });
+=======
         const res = await axios.post(`${domain}curriculums`, {data: sendData})
+>>>>>>> dev
 
         if (res.status === 200) {
           setFormStatus("well")
           setFileIsLoaded(false)
           setShowButton(false)
+
+          const userEmail = {
+            name: firstName,
+            lastname: lastName,
+            email: email,
+            phone: phone,
+            linkedin: linkedin,
+            website: website,
+            reference: reference,
+            file: '',
+          }
+
+          emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
+          .then((result) => {
+
+          }, (error) => {
+
+          });
+
           Swal.fire(
           t("home_contacSection_contactForm_swalSuccess_title"),
           t("workWithUs_workForm_submit_success"),
-          "success",
-        )
+          "success"
+          )
           reset()
         } else {
           setFormStatus("bad")
@@ -574,7 +599,7 @@ const WorkForm = () => {
 
   return (
     <Box className={classes.container}>
-      <Box ref={ref} className={classes.containerInfo}>
+      <Box className={classes.containerInfo}>
         <WorkInfo />
       </Box>
       <Box className={classes.container1}>
@@ -588,9 +613,7 @@ const WorkForm = () => {
         ></Box>
         <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
           <Box
-            className={
-              isVisible ? classes.formContainer2 : classes.formContainer
-            }
+            className={classes.formContainer2}
           >
             <Box className={classes.shortContainer}>
               <TextField
@@ -722,7 +745,7 @@ const WorkForm = () => {
                </Select> 
               }
             /> 
-            <Button className={classes.formButton} type="submit" disabled={showButton}>
+            <Button className={classesComponent.buttonComponent} type="submit" disabled={showButton}>
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

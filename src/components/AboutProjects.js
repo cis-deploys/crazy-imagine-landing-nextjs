@@ -10,11 +10,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     padding: "60px",
-    [theme.breakpoints.down("md")]: {
-      padding: "75px 43px",
+    "& > div:first-of-type":{
+      maxWidth: "1060px",
     },
-    [theme.breakpoints.down("xs")]: {
-      padding: "75px 15px",
+    [theme.breakpoints.down("md")]: {
+      padding: "75px 45px 20px 45px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "25px 35px",
     },
   },
   title: {
@@ -56,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(0, 600)]: {
       flexDirection: "column",
-      padding: "0px 15px",
+      padding: "0px 35px",
     },
   },
 }))
@@ -65,13 +68,13 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()
   const { t } = useTranslation()
 
-
-
   return (
     <>
       <Box className={classes.container}>
-        <Typography className={classes.title}>{t("project_aboutProjects_title")}</Typography>
-        <Typography className={classes.description}>{aboutProject}</Typography>
+        <Box>
+          <Typography className={classes.title}>{t("project_aboutProjects_title")}</Typography>
+          <Typography className={classes.description}>{aboutProject}</Typography>
+        </Box>
       </Box>
       <Box className={classes.imgContainer}>
         <Image
