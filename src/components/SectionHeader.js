@@ -110,20 +110,15 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end",
     marginRight: props.little ? "100px" : "0px",
     height: "auto",
-    [theme.breakpoints.up("xl")]: {
+    [theme.breakpoints.down("md")]: {
       marginRight: props.little ? "50px" : "0px",
       marginTop: "40px",
-      height: "100%",
-    },
-    [theme.breakpoints.down("xl")]: {
-      marginRight: props.little ? "50px" : "0px",
-      marginTop: "70px",
-      height: "70%",
+      height: "90%",
     },
     [theme.breakpoints.down("sm")]: {
       marginRight: props.little ? "50px" : "0px",
       marginBottom: "50px",
-      height: "65%",
+      height: "80%",
     },
   }),
   img: {
@@ -134,10 +129,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: "200%",
-      height: "70%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "300%",
       height: "70%",
     },
   },

@@ -231,6 +231,7 @@ export const NavbarMobile = ({
             </IconButton>
           </Box>
         </Toolbar>
+        
         <Drawer
           className={classes.drawer}
           variant="persistent"

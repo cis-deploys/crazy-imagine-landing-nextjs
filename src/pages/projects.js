@@ -5,7 +5,7 @@ import { Box } from "@mui/material"
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/robot.svg"
+import headerImage from "../../public/image_project_page.svg"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
@@ -18,21 +18,23 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-const ProjectsTable = dynamic(
-  () => import("../components/ProjectsTable"),
+const TableProjects = dynamic(
+  () => import("../components/TableProjects"),
   { ssr: false },
 )
 
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resArticles = await fetch(`${domain}projects?populate=*`)
-  const projects = await resArticles.json()
+  const resProjects = await fetch(`${domain}projects?populate=title&populate=project_types&populate=images`)
+  const projects = await resProjects.json()
     
   const resProjectspage = await fetch(`${domain}projectspage?populate=seo&populate=mainTitle`)
   const projectsPage = await resProjectspage.json()
 
-  return { props: { projects, projectsPage } }
+  return { props: { 
+    projects,
+     projectsPage } }
 }
 
 function Projects({ projects, projectsPage }) {
@@ -43,52 +45,47 @@ function Projects({ projects, projectsPage }) {
   const [keywords, setKeywords] = useState();
   const [ mainTitle, setMainTitle ] = useState(); 
   
-  const projectsNew = [];
-
-  useEffect(() => {
+  const newProjectsArray = [];
 
   projects?.data.map(({ 
+    id,
     attributes:{
       Key,
       createdAt,
-      description,
-      details,
-      galleryImages,
       images,
       locale,
-      localizations,
       moreAbout,
-      publishedAt,
       seo,
-      slug,
       title,
-      updatedAt,
+      project_types: types,
     }} ) => {
-      
-    const imagesArticles = [];
+    const imagesProjects = [];
+    const typesProjects = [];
+
     if(images){
       images.data.map(({ attributes: { url }}) => {
-        imagesArticles.push({
+        imagesProjects.push({
           url,//: `${domain}${url}`
         });
       });
     }
-    projectsNew.push({
+    if(types){
+      types.data.map(({ attributes: { name }}) => {
+        typesProjects.push( name );
+      });
+    }
+    
+    newProjectsArray.push({
+      id,
       title,
-      description,
-      details,
-      moreAbout,
-      slug,
       Key,
       createdAt,
       locale,
-      images: imagesArticles,
-      galleryImages,
-      seo
+      images: imagesProjects,
+      seo,
+      types: typesProjects, 
     });
   });
-
-}, [])
 
 useEffect(() => {
   setMetaTitle(projectsPage.data?.attributes.seo?.metaTitle),
@@ -116,9 +113,7 @@ useEffect(() => {
           btn={true}
           cls="textContainer"
         />
-        <ProjectsTable
-          AllArticles={projectsNew}
-        />
+            <TableProjects projectsData={ newProjectsArray }/>
         <ContactSection/>
       </Box>
     </Layout>

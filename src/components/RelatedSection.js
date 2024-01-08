@@ -91,15 +91,13 @@ const RelatedSection = ({ projects }) => {
   const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
     
-  const [projectDataAll, setProjectDataAll] = useState(projects
-    .filter(project => project.locale.includes(i18n.language)))
+  const [projectDataAll, setProjectDataAll] = useState(projects)
     ?.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     }); 
 
     useEffect(() => {
-      setProjectDataAll(projects
-        .filter(project =>project.locale.includes(i18n.language)))
+      setProjectDataAll(projects)
         ?.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         });
