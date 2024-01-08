@@ -71,23 +71,22 @@ const useStyles = makeStyles(theme => ({
 const ProjectsKey = ({projects, projectsAll}) => {
     const classes = useStyles()
     const { i18n, t } = useTranslation()
-    const lang = i18n.language 
     const router = useRouter();
     const { Key } = router.query;
     const [projectData, setProjectData] = useState(projects
-      ?.filter( project => project?.Key === Key && project?.Key !== null)
-      ?.filter( projects => projects?.locale?.includes(lang)) || []);
+      ?.filter( projects => projects?.locale?.includes(i18n.language)) 
+      ?.filter( project => project?.Key === Key && project?.Key !== null)|| [])
 
     const [projectDataAll, setProjectDataAll] = useState(projectsAll
-      ?.filter( projects => projects?.locale?.includes(lang)) || []);    
+      ?.filter( projects => projects?.locale?.includes(i18n.language)) || [])  
 
         useEffect(() => {
           setProjectData(projects
-            ?.filter( project => project?.Key === Key && project?.Key !== null)
-            ?.filter( projects => projects?.locale?.includes(lang)) || []);
+            ?.filter( projects => projects?.locale?.includes(i18n.language)) 
+            ?.filter( project => project?.Key === Key && project?.Key !== null)|| [])
 
             setProjectDataAll(projectsAll
-              ?.filter( projects => projects?.locale?.includes(lang)) || []);
+              ?.filter( projects => projects?.locale?.includes(i18n.language)) || [])
         }, [i18n.language]);
 
   return (

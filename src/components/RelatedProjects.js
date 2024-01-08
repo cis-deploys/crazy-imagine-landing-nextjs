@@ -154,18 +154,15 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
   const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
   const { i18n, t } = useTranslation()
-  const lang = i18n.language
   const router = useRouter();
   const { Key } = router.query;
 
   const [projectDataAll, setProjectDataAll] = useState(projects
-    ?.filter( project => project?.Key !== Key && project?.Key !== null)
-    .filter(project => project.locale.includes(lang)));
+    ?.filter( project => project?.Key !== Key && project?.Key !== null));
   
   useEffect(() => {
       setProjectDataAll(projects
-        ?.filter( project => project?.Key !== Key && project?.Key !== null)
-        .filter(project => project.locale.includes(lang)));
+        ?.filter( project => project?.Key !== Key && project?.Key !== null));
   }, [i18n.language]);
 
       return (

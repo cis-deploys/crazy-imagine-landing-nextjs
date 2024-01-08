@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     [theme.breakpoints.between(1951, 4000)]: {
       width: "500px",
-      height: "420px"
+      height: "410px"
     },
     [theme.breakpoints.between(1501, 1950)]: {
       width: "450px",
@@ -145,7 +145,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     transform: "scale(1)",
     [theme.breakpoints.between(1281, 1920)]: {
-      height: "450px",
+      height: "430px",
     },
     [theme.breakpoints.between(901, 1280)]: {
       height: "380px",

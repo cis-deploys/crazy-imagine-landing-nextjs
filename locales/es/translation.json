@@ -171,6 +171,23 @@
     "project_aboutProjects_title": "Sobre el proyecto",
     "project_aboutProjects_subtitle": "Más que un juego",
     "project_RelatedSection_title": "Proyectos relacionados",
+    "project_page_filter": "Filtro",
+    "project_filter_tecnologys": "Tecnologías",
+    "project_filter_button_show": "Mostrar Resultados",
     "languageModal_select": "ES",
-    "404-title": "Vaya, página no encontrada"
+    "404-title": "Vaya, página no encontrada",
+    "References":"Referencias de clientes",
+    "Best_developers":"¡Los mejores desarrolladores con los que he trabajado en más de 30 años!",
+    "Quality":"Calidad",
+    "Schedule":"Cronograma",
+    "Cost":"Costo",
+    "Willing_to_Refer":"Dispuesto a referir",
+    "Comment List":" Lista de comentarios",
+    "The reviewer":"El revisor",
+    "Project Duration":"Duracion del proyecto",
+    "Project Size":"Tamaño del proyecto",
+    "Project Category":"Categoria del proyecto"
+ 
+
+
 }

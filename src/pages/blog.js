@@ -50,7 +50,7 @@ const Blog = ({ articles, blogpage }) => {
   const [ title, setTitle ] = useState();
   
   const articlesNew = [];
-  articles.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
+  articles.data.map(({ attributes: { title, Key, createdAt, locale, image, seo}}) => {
     const imagesArticles = [];
     if(image.data){
       image.data.map(({ attributes: { url }}) => {
@@ -61,15 +61,10 @@ const Blog = ({ articles, blogpage }) => {
     }
     articlesNew.push({
       title,
-      description,
-      content,
-      slug,
       Key,
       createdAt,
       locale,
       image: imagesArticles,
-      category: category?.data?.attributes,
-      author: author?.data?.attributes,
       seo
     });
   });
