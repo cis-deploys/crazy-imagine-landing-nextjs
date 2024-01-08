@@ -575,9 +575,10 @@ const CarCategoryReview = ({ review, index }) => {
           <Box style={{ display: "flex", alignItems: "flex-start" }}>
             <Avatar
               alt={review.attributes.name}
-              src=""
+              src="/static/images/avatar/2.jpg"
               sx={{ width: 56, height: 56 }}
             />
+
             <Box
               style={{
                 display: "flex",
