@@ -23,12 +23,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "800px",
+    height: "auto",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",
-    marginBottom: "20px",
+    marginBottom: '10px',
+    marginTop: '50px',
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       height: "auto",
@@ -194,8 +195,8 @@ const AboutSection = () => {
     {
       title: "FAQ",
       description: "Collaboration with our internal team",
-      link: "/faq",
-      icon: faEnvelopeOpen,
+      link: '/faq',
+      icon: faEnvelopeOpen
     },
     // {
     //   title: "Mission",
@@ -213,8 +214,8 @@ const AboutSection = () => {
     {
       title: "To create more",
       description: t("about_aboutSection_description2"),
-      link: "/to_create_more",
-      icon: faBuilding,
+      link: '/to_create_more',
+      icon: faBuilding
     },
     {
       title: "Workinng together",

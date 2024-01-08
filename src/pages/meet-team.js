@@ -38,32 +38,12 @@ const About = ({ members }) => {
 
   useEffect(() => {
 
-    members?.data.map(({ 
-      attributes:{
-        Portafolio,
-        avatar,
-        avatarHover,
-        cardDescription,
-        createdAt,
-        description,
-        email,
-        lastName,
-        name,
-        positions,
-        publishedAt,
-        role,
-        seo,
-        skill,
-        slug,
-        technologies,
-        updatedAt,
-      }}, index ) => {
+    members?.data.map(( data ) => {
 
-      const order = index + 1;
+      // const order = index + 1;
       const imagesAvatar = [];
-      if(avatar.data){
-        console.log(avatar)
-        avatar.data.map(({ attributes: { url }}) => {
+      if(data.attributes.avatar.data){
+        data.attributes.avatar.data.map(({ attributes: { url }}) => {
           imagesAvatar.push({
             url,//: `${domain}${url}`
           });
@@ -71,24 +51,25 @@ const About = ({ members }) => {
       }
       
       membersNew.push({
-        order: order,
-        Portafolio,
+        id: data.id,
+        // order: order,
+        Portafolio: data.attributes.Portafolio,
         avatar: imagesAvatar,
-        avatarHover,
-        cardDescription,
-        createdAt,
-        description,
-        email,
-        lastName,
-        name,
-        positions,
-        publishedAt,
-        role,
-        seo,
-        skill,
-        slug,
-        technologies,
-        updatedAt,
+        avatarHover: data.attributes.avatarHover,
+        cardDescription: data.attributes.cardDescription,
+        createdAt: data.attributes.createdAt,
+        description: data.attributes.description,
+        email: data.attributes.email,
+        lastName: data.attributes.lastName,
+        name: data.attributes.name,
+        positions: data.attributes.positions,
+        publishedAt: data.attributes.publishedAt,
+        role: data.attributes.role,
+        seo: data.attributes.seo,
+        skill: data.attributes.skill,
+        slug: data.attributes.slug,
+        technologies: data.attributes.technologies,
+        updatedAt: data.attributes.updatedAt,
       });
     });
   
