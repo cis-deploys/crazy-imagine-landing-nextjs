@@ -25,10 +25,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.between(3000, 4000)]: {
       height: "800px",
       padding: "10px 200px",
-    },    
-    [theme.breakpoints.between(1920, 2999)]: {
+    }, 
+    [theme.breakpoints.between(2301, 2999)]: {
       height: "780px",
       padding: "10px 205px",
+    },   
+    [theme.breakpoints.between(1920, 2300)]: {
+      height: "780px",
+      padding: "10px 48px",
     },
     [theme.breakpoints.between(1700, 1919)]: {
       height: "700px",
@@ -253,7 +257,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                         </Typography>
                         <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`} >
 
-                          <a className={classes.link}>
+                          <a className={classes.link} >
                           {t("common_projectSection_button_viewProject")}
                           </a>
 
@@ -267,7 +271,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
               {btn && (
                 <Link href={`${PROJECTS}`} >
   
-                  <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "30px" }}>   
+                  <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "10px" }}>   
                   <Button className={classesComponent.buttonComponent}>
                     <span>{t("home_projectSection_button")}</span>
                   </Button>
