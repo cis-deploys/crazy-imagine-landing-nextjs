@@ -4,7 +4,7 @@ import NextImage from "next/image"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
 import ReactStars from "react-stars"
-import React, { useState } from "react"
+
 import Chip from "@mui/material/Chip"
 
 import RestoreIcon from "@mui/icons-material/Restore"
@@ -12,6 +12,7 @@ import { format, parseISO } from "date-fns"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarDays, faCode } from "@fortawesome/free-solid-svg-icons"
 import Avatar from "@mui/material/Avatar"
+import { es, enUs } from "date-fns/locale"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -94,7 +95,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "left",
     color: "#193174",
     marginTop: "78px",
-    paddingBottom: "35px",
+    paddingBottom: "25px",
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineHeight: "28px",
@@ -104,7 +105,6 @@ const useStyles = makeStyles(theme => ({
       fontSize: "21px",
       lineHeight: "21px",
       marginTop: "20px",
-      marginBottom: "25px",
     },
   },
   dateContainer: {
@@ -195,9 +195,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
 
-  boxProjects: {
-    marginTop: "10px",
-  },
   commentProject: {
     fontFamily: "HindVadodara", //Nexa Bold HindVadodara
     fontStyle: "normal",
@@ -316,7 +313,7 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     marginBottom: 0,
     marginLeft: "24px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.up("md")]: {
       fontSize: "15px",
       textAlign: "left",
     },
@@ -401,14 +398,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function formatMonthYear(date) {
-  return format(parseISO(date), "MMMM yyyy")
+function formatMonthYear(date, lang) {
+  const locale = lang === "es" ? es : enUs
+  return format(parseISO(date), "MMMM yyyy", { locale })
 }
 
 const CarCategoryReview = ({ review, index }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLanguage = i18n.language
 
   const renderInfoProject = () => {
     const projectDuration =
@@ -421,7 +420,7 @@ const CarCategoryReview = ({ review, index }) => {
           {review?.attributes?.project?.data?.attributes?.title ?? ""}
         </Typography>
 
-        <Box className={classes.boxProject}>
+        <Box>
           <Typography className={classes.commentProject}>
             {review?.attributes?.project?.data?.attributes?.details ?? ""}
           </Typography>
@@ -499,7 +498,8 @@ const CarCategoryReview = ({ review, index }) => {
         </Typography>
         <Box className={classes.dateContainer}>
           <Typography className={classes.date}>
-            {formatMonthYear(review?.attributes?.createdAt) ?? "None"}
+            {formatMonthYear(review?.attributes?.createdAt, currentLanguage) ??
+              "None"}
           </Typography>
           <Box className={classes.borderBottom}></Box>
         </Box>
