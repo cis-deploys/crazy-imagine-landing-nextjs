@@ -77,6 +77,7 @@ const References = ({ referencespage, reviews }) => {
         img={headerImage}
         cls="textContainer"
       />
+
       {reviews.data
         .filter(r => {
           if (lang === "en" && r?.attributes?.locale === lang) {
@@ -92,13 +93,11 @@ const References = ({ referencespage, reviews }) => {
         .sort((a, b) => b.id - a.id)
         .map((rev, index) => {
           if (index < 6) {
-            if (
-              rev?.attributes?.project?.data != null &&
-              rev?.attributes?.category_reviews?.data?.length > 0
-            )
+            if (rev?.attributes?.project?.data != null) {
               return (
                 <CarCategoryReview key={index} review={rev} index={index} />
               )
+            }
           }
         })}
     </Layout>
