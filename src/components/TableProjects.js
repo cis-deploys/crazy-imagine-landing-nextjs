@@ -26,6 +26,7 @@ import CardMedia from "@mui/material/CardMedia"
 
 import { PROJECTS } from "../navigation/sitemap"
 import FilterProjectMovil from "./FilterProjectMovil"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   ContainerSection: {
@@ -87,6 +88,8 @@ const useStyles = makeStyles(theme => ({
     height: "190px",
     maxWidth: "500px",
     minWidth: "230px",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     [theme.breakpoints.between(2500, 4000)]: {
       height: "250px",
     },
@@ -346,6 +349,7 @@ function createNumberArray(dynamicNumber) {
 
 const TableProjects = ({ projectsData }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 

@@ -429,4 +429,8 @@ export const StyleComponent = makeStyles((theme) => ({
           maxWidth: "300px",
         },
       },
+      imagenContent: {
+        objectFit: "contain",
+        objectPosition: "center",
+      }
 }));

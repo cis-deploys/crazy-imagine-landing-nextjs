@@ -32,9 +32,9 @@ const useStyles = makeStyles(theme => ({
       gap: "7px",
     },
   },
-  ron:{
-    "& > div:first-of-type":{
-      height: "250px"
+  ron: {
+    "& > div:first-of-type": {
+      height: "250px",
     },
   },
   textContainer: {
@@ -154,6 +154,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const prepareArticles = (articles, lang, limitOfArticles) => {
+  return (
+    articles
+      ?.filter(article => article.locale.includes(lang))
+      ?.sort((a, b) => {
+        return new Date(b.created_at) - new Date(a.created_at)
+      })
+      ?.slice(2)
+      ?.slice(0, limitOfArticles) || []
+  )
+}
+
 const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
@@ -161,92 +173,102 @@ const BlogArticle = ({ articles: AllArticles }) => {
   const lang = i18n.language
   const [load, setLoad] = useState(getInitialLoad())
   const [buttonLoad, setButtonLoad] = useState(true)
+  const [showLoadMore, setShowLoadMore] = useState(true)
+  const [limitOfCards, setLimitOfCards] = useState(getInitialLoad())
+  const [filteredArticles, setFilteredArticles] = useState(
+    prepareArticles(AllArticles, lang, limitOfCards)
+  )
+
+  useEffect(() => {
+    setFilteredArticles(prepareArticles(AllArticles, lang, limitOfCards))
+  }, [lang, limitOfCards])
+
+  const articles = AllArticles
+
+  function getInitialLoad() {
+    return window.innerWidth >= 3000 ? 5 : 4
+  }
 
   useEffect(() => {
     const handleResize = () => {
-      setLoad(getInitialLoad());
-      setButtonLoad(true);
-    };
+      setShowLoadMore(true)
+      setLimitOfCards(getInitialLoad())
+    }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
 
-  const loadArticles = (length) => {
-    if (length > load) setLoad(load + getInitialLoad());
-    if (length = load) setButtonLoad(false);
-  };
-
-  function getInitialLoad() {
-    return window.innerWidth >= 3000 ? 5 : 4;
+  const loadArticles = length => {
+    if (length > load) setLoad(load + getInitialLoad())
+    if ((length = load)) setButtonLoad(false)
   }
 
-  const articles = AllArticles
-  const articlesFilter = articles.filter(article =>
-    article.locale.includes(lang)
+  const loadMoreArticles = () => {
+    const filterResult = AllArticles?.filter(article =>
+      article.locale.includes(lang)
     )
+    const maxLimitOfLoads = filterResult.length
 
-    const [projectDataAll, setProjectDataAll] = useState(articlesFilter
-      .sort((a, b) => {
-        return new Date(b.created_at) - new Date(a.created_at)
-      })
-      .slice(0, load));
+    if (maxLimitOfLoads > limitOfCards) {
+      setLimitOfCards(limitOfCards + getInitialLoad())
+    }
 
-    useEffect(() => {
-      const articles = AllArticles
-      const articlesFilter = articles.filter(article =>
-        article.locale.includes(lang)
-      )
-        setProjectDataAll(articlesFilter
-          .sort((a, b) => {
-            return new Date(b.created_at) - new Date(a.created_at)
-          })
-          .slice(0, load));
-    }, [i18n.language, load]);
+    if (limitOfCards > maxLimitOfLoads) {
+      setLimitOfCards(maxLimitOfLoads)
+      setShowLoadMore(false)
+    }
+  }
 
   return (
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
-        <Typography
-          className={classesComponent.titleWhite}
-        >
+        <Typography className={classesComponent.titleWhite}>
           {t("blog_blogArticle_title")}
         </Typography>
         <Box className={classes.wrapper}>
-          {
-          projectDataAll.map(( el, index) => {
-              const dataImage = el?.image[0].url
-              const title = el?.image[0].title
-            return(
-            <Box
-              key={index}
-              component="article"
-              className={classes.container}
-            >
-              <Image className={classes.ron} src={dataImage} alt={title} width={480} height={250}/>
-              <Box className={classes.textContainer}>
-                <Typography className={classes.title}>
-                  {el?.title}
-                </Typography>
-                <Link href={`${BLOG}/${el?.Key}`} >
-
-                  <a className={classes.link}>
-                  {t("common_lastestPosts_blogPost_button_readMore")}
-                  </a>
-
-                </Link>
+          {filteredArticles.map((el, index) => {
+            const dataImage = el?.image[0]?.url
+            const title = el?.image[0]?.title
+            return (
+              <Box
+                key={index}
+                component="article"
+                className={classes.container}
+              >
+                <Image
+                  className={classes.ron}
+                  src={dataImage}
+                  alt={title}
+                  width={480}
+                  height={250}
+                />
+                <Box className={classes.textContainer}>
+                  <Typography className={classes.title}>{el?.title}</Typography>
+                  <Link href={`${BLOG}/${el?.Key}`}>
+                    <a className={classes.link}>
+                      {t("common_lastestPosts_blogPost_button_readMore")}
+                    </a>
+                  </Link>
+                </Box>
               </Box>
-            </Box>
-          )
+            )
           })}
         </Box>
-        { buttonLoad && (
+        {showLoadMore && (
           <Button
-            onClick={() => { loadArticles(articles.length) }}
-            style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
+            onClick={() => {
+              loadArticles(articles.length)
+              loadMoreArticles()
+            }}
+            style={{
+              textDecoration: "none",
+              alignSelf: "center",
+              marginBottom: "5px",
+            }}
             className={classesComponent.buttonComponent}
           >
             <span>{t("blog_blogArticle_button")}</span>
@@ -254,7 +276,6 @@ const BlogArticle = ({ articles: AllArticles }) => {
         )}
       </Box>
     </Box>
-
   )
 }
 
