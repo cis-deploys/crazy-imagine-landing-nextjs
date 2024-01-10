@@ -249,7 +249,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
-                      <Image src={dataImage} alt={title} width={350} height="250px"/>
+                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} className={classesComponent.imagenContent}/>
 
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
