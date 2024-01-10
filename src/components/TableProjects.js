@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
     height: "190px",
     maxWidth: "500px",
     minWidth: "230px",
-    backgroundSize: "contain",
+    backgroundSize: "cover",
     backgroundPosition: "center",
     [theme.breakpoints.between(2500, 4000)]: {
       height: "250px",
