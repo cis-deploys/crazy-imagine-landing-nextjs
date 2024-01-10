@@ -134,6 +134,10 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'start', 
     marginLeft: '25px',
     position: "relative",
+    "& img": {
+      objectFit: "contain",
+      objectPosition: "bottom",
+    },
     [theme.breakpoints.down("md")]: {
       marginLeft: '0px',
       padding: '3px',
@@ -182,6 +186,7 @@ const MeetTeamSection = ({members}) => {
                 width={314}
                 height={357}
                 alt="Title"
+                quality={100}
               />
             </Grid>
           </>
