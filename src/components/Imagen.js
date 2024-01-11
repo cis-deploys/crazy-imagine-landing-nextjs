@@ -1,8 +1,8 @@
 import React from "react"
 import { Box } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import Image from 'next/image'
-import Crazy from '../../public/crazy1.png'
+import Image from "next/image"
+import Crazy from "../../public/crazyAniversario.webp"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -18,25 +18,40 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
     width: "100%",
     height: "auto",
-    objectFit: 'contain'
+    objectFit: "contain",
   },
 }))
 
-const Imagen = () => {
+const Imagen = ({ imageUrl }) => {
   const classes = useStyles()
 
-  return (
-    <Box className={classes.img2}>
-      <Image
-        className={`${classes.img2}`}
-        src={Crazy}
-        alt="Imagen de la empresa"
-        layout="responsive"
-        width={1800}
-        height={745}
-      />
-    </Box>
-  )
+  const renderImage = () => {
+    if (imageUrl) {
+      return (
+        <Image
+          className={`${classes.img2}`}
+          src={imageUrl}
+          alt="Imagen de la empresa"
+          layout="responsive"
+          width={4000}
+          height={2250}
+          quality={100}
+        />
+      )
+    } else {
+      return (
+        <Image
+          className={classes.img2}
+          src={Crazy}
+          alt="Imagen de la empresa"
+          layout="responsive"
+          quality={100}
+        />
+      )
+    }
+  }
+
+  return <Box className={classes.img2}>{renderImage()}</Box>
 }
 
 export default Imagen

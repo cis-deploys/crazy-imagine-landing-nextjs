@@ -71,11 +71,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: "left",
     justifyContent: "center",
     height: "100%",
-    [theme.breakpoints.between(326, 450)]: {
+    [theme.breakpoints.between(371, 450)]: {
       width: "max-content",
       padding: "14px 4px 10px 4px",
     },
-    [theme.breakpoints.between(0, 325)]: {
+    [theme.breakpoints.between(0, 370)]: {
       width: "220px",
       padding: "14px 4px 10px 4px",
     },
@@ -221,16 +221,13 @@ const Footer = () => {
             />
             <Box style={{ flexDirection: "column", }}>
               <Typography className={classes.infoTypography}>
-                {t("home_footer_direction1")}
-              </Typography>
-              <Typography className={classes.infoTypography}>
-                {t("home_footer_direction2")}
-              </Typography>
-              <Typography className={classes.infoTypography}>
-                {t("home_footer_direction3")}
+                {"1786 Smarts Rule St. kissimmee"}
               </Typography>
             </Box>
         </Box>
+        <Typography className={classes.infoTypography}>
+                {"Florida 34744"}
+              </Typography>
           <Box className={classes.info}>
             <FontAwesomeIcon
               icon={faEnvelopeOpen}

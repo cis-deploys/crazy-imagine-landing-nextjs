@@ -69,6 +69,7 @@ const Blog = ({ articles, blogpage }) => {
     });
   });
 
+
   useEffect(() => {
     setMetaTitle(blogpage.data?.attributes.seo?.metaTitle),
     setMetaDescription(blogpage.data?.attributes.seo?.metaDescription),

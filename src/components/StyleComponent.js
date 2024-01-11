@@ -236,8 +236,8 @@ export const StyleComponent = makeStyles((theme) => ({
             lineHeight: "32px",
         },
         [theme.breakpoints.between(0, 959)]: {
-            fontSize: "25px",
-            lineHeight: "28px",
+            fontSize: "22px",
+            lineHeight: "22px",
         }
       },
       
@@ -339,7 +339,7 @@ export const StyleComponent = makeStyles((theme) => ({
         backgroundColor: "#FFFFFF",
         gap: "10px",
         borderRadius: "100px",
-        [theme.breakpoints.between(481, 960)]: {
+        [theme.breakpoints.between(481, 1280)]: {
           width: "500px"
         },
         [theme.breakpoints.between(381, 480)]: {
@@ -429,4 +429,8 @@ export const StyleComponent = makeStyles((theme) => ({
           maxWidth: "300px",
         },
       },
+      imagenContent: {
+        objectFit: "contain",
+        objectPosition: "center",
+      }
 }));
