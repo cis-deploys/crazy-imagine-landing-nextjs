@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     height: "110px",
     [theme.breakpoints.between(2500, 4000)]: {
       height: "120px",
-      padding: "28px 0px 28px 28px"
+      padding: "28px 0px 28px 28px",
     },
     [theme.breakpoints.between(1280, 2499)]: {
       height: "100px",
@@ -357,7 +357,6 @@ const TableProjects = ({ projectsData }) => {
   const projectsFilter = projects.filter(project =>
     project.locale.includes(lang)
   )
-  console.log(projects)
 
   const [projectDataAll, setProjectDataAll] = useState(
     projectsFilter.sort((a, b) => {
@@ -443,8 +442,6 @@ const TableProjects = ({ projectsData }) => {
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const visibleData = projectDataAll.slice(startIndex, endIndex)
-
-  console.log(visibleData)
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -576,8 +573,8 @@ const TableProjects = ({ projectsData }) => {
           draggable="true"
           sx={{
             cursor: "pointer",
-            display: 'flex',
-            flexDirection: 'row',
+            display: "flex",
+            flexDirection: "row",
           }}
         >
           {visibleData.map(cardProject => (
@@ -610,7 +607,7 @@ const TableProjects = ({ projectsData }) => {
             </Grid>
           ))}
         </Grid>
-          <Grid>
+        <Grid>
           <Box sx={dotStyles}>
             {pagesArray.map(itemGrid => (
               <Box
@@ -621,7 +618,7 @@ const TableProjects = ({ projectsData }) => {
               ></Box>
             ))}
           </Box>
-          </Grid>
+        </Grid>
       </Box>
     </Box>
   )

@@ -66,8 +66,6 @@ const References = ({ referencespage, reviews }) => {
     }
   }, [referencespage, lang])
 
-  console.log("seo", referencespage)
-
   return (
     <Layout>
       <NextSeo
