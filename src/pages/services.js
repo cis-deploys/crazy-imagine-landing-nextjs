@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import dynamic from 'next/dynamic'
 import { Box } from "@mui/material"
@@ -34,12 +34,20 @@ export async function getServerSideProps() {
   const resProjects = await fetch(`${domain}projects?locale=all&populate=images&populate=seo`)
   const projects = await resProjects.json()
 
-  return { props: { projects } }
+  const resServices = await fetch(`${domain}services-page?locale=en&locale=es-VE&populate=title&populate=seo`)
+  const servicesPage = await resServices.json()
+
+  return { props: { projects, servicesPage } }
 }
 
-function Services({ projects }) {
+function Services({ projects, servicesPage }) {
   const { t } = useTranslation()
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+
+  const [metaTitle, setMetaTitle] = useState();
+  const [metaDescription, setMetaDescription] = useState();
+  const [keywords, setKeywords] = useState();
+  const [ title, setMainTitle ] = useState(); 
 
   const projectsNew = [];
 
@@ -64,12 +72,19 @@ function Services({ projects }) {
 
   });
 
+  useEffect(() => {
+    setMetaTitle(servicesPage.data?.attributes.seo?.metaTitle),
+    setMetaDescription(servicesPage.data?.attributes.seo?.metaDescription),
+    setKeywords(servicesPage.data?.attributes.seo?.keywords)
+    setMainTitle(servicesPage.data?.attributes.title)
+  }, [])
+
   return (
     <Layout>
       <NextSeo
-        title={`Crazy Imagine Software | Services`}
-        description={`Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!`}
-        keywords={`crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support`}
+        title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
+        description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
+        keywords={`${keywords ? keywords : 'crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support'}`}
         openGraph={{
           type: "website",
           locale: "en_US",
