@@ -51,6 +51,8 @@ const References = ({ referencespage, reviews }) => {
     setTitle(referencespage.data?.attributes.title)
   }, [])
 
+  console.log("seo", referencespage)
+
   return (
     <Layout>
       <NextSeo

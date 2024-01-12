@@ -108,7 +108,7 @@ useEffect(() => {
       />
       <Box overflow="hidden">
         <SectionHeader 
-          title={t("common_button_projects")}
+          title={t("project_title_page")}
           img={headerImage}
           btn={true}
           cls="textContainer"
