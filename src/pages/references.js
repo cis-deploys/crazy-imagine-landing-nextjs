@@ -45,16 +45,22 @@ const References = ({ referencespage, reviews }) => {
   const [title, setTitle] = useState()
   const lang = i18n.language
   useEffect(() => {
-    setMetaTitle(referencespage.data?.attributes.seo?.metaTitle),
-      setMetaDescription(referencespage.data?.attributes.seo?.metaDescription),
-      setKeywords(referencespage.data?.attributes.seo?.keywords)
-    setTitle(referencespage.data?.attributes.title)
+    if (referencespage?.data?.attributes?.seo) {
+      setMetaTitle(referencespage?.data?.attributes?.seo?.metaTitle)
+      setMetaDescription(referencespage?.data?.attributes?.seo?.metaDescription)
+      setKeywords(referencespage?.data?.attributes?.seo?.keywords)
+    }
+    if (referencespage?.data?.attributes?.title) {
+      setTitle(referencespage?.data?.attributes?.title)
+    }
   }, [])
 
   return (
     <Layout>
       <NextSeo
-        title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
+        title={`Crazy Imagine Software | ${
+          metaTitle ? metaTitle : title ?? "References"
+        }`}
         description={`${
           metaDescription
             ? metaDescription
