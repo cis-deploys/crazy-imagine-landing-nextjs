@@ -44,29 +44,38 @@ const References = ({ referencespage, reviews }) => {
   const [keywords, setKeywords] = useState()
   const [title, setTitle] = useState()
   const lang = i18n.language
+
   useEffect(() => {
-    if (referencespage?.data?.attributes?.seo) {
-      setMetaTitle(referencespage?.data?.attributes?.seo?.metaTitle)
-      setMetaDescription(referencespage?.data?.attributes?.seo?.metaDescription)
-      setKeywords(referencespage?.data?.attributes?.seo?.keywords)
+    if (referencespage && referencespage.data) {
+      const dataArray = Array.isArray(referencespage.data)
+        ? referencespage.data
+        : [referencespage.data]
+
+      dataArray.forEach(({ attributes: { seo, title, locale } }) => {
+        const localeToUse = lang === "es" ? "es-VE" : "en_US"
+
+        if (!locale || locale === localeToUse) {
+          if (seo) {
+            setMetaTitle(seo?.metaTitle)
+            setMetaDescription(seo?.metaDescription)
+            setKeywords(seo?.keywords)
+          }
+          setTitle(title)
+        }
+      })
     }
-    if (referencespage?.data?.attributes?.title) {
-      setTitle(referencespage?.data?.attributes?.title)
-    }
-  }, [])
+  }, [referencespage, lang])
 
   console.log("seo", referencespage)
 
   return (
     <Layout>
       <NextSeo
-        title={`Crazy Imagine Software | ${
-          metaTitle ? metaTitle : title ?? "References"
-        }`}
+        title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${
           metaDescription
             ? metaDescription
-            : "Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
+            : "Crazy Imagine Software Offer SofHuy que tware Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
         }`}
         keywords={`${
           keywords
