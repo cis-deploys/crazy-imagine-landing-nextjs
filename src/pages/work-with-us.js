@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic"
 
 import Layout from "../components/Layout"
 
@@ -9,42 +9,38 @@ import { useState } from "react"
 import { NextSeo } from "next-seo"
 import { useEffect } from "react"
 
-const SectionHeader = dynamic(
-  () => import("../components/SectionHeader"),
-  { ssr: false },
-)
+const SectionHeader = dynamic(() => import("../components/SectionHeader"), {
+  ssr: false,
+})
 
-const WorkForm = dynamic(
-  () => import("../components/WorkForm"),
-  { ssr: false },
-)
+const WorkForm = dynamic(() => import("../components/WorkForm"), { ssr: false })
 
-const Imagen = dynamic(
-  () => import("../components/Imagen"),
-  { ssr: false },
-)
+const Imagen = dynamic(() => import("../components/Imagen"), { ssr: false })
 
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resWorkWithUspage = await fetch(`${domain}work-with-us-page?populate=seo&populate=title`)
+  const resWorkWithUspage = await fetch(
+    `${domain}work-with-us-page?populate=seo&populate=title&populate=images`
+  )
   const workWithUspage = await resWorkWithUspage.json()
 
   return { props: { workWithUspage } }
 }
 
-const WorkWithUsPage = ({workWithUspage}) => {
+const WorkWithUsPage = ({ workWithUspage }) => {
   const { t } = useTranslation()
 
-  const [metaTitle, setMetaTitle] = useState();
-  const [metaDescription, setMetaDescription] = useState();
-  const [keywords, setKeywords] = useState();
-  const [ title, setTitle ] = useState();
+  const [metaTitle, setMetaTitle] = useState()
+  const [metaDescription, setMetaDescription] = useState()
+  const [keywords, setKeywords] = useState()
+  const [title, setTitle] = useState()
 
+  const images = workWithUspage.data?.attributes?.images?.data ?? []
   useEffect(() => {
     setMetaTitle(workWithUspage.data?.attributes.seo?.metaTitle),
-    setMetaDescription(workWithUspage.data?.attributes.seo?.metaDescription),
-    setKeywords(workWithUspage.data?.attributes.seo?.keywords)
+      setMetaDescription(workWithUspage.data?.attributes.seo?.metaDescription),
+      setKeywords(workWithUspage.data?.attributes.seo?.keywords)
     setTitle(workWithUspage.data?.attributes.title)
   }, [])
 
@@ -52,8 +48,16 @@ const WorkWithUsPage = ({workWithUspage}) => {
     <Layout>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
-        description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
-        keywords={`${keywords ? keywords : 'crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support'}`}
+        description={`${
+          metaDescription
+            ? metaDescription
+            : "Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
+        }`}
+        keywords={`${
+          keywords
+            ? keywords
+            : "crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support"
+        }`}
         openGraph={{
           type: "website",
           locale: "en_US",
@@ -66,11 +70,9 @@ const WorkWithUsPage = ({workWithUspage}) => {
         img={headerImage}
         cls="textContainer"
       />
-      
+
       <WorkForm />
-
-      <Imagen />
-
+      <Imagen imageUrl={images[0]?.attributes.url} />
     </Layout>
   )
 }
