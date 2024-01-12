@@ -26,7 +26,7 @@ const TableProjects = dynamic(
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?populate=title&populate=project_types&populate=images`)
+  const resProjects = await fetch(`${domain}projects?locale=en&locale=es-VE&populate=title&populate=project_types&populate=images`)
   const projects = await resProjects.json()
     
   const resProjectspage = await fetch(`${domain}projectspage?populate=seo&populate=mainTitle`)
@@ -108,7 +108,7 @@ useEffect(() => {
       />
       <Box overflow="hidden">
         <SectionHeader 
-          title={t("common_button_projects")}
+          title={t("project_title_page")}
           img={headerImage}
           btn={true}
           cls="textContainer"

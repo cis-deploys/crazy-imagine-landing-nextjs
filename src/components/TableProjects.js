@@ -26,6 +26,7 @@ import CardMedia from "@mui/material/CardMedia"
 
 import { PROJECTS } from "../navigation/sitemap"
 import FilterProjectMovil from "./FilterProjectMovil"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   ContainerSection: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     padding: "50px 0px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       padding: "30px 0px",
       flexDirection: "column",
     },
@@ -57,12 +58,6 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("lg")]: {
-      width: "85%",
-      flexDirection: "column",
-      alignItems: "center",
-      padding: "0px 30px",
-    },
-    [theme.breakpoints.down("md")]: {
       width: "100%",
       flexDirection: "column",
       alignItems: "center",
@@ -86,15 +81,16 @@ const useStyles = makeStyles(theme => ({
       width: "330px",
     },
     [theme.breakpoints.between(960, 1279)]: {
-      width: "235px",
+      width: "300px",
     },
   },
   cardMediaProject: {
     height: "190px",
+    maxWidth: "500px",
+    minWidth: "230px",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     [theme.breakpoints.between(2500, 4000)]: {
-      height: "250px",
-    },
-    [theme.breakpoints.between(1900, 2499)]: {
       height: "250px",
     },
     [theme.breakpoints.between(1280, 1450)]: {
@@ -195,12 +191,12 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
       alignItems: "center",
     },
+    // [theme.breakpoints.down("lg")]: {
+    //   width: "25%",
+    //   flexDirection: "column",
+    //   alignItems: "center",
+    // },
     [theme.breakpoints.down("lg")]: {
-      width: "25%",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    [theme.breakpoints.down("md")]: {
       width: "100%",
       padding: "20px",
       flexDirection: "column",
@@ -353,6 +349,7 @@ function createNumberArray(dynamicNumber) {
 
 const TableProjects = ({ projectsData }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 
@@ -360,6 +357,7 @@ const TableProjects = ({ projectsData }) => {
   const projectsFilter = projects.filter(project =>
     project.locale.includes(lang)
   )
+  console.log(projects)
 
   const [projectDataAll, setProjectDataAll] = useState(
     projectsFilter.sort((a, b) => {
@@ -446,6 +444,8 @@ const TableProjects = ({ projectsData }) => {
   const endIndex = startIndex + itemsPerPage
   const visibleData = projectDataAll.slice(startIndex, endIndex)
 
+  console.log(visibleData)
+
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -521,7 +521,7 @@ const TableProjects = ({ projectsData }) => {
   return (
     <Box className={classes.ContainerSection}>
       <Box className={classes.containerSelect}>
-        <Hidden mdDown>
+        <Hidden lgDown>
           <Box className={classes.containerFilter}>
             <Typography className={classes.TypographyTitleFilter}>
               {t("project_page_filter")}
@@ -556,7 +556,7 @@ const TableProjects = ({ projectsData }) => {
           </Box>
         </Hidden>
 
-        <Hidden mdUp>
+        <Hidden lgUp>
           <FilterProjectMovil
             checkboxOption={checkboxOption}
             setCheckboxOption={setCheckboxOption}

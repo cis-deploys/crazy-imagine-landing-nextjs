@@ -44,12 +44,29 @@ const References = ({ referencespage, reviews }) => {
   const [keywords, setKeywords] = useState()
   const [title, setTitle] = useState()
   const lang = i18n.language
+
   useEffect(() => {
-    setMetaTitle(referencespage.data?.attributes.seo?.metaTitle),
-      setMetaDescription(referencespage.data?.attributes.seo?.metaDescription),
-      setKeywords(referencespage.data?.attributes.seo?.keywords)
-    setTitle(referencespage.data?.attributes.title)
-  }, [])
+    if (referencespage && referencespage.data) {
+      const dataArray = Array.isArray(referencespage.data)
+        ? referencespage.data
+        : [referencespage.data]
+
+      dataArray.forEach(({ attributes: { seo, title, locale } }) => {
+        const localeToUse = lang === "es" ? "es-VE" : "en_US"
+
+        if (!locale || locale === localeToUse) {
+          if (seo) {
+            setMetaTitle(seo?.metaTitle)
+            setMetaDescription(seo?.metaDescription)
+            setKeywords(seo?.keywords)
+          }
+          setTitle(title)
+        }
+      })
+    }
+  }, [referencespage, lang])
+
+  console.log("seo", referencespage)
 
   return (
     <Layout>
@@ -58,7 +75,7 @@ const References = ({ referencespage, reviews }) => {
         description={`${
           metaDescription
             ? metaDescription
-            : "Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
+            : "Crazy Imagine Software Offer SofHuy que tware Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
         }`}
         keywords={`${
           keywords
@@ -77,6 +94,7 @@ const References = ({ referencespage, reviews }) => {
         img={headerImage}
         cls="textContainer"
       />
+
       {reviews.data
         .filter(r => {
           if (lang === "en" && r?.attributes?.locale === lang) {
@@ -92,7 +110,11 @@ const References = ({ referencespage, reviews }) => {
         .sort((a, b) => b.id - a.id)
         .map((rev, index) => {
           if (index < 6) {
-            return <CarCategoryReview key={index} review={rev} index={index} />
+            if (rev?.attributes?.project?.data != null) {
+              return (
+                <CarCategoryReview key={index} review={rev} index={index} />
+              )
+            }
           }
         })}
     </Layout>
