@@ -357,6 +357,7 @@ const TableProjects = ({ projectsData }) => {
   const projectsFilter = projects.filter(project =>
     project.locale.includes(lang)
   )
+  console.log(projects)
 
   const [projectDataAll, setProjectDataAll] = useState(
     projectsFilter.sort((a, b) => {
@@ -442,6 +443,8 @@ const TableProjects = ({ projectsData }) => {
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const visibleData = projectDataAll.slice(startIndex, endIndex)
+
+  console.log(visibleData)
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
