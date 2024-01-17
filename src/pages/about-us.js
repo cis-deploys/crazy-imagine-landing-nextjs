@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/marciano.svg"
+import headerImage from "../../public/marciano.webp"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(

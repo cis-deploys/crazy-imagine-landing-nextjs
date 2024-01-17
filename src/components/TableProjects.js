@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",

@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
   wrapperContainerSection: {
     width: "100%",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",

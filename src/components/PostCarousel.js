@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     gap: "23px",
     justifyContent: "center",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",

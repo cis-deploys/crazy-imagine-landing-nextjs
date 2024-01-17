@@ -2,7 +2,7 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXTwitter, faFacebook, faYoutube, faInstagram, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
 import { Box } from "@mui/material"
-import UpworkIcon from "../../public/upwork_icon.svg"
+import UpworkIcon from "../../public/upwork_icon.webp"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles";
 

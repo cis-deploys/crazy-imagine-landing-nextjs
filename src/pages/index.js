@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/flag.svg"
+import headerImage from "../../public/flag.webp"
 import { NextSeo } from "next-seo"
 import { useEffect, useState } from "react"
 
