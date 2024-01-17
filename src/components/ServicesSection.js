@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
 import CardService from "./CardService"
 import ServiceCapabilities from "./ServiceCapabilities"
-import fullStackImage from "../../public/laptop-purple.svg"
-import qualitySupport from "../../public/quality-blue.svg"
-import userExperience from "../../public/user_experience.svg"
+import fullStackImage from "../../public/laptop-purple.webp"
+import qualitySupport from "../../public/quality-blue.webp"
+import userExperience from "../../public/user_experience.webp"
 import {
   faBagShopping,
   faChartBar,

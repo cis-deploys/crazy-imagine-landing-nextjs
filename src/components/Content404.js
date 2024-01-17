@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 
-import Image404 from '../../public/Image404.svg'
+import Image404 from '../../public/Image404.webp'
 
 const useStyles = makeStyles((theme)=>({
   navbarLogo: {

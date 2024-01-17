@@ -5,7 +5,7 @@ import { Box } from "@mui/material"
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/image_project_page.svg"
+import headerImage from "../../public/image_project_page.webp"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
