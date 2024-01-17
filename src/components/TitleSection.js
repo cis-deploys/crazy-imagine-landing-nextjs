@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Box, Typography } from "@mui/material"
-import mainImage from "../../public/Group619.svg"
+import mainImage from "../../public/Group619.webp"
 import { useIntersection } from "../hooks/useIntersection"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"

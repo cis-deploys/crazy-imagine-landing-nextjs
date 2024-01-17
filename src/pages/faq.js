@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
-import frequentlyAsk from "../../public/frequentlyAsk.svg"
+import frequentlyAsk from "../../public/frequentlyAsk.webp"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(

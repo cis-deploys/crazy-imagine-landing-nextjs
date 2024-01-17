@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import { useTranslation } from "react-i18next"
 import Layout from "../components/Layout"
-import headerImage from "../../public/references.svg"
+import headerImage from "../../public/references.webp"
 
 import { NextSeo } from "next-seo"
 import React, { useEffect, useState } from "react"

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box,  Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles";
-import littleImage from "../../public/littleTallerLogo.png"
-import clientifyImage from "../../public/clientifyLogo.svg"
+import littleImage from "../../public/littleTallerLogo.webp"
+import clientifyImage from "../../public/clientifyLogo.webp"
 import motorennImage from "../../public/motorennLogo.webp"
 import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
 import Sirge from "../../public/Sirge-Logo.webp"
