@@ -28,7 +28,7 @@ const SectionHeader = dynamic(
     return { props: { faq, faqPage } }
   }
 
-const faq = ({ faq, faqPage }) => {
+  function Faq ({ faq, faqPage }) {
     const { t } = useTranslation()
 
     const [metaTitle, setMetaTitle] = useState();
@@ -88,4 +88,4 @@ const faq = ({ faq, faqPage }) => {
   )
 }
 
-export default faq
+export default Faq
