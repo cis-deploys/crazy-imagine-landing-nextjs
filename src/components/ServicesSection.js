@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Box } from "@mui/material";
+import React, { useState } from "react"
+import { Box } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { makeStyles } from "@mui/styles"
-import CardService from "./CardService";
-import ServiceCapabilities from "./ServiceCapabilities";
-import fullStackImage from "../../public/laptop-purple.svg";
-import qualitySupport from "../../public/quality-blue.svg";
-import userExperience from "../../public/user_experience.svg";
+import CardService from "./CardService"
+import ServiceCapabilities from "./ServiceCapabilities"
+import fullStackImage from "../../public/laptop-purple.svg"
+import qualitySupport from "../../public/quality-blue.svg"
+import userExperience from "../../public/user_experience.svg"
 import {
   faBagShopping,
   faChartBar,
@@ -14,37 +14,35 @@ import {
   faMobile,
   faCode,
   faUserTie,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"
 
-const useStyles = makeStyles((theme) => ({
-  
-    cardContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-      gap: '20px',
-      height: 'auto',
-      paddingTop: 'auto',
-      [theme.breakpoints.between(0, 767)]: {
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: 'center',
-        width: "100%",
-      },
+const useStyles = makeStyles(theme => ({
+  cardContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: "20px",
+    height: "auto",
+    paddingTop: "auto",
+    [theme.breakpoints.between(0, 767)]: {
+      alignItems: "center",
+      flexDirection: "column",
+      justifyContent: "center",
+      width: "100%",
     },
-    card: {
-      height: 'min-content !important'
-    },
-}));
+  },
+  card: {
+    height: "min-content !important",
+  },
+}))
 
 const ServicesSection = () => {
-  const classes = useStyles();
-  const { t } = useTranslation();
+  const classes = useStyles()
+  const { t } = useTranslation()
 
-  const [card1Open, setCard1Open] = useState(false);
-  const [card2Open, setCard2Open] = useState(false);
-  const [card3Open, setCard3Open] = useState(false);
-
+  const [card1Open, setCard1Open] = useState(false)
+  const [card2Open, setCard2Open] = useState(false)
+  const [card3Open, setCard3Open] = useState(false)
 
   return (
     <>
@@ -63,8 +61,8 @@ const ServicesSection = () => {
               t("services_capabilities_capabilitiesCard_description1_item2"),
               t("services_capabilities_capabilitiesCard_description1_item3"),
             ]}
-            isOpen={card1Open} 
-            onClick={() => setCard1Open(!card1Open)} 
+            isOpen={card1Open}
+            onClick={() => setCard1Open(!card1Open)}
           />
           <CardService
             className={`${classes.card}`}
@@ -75,10 +73,9 @@ const ServicesSection = () => {
               t("services_capabilities_capabilitiesCard_description2_item2"),
               t("services_capabilities_capabilitiesCard_description2_item3"),
             ]}
-            isOpen={card2Open} 
+            isOpen={card2Open}
             onClick={() => setCard2Open(!card2Open)}
           />
-          
         </Box>
       </Box>
       <Box className={`${classes.container}`}>
@@ -88,7 +85,7 @@ const ServicesSection = () => {
           img={userExperience}
         />
         <Box className={`${classes.cardContainer}`}>
-          <CardService 
+          <CardService
             title={t("common_capabilities_capabilitiesCard_title3")}
             icon={faBagShopping}
             contentList={[
@@ -96,8 +93,8 @@ const ServicesSection = () => {
               t("services_capabilities_capabilitiesCard_description3_item2"),
               t("services_capabilities_capabilitiesCard_description3_item3"),
             ]}
-            isOpen={card3Open} 
-            onClick={() => setCard3Open(!card3Open)} 
+            isOpen={card3Open}
+            onClick={() => setCard3Open(!card3Open)}
           />
           <CardService
             title={t("services_capabilities_capabilitiesCard_title4")}

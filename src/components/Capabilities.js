@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       height: "auto",
       width: "65%",
-      alignSelf: "center"
+      alignSelf: "center",
     },
   },
   classContainer: {
@@ -111,14 +111,23 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls, width, height }) => {
   const classes = useStyles()
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <Box className={classes[cls]}>
-      <Typography className={classes.subtitle2}>{t("common_button_capabilities")}</Typography>
+      <Typography className={classes.subtitle2}>
+        {t("common_button_capabilities")}
+      </Typography>
       <Typography className={classes.title2}>{title}</Typography>
       <Typography className={classes.desc2}>{desc}</Typography>
-      {img && 
-      <Image className={classes.img2} src={img} width={width} height={height} alt="Capabilities" />}
+      {img && (
+        <Image
+          className={classes.img2}
+          src={img}
+          width={width}
+          height={height}
+          alt="Capabilities"
+        />
+      )}
     </Box>
   )
 }

@@ -188,11 +188,29 @@
     "Project Duration":"Duracion del proyecto",
     "Project Size":"Tamaño del proyecto",
     "Project Category":"Categoria del proyecto",
-    "playBook_sectionHeader_title": "Libro de jugadas",
-    "playBook_title": "Nuestro proceso paso a paso para diseñar, desarrollar y mantener soluciones de software personalizadas excepcionales",
+    "RoadMap_sectionHeader_title": "Ilumina tu vida con nuestra hoja de ruta",
+    "RoadMap_sectionHeader_subtitle":"consulte nuestro proceso paso a paso para conocer todo lo que necesita.",
+    "common_ThisRoadMapComponents_title1":"Esta es nuestra hoja de ruta",
+    "common_ThisRoadMapComponents_descripcion":"Nuestro proceso paso a paso para diseñar, desarrollar y mantener soluciones de software personalizadas excepcionales",
     "design": "Diseño", 
     "develop": "Desarrollo",
-    "maintain": "Mantener"
+    "maintain": "Mantener",
+    "designPhase1":"Fase 1",
+    "designDescripcion":"Antes de que podamos desarrollar una nueva aplicación o crear nuevas funciones para una aplicación existente, primero debemos diseñar y crear un prototipo de lo que se creará.",
+   "designDescripcion2":"Esta sección describe nuestro proceso de diseño y creación de prototipos, para que sepa qué esperar.",
+   "step1":"Paso 1",
+   "step2":"Paso 2",
+   "step3":"Paso 3",
+   "step4":"Paso 4",
+   "step5":"Paso 5",
+   "Phase1":"Fase 1",
+   "Phase2":"Fase 2",
+   "Phase3":"Fase 3",
+   "designDiscovery": "Descubrimiento de diseño",
+   "technicalDiscovery":"Descubrimiento técnico",
+   "userExperience_Design":"Diseño de experiencia de usuario",
+   "userInterface_Design":"Diseño de interfaz de usuario",
+   "PrototypeEstimation":"Prototipo y estimación"
 
 
 }

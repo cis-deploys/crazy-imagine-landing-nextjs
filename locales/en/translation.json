@@ -188,9 +188,33 @@
    "Project Duration":"Project Duration",
    "Project Size":" Project Size",
    "Project Category":"Project Category",
-   "playBook_sectionHeader_title": "Play Book",
-   "playBook_title": "Our step-by-step process for designing, developing, and maintaining exceptional custom software solutions",
+   "RoadMap_sectionHeader_title": "Light Up Your Life With Our Roadmap",
+   "RoadMap_sectionHeader_subtitle":"check our step-by-step process for everyting you need to",
+   "common_ThisRoadMapComponents_title1":"This is our Roadmap",
+   "common_ThisRoadMapComponents_descripcion":"Our step-by-step process for designing, developing, and maintaining exceptional custom software solutions",
    "design": "Design", 
    "develop": "Develop",
-   "maintain": "Maintain"
+   "maintain": "Maintain",
+   "designPhase1":"Phase 1",
+   "designDescripcion":"Before we can develop a new application, or build new features for an existing application, we must first design and prototype what will be built.",
+   "designDescripcion2":"This section describes our design and prototyping process, so that you know what to expect.",
+   "step1":"Step 1",
+   "step2":"Step 2",
+   "step3":"Step3",
+   "step4":"Step 4",
+   "step5":"Step 5",
+   "Phase1":"Phase 1",
+   "Phase2":"Phase 2",
+   "Phase3":"Phase 3",
+   "designDiscovery": "Design Discovery",
+   "technicalDiscovery":"Technical Discovery",
+   "userExperience_Design":"User Experience Design",
+   "userInterface_Design":"User Interface Design",
+   "PrototypeEstimation":"Prototype & Estimation"
+  
+
+
+
+
+   
 }

@@ -28,8 +28,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     background: "#FFF",
-    marginBottom: '10px',
-    marginTop: '50px',
+    marginBottom: "10px",
+    marginTop: "50px",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       height: "auto",
@@ -180,12 +180,13 @@ const AboutSection = () => {
       link: "/meet-team",
       icon: faUsers,
     },
-    // {
-    //   title: "Playbook",
-    //   description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
-    //   link: '/play-book',
-    //   icon: faCheckSquare
-    // },
+    {
+      title: "RoadMap",
+      description:
+        "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
+      link: "/road-map",
+      icon: faCheckSquare,
+    },
     {
       title: t("common_button_blog"),
       description: "Collaboration with our internal team",

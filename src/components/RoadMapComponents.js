@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
-    marginTop: "0px",
+
+    paddingBottom: "68px",
     [theme.breakpoints.between(0, 600)]: {
       gap: "5px",
     },
@@ -59,9 +60,11 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "60px",
-    lineHeight: "60px",
+    fontSize: "58px",
+    lineHeight: "58px",
     color: "#193174",
+    marginTop: 0,
+    marginBottom: 0,
     [theme.breakpoints.down("md")]: {
       fontSize: "28px",
       lineHeight: "28px",
@@ -72,15 +75,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   desc: {
-    fontFamily: "HindVadodara",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "20px",
-    lineHeight: "130%",
-    letterSpacing: "0.02em",
+    fontFamily: "Nexa Bold ",
+
+    fontWeight: "700",
+    fontSize: "26px",
+    lineHeight: "33.8px",
+    letterSpacing: "0.2rem",
     color: "#193174",
     whiteSpace: "pre-line",
-    textAlign: "left",
+    textAlign: "justify",
     [theme.breakpoints.up("xl")]: {
       fontSize: "30px",
     },
@@ -136,49 +139,49 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ServiceCapabilities = ({ title, desc, img }) => {
+const RoadMapComponents = ({ title, desc, img }) => {
   const classes = useStyles({ img })
   const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t } = useTranslation()
+
+  const titleParts = title.split(" ")
+  const firstPart = titleParts.slice(0, 3).join(" ")
+  const secondPart = titleParts.slice(3).join(" ")
+
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container1}>
-        <Box className={classesComponent.containerWhiteComponent}>
+        <Box className={classesComponent.containerWhiteComponentRoadMap}>
           {img && (
-            <Box className={classes.imgContainer}>
-              <Image
-                src={img}
-                width={314}
-                height={357}
-                className={
-                  isVisible
-                    ? classesComponent.imageComponent
-                    : classesComponent.image
-                }
-                alt={`${title}`}
-              />
-            </Box>
+            <Image
+              src={img}
+              width={473}
+              height={294}
+              className={
+                isVisible
+                  ? classesComponent.imageComponent
+                  : classesComponent.image
+              }
+              alt={`${title}`}
+            />
           )}
-          <Box className={classesComponent.textContainerWhiteComponent}>
-            <Typography className={classes.subtitle2}>
-              {t("common_button_capabilities")}
+          <Box className={classesComponent.textContainerWhiteComponentRoadMap}>
+            <Typography className={classes.title2}>
+              <span style={{ color: "#193174" }}>{firstPart}</span>{" "}
+              <span style={{ color: "#27AAE1", display: "block" }}>
+                {secondPart}
+              </span>
             </Typography>
-            <Typography className={classes.title2}>{title}</Typography>
             <Typography ref={ref} className={classes.desc}>
               {desc}
             </Typography>
           </Box>
-        </Box>
-        <Box className={classes.containerDesc2}>
-          <Typography ref={ref} className={classes.desc2}>
-            {desc}
-          </Typography>
         </Box>
       </Box>
     </Box>
   )
 }
 
-export default ServiceCapabilities
+export default RoadMapComponents
