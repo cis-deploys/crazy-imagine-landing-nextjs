@@ -524,7 +524,7 @@ const TableProjects = ({ projectsData }) => {
               {t("project_page_filter")}
             </Typography>
 
-            <Accordion>
+            <Accordion elevation={0}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -614,7 +614,7 @@ const TableProjects = ({ projectsData }) => {
                 component="div"
                 key={itemGrid}
                 sx={dotParticlesStyles(itemGrid, page)}
-                onClick={() => handleChangePage(item)}
+                onClick={() => handleChangePage(itemGrid)}
               ></Box>
             ))}
           </Box>

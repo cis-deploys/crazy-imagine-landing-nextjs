@@ -17,11 +17,6 @@ const AboutSection = dynamic(
   { ssr: false },
 )
 
-const Imagen = dynamic(
-  () => import("../components/Imagen"),
-  { ssr: false },
-)
-
 const ContactSection = dynamic(
   () => import("../components/ContactSection"),
   { ssr: false },
@@ -76,7 +71,7 @@ useEffect(() => {
         cls="textContainer"
       />
       <AboutSection />
-      {/* <Imagen /> */}
+      
       <ContactSection />
     </Layout>
   )

@@ -475,8 +475,7 @@ const WorkForm = () => {
 
     if (curriculum?.length === 1) {
       setShowButton(true)
-
-      console.log("data", data.curriculum[0])
+      
       const fileTest =  data.curriculum[0]
       const formData = new FormData()
       formData.append("files", curriculum[0])
