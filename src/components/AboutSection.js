@@ -168,15 +168,14 @@ const AboutSection = () => {
     //   icon: faDesktop
     // },
     {
-      title: "References",
-      description:
-        "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
+      title: t("about_aboutSection_reference_title"),
+      description: t("about_aboutSection_reference"),
       link: "/references",
       icon: faUser,
     },
     {
-      title: "Meet the team",
-      description: "Collaboration with our internal team",
+      title: t("about_aboutSection_meetTheTeam_title"),
+      description: t("about_aboutSection_meetTheTeam"),
       link: "/meet-team",
       icon: faUsers,
     },
@@ -187,17 +186,17 @@ const AboutSection = () => {
     //   icon: faCheckSquare
     // },
     {
-      title: t("common_button_blog"),
-      description: "Collaboration with our internal team",
+      title: "Blog",
+      description: t("about_aboutSection_blog"),
       link: "/blog",
       icon: faFileText,
     },
-    // {
-    //   title: "FAQ",
-    //   description: "Collaboration with our internal team",
-    //   link: '/about-us',
-    //   icon: faEnvelopeOpen
-    // },
+    {
+      title: t("about_aboutSection_faq_title"),
+      description: t("about_aboutSection_faq"),
+      link: '/faq',
+      icon: faEnvelopeOpen
+    },
     // {
     //   title: "Mission",
     //   description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
@@ -205,10 +204,9 @@ const AboutSection = () => {
     //   icon: faRocket
     // },
     {
-      title: "Who we are",
-      description:
-        "We have a dynamic and diverse mix of full-stack, front-end, back-end, and mobile developers, as well as industry-leading project managers who are passionate about combining technology with creativity to develop web solutions to help your business thrive.",
-      link: "/about-us",
+      title: t("about_aboutSection_whoWeAre_title"),
+      description: t("about_aboutSection_whoWeAre"),
+      link: "/",
       icon: faBriefcase,
     },
     // {
@@ -218,8 +216,8 @@ const AboutSection = () => {
     //   icon: faBuilding
     // },
     {
-      title: "Workinng together",
-      description: t("about_aboutSection_description1"),
+      title: t("about_aboutSection_WorkinngTogether_title"),
+      description: t("about_aboutSection_WorkinngTogether"),
       link: "/services",
       icon: faHandshake,
     },
@@ -241,7 +239,7 @@ const AboutSection = () => {
         <Box>
           <Grid container className={classes.containerGrids}>
             {elements.map(e => (
-              <Grid
+              <Grid item
                 lg={3}
                 md={4}
                 sm={6}
@@ -255,7 +253,7 @@ const AboutSection = () => {
                     justifyContent="space-evenly"
                     className={classes.gridElements}
                   >
-                    <Grid
+                    <Grid item
                       lg={2}
                       md={3}
                       sm={2}
@@ -264,7 +262,7 @@ const AboutSection = () => {
                     >
                       <FontAwesomeIcon icon={e.icon} className={classes.icon} />
                     </Grid>
-                    <Grid lg={9} md={8} sm={8} xs={9}>
+                    <Grid lg={9} md={8} sm={8} xs={9} item>
                       <Typography className={classes.gridTitle}>
                         <Link href={e.link}>
                           <a className={``}>{e.title}</a>
