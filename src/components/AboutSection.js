@@ -193,12 +193,12 @@ const AboutSection = () => {
       link: '/faq',
       icon: faEnvelopeOpen
     },
-    // {
-    //   title: "Mission",
-    //   description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
-    //   link: '/mission',
-    //   icon: faRocket
-    // },
+    {
+      title: "Mission",
+      description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
+      link: '/mission',
+      icon: faRocket
+    },
     {
       title: t("about_aboutSection_whoWeAre_title"),
       description: t("about_aboutSection_whoWeAre"),

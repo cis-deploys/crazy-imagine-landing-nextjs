@@ -5,8 +5,6 @@ import Image from "next/image"
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 
-import Image404 from '../../public/Image404.webp'
-
 const useStyles = makeStyles((theme)=>({
   navbarLogo: {
     width: '100%',
@@ -81,7 +79,6 @@ const Content404 = () => {
   return (
 <Box className={classes.container}>
     <Box className={classes.ContainerTexts} >
-        {/* <Image src={Image404} className={classes.navbarLogo} alt="imagen-404"/> */}
         <Typography variant="h3" className={classes.title}>404</Typography>
         <Typography variant="h3" className={classes.titleSecondary}>{t("404-title")}</Typography>
     </Box>

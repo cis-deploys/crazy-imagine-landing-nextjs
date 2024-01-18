@@ -9,5 +9,7 @@ exports.PRIVACY_POLICY = "/privacy-policy"
 exports.TEAMS = "/team"
 exports.REFERENCES = "/references"
 exports.FAQ = "/faq"
+exports.FAQ = "/mission"
+
 
 
