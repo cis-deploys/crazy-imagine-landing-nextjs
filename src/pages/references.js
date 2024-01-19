@@ -34,7 +34,6 @@ export async function getServerSideProps() {
     `${domain}references-page?locale=all&&populate=seo&populate=title`
   )
   const referencespage = await resReferencespage.json()
-
   return { props: { referencespage, reviews } }
 }
 const References = ({ referencespage, reviews }) => {
