@@ -85,7 +85,8 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "pre-line",
     textAlign: "justify",
     [theme.breakpoints.up("xl")]: {
-      fontSize: "30px",
+      fontSize: "32px",
+      lineHeight: "37px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "16px",

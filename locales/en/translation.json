@@ -9,6 +9,7 @@
     "common_button_work_with_us": "WORK WITH US",
     "common_button_contact_us": "CONTACT US",
     "common_button_SCHEDULE_A_CALL": "SCHEDULE A CALL",
+    "common_button_CONTINUE_READING": "CONTINUE READING",
     "common_button_contact_SUBMIT": "SUBMIT",
     "common_capabilities_title1": "Full-stack\nDevelopment",
     "common_capabilities_title2": "User Experience",
@@ -204,7 +205,7 @@
    "RoadMap_sectionHeader_title": "Light Up Your Life With Our Roadmap",
    "RoadMap_sectionHeader_subtitle":"check our step-by-step process for everyting you need to",
    "common_ThisRoadMapComponents_title1":"This is our Roadmap",
-   "common_ThisRoadMapComponents_descripcion":"Our step-by-step process for designing, developing, and maintaining exceptional custom software solutions",
+   "common_ThisRoadMapComponents_descripcion":"Our step-by-step process for designing, developing, and maintaining exceptional custom software solutions.",
    "design": "Design", 
    "develop": "Develop",
    "maintain": "Maintain",
@@ -223,8 +224,15 @@
    "technicalDiscovery":"Technical Discovery",
    "userExperience_Design":"User Experience Design",
    "userInterface_Design":"User Interface Design",
-   "PrototypeEstimation":"Prototype & Estimation"
-  
+   "PrototypeEstimation":"Prototype & Estimation",
+   "step1Description":"We begin the design phase with a discovery process to establish the goals and scope of your project to equip the team for success.",
+   "title2Step1":"The Kickoff Meeting",
+   "step1Description2":"The first step of the discovery process is a kickoff meeting with our design team and your key stakeholders. Our clients all begin at different stages in the process, so we use this time to evaluate what has been done so far on your project and plan out a roadmap for designing the required features and functionality of your application.",
+   "titleUserPersonas":"User Personas",
+   "descripctionUser":"As a final step of design discovery, we'll create a series of user personas to gain an understanding of the different types of potential users of the application, what motivates them, and what goals they would like to achieve when using the app.",
+   "descriptionStep2":"Many of our projects start with a multi-part technical discovery engagement to either understand and document your existing software stack or research and recommend the right technologies and architecture for your project.",
+     "description2step2":"This technical discovery can include conducting an in-depth code review on your existing application, researching technology options for your specific use case, reviewing documentation for third-party integrations, creating a DevOps strategy, and more.",
+     "DELIVERABLES":"Deliverables"
 
 
 

@@ -9,6 +9,7 @@
     "common_button_work_with_us": "TRABAJA CON NOSOTROS",
     "common_button_contact_us": "CONTÁCTANOS",
     "common_button_SCHEDULE_A_CALL": "PROGRAMAR UNA LLAMADA",
+    "common_button_CONTINUE_READING": "CONTINUAR LEYENDO",
     "common_button_contact_SUBMIT": "ENVIAR",
     "common_capabilities_title1": "Desarrollo\nFull-stack",
     "common_capabilities_title2": "Experiencia de Usuario",
@@ -202,10 +203,10 @@
     "Project Duration":"Duracion del proyecto",
     "Project Size":"Tamaño del proyecto",
     "Project Category":"Categoria del proyecto",
-    "RoadMap_sectionHeader_title": "Ilumina tu vida con nuestra hoja de ruta",
+    "RoadMap_sectionHeader_title": "Ilumina Tu Vida Con Nuestra Hoja De Ruta",
     "RoadMap_sectionHeader_subtitle":"consulte nuestro proceso paso a paso para conocer todo lo que necesita.",
     "common_ThisRoadMapComponents_title1":"Esta es nuestra hoja de ruta",
-    "common_ThisRoadMapComponents_descripcion":"Nuestro proceso paso a paso para diseñar, desarrollar y mantener soluciones de software personalizadas excepcionales",
+    "common_ThisRoadMapComponents_descripcion":"Nuestro proceso paso a paso para diseñar, desarrollar y mantener soluciones de software personalizadas excepcionales.",
     "design": "Diseño", 
     "develop": "Desarrollo",
     "maintain": "Mantener",
@@ -220,11 +221,21 @@
    "Phase1":"Fase 1",
    "Phase2":"Fase 2",
    "Phase3":"Fase 3",
-   "designDiscovery": "Descubrimiento de diseño",
-   "technicalDiscovery":"Descubrimiento técnico",
-   "userExperience_Design":"Diseño de experiencia de usuario",
-   "userInterface_Design":"Diseño de interfaz de usuario",
-   "PrototypeEstimation":"Prototipo y estimación"
+   "designDiscovery": "Descubrimiento De Diseño",
+   "technicalDiscovery":"Descubrimiento Técnico",
+   "userExperience_Design":"Diseño De Experiencia de Usuario",
+   "userInterface_Design":"Diseño De Interfaz De Usuario",
+   "PrototypeEstimation":"Prototipo & Estimación",
+   "step1Description":"Comenzamos la fase de diseño con un proceso de descubrimiento para establecer los objetivos y el alcance de su proyecto para preparar al equipo para el éxito.",
+   "title2Step1":"La Reunión Inicial",
+   "step1Description2":"El primer paso del proceso de descubrimiento es una reunión inicial con nuestro equipo de diseño y sus partes interesadas clave. Todos nuestros clientes comienzan en diferentes etapas del proceso, por lo que utilizamos este tiempo para evaluar lo que se ha hecho hasta ahora en su proyecto y planificar una hoja de ruta para diseñar las características y funcionalidades requeridas de su aplicación.",
+   "titleUserPersonas":"Personas De Usuario",
+   "descripctionUser":"Como paso final del descubrimiento del diseño, crearemos una serie de personajes de usuario para comprender los diferentes tipos de usuarios potenciales de la aplicación, qué los motiva y qué objetivos les gustaría lograr al usar la aplicación.",
+   "descriptionStep2":"Muchos de nuestros proyectos comienzan con un compromiso de descubrimiento técnico de varias partes para comprender y documentar su pila de software existente o investigar y recomendar las tecnologías y arquitectura adecuadas para su proyecto.",
+   "description2step2":"Este descubrimiento técnico puede incluir realizar una revisión profunda del código de su aplicación existente, investigar opciones tecnológicas para su caso de uso específico, revisar documentación para integraciones de terceros, crear una estrategia de DevOps y más.",
+   "DELIVERABLES":"Entregables"
 
+
+   
 
 }

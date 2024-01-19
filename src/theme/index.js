@@ -1,17 +1,16 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles"
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#193174',
+      main: "#193174",
     },
     secondary: {
-      main: '#27AAE1',
+      main: "#27AAE1",
     },
   },
   typography: {
-    fontFamily: 'Roboto, Lato, Poppins, Hind, Open Sans' ["400"],
-    
+    fontFamily: "Roboto, Lato, Poppins, Hind, Open Sans"["400"],
   },
   breakpoints: {
     values: {
@@ -20,6 +19,7 @@ export const theme = createTheme({
       md: 960,
       lg: 1280,
       xl: 1920,
+      xxl: 2560,
     },
   },
-});
+})

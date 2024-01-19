@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { Box, Grid, Typography, Button, Pagination } from "@mui/material"
+import React, { useState } from "react"
+import { Box, Grid, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import Link from "next/link"
@@ -68,11 +68,6 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     maxWidth: "1200px",
     margin: " 0 auto",
-
-    // [theme.breakpoints.between(0, 767)]: {
-    //   flexDirection: "column",
-    //   gap: "10px",
-    // },
   },
   sectionTitles: {
     padding: "5px",
@@ -282,8 +277,8 @@ const RoadMapContent = () => {
             spacing={2}
             className={classes.sectionTitlesContainer}
           >
-            {sectionTitles.map(e => (
-              <Grid item sm={12} md={12} lg={4} xl={4}>
+            {sectionTitles.map((e, index) => (
+              <Grid item key={index} sm={12} md={12} lg={4} xl={4}>
                 <Box
                   className={classes.sectionTitles}
                   onClick={() => handleSectionClick(e.link)}
@@ -309,7 +304,6 @@ const RoadMapContent = () => {
         </Grid>
       </Box>
 
-      {/* Mostrar la sección correspondiente según el estado activeSection */}
       {activeSection === "#design" && <DesignSection />}
       {activeSection === "#develop" && <DevelopSection />}
       {activeSection === "#maintain" && <MaintainSection />}
