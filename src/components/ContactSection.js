@@ -5,7 +5,7 @@ import { makeStyles } from "@mui/styles";
 import Image from 'next/image';
 import ContactForm from "./ContactForm"
 import Section from "./Section"
-import Satelite from "../../public/satelite.svg"
+import Satelite from "../../public/satelite.webp"
 import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/marciano.svg"
+import headerImage from "../../public/marciano.webp"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
@@ -14,11 +14,6 @@ const SectionHeader = dynamic(
 
 const AboutSection = dynamic(
   () => import("../components/AboutSection"),
-  { ssr: false },
-)
-
-const Imagen = dynamic(
-  () => import("../components/Imagen"),
   { ssr: false },
 )
 
@@ -76,7 +71,7 @@ useEffect(() => {
         cls="textContainer"
       />
       <AboutSection />
-      {/* <Imagen /> */}
+      
       <ContactSection />
     </Layout>
   )

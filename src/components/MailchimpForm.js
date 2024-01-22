@@ -132,7 +132,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     flexDirection: "column",
     padding: "30px 0",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundSize: "cover",
     backgroundRepeat: "norepeat",
     backgroundPosition: "center",

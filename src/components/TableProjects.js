@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     height: "110px",
     [theme.breakpoints.between(2500, 4000)]: {
       height: "120px",
-      padding: "28px 0px 28px 28px"
+      padding: "28px 0px 28px 28px",
     },
     [theme.breakpoints.between(1280, 2499)]: {
       height: "100px",
@@ -524,7 +524,7 @@ const TableProjects = ({ projectsData }) => {
               {t("project_page_filter")}
             </Typography>
 
-            <Accordion>
+            <Accordion elevation={0}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -573,8 +573,8 @@ const TableProjects = ({ projectsData }) => {
           draggable="true"
           sx={{
             cursor: "pointer",
-            display: 'flex',
-            flexDirection: 'row',
+            display: "flex",
+            flexDirection: "row",
           }}
         >
           {visibleData.map(cardProject => (
@@ -607,18 +607,18 @@ const TableProjects = ({ projectsData }) => {
             </Grid>
           ))}
         </Grid>
-          <Grid>
+        <Grid>
           <Box sx={dotStyles}>
             {pagesArray.map(itemGrid => (
               <Box
                 component="div"
                 key={itemGrid}
                 sx={dotParticlesStyles(itemGrid, page)}
-                onClick={() => handleChangePage(item)}
+                onClick={() => handleChangePage(itemGrid)}
               ></Box>
             ))}
           </Box>
-          </Grid>
+        </Grid>
       </Box>
     </Box>
   )

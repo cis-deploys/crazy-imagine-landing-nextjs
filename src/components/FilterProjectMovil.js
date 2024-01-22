@@ -99,7 +99,7 @@ const FilterProjectMovil = ({ checkboxOption, setCheckboxOption }) => {
 
         </Box> 
 
-        <Accordion onClick={handleAccordionClick}>
+        <Accordion onClick={handleAccordionClick} elevation={0}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"

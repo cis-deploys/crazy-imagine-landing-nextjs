@@ -1,6 +1,6 @@
 import React from "react"
 import { Box } from "@mui/material"
-import Imagen from "../../public/LOGO.png"
+import Imagen from "../../public/LOGO.webp"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 

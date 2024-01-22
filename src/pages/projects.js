@@ -5,7 +5,7 @@ import { Box } from "@mui/material"
 
 import Layout from "../components/Layout"
 
-import headerImage from "../../public/image_project_page.svg"
+import headerImage from "../../public/image_project_page.webp"
 import { NextSeo } from "next-seo"
 
 const SectionHeader = dynamic(
@@ -108,7 +108,7 @@ useEffect(() => {
       />
       <Box overflow="hidden">
         <SectionHeader 
-          title={t("common_button_projects")}
+          title={t("project_title_page")}
           img={headerImage}
           btn={true}
           cls="textContainer"

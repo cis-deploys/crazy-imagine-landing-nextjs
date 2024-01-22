@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import { useTranslation } from "react-i18next"
 import Layout from "../components/Layout"
-import headerImage from "../../public/references.svg"
+import headerImage from "../../public/references.webp"
 
 import { NextSeo } from "next-seo"
 import React, { useEffect, useState } from "react"
@@ -34,7 +34,6 @@ export async function getServerSideProps() {
     `${domain}references-page?locale=all&&populate=seo&populate=title`
   )
   const referencespage = await resReferencespage.json()
-
   return { props: { referencespage, reviews } }
 }
 const References = ({ referencespage, reviews }) => {
@@ -44,12 +43,27 @@ const References = ({ referencespage, reviews }) => {
   const [keywords, setKeywords] = useState()
   const [title, setTitle] = useState()
   const lang = i18n.language
+
   useEffect(() => {
-    setMetaTitle(referencespage.data?.attributes.seo?.metaTitle),
-      setMetaDescription(referencespage.data?.attributes.seo?.metaDescription),
-      setKeywords(referencespage.data?.attributes.seo?.keywords)
-    setTitle(referencespage.data?.attributes.title)
-  }, [])
+    if (referencespage && referencespage.data) {
+      const dataArray = Array.isArray(referencespage.data)
+        ? referencespage.data
+        : [referencespage.data]
+
+      dataArray.forEach(({ attributes: { seo, title, locale } }) => {
+        const localeToUse = lang === "es" ? "es-VE" : "en_US"
+
+        if (!locale || locale === localeToUse) {
+          if (seo) {
+            setMetaTitle(seo?.metaTitle)
+            setMetaDescription(seo?.metaDescription)
+            setKeywords(seo?.keywords)
+          }
+          setTitle(title)
+        }
+      })
+    }
+  }, [referencespage, lang])
 
   return (
     <Layout>
@@ -58,7 +72,7 @@ const References = ({ referencespage, reviews }) => {
         description={`${
           metaDescription
             ? metaDescription
-            : "Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
+            : "Crazy Imagine Software Offer SofHuy que tware Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!"
         }`}
         keywords={`${
           keywords

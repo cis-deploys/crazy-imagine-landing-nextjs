@@ -15,7 +15,7 @@ const useStyes = makeStyles(theme => ({
     gap: "15px",
     justifyContent: "center",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",

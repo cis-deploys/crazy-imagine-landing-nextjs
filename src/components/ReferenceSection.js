@@ -9,7 +9,7 @@ const useStyes = makeStyles(theme => ({
   referenceContainer: {
     textAlign: "center",
     background: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
