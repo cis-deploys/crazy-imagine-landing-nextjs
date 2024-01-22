@@ -153,6 +153,10 @@ const useStyles = makeStyles(theme => ({
       display: "none",
     },
   },
+  images: {
+  objectFit: "contain", 
+  objectPosition: "bottom",
+  }
 }))
 
 const MeetTeamSection = ({members}) => {
@@ -182,6 +186,9 @@ const MeetTeamSection = ({members}) => {
                 width={314}
                 height={357}
                 alt="Title"
+                quality={100}
+                className={ classes.images }
+                priority
               />
             </Grid>
           </>
@@ -202,6 +209,9 @@ const MeetTeamSection = ({members}) => {
                 width={314}
                 height={357}
                 alt="Title"
+                quality={100}
+                className={ classes.images }
+                priority
               />
             </Grid>
             <Grid md={5} sm={6} item className={`${classes.contentRight} ${classes.textRenponsiveRight}`}>
