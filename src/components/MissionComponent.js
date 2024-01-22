@@ -7,6 +7,7 @@ import { faRocket, faEye, faAward } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Logo from "../../public/Logo.webp"
+import { useTranslation } from 'react-i18next'
 
   const useStyles = makeStyles(theme => ({
     containerMain: {
@@ -32,19 +33,41 @@ import Logo from "../../public/Logo.webp"
     margin: "10px 0px",
     justifyContent: "center",
     alignItems: "center",
+    [ theme.breakpoints.down("sm") ] :{
+    flexDirection: "column",
+    },
     },
     containerImage: {
     display: "flex",
     width: "5%",
     height: "auto",
     justifyContent: "center",
+    [theme.breakpoints.between(1280, 1550)]: {
+      width: "10%",
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "10%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "20px",
+      width: "15%",
+    },
     },
     containerText: {
     display: "flex",
     height: "auto",
     width: "35%",
     flexDirection: "column",
-    margin: "10px 0px"
+    margin: "10px 0px",
+    [theme.breakpoints.between(1280, 1550)]: {
+      width: "40%",
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "60%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "70%",
+    },
     },
     backgroundImage: {
     padding: "15px",
@@ -89,7 +112,7 @@ import Logo from "../../public/Logo.webp"
     textAlign: "center",
     margin: "30px 0px",
     display: "flex",
-    width: "45%",
+    width: "43%",
     [theme.breakpoints.between(1280, 1550)]: {
       width: "50%",
     },
@@ -109,6 +132,7 @@ import Logo from "../../public/Logo.webp"
       margin: "30px 0px",
       display: "flex",
       width: "30%",
+      color: "#193174",
       [theme.breakpoints.between(1280, 1550)]: {
         width: "40%",
       },
@@ -128,6 +152,7 @@ import Logo from "../../public/Logo.webp"
     textAlign: "left",
     width: "40%",
     padding: "30px 0px",
+    color: "#193174",
     [theme.breakpoints.between(1280, 1550)]: {
       width: "50%",
     },
@@ -142,13 +167,14 @@ import Logo from "../../public/Logo.webp"
     subtitle: {
     fontSize: "25px",
     fontFamily: "Nexa Bold",
-    marginTop: "20px",
+    marginTop: "23px",
     color: "#193174",
     display: "flex",
-    textAlign: "left",
-      [theme.breakpoints.down("sm")]: {
-          fontSize: "15px",
-      },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "20px",
+      marginTop: "0px",
+      justifyContent: "center",
+    },
     },
     text4: {
     fontStyle: "normal",
@@ -157,14 +183,8 @@ import Logo from "../../public/Logo.webp"
     lineHeight: "25px",
     textAlign: "left",
     paddingTop: "20px",
-    [theme.breakpoints.between(1280, 1550)]: {
-      width: "50%",
-    },
-    [theme.breakpoints.down("lg")]: {
-      width: "70%",
-    },
+    color: "#193174",
     [theme.breakpoints.down("sm")]: {
-      width: "70%",
       fontSize: "15px",
     },
     }
@@ -172,6 +192,13 @@ import Logo from "../../public/Logo.webp"
 
 const MissionComponent = () => {
     const classes = useStyles()
+    const { t, i18n } = useTranslation()
+    const lang = i18n.language
+  
+    // const faqs = faq
+    // const faqFilter = faqs
+    // .filter(faq => faq.locale.includes(lang)
+    // )
 
   return (
     <Box className={ classes.containerMain }>
@@ -246,8 +273,6 @@ const MissionComponent = () => {
           <Typography className={ classes.text4}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi lorem, ut congue metus efficitur id. 
           Nunc id quam sed lectus bibendum sodales. Aenean in facilisis turpis, vel tempor velit. Aliquam semper dolor eu aliquet cursus.
-          Nulla sodales nisi purus, at laoreet erat tincidunt at. Proin convallis purus a condimentum ornare. Donec suscipit mauris sed vulputate aliquet. 
-          Phasellus gravida justo urna, id congue lacus dapibus quis.
           </Typography>
           </Box>
 

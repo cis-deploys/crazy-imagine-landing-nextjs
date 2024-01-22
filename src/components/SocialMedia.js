@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "25px",
     color: "#A7E4F5",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "16px",
+      fontSize: "20px",
     },
   },
   contactIconButton: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
       gap: "5px",
     },
     [theme.breakpoints.down("sm")]: {
-      gap: "5px",
+      gap: "3px",
     },
   }
 }))
