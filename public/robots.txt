@@ -6,4 +6,4 @@ Allow: /
 Host: https://www.crazyimagine.com
 
 # Sitemaps
-Sitemap: https://www.crazyimagine.com/sitemap.xml
+Sitemap: https://www.crazyimagine.com/x-default-sitemap.xml
