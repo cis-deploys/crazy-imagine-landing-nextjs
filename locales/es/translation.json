@@ -233,7 +233,24 @@
    "descripctionUser":"Como paso final del descubrimiento del diseño, crearemos una serie de personajes de usuario para comprender los diferentes tipos de usuarios potenciales de la aplicación, qué los motiva y qué objetivos les gustaría lograr al usar la aplicación.",
    "descriptionStep2":"Muchos de nuestros proyectos comienzan con un compromiso de descubrimiento técnico de varias partes para comprender y documentar su pila de software existente o investigar y recomendar las tecnologías y arquitectura adecuadas para su proyecto.",
    "description2step2":"Este descubrimiento técnico puede incluir realizar una revisión profunda del código de su aplicación existente, investigar opciones tecnológicas para su caso de uso específico, revisar documentación para integraciones de terceros, crear una estrategia de DevOps y más.",
-   "DELIVERABLES":"Entregables"
+   "DELIVERABLES":"Entregables",
+   "title_TechiDis":"Aplicaciones De Cliente (Web, Móvil, Escritorio, etc.)",
+   "thechnical_description1":"Una parte del proceso de descubrimiento técnico implica enumerar los lenguajes, marcos y otras dependencias importantes del proyecto (tanto existentes como propuestas). Nuestro equipo de ingenieros determina si necesitamos actualizar las dependencias de la aplicación existente del cliente para completar el proyecto.",
+   "thechnical_description2":"Accedemos a los repositorios y a cualquier cuenta/mecanismo de firma basado en plataforma para describir los cambios necesarios, revisar la calidad de UI/UX de la aplicación, revisar la calidad del código y revisar la seguridad de la aplicación.",
+   "thechnical_description3":"Durante este paso, definimos dónde se implementarán las versiones WIP, enumeramos todas las funciones con un plan para implementarlas e incluimos qué bibliotecas se utilizarán. Si no existen bibliotecas, discutiremos el plan para implementar bibliotecas personalizadas.",
+   "thechnical_description4":"También consideramos posibles necesidades y problemas de internacionalización, como el soporte RTL y cualquier servicio de traducción y localización necesario.",
+   "thechnical_description5":"Una vez completada esta fase, proporcionaremos la descripción general de la arquitectura técnica de la aplicación del cliente e identificaremos todas las áreas problemáticas.",
+   "backend_servers":"Servidores Backend",
+   "backend_desc1":"Identificamos todas las áreas potencialmente problemáticas y determinamos si es necesario que construyamos o reconstruyamos los servidores como parte del compromiso. Si es así, proporcionaremos una descripción de los servidores, incluidas las responsabilidades y tecnologías que se utilizarán..",
+   "backend_desc2":"En caso de que necesitemos actualizar servidores existentes, describiremos los cambios necesarios e identificaremos todas las funciones para que coincidan con las bibliotecas existentes.",
+   "backend_desc3":"Proporcionaremos una descripción general de la arquitectura de los servidores y enumeraremos todas las áreas problemáticas encontradas durante el análisis de los servidores backend.",
+   "services_integrations":"Servicios/Integraciones",
+   "services_desc1":"Durante este proceso enumeramos y describimos los servicios que estarán involucrados en el proyecto (tanto existentes como propuestos). Nuestro equipo revisa la documentación existente y redacta una valoración de los documentos de cada servicio.",
+   "services_desc2":"A partir de este descubrimiento, decidiremos cuáles son los mejores servicios e integraciones para lograr los objetivos del proyecto y discutiremos por qué.",
+   "services_desc3":"Evaluamos la viabilidad de trabajar con los servicios e integraciones existentes y propuestos, realizamos una investigación exhaustiva sobre las posibles limitaciones que podríamos enfrentar y nos aseguramos de que lo que se va a diseñar sea alcanzable.",
+   "services_desc4":"En este punto, nuestro equipo determina el precio estimado de los servicios e integraciones necesarios."
+   
+
 
 
    

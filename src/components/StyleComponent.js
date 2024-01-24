@@ -162,6 +162,9 @@ export const StyleComponent = makeStyles(theme => ({
     width: "58%",
     whiteSpace: "pre-line",
     marginLeft: "20px",
+    [theme.breakpoints.between("lg", "xl")]: {
+      width: "55%",
+    },
   },
   textContainerWhiteComponent: {
     display: "flex",

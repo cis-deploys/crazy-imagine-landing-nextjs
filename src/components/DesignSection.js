@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { Box, Typography, Grid, Avatar, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import { StyleComponent } from "./StyleComponent"
-import { useTheme } from "@mui/system"
-import { createBreakpoints } from "@mui/system"
+
+import Link from "next/link"
 
 import Stack from "@mui/material/Stack"
 import Vector from "../../public/VectorRoadMap.svg"
@@ -12,10 +12,7 @@ import PhoneRoadMap2 from "../../public/iPhone1.svg"
 import PhoneRoadMap1 from "../../public/iPhone2.svg"
 import People from "../../public/peopleStep1.svg"
 import LanguageIcons from "../../public/languageIcons.svg"
-
-const customBreakpoints = createBreakpoints({
-  between: value => `@media (width: ${value}px)`,
-})
+import { useRouter } from "next/router"
 const useStyles = makeStyles(theme => ({
   contentPhase1: {
     width: "100%",
@@ -74,12 +71,7 @@ const useStyles = makeStyles(theme => ({
     height: "791px",
     top: "-150px",
     right: 0,
-    [theme.breakpoints.between("lg", "xl")]: {
-      right: 0,
-      width: "715px",
-      height: "882px",
-      top: "-150px",
-    },
+
     [theme.breakpoints.up("xl")]: {
       right: 0,
       width: "715px",
@@ -210,7 +202,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "18px",
     lineHeight: "24px",
     color: "#193174",
-    textAlign: "justify",
+
     letterSpacing: "0.02rem",
   },
   boxContentMeeting: {
@@ -236,8 +228,6 @@ const useStyles = makeStyles(theme => ({
   containerAvatarAndText: {
     width: "100%",
     height: "auto",
-
-    marginLeft: "50px",
   },
 
   contentAvatar: {
@@ -301,7 +291,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "18px",
     lineHeight: "24px",
     color: "#193174",
-    textAlign: "justify",
+
     letterSpacing: "0.02rem",
   },
   title3Users: {
@@ -355,7 +345,6 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "34px",
     letterSpacing: "0.02rem",
     color: "#304392",
-    textAlign: "justify",
   },
   boxDescription2Step2: {
     paddingTop: "24px",
@@ -365,7 +354,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 500,
     fontSize: "18px",
     lineHeight: "24px",
-    textAlign: "justify",
+
     letterSpacing: "0.02rem",
     color: "#193174",
     paddingTop: "16px",
@@ -388,6 +377,9 @@ const useStyles = makeStyles(theme => ({
     color: "#888DFF",
     paddingTop: "12px",
   },
+  avatar1Stack: {
+    paddingLeft: "32px",
+  },
 }))
 const DesignSection = () => {
   const classes = useStyles()
@@ -395,6 +387,9 @@ const DesignSection = () => {
   const classesComponent = StyleComponent()
 
   const lang = i18n.language
+  const router = useRouter()
+  const [technicalDiscoveryVisible, setTechnicalDiscoveryVisible] =
+    useState(false)
   const steps = [
     { number: t("step1").toUpperCase(), description: t("designDiscovery") },
     { number: t("step2").toUpperCase(), description: t("technicalDiscovery") },
@@ -512,7 +507,7 @@ const DesignSection = () => {
       <Grid container spacing={2} className={classes.containerAvatarAndText}>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <Box className={classes.contentAvatar}>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} className={classes.avatar1Stack}>
               <Avatar
                 alt="Remy Sharp"
                 src="/avatar1.png"
@@ -588,14 +583,21 @@ const DesignSection = () => {
                   {t("description2step2")}
                 </Typography>
               </Box>
-              <Box className={classes.boxButtonContinue}>
-                <Button
-                  className={classesComponent.buttonComponentContinueReading}
-                  type="submit"
-                >
-                  <span>{t("common_button_CONTINUE_READING")}</span>
-                </Button>
-              </Box>
+
+              <Link href="/road-map/technical-discovery">
+                <Box className={classes.boxButtonContinue}>
+                  <Button
+                    className={classesComponent.buttonComponentContinueReading}
+                    type="submit"
+                    onClick={() => {
+                      setTechnicalDiscoveryVisible(true)
+                      router.push("/road-map/technical-discovery")
+                    }}
+                  >
+                    <span>{t("common_button_CONTINUE_READING")}</span>
+                  </Button>
+                </Box>
+              </Link>
             </Box>
           </Grid>
         </Grid>

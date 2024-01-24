@@ -3,21 +3,27 @@ import { useTranslation } from "react-i18next"
 import dynamic from "next/dynamic"
 import { Box } from "@mui/material"
 
-import Layout from "../components/Layout"
+import Layout from "../../components/Layout"
 
-import headerImage from "../../public/Roadmap.svg"
+import headerImage from "../../../public/Roadmap.svg"
 
-const SectionHeader = dynamic(() => import("../components/SectionHeader"), {
+const SectionHeader = dynamic(() => import("../../components/SectionHeader"), {
   ssr: false,
 })
 
-const ContactSection = dynamic(() => import("../components/ContactSection"), {
-  ssr: false,
-})
+const ContactSection = dynamic(
+  () => import("../../components/ContactSection"),
+  {
+    ssr: false,
+  }
+)
 
-const RoadMapContent = dynamic(() => import("../components/RoadMapContent"), {
-  ssr: false,
-})
+const RoadMapContent = dynamic(
+  () => import("../../components/RoadMapContent"),
+  {
+    ssr: false,
+  }
+)
 
 function RoadMap() {
   const { t } = useTranslation()

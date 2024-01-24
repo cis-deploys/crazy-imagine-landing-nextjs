@@ -232,7 +232,22 @@
    "descripctionUser":"As a final step of design discovery, we'll create a series of user personas to gain an understanding of the different types of potential users of the application, what motivates them, and what goals they would like to achieve when using the app.",
    "descriptionStep2":"Many of our projects start with a multi-part technical discovery engagement to either understand and document your existing software stack or research and recommend the right technologies and architecture for your project.",
      "description2step2":"This technical discovery can include conducting an in-depth code review on your existing application, researching technology options for your specific use case, reviewing documentation for third-party integrations, creating a DevOps strategy, and more.",
-     "DELIVERABLES":"Deliverables"
+     "DELIVERABLES":"Deliverables",
+     "title_TechiDis":"Client Apps (Web, Mobile, Desktop, etc.)",
+     "thechnical_description1":"One part of the technical discovery process involves listing the languages, frameworks, and other major dependencies of the project (both existing and proposed). Our team of engineers determines if we need to update the dependencies of the client’s existing app to complete the project.",
+     "thechnical_description2":"We access the repos and any platform based accounts/signing mechanisms to describe the changes needed, review the application for UI/UX quality, review the code quality, and review the security of the application.",
+     "thechnical_description3":"During this step, we define where the WIP versions will be deployed, list out all features with a plan to implement them, and include which libraries will be used. If no libraries exist, we’ll discuss the plan to implement custom libraries.",
+     "thechnical_description4":"We also consider potential internationalization needs and issues such as RTL support and any translation and localization services needed.",
+     "thechnical_description5":"Once this phase is completed, we’ll provide the technical architecture overview of the client application and identify all problem areas.",
+     "backend_servers":"Backend Servers",
+     "backend_desc1":"We identify all potential problem areas and determine if there is a need for us to build/rebuild the servers as part of the engagement. If so, we’ll provide a description of the servers, including responsibilities and technologies that will be used.",
+     "backend_desc2":"In case we need to update existing servers, we’ll describe the changes needed and identify all features to match them to existing libraries.",
+     "backend_desc3":"We’ll provide an overview of the servers’ architecture and list all problem areas found during the backend servers analysis.",
+     "services_integrations":"Services/Integrations",
+     "services_desc1":"During this process we list and describe the services that will be involved in the project (both existing and proposed). Our team reviews the existing documentation and writes an assessment of each service's documents.",
+     "services_desc2":"From this discovery, we’ll decide which are the best services and integrations to achieve the goals of the project and discuss why.",
+     "services_desc3":"We assess feasibility of working with the existing and proposed services and integrations, perform thorough research into the possible limitations we might face, and ensure that what is going to be designed is achievable.",
+     "services_desc4":"At this point, our team determines the estimated pricing for the services and integrations needed."
 
 
 

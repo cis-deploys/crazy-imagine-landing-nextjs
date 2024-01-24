@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.2rem",
     color: "#193174",
     whiteSpace: "pre-line",
-    textAlign: "justify",
+    // textAlign: "justify",
     [theme.breakpoints.up("xl")]: {
       fontSize: "32px",
       lineHeight: "37px",
