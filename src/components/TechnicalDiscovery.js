@@ -1,10 +1,16 @@
+import React, { useState } from "react"
 import { Box, Typography, Grid } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
+import CardService from "./CardService"
 import LanguageIcons from "../../public/languageIcons.svg"
 
 import Computer from "../../public/computerPhone.svg"
 import Servers from "../../public/backendServers.svg"
+import Services from "../../public/servicesIntegrations.svg"
+import Background from "../../public/backgroundImage3.svg"
+import SquarePen from "../../public/iconPenSquare.svg"
+import Icon1 from "../../public/icon1Card2.svg"
 
 const useStyles = makeStyles(theme => ({
   containerInfoTechnical: {
@@ -114,6 +120,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02rem",
     lineHeight: "28px",
     color: "#304392",
+    [theme.breakpoints.between(1920, 2498)]: {
+      fontSize: "20px",
+    },
     [theme.breakpoints.between(2500, 4000)]: {
       fontSize: "20px",
     },
@@ -145,17 +154,50 @@ const useStyles = makeStyles(theme => ({
   },
   boxContentServices: {
     width: "85%",
+    [theme.breakpoints.between(1920, 2498)]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between(2500, 4000)]: {
+      width: "100%",
+    },
   },
+
   boxContentTesting: {
     width: "100%",
     height: "auto",
-    backgroundColor: "#193174",
+  },
+  boxImageServices: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  imageBackground: {
+    width: "100%",
+  },
+  cardContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: "20px",
+    height: "auto",
+    paddingTop: "auto",
+    [theme.breakpoints.between(0, 767)]: {
+      alignItems: "center",
+      flexDirection: "column",
+      justifyContent: "center",
+      width: "100%",
+    },
+  },
+  card: {
+    height: "min-content !important",
   },
 }))
 
 const ThechnicalDiscovery = () => {
   const classes = useStyles()
   const { t, i18n } = useTranslation()
+  const [card1Open, setCard1Open] = useState(false)
+  const [card2Open, setCard2Open] = useState(false)
+  const [card3Open, setCard3Open] = useState(false)
   return (
     <>
       <Box className={classes.boxContentStep2}>
@@ -283,9 +325,43 @@ const ThechnicalDiscovery = () => {
             </Box>
           </Box>
         </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Box className={classes.boxImageServices}>
+            <img src={Services.src} alt="Image services" />
+          </Box>
+        </Grid>
       </Grid>
-      <Box className={classes.boxContentTesting}>
-        <Grid container spacing={2}></Grid>
+      <Box
+        className={classes.boxContentTesting}
+        style={{
+          backgroundImage: `url(${Background.src})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Box className={`${classes.cardContainer}`}>
+              <CardService
+                title={t("title_Card1")}
+                img={SquarePen.src}
+                description={t("description_Card1")}
+                isOpen={card1Open}
+                onClick={() => setCard1Open(!card1Open)}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Box className={`${classes.cardContainer}`}>
+              <CardService
+                title={t("title_Card2")}
+                img={Icon1.src}
+                description={t("description_Card2")}
+                isOpen={card1Open}
+                onClick={() => setCard1Open(!card1Open)}
+              />
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
     </>
   )

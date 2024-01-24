@@ -248,7 +248,12 @@
    "services_desc1":"Durante este proceso enumeramos y describimos los servicios que estarán involucrados en el proyecto (tanto existentes como propuestos). Nuestro equipo revisa la documentación existente y redacta una valoración de los documentos de cada servicio.",
    "services_desc2":"A partir de este descubrimiento, decidiremos cuáles son los mejores servicios e integraciones para lograr los objetivos del proyecto y discutiremos por qué.",
    "services_desc3":"Evaluamos la viabilidad de trabajar con los servicios e integraciones existentes y propuestos, realizamos una investigación exhaustiva sobre las posibles limitaciones que podríamos enfrentar y nos aseguramos de que lo que se va a diseñar sea alcanzable.",
-   "services_desc4":"En este punto, nuestro equipo determina el precio estimado de los servicios e integraciones necesarios."
+   "services_desc4":"En este punto, nuestro equipo determina el precio estimado de los servicios e integraciones necesarios.",
+   "title_Card1":"CI/CD, Monitoreo, Errores",
+   "description_Card1":"Proporcionaremos una lista y descripción de las herramientas que participarán en el proyecto (tanto existentes como propuestas), junto con los precios de los servicios.",
+   "title_Card2":"Prueba",
+   "description_Card2":"Esto incluye la lista de los conjuntos de pruebas que se utilizarán para el proyecto. Proporcionamos un informe de cobertura de prueba que incluye todas las funciones y componentes probados. En esta sección proporcionamos los detalles sobre lo que ya está probado y lo que falta."
+   
    
 
 

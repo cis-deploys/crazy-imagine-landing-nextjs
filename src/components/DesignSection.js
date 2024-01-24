@@ -431,7 +431,12 @@ const DesignSection = () => {
                 <Typography variant="body1" className={classes.stepNumber}>
                   {step.number}.
                 </Typography>
-                <Typography variant="body1" className={classes.stepDescription}>
+
+                <Typography
+                  variant="body1"
+                  className={classes.stepDescription}
+                  style={{ cursor: "pointer" }}
+                >
                   {step.description}
                 </Typography>
               </Box>

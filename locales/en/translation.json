@@ -247,7 +247,11 @@
      "services_desc1":"During this process we list and describe the services that will be involved in the project (both existing and proposed). Our team reviews the existing documentation and writes an assessment of each service's documents.",
      "services_desc2":"From this discovery, we’ll decide which are the best services and integrations to achieve the goals of the project and discuss why.",
      "services_desc3":"We assess feasibility of working with the existing and proposed services and integrations, perform thorough research into the possible limitations we might face, and ensure that what is going to be designed is achievable.",
-     "services_desc4":"At this point, our team determines the estimated pricing for the services and integrations needed."
+     "services_desc4":"At this point, our team determines the estimated pricing for the services and integrations needed.",
+     "title_Card1":"CI/CD, Monitoring, Errors",
+     "description_Card1":"We’ll provide a list and description of the tooling that will be involved in the project (both existing and proposed), along with pricing for the services.",
+     "title_Card2":"Testing",
+     "description_Card2":"This includes the list of the test suites that will be used for the project. We provide a test coverage report including all functions and components tested. In this section we provide the details about what is already tested and what is missing."
 
 
 
