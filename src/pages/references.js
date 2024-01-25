@@ -5,6 +5,7 @@ import headerImage from "../../public/references.webp"
 
 import { NextSeo } from "next-seo"
 import React, { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 
 const SectionHeader = dynamic(() => import("../components/SectionHeader"), {
   ssr: false,
@@ -18,24 +19,15 @@ const CarCategoryReview = dynamic(
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resCategoryReviews = await fetch(
-    `${domain}category-reviews?locale=all&_limit=6&_sort=created_at:DESC&&populate=slug&populate=reviews`
-  )
-  const categoryReviews = await resCategoryReviews.json()
-  const resProjects = await fetch(
-    `${domain}projects?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`
-  )
-  const resReviews = await fetch(
-    `${domain}reviews?locale=all&_limit=6&_sort=created_at:DESC&&populate=avatar=slug&populate=project&populate=category_reviews`
-  )
+  const resReviews = await fetch(`${domain}reviews?locale=all&_limit=6&_sort=created_at:DESC&&populate=avatar=slug&populate=project&populate=category_reviews`)
   const reviews = await resReviews.json()
 
-  const resReferencespage = await fetch(
-    `${domain}references-page?locale=all&&populate=seo&populate=title`
-  )
+  const resReferencespage = await fetch(`${domain}references-page?locale=all&&populate=seo&populate=title`)
   const referencespage = await resReferencespage.json()
+
   return { props: { referencespage, reviews } }
 }
+
 const References = ({ referencespage, reviews }) => {
   const { i18n, t } = useTranslation()
   const [metaTitle, setMetaTitle] = useState()
@@ -43,6 +35,17 @@ const References = ({ referencespage, reviews }) => {
   const [keywords, setKeywords] = useState()
   const [title, setTitle] = useState()
   const lang = i18n.language
+  const router = useRouter()
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   useEffect(() => {
     if (referencespage && referencespage.data) {

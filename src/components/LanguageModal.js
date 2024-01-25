@@ -157,14 +157,14 @@ export const LanguageModal = () => {
   const classes = useStyles()
   const { i18n, t } = useTranslation()
   const router = useRouter()  
- 
+
   const handleChange = (event) => {
     const selectedLanguage = event.target.value;
 
     i18n.changeLanguage(selectedLanguage);
     router.push(router.pathname, router.asPath, { locale: event.target.value })
+    
   };
-
   return (
     <>
       <Box sx={{ border: 'none' }}>
