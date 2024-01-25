@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.crazyimagine.com
+Host: https://www.crazyimagine.com/es
 
 # Sitemaps
-Sitemap: https://www.crazyimagine.com/x-default-sitemap.xml
+Sitemap: https://www.crazyimagine.com/es/es-sitemap.xml
