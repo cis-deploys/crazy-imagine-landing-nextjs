@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 
 import headerImage from "../../public/deco.webp"
 import { NextSeo } from "next-seo"
+import { useRouter } from "next/router"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -41,8 +42,19 @@ export async function getServerSideProps() {
 }
 
 const Blog = ({ articles, blogpage }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const router = useRouter()
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   const [metaTitle, setMetaTitle] = useState();
   const [metaDescription, setMetaDescription] = useState();

@@ -16,34 +16,39 @@ const useStyles = makeStyles((theme)=>({
       height: 200,
       display: 'block'
     },
-    [theme.breakpoints.down("xs")]: {
-      height: 160,
-    },
   },
   title: {
     fontSize: 75,
     fontWeight: "bold",
-    textAlign: "center",    
+    textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: 50,
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 35,
+    },    
   },
   titleSecondary: {
     fontSize: 65,
     fontWeight: "bold",
     textAlign: "initial",
     fontFamily: 'Nexa Bold',
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 40,
+    },
     [theme.breakpoints.down("md")]: {
-      fontSize: 50,
+      fontSize: 40,
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: 35,
-    },
-    [theme.breakpoints.down("xs")]: {
       fontSize: 25,
-    }
+    },
   },
   container: {
     backgroundSize: 'cover',
     backgroundPosition: 'top',
-    background: ` linear-gradient(123deg, rgba(40,64,128,1) 0%, rgba(39,170,225,1) 31%,transparent 75%),url('/Background404.svg')`,
+    background: ` linear-gradient(123deg, rgba(40,64,128,1) 0%, rgba(39,170,225,1) 31%,transparent 75%),
+    url('/Background404.svg')
+    `,
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
@@ -57,7 +62,10 @@ const useStyles = makeStyles((theme)=>({
     },
   },
   ContainerTexts: {
+    display: "flex",
+    flexDirection: "column",
     textAlign: 'center',
+    alignContent: "center",
     padding: '0 0 0 200px',
     boxSizing: 'border-box',
     [theme.breakpoints.down("lg")]: {
@@ -67,7 +75,7 @@ const useStyles = makeStyles((theme)=>({
       padding: '0 0 0 100px',
     },
     [theme.breakpoints.down("sm")]: {
-      padding: '0 0 0 50px',
+      padding: '0 0 0 0px',
     },
   }
 }))
