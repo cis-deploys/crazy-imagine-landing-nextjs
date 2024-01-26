@@ -224,6 +224,42 @@ export const StyleComponent = makeStyles(theme => ({
       transform: "translateY(0)",
     },
   },
+  titleCard2: {
+    fontFamily: "Nexa Bold",
+    fontStyle: "normal",
+    fontWeight: "700",
+    width: "150px",
+    fontSize: "28px",
+    lineHeight: "28px",
+    textAlign: "center",
+    color: "#193174",
+    marginTop: "10px",
+    [theme.breakpoints.between(1920, 4000)]: {
+      width: "100%",
+      fontSize: "28px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      width: "100%",
+      fontSize: "20px",
+      lineHeight: "28px",
+    },
+    [theme.breakpoints.between(0, 959)]: {
+      width: "220px",
+      fontSize: "15px",
+      lineHeight: "15px",
+    },
+  },
+  "@keyframes myEffect-title": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)",
+    },
+  },
   titleBlue: {
     animation: `myEffect-title 2000ms`,
     fontFamily: "Nexa Bold",
@@ -329,6 +365,62 @@ export const StyleComponent = makeStyles(theme => ({
   },
 
   buttonComponentContinueReading: {
+    animation: `myEffectbutton 2000ms`,
+    background: "#797EF6",
+    borderRadius: "100px",
+    "&:hover": {
+      backgroundColor: "#27AAE1",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
+    [theme.breakpoints.between(1920, 4000)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "17px",
+        lineHeight: "10px",
+        padding: "15px 17px 15px 17px",
+      },
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "15px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
+    [theme.breakpoints.between(0, 959)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
+  },
+
+  "@keyframes myEffect-image-component": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+  },
+  buttonComponentUserExperience: {
     animation: `myEffectbutton 2000ms`,
     background: "#797EF6",
     borderRadius: "100px",

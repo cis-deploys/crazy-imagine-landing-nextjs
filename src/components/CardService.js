@@ -98,6 +98,8 @@ const CardService = ({
   img,
   typeInfo = "ul",
   description = null,
+  titleCss2 = null,
+  img2,
 }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
@@ -105,7 +107,10 @@ const CardService = ({
   const { t } = useTranslation()
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
-
+  const [showSecondImage, setShowSecondImage] = useState(false) // Nuevo estado para cambiar la imagen
+  const titleCss = titleCss2
+    ? classesComponent.titleCard2
+    : classesComponent.titleCard
   return (
     <CardContent
       ref={ref}
@@ -115,10 +120,13 @@ const CardService = ({
           : classesComponent.cardContainer
       }
     >
-      {img && <img src={img} alt="Image" className={classes.icon} />}
+      {showSecondImage && img2 ? (
+        <img src={img2} alt="Image" className={classes.icon} />
+      ) : (
+        <img src={img} alt="Image" className={classes.icon} />
+      )}
       {icon && <FontAwesomeIcon icon={icon} className={classes.icon} />}
-
-      <Typography className={classesComponent.titleCard}>{title}</Typography>
+      <Typography className={titleCss}>{title}</Typography>
       {typeInfo && (
         <ul
           className={classes.list}
@@ -142,7 +150,10 @@ const CardService = ({
 
       <Button
         className={classes.readMoreButton}
-        onClick={() => setListVisible(!isListVisible)}
+        onClick={() => {
+          setListVisible(!isListVisible)
+          setShowSecondImage(!showSecondImage)
+        }}
       >
         {isListVisible ? t("readLess") : t("readMore")}
       </Button>

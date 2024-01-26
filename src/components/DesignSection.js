@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Grid, Avatar, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
@@ -12,6 +12,7 @@ import PhoneRoadMap2 from "../../public/iPhone1.svg"
 import PhoneRoadMap1 from "../../public/iPhone2.svg"
 import People from "../../public/peopleStep1.svg"
 import LanguageIcons from "../../public/languageIcons.svg"
+import Background3 from "../../public/background3.svg"
 import { useRouter } from "next/router"
 const useStyles = makeStyles(theme => ({
   contentPhase1: {
@@ -304,7 +305,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "justify",
   },
   /* Step 2  */
-  containerStep3: {
+  containerStep2: {
     width: "100%",
     height: "auto",
 
@@ -380,19 +381,99 @@ const useStyles = makeStyles(theme => ({
   avatar1Stack: {
     paddingLeft: "32px",
   },
+
+  /* Step 3  */
+  containerStep3: {
+    width: "100%",
+    height: "auto",
+
+    padding: "50px",
+    margin: "0 auto",
+  },
+  boxContentStep3: {
+    width: "100%",
+    height: "auto",
+    backgroundImage: `url(${Background3.src})`,
+    backgroundSize: "cover",
+  },
+  subTitleStep3: {
+    color: "#FFFFFF",
+    fontFamily: "Nexa Bold",
+    fontWeight: 700,
+    fontSize: "40px",
+    lineHeight: "55px",
+  },
+  descriptionStep3: {
+    fontFamily: "HindVadodara",
+    fontWeight: 500,
+    fontSize: "26px",
+    lineHeight: "33px",
+    letterSpacing: "0.02rem",
+    color: "#FFFFFF",
+  },
+  boxDescriptionStep3: {
+    width: "70%",
+    paddingTop: "30px",
+  },
+  contentFeatureMap: {
+    width: "100%",
+    height: "auto",
+    margin: "0 auto",
+    padding: "40px",
+  },
+  boxContentFeatureMap: {
+    paddingTop: "60px",
+  },
+  titleFeatureMap: {
+    fontFamily: "Nexa Bold",
+    fontWeight: 700,
+    fontSize: "24px",
+    lineHeight: " 32px",
+    letterSpacing: "0.02rem",
+    color: "#FFFFFF",
+    textAlign: "justify",
+  },
+  descriptionFeatureMap: {
+    fontFamily: "HindVadodara",
+    fontWeight: 400,
+    fontSize: "18px",
+    lineHeight: "24px",
+    color: "#FFFFFF",
+
+    letterSpacing: "0.02rem",
+  },
+  boxContentDescripcionFeatureMap: {
+    width: "68%",
+    paddingTop: "20px",
+  },
+  boxContentDescripcionFeatureMap2: {
+    width: "78%",
+    paddingTop: "20px",
+  },
+  contentFeatureMap2: {
+    width: "100%",
+    height: "auto",
+    margin: "0 auto",
+    padding: "50px",
+  },
 }))
 const DesignSection = () => {
   const classes = useStyles()
   const { t, i18n } = useTranslation()
   const classesComponent = StyleComponent()
 
-  const lang = i18n.language
   const router = useRouter()
   const [technicalDiscoveryVisible, setTechnicalDiscoveryVisible] =
     useState(false)
   const steps = [
-    { number: t("step1").toUpperCase(), description: t("designDiscovery") },
-    { number: t("step2").toUpperCase(), description: t("technicalDiscovery") },
+    {
+      number: t("step1").toUpperCase(),
+      description: t("designDiscovery"),
+    },
+    {
+      number: t("step2").toUpperCase(),
+      description: t("technicalDiscovery"),
+    },
     {
       number: t("step3").toUpperCase(),
       description: t("userExperience_Design"),
@@ -401,7 +482,10 @@ const DesignSection = () => {
       number: t("step4").toUpperCase(),
       description: t("userInterface_Design"),
     },
-    { number: t("step5").toUpperCase(), description: t("PrototypeEstimation") },
+    {
+      number: t("step5").toUpperCase(),
+      description: t("PrototypeEstimation"),
+    },
   ]
 
   return (
@@ -427,11 +511,14 @@ const DesignSection = () => {
           </Box>
           <Box style={{ marginTop: "50px" }}>
             {steps.map((step, index) => (
-              <Box key={index} className={classes.stepContainer}>
+              <Box
+                key={index}
+                className={classes.stepContainer}
+                // id={`step${index + 1}`}
+              >
                 <Typography variant="body1" className={classes.stepNumber}>
                   {step.number}.
                 </Typography>
-
                 <Typography
                   variant="body1"
                   className={classes.stepDescription}
@@ -439,6 +526,16 @@ const DesignSection = () => {
                 >
                   {step.description}
                 </Typography>
+                {/* 
+                <Link href={`/road-map#${"step" + (index + 1)}`}>
+                  <Typography
+                    variant="body1"
+                    className={classes.stepDescription}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {step.description}
+                  </Typography>
+                </Link> */}
               </Box>
             ))}
 
@@ -564,14 +661,14 @@ const DesignSection = () => {
         </Grid>
       </Grid>
       <Box className={classes.boxContentStep2}>
-        <Grid container spacing={2} className={classes.containerStep3}>
+        <Grid container spacing={2} className={classes.containerStep2}>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Box className={classes.boxImagelanguages}>
               <img src={LanguageIcons.src} alt="Images Languages" />
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Box className={classes.boxContent2Step2}>
+            <Box id="step2" className={classes.boxContent2Step2}>
               <Typography variant="body1" className={classes.titleStep2}>
                 {t("step2").toUpperCase()}
               </Typography>
@@ -607,7 +704,57 @@ const DesignSection = () => {
           </Grid>
         </Grid>
       </Box>
+      <Box id="step3" className={classes.boxContentStep3}>
+        <Grid container spacing={2} className={classes.containerStep3}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Box>
+              <Typography variant="body1" className={classes.titleStep1}>
+                {t("step3").toUpperCase()}
+              </Typography>
+              <Typography className={classes.subTitleStep3}>
+                {t("user_ExperienceDesign")}
+              </Typography>
+              <Box className={classes.boxDescriptionStep3}>
+                <Typography className={classes.descriptionStep3}>
+                  {t("descriptionStep3")}
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} className={classes.contentFeatureMap}>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Box className={classes.boxContentFeatureMap}>
+              <Typography className={classes.titleFeatureMap}>
+                {t("title_FeatureMap")}
+              </Typography>
+              <Box className={classes.boxContentDescripcionFeatureMap}>
+                <Typography className={classes.descriptionFeatureMap}>
+                  {t("description_FeatureMap")}
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} className={classes.contentFeatureMap2}>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Box className={classes.boxContentFeatureMap}>
+              <Typography className={classes.titleFeatureMap}>
+                {t("title_UserFlow")}
+              </Typography>
+              <Box className={classes.boxContentDescripcionFeatureMap2}>
+                <Typography className={classes.descriptionFeatureMap}>
+                  {t("description_UserFlow")}
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
+        </Grid>
+      </Box>
     </>
   )
 }
+
 export default DesignSection

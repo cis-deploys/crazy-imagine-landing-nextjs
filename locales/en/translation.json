@@ -10,6 +10,7 @@
     "common_button_contact_us": "CONTACT US",
     "common_button_SCHEDULE_A_CALL": "SCHEDULE A CALL",
     "common_button_CONTINUE_READING": "CONTINUE READING",
+    "common_button_USER_EXPERIENCE":"USER EXPERIENCE DESIGN",
     "common_button_contact_SUBMIT": "SUBMIT",
     "common_capabilities_title1": "Full-stack\nDevelopment",
     "common_capabilities_title2": "User Experience",
@@ -251,7 +252,23 @@
      "title_Card1":"CI/CD, Monitoring, Errors",
      "description_Card1":"We’ll provide a list and description of the tooling that will be involved in the project (both existing and proposed), along with pricing for the services.",
      "title_Card2":"Testing",
-     "description_Card2":"This includes the list of the test suites that will be used for the project. We provide a test coverage report including all functions and components tested. In this section we provide the details about what is already tested and what is missing."
+     "description_Card2":"This includes the list of the test suites that will be used for the project. We provide a test coverage report including all functions and components tested. In this section we provide the details about what is already tested and what is missing.",
+     "infrastructure": "DevOps/Infrastructure",
+     "infrastructure_desc1":"We determine whether the client owns their servers or if they use a cloud provider. We identify their current cost structure and list out or estimate the volume of traffic by day, hour, and minute.",
+     "infrastructure_desc2":"This includes assessing if the client expects traffic bursts and/or spikes. We make recommendations regarding hosting assets and load testing based on consumers’ locations and the client’s current testing infrastructure.",
+     "infrastructure_desc3":"We also determine if there is a plan in place for monitoring load on the servers and help the client develop a deployment strategy to allow for minimal downtime.",
+     "infrastructure_desc4":"We'll provide a document that describes the growth strategies as the project scale.Here are a couple of examples",
+     "example1":"example 1 ",
+     "example2":"example 2 ",
+     "description_AfterBtn":"After the Technical Discovery is ready, we move on to the next step:",
+     "user_ExperienceDesign":"User Experience Design",
+     "descriptionStep3":"Our UX design process ensures that we are solving user's needs efficiently, and creating an application that is easy to use and understand.",
+     "title_FeatureMap":"Feature Map",
+     "description_FeatureMap":"To start, we create a feature map - a high level view of the features of your application. It serves as a starting point for closer examination of how the views will interact, and is maintained and updated throughout the life of the project.",
+     "title_UserFlow":"User Flow",
+     "description_UserFlow":"Next, we'll build User Flows to demonstrate the steps users will take to achieve specific goals. User Flows become especially important when dealing with complex conditional workflows. It allows clients, designers, and developers to share a mutual understanding of how features will work and what feature outcomes will be."
+
+
 
 
 

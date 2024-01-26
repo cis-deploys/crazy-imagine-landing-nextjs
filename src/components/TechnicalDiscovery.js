@@ -1,16 +1,20 @@
 import React, { useState } from "react"
-import { Box, Typography, Grid } from "@mui/material"
+import { Box, Typography, Grid, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import CardService from "./CardService"
+import { useRouter } from "next/router"
+import Link from "next/link"
 import LanguageIcons from "../../public/languageIcons.svg"
-
+import { StyleComponent } from "./StyleComponent"
 import Computer from "../../public/computerPhone.svg"
 import Servers from "../../public/backendServers.svg"
 import Services from "../../public/servicesIntegrations.svg"
 import Background from "../../public/backgroundImage3.svg"
 import SquarePen from "../../public/iconPenSquare.svg"
 import Icon1 from "../../public/icon1Card2.svg"
+import Icon2 from "../../public/iconCheck.svg"
+import Servers2 from "../../public/servers2.svg"
 
 const useStyles = makeStyles(theme => ({
   containerInfoTechnical: {
@@ -165,7 +169,14 @@ const useStyles = makeStyles(theme => ({
   boxContentTesting: {
     width: "100%",
     height: "auto",
+    backgroundImage: `url(${Background.src})`,
+    backgroundSize: "cover",
+    minHeight: "350px",
   },
+  containerTesting: {
+    paddingTop: "50px",
+  },
+
   boxImageServices: {
     display: "flex",
     justifyContent: "center",
@@ -190,14 +201,78 @@ const useStyles = makeStyles(theme => ({
   card: {
     height: "min-content !important",
   },
+  containerInfrastructure: {
+    width: "100%",
+    height: "auto",
+    margin: "0 auto",
+    padding: "50px",
+  },
+  boxContentServers2: {
+    width: "85%",
+    paddingTop: "32px",
+  },
+  containerFatherExample: {
+    marginTop: "25px",
+  },
+  exampleContainer: {
+    display: "flex",
+    alignItems: "center",
+
+    paddingTop: "16px",
+  },
+
+  exampleName: {
+    color: "#888DFF",
+    fontFamily: "Nexa Bold",
+    fontWeight: 700,
+    fontSize: "15px",
+    lineHeight: "15px",
+    letterSpacing: "0.2rem",
+  },
+  exampleDescription: {
+    color: "#8C98BA",
+    fontFamily: "HindVadodara",
+    fontWeight: 500,
+    fontSize: "15px",
+    lineHeight: "18px",
+    letterSpacing: "0.2rem",
+    paddingLeft: "8px",
+  },
+  containerTextButton: {
+    width: "100%",
+    height: "auto",
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "30px",
+  },
+  boxdescriptionAfter: {
+    width: "56%",
+  },
+  textDescriptionAfter: {
+    fontFamily: "HindVadodara",
+    fontWeight: 500,
+    fontSize: "26px",
+    color: "#304392",
+    letterSpacing: "0.2rem",
+    textAlign: "center",
+  },
 }))
 
 const ThechnicalDiscovery = () => {
   const classes = useStyles()
   const { t, i18n } = useTranslation()
+  const router = useRouter()
+  const classesComponent = StyleComponent()
   const [card1Open, setCard1Open] = useState(false)
   const [card2Open, setCard2Open] = useState(false)
   const [card3Open, setCard3Open] = useState(false)
+  const examples = [
+    { name: t("example1").toUpperCase(), description: t("technicalDiscovery") },
+    { name: t("example2").toUpperCase(), description: t("technicalDiscovery") },
+  ]
   return (
     <>
       <Box className={classes.boxContentStep2}>
@@ -331,18 +406,13 @@ const ThechnicalDiscovery = () => {
           </Box>
         </Grid>
       </Grid>
-      <Box
-        className={classes.boxContentTesting}
-        style={{
-          backgroundImage: `url(${Background.src})`,
-          backgroundSize: "cover",
-        }}
-      >
-        <Grid container spacing={2}>
+      <Box className={classes.boxContentTesting}>
+        <Grid container spacing={2} className={classes.containerTesting}>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Box className={`${classes.cardContainer}`}>
               <CardService
                 title={t("title_Card1")}
+                titleCss2
                 img={SquarePen.src}
                 description={t("description_Card1")}
                 isOpen={card1Open}
@@ -354,7 +424,9 @@ const ThechnicalDiscovery = () => {
             <Box className={`${classes.cardContainer}`}>
               <CardService
                 title={t("title_Card2")}
+                titleCss2
                 img={Icon1.src}
+                img2={Icon2.src}
                 description={t("description_Card2")}
                 isOpen={card1Open}
                 onClick={() => setCard1Open(!card1Open)}
@@ -363,6 +435,77 @@ const ThechnicalDiscovery = () => {
           </Grid>
         </Grid>
       </Box>
+      <Grid container spacing={2} className={classes.containerInfrastructure}>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Box>
+            <img src={Servers2.src} alt="Image servers2" />
+          </Box>
+        </Grid>
+        <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Box className={classes.boxContentServers2}>
+            <Typography className={classes.title1}>
+              {t("infrastructure")}
+            </Typography>
+            <Box className={classes.boxthechnicalDescriptions}>
+              <Typography className={classes.thechnicalDescriptions}>
+                {t("infrastructure_desc1")}
+              </Typography>
+            </Box>
+            <Box className={classes.boxthechnicalDescriptions}>
+              <Typography className={classes.thechnicalDescriptions}>
+                {t("infrastructure_desc2")}
+              </Typography>
+            </Box>
+            <Box className={classes.boxthechnicalDescriptions}>
+              <Typography className={classes.thechnicalDescriptions}>
+                {t("infrastructure_desc3")}
+              </Typography>
+            </Box>
+            <Box className={classes.boxthechnicalDescriptions}>
+              <Typography className={classes.thechnicalDescriptions}>
+                {t("infrastructure_desc4")}
+              </Typography>
+            </Box>
+          </Box>
+          <Box className={classes.containerFatherExample}>
+            {examples.map((example, index) => (
+              <Box key={index} className={classes.exampleContainer}>
+                <Typography variant="body1" className={classes.exampleName}>
+                  {example.name}.
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  className={classes.exampleDescription}
+                  style={{ cursor: "pointer" }}
+                >
+                  {example.description}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid container spacing={2} className={classes.containerTextButton}>
+        <Grid item style={{ display: "flex", justifyContent: "center" }}>
+          <Box className={classes.boxdescriptionAfter}>
+            <Typography className={classes.textDescriptionAfter}>
+              {t("description_AfterBtn")}
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item>
+          <Link href="/road-map#step3">
+            <Button
+              className={classesComponent.buttonComponentUserExperience}
+              type="submit"
+              onClick={() => router.push("/road-map#step3")}
+            >
+              <span>{t("common_button_USER_EXPERIENCE")}</span>
+            </Button>
+          </Link>
+        </Grid>
+      </Grid>
     </>
   )
 }
