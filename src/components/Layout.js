@@ -22,6 +22,9 @@ const Layout = ({ children }) => {
   if (router.pathname.includes("technical-discovery")) {
     navbarColor = "primary"
   }
+  if (router.pathname.includes('sitemap')) {
+    navbarColor = "primary";
+  }
   return (
     <>
       <Hidden lgDown>

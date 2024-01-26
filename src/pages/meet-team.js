@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 
 import headerImage from "../../public/marciano.webp"
 import { NextSeo } from "next-seo"
+import { useRouter } from "next/router"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -25,7 +26,7 @@ const ContactSection = dynamic(
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resArticles = await fetch(`${domain}members?populate=*`)
+  const resArticles = await fetch(`${domain}members?members?populate=name&populate=role&populate=avatar`)
   const members = await resArticles.json()
 
   const resMeetTeam = await fetch(`${domain}meet-team-page?locale=en&locale=es-VE&populate=title&populate=seo`)
@@ -35,7 +36,18 @@ export async function getServerSideProps() {
 }
 
 const About = ({ members, meetTeamPage }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const router = useRouter()
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   const [metaTitle, setMetaTitle] = useState();
   const [metaDescription, setMetaDescription] = useState();
@@ -44,44 +56,22 @@ const About = ({ members, meetTeamPage }) => {
 
   const membersNew = [];
 
-  useEffect(() => {
-
-    members?.data.map(( data ) => {
-
-      // const order = index + 1;
-      const imagesAvatar = [];
-      if(data.attributes.avatar.data){
-        data.attributes.avatar.data.map(({ attributes: { url }}) => {
-          imagesAvatar.push({
-            url,//: `${domain}${url}`
-          });
+  members.data.map(({ id, attributes: { name, role, avatar}}) => {
+    const imagesAvatar = [];
+    if(avatar.data){
+      avatar.data.map(({ attributes: { url }}) => {
+        imagesAvatar.push({
+          url,//: `${domain}${url}`
         });
-      }
-      
-      membersNew.push({
-        id: data.id,
-        // order: order,
-        Portafolio: data.attributes.Portafolio,
-        avatar: imagesAvatar,
-        avatarHover: data.attributes.avatarHover,
-        cardDescription: data.attributes.cardDescription,
-        createdAt: data.attributes.createdAt,
-        description: data.attributes.description,
-        email: data.attributes.email,
-        lastName: data.attributes.lastName,
-        name: data.attributes.name,
-        positions: data.attributes.positions,
-        publishedAt: data.attributes.publishedAt,
-        role: data.attributes.role,
-        seo: data.attributes.seo,
-        skill: data.attributes.skill,
-        slug: data.attributes.slug,
-        technologies: data.attributes.technologies,
-        updatedAt: data.attributes.updatedAt,
       });
+    }
+    membersNew.push({
+      id,
+      name,
+      role,
+      avatar: imagesAvatar,
     });
-  
-  }, [])
+  });
 
   useEffect(() => {
     setMetaTitle(meetTeamPage.data?.attributes.seo?.metaTitle),

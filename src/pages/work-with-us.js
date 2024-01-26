@@ -8,6 +8,7 @@ import headerImage from "../../public/rocket.svg"
 import { useState } from "react"
 import { NextSeo } from "next-seo"
 import { useEffect } from "react"
+import { useRouter } from "next/router"
 
 const SectionHeader = dynamic(() => import("../components/SectionHeader"), {
   ssr: false,
@@ -29,7 +30,18 @@ export async function getServerSideProps() {
 }
 
 const WorkWithUsPage = ({ workWithUspage }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const router = useRouter()
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   const [metaTitle, setMetaTitle] = useState()
   const [metaDescription, setMetaDescription] = useState()
