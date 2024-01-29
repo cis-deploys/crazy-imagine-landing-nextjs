@@ -472,11 +472,11 @@ const WorkForm = () => {
 
   const onSubmitHandler = async(formData) => {
     const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
+    // const cvurl = curriculum.url;
 
     if (curriculum?.length === 1) {
       setShowButton(true)
-      
-      const fileTest =  data.curriculum[0]
+
       const formData = new FormData()
       formData.append("files", curriculum[0])
       axios
