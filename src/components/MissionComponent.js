@@ -1,31 +1,31 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
-import Image from 'next/image'
+import { Box, Typography } from "@mui/material"
+import React, { useEffect, useState } from "react"
+import Image from "next/image"
 
 import { makeStyles } from "@mui/styles"
 import { faRocket, faEye, faAward } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import Logo from "../../public/Logo.webp"
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from "react-i18next"
+import { useRouter } from "next/router"
 
-  const useStyles = makeStyles(theme => ({
-    containerMain: {
+const useStyles = makeStyles(theme => ({
+  containerMain: {
     display: "flex",
     width: "100%",
     height: "auto",
     justifyContent: "center",
     margin: "50px 0px",
     flexDirection: "column",
-    },
-    container: {
+  },
+  container: {
     display: "flex",
     height: "auto",
     flexDirection: "column",
     alignItems: "center",
-    margin: "10px 0px"
-    },
-    container2:{
+    margin: "10px 0px",
+  },
+  container2: {
     display: "flex",
     height: "auto",
     width: "100%",
@@ -33,11 +33,11 @@ import { useTranslation } from 'react-i18next'
     margin: "10px 0px",
     justifyContent: "center",
     alignItems: "center",
-    [ theme.breakpoints.down("sm") ] :{
-    flexDirection: "column",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
     },
-    },
-    containerImage: {
+  },
+  containerImage: {
     display: "flex",
     width: "5%",
     height: "auto",
@@ -52,8 +52,8 @@ import { useTranslation } from 'react-i18next'
       marginTop: "20px",
       width: "15%",
     },
-    },
-    containerText: {
+  },
+  containerText: {
     display: "flex",
     height: "auto",
     width: "35%",
@@ -68,35 +68,35 @@ import { useTranslation } from 'react-i18next'
     [theme.breakpoints.down("sm")]: {
       width: "70%",
     },
-    },
-    backgroundImage: {
+  },
+  backgroundImage: {
     padding: "15px",
     backgroundColor: "#27AAE1",
     borderRadius: "200px",
     display: "flex",
-    alignContent: "center"
+    alignContent: "center",
+  },
+  icon: {
+    width: "35px",
+    height: "35px",
+    [theme.breakpoints.down("xl")]: {
+      width: "30px",
+      height: "30px",
     },
-    icon: {
-      width: "35px",
-      height: "35px",
-      [theme.breakpoints.down("xl")]: {
-        width: "30px",
-        height: "30px",
-      },
-      [theme.breakpoints.down("md")]: {
-        width: "27px",
-        height: "27px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "20px",
-        height: "20px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "15px",
-        height: "15px",
-      },
+    [theme.breakpoints.down("md")]: {
+      width: "27px",
+      height: "27px",
     },
-    title: {
+    [theme.breakpoints.down("sm")]: {
+      width: "20px",
+      height: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "15px",
+      height: "15px",
+    },
+  },
+  title: {
     fontSize: "30px",
     fontFamily: "Nexa Bold",
     marginTop: "30px",
@@ -104,8 +104,8 @@ import { useTranslation } from 'react-i18next'
     [theme.breakpoints.down("sm")]: {
       fontSize: "20px",
     },
-    },
-    text1: {
+  },
+  text1: {
     fontFamily: "HindVadodara",
     fontSize: "35px",
     color: "#193174",
@@ -123,28 +123,28 @@ import { useTranslation } from 'react-i18next'
       width: "80%",
       fontSize: "22px",
     },
+  },
+  text2: {
+    fontFamily: "HindVadodara",
+    fontSize: "35px",
+    color: "#193174",
+    textAlign: "center",
+    margin: "30px 0px",
+    display: "flex",
+    width: "43%",
+    color: "#193174",
+    [theme.breakpoints.between(1280, 1550)]: {
+      width: "50%",
     },
-    text2: {
-      fontFamily: "HindVadodara",
-      fontSize: "35px",
-      color: "#193174",
-      textAlign: "center",
-      margin: "30px 0px",
-      display: "flex",
-      width: "30%",
-      color: "#193174",
-      [theme.breakpoints.between(1280, 1550)]: {
-        width: "40%",
-      },
-      [theme.breakpoints.down("lg")]: {
-        width: "50%",
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "70%",
-        fontSize: "20px",
-      },
+    [theme.breakpoints.down("lg")]: {
+      width: "70%",
     },
-    text3: {
+    [theme.breakpoints.down("sm")]: {
+      width: "70%",
+      fontSize: "20px",
+    },
+  },
+  text3: {
     fontStyle: "normal",
     fontFamily: "Roboto,sans-serif",
     fontSize: "20px",
@@ -163,8 +163,8 @@ import { useTranslation } from 'react-i18next'
       width: "70%",
       fontSize: "15px",
     },
-    },
-    subtitle: {
+  },
+  subtitle: {
     fontSize: "25px",
     fontFamily: "Nexa Bold",
     marginTop: "23px",
@@ -175,8 +175,8 @@ import { useTranslation } from 'react-i18next'
       marginTop: "0px",
       justifyContent: "center",
     },
-    },
-    text4: {
+  },
+  text4: {
     fontStyle: "normal",
     fontFamily: "Roboto,sans-serif",
     fontSize: "20px",
@@ -187,98 +187,134 @@ import { useTranslation } from 'react-i18next'
     [theme.breakpoints.down("sm")]: {
       fontSize: "15px",
     },
-    }
-  }))
+  },
+}))
 
-const MissionComponent = () => {
-    const classes = useStyles()
-    const { t, i18n } = useTranslation()
-    const lang = i18n.language
-  
-    // const faqs = faq
-    // const faqFilter = faqs
-    // .filter(faq => faq.locale.includes(lang)
-    // )
+const dataToShow = {
+  titleMission: "",
+  descriptionMission: "",
+  titleVission: "",
+  subtitleVission: "",
+  descriptionVission: "",
+  titleValue: "",
+}
+
+const MissionComponent = ({ companyValue, missionPage }) => {
+  const classes = useStyles()
+  const { i18n } = useTranslation()
+  const lang = i18n.language
+  const [info] = useState(missionPage?.data || [])
+  const [data, setData] = useState(dataToShow)
+
+  const companyV = companyValue
+  const CompanyFilter = companyV.filter(companyV =>
+    companyV.locale.includes(lang)
+  )
+
+  const prepareData = info => {
+    const mappedInfo = info.map(({ attributes }) => {
+      return attributes
+    })
+
+    const filteredData = mappedInfo?.filter(item => item.locale.includes(lang))
+    return filteredData
+  }
+
+  useEffect(() => {
+    const data = prepareData(info)
+    const obj = {
+      titleMission: data[0].title_mission,
+      descriptionMission: data[0].description_mission,
+      titleVission: data[0].title_vission,
+      subtitleVission: data[0].subtitle_vission,
+      descriptionVission: data[0].description_vission,
+      titleValue: data[0].title_company_value,
+    }
+    setData({ ...obj })
+  }, [lang])
+
+  const {
+    titleMission,
+    descriptionMission,
+    titleVission,
+    subtitleVission,
+    descriptionVission,
+    titleValue,
+  } = data
 
   return (
-    <Box className={ classes.containerMain }>
-        <Box className={ classes.container }>
-
-        <Box className={ classes.backgroundImage}>
-            <FontAwesomeIcon icon={faRocket} size="lg" color='#193174' className={ classes.icon } />
-        </Box >
-        <Typography className={ classes.title }>
-        Mission Statement
-        </Typography>
-
-        <Typography className={ classes.text1 }>
-          Design and develop technology that improves the lives of its users, while providing an exceptionally high level of service to our clients.
-        </Typography>
-
+    <Box className={classes.containerMain}>
+      <Box className={classes.container}>
+        <Box className={classes.backgroundImage}>
+          <FontAwesomeIcon
+            icon={faRocket}
+            size="lg"
+            color="#193174"
+            className={classes.icon}
+          />
         </Box>
+        <Typography className={classes.title}>{titleMission}</Typography>
 
-        <Box className={ classes.container } >
+        <Typography className={classes.text1}>{descriptionMission}</Typography>
+      </Box>
 
-        <Box className={ classes.backgroundImage}>
-            <FontAwesomeIcon icon={faEye} size="lg" color='#193174' className={ classes.icon } />
-        </Box >
-        <Typography className={ classes.title }>
-        Vision Statement
-        </Typography>
-
-        <Typography className={ classes.text2 }>
-        Technology makes the world a better place to live and improves the lives of its users.
-        </Typography>
-
-        <Typography className={ classes.text3 }>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi lorem, ut congue metus efficitur id. 
-        Nunc id quam sed lectus bibendum sodales. Aenean in facilisis turpis, vel tempor velit. Aliquam semper dolor eu aliquet cursus.
-        Nulla sodales nisi purus, at laoreet erat tincidunt at. Proin convallis purus a condimentum ornare. Donec suscipit mauris sed vulputate aliquet. 
-        Phasellus gravida justo urna, id congue lacus dapibus quis.
-        <br/>
-        <br/>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi lorem, ut congue metus efficitur id. 
-        Nunc id quam sed lectus bibendum sodales. Aenean in facilisis turpis, vel tempor velit. Aliquam semper dolor eu aliquet cursus.
-        Nulla sodales nisi purus, at laoreet erat tincidunt at. Proin convallis purus a condimentum ornare. Donec suscipit mauris sed vulputate aliquet. 
-        Phasellus gravida justo urna, id congue lacus dapibus quis.
-        <br/>
-        <br/>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi lorem, ut congue metus efficitur id. 
-        Nunc id quam sed lectus bibendum sodales. Aenean in facilisis turpis, vel tempor velit. Aliquam semper dolor eu aliquet cursus.
-        Nulla sodales nisi purus, at laoreet erat tincidunt at. Proin convallis purus a condimentum ornare. Donec suscipit mauris sed vulputate aliquet. 
-        Phasellus gravida justo urna, id congue lacus dapibus quis.
-        </Typography>
+      <Box className={classes.container}>
+        <Box className={classes.backgroundImage}>
+          <FontAwesomeIcon
+            icon={faEye}
+            size="lg"
+            color="#193174"
+            className={classes.icon}
+          />
         </Box>
+        <Typography className={classes.title}>{titleVission}</Typography>
 
-        <Box className={ classes.container }>
+        <Typography className={classes.text2}>{subtitleVission}</Typography>
 
-        <Box className={ classes.backgroundImage}>
-            <FontAwesomeIcon icon={faAward} size="lg" color='#193174' className={ classes.icon } />
-        </Box >
-        <Typography className={ classes.title }>
-        Company Values
-        </Typography>
+        <Typography className={classes.text3}>{descriptionVission}</Typography>
+      </Box>
 
-        <Box className={ classes.container2 } >
+      <Box className={classes.container}>
 
-          <Box className={ classes.containerImage }>
-          <Image src={Logo} width={80} height={80} alt='image-mision' quality={100}/>
-          </Box>
+        { CompanyFilter.length > 0 && 
+          (<Box className={classes.backgroundImage}>
+            <FontAwesomeIcon
+              icon={faAward}
+              size="lg"
+              color="#193174"
+              className={classes.icon}
+            />
+          </Box>)
+          (<Typography className={classes.title}>{titleValue}</Typography>)
+        }
+        
 
-          <Box className={ classes.containerText }>
-          <Typography className={ classes.subtitle }>
-            Hard Work
-          </Typography>
+        {CompanyFilter.map(e => {
+          const ImageValue = e.image.data[0].attributes.url
 
-          <Typography className={ classes.text4}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi lorem, ut congue metus efficitur id. 
-          Nunc id quam sed lectus bibendum sodales. Aenean in facilisis turpis, vel tempor velit. Aliquam semper dolor eu aliquet cursus.
-          </Typography>
-          </Box>
+          return (
+            <Box className={classes.container2} key={e.id}>
+              <Box className={classes.containerImage}>
+                <Image
+                  src={ImageValue}
+                  width={80}
+                  height={80}
+                  alt="image-mision"
+                  quality={100}
+                />
+              </Box>
 
-        </Box>
+              <Box className={classes.containerText}>
+                <Typography className={classes.subtitle}>{e.title}</Typography>
 
-        </Box>
+                <Typography className={classes.text4}>
+                  {e.description}
+                </Typography>
+              </Box>
+            </Box>
+          )
+        })}
+      </Box>
     </Box>
   )
 }

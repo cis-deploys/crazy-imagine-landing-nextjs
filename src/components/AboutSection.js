@@ -194,7 +194,7 @@ const AboutSection = () => {
       icon: faEnvelopeOpen
     },
     {
-      title: "Mission",
+      title: t("mission_title"),
       description: "Collaboration with our internal team. Crazy Imagine, our biggest strength is the quality of our team",
       link: '/mission',
       icon: faRocket
