@@ -9,5 +9,9 @@ exports.PRIVACY_POLICY = "/privacy-policy"
 exports.TEAMS = "/team"
 exports.REFERENCES = "/references"
 exports.FAQ = "/faq"
+exports.SITEMAP = "/sitemap"
+exports.DEFAULT_SITEMAP = "/x-defaul-sitemap.xml"
+exports.ES_SITEMAP = "/es-sitemap-0.xml"
+
 
 
