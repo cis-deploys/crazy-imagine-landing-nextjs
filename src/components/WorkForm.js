@@ -103,6 +103,7 @@ const useStyles = makeStyles(theme => ({
     width: "520px",
     marginLeft: 40,
     marginRight: 40,
+    marginBottom: "40px",
     "& .MuiSelect-select": {
     fontSize: "16px", 
   },
@@ -199,7 +200,8 @@ const useStyles = makeStyles(theme => ({
     padding: "20px",
     backgroundColor: "rgba(235, 235, 235, 0.6)",
     marginTop: "94px",
-    borderRadius: "14px 14px 0px 0px",
+    marginBottom: "94px",
+    borderRadius: "14px 14px 14px 14px",
     [theme.breakpoints.down("md")]: {
       marginTop: "66px",
       padding: "5px",
@@ -207,7 +209,8 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "15px",
+      marginBottom: "30px",
+      marginTop: "0px",
       padding: "4px",
       justifyContent: "center",
       alignItems: "center",
@@ -251,10 +254,21 @@ const useStyles = makeStyles(theme => ({
   },
   attach: {
     display: "flex",
+    height: "180px",
+    width: "300px",
     alignItems: "flex-start",
+    justifyContent: "flex-start",
     flexDirection: "column",
+    borderRadius: "14px",
+    marginTop: "20px",
+    cursor: "pointer",
     [theme.breakpoints.down("md")]: {
       marginTop: "30px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "30px",
+      height: "90px",
+      width: "100px",
     },
   },
   attachLabel: {
@@ -264,12 +278,26 @@ const useStyles = makeStyles(theme => ({
     fontSize: "14px",
     lineHeight: "140%",
     marginTop: "43px",
-    marginBottom: "15px",
+    marginBottom: "5px",
     color: "#193173",
     [theme.breakpoints.down("md")]: {
       marginTop: "15px",
       fontSize: "10px",
       marginBottom: "10px",
+    },
+  },
+  attachButton: {
+    fontFamily: "HindVadodara",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "18px",
+    lineHeight: "140%",
+    color: "#193173",
+    cursor: "pointer",
+    marginBottom: "5px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "15px",
+      lineHeight: "100%",
     },
   },
   selectLabel: {
@@ -392,7 +420,7 @@ const useStyles = makeStyles(theme => ({
   },
   uploadAlert: {
     backgroundColor: "transparent",
-    padding: "0",
+    padding: "0px",
     marginTop: "5px",
     fontFamily: "HindVadodara",
     fontStyle: "normal",
@@ -434,7 +462,7 @@ const WorkForm = () => {
     phone: yup.string().matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, t("workWithUs_workForm_schemaYup_phone2")).required(t("workWithUs_workForm_schemaYup_phone")),
     linkedin: yup.string(),
     website: yup.string().url(),
-    curriculum: yup.mixed().test('fileSize', 'El archivo debe tener un tamaño máximo de 2 MB', (value) => {
+    curriculum: yup.mixed().test('fileSize', (t("workWithUs_workForm_schemaYup_curriculum5")), (value) => {
       if (!value) return true;
       return value && value[0] && value[0].size <= 2097152;
     }).test('type', t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
@@ -480,7 +508,7 @@ const WorkForm = () => {
       const formData = new FormData()
       formData.append("files", curriculum[0])
       axios
-        .post(`${domain}upload`, formData)
+        .post(`${domain}upload`, formData, { headers: '*' })
         .then(async response => {
           const file = response.data[0].id;
           const cvurl = response.data[0].url;
@@ -740,7 +768,7 @@ const WorkForm = () => {
                </Select> 
               }
             /> 
-            <Button className={classesComponent.buttonComponent} type="submit" disabled={showButton}>
+            <Button className={classesComponent.buttonComponent} type="submit" disabled={showButton} style={{ marginBottom: "30px" }}>
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

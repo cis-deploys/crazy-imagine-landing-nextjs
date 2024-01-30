@@ -153,6 +153,7 @@
     "workWithUs_workForm_schemaYup_curriculum2": "El archivo debe ser maximo de 2 mb",
     "workWithUs_workForm_schemaYup_curriculum3": "Sólo se aceptan los siguientes formatos: .pdf, .jpg, .jpeg, .doc",
     "workWithUs_workForm_schemaYup_curriculum4": "Archivo cargado con éxito",
+    "workWithUs_workForm_schemaYup_curriculum5": "El archivo debe tener un tamaño máximo de 2 MB",
     "workWithUs_workForm_schemaYup_reference": "El campo es obligatorio",
     "workWithUs_workForm_submit_success": "El formulario ha sido enviado con éxito",
     "workWithUs_workForm_submit_error": "Hubo un error al intentar enviar su formulario",
