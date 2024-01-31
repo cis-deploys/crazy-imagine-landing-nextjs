@@ -273,7 +273,15 @@
    "title_FeatureMap":"Mapa De Características",
    "description_FeatureMap":"Para comenzar, creamos un mapa de características: una vista de alto nivel de las características de su aplicación. Sirve como punto de partida para un examen más detallado de cómo interactuarán las vistas y se mantiene y actualiza durante toda la vida del proyecto.",
    "title_UserFlow":"Flujo de usuarios",
-   "description_UserFlow":"A continuación, crearemos flujos de usuarios para demostrar los pasos que seguirán los usuarios para lograr objetivos específicos. Los flujos de usuarios se vuelven especialmente importantes cuando se trata de flujos de trabajo condicionales complejos. Permite a los clientes, diseñadores y desarrolladores compartir una comprensión mutua de cómo funcionarán las funciones y cuáles serán los resultados de las mismas."
+   "description_UserFlow":"A continuación, crearemos flujos de usuarios para demostrar los pasos que seguirán los usuarios para lograr objetivos específicos. Los flujos de usuarios se vuelven especialmente importantes cuando se trata de flujos de trabajo condicionales complejos. Permite a los clientes, diseñadores y desarrolladores compartir una comprensión mutua de cómo funcionarán las funciones y cuáles serán los resultados de las mismas.",
+   "title_Wireframes":"Diagramas",
+   "description_Wireframes":"Como paso final, crearemos diagramas de las vistas principales de la aplicación. Wireframing nos permite crear el diseño general de la pantalla sin tener que decidir el texto y las imágenes exactos que se utilizarán en los diseños finales. Es útil para:",
+   "li1_Wireframes":"Creación Rápida De Prototipos",
+   "li2_Wireframes":"Comprender La Funcionalidad",
+   "li3_Wireframes":"Demostrando El Flujo De Usuarios",
+   "li4_Wireframes":"Garantizar una Estructura Subyacente Sólida",
+   "title_UxExamples":"Ejemplos De Experiencia De Usuario"
+
 
    
    

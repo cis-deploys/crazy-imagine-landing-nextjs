@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Box, Typography, Grid, Avatar, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useTranslation } from "react-i18next"
 import { StyleComponent } from "./StyleComponent"
 
 import Link from "next/link"
-
+import { useRouter } from "next/router"
 import Stack from "@mui/material/Stack"
 import Vector from "../../public/VectorRoadMap.svg"
 import PhoneRoadMap2 from "../../public/iPhone1.svg"
@@ -13,12 +13,15 @@ import PhoneRoadMap1 from "../../public/iPhone2.svg"
 import People from "../../public/peopleStep1.svg"
 import LanguageIcons from "../../public/languageIcons.svg"
 import Background3 from "../../public/background3.svg"
-import { useRouter } from "next/router"
+import FeatureMap from "../../public/imageFeatureMap.svg"
+import UserFlow from "../../public/imageUserFlow.svg"
+import Wireframes from "../../public/imageWireframes.svg"
+
 const useStyles = makeStyles(theme => ({
   contentPhase1: {
     width: "100%",
     height: "100%",
-    marginLeft: "90px",
+    paddingLeft: "90px",
 
     marginTop: "73px",
   },
@@ -71,10 +74,10 @@ const useStyles = makeStyles(theme => ({
     width: "553px",
     height: "791px",
     top: "-150px",
-    right: 0,
+    right: "-18px",
 
     [theme.breakpoints.up("xl")]: {
-      right: 0,
+      right: "-44px",
       width: "715px",
       height: "882px",
       top: "-150px",
@@ -83,38 +86,31 @@ const useStyles = makeStyles(theme => ({
       width: "736px",
       height: "900px",
       top: "-137px",
+      right: "-119px",
     },
   },
   imagePhoneRoadMap1: {
     position: "absolute",
-    top: "154px",
-    left: "-29px",
+    top: "74px",
+    left: "-73px",
     width: "500px",
     height: "495px",
-    [theme.breakpoints.between("lg", "xl")]: {
-      top: "92px",
-      left: "-138px",
-    },
 
     [theme.breakpoints.up("xl")]: {
       top: "105px",
       left: "-50px",
     },
     [theme.breakpoints.up("xxl")]: {
-      top: "105px",
-      left: "52px",
+      top: "132px",
+      left: "161px",
     },
   },
   imagePhoneRoadMap2: {
     position: "absolute",
-    top: "-14px",
-    left: "-167px",
+    top: "-81px",
+    left: "-183px",
     width: "500px",
     height: "495px",
-    [theme.breakpoints.between("lg", "xl")]: {
-      top: "-63px",
-      left: "-266px",
-    },
 
     [theme.breakpoints.up("xl")]: {
       top: "-63px",
@@ -122,8 +118,8 @@ const useStyles = makeStyles(theme => ({
     },
 
     [theme.breakpoints.up("xxl")]: {
-      top: "-63px",
-      left: "-80px",
+      top: "-41px",
+      left: "29px",
     },
   },
 
@@ -156,7 +152,7 @@ const useStyles = makeStyles(theme => ({
 
     height: "auto",
 
-    marginLeft: "90px",
+    paddingLeft: "90px",
     marginTop: "73px",
   },
 
@@ -223,7 +219,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
 
-    marginLeft: "62px",
+    paddingLeft: "62px",
   },
   /*content avatar  */
   containerAvatarAndText: {
@@ -241,7 +237,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "flex-start",
     marginTop: "54px",
-    marginLeft: "77px",
+    paddingLeft: "77px",
   },
   avatar: {
     width: theme.spacing(8),
@@ -249,7 +245,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
   },
   textContainer: {
-    marginLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
   },
@@ -443,24 +439,60 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02rem",
   },
   boxContentDescripcionFeatureMap: {
-    width: "68%",
+    width: "72%",
     paddingTop: "20px",
   },
-  boxContentDescripcionFeatureMap2: {
+  boxContentDescripcionUserFlow: {
     width: "78%",
     paddingTop: "20px",
   },
-  contentFeatureMap2: {
+  contentUserFlow: {
     width: "100%",
     height: "auto",
     margin: "0 auto",
     padding: "50px",
+  },
+  boxContentUserFlow: {
+    paddingTop: "60px",
+  },
+  contentWirefrawes: {
+    width: "100%",
+    height: "auto",
+    margin: "0 auto",
+    padding: "50px",
+  },
+  boxContentWireframes: {
+    paddingTop: "40px",
+    paddingLeft: "32px",
+  },
+
+  listItem: {
+    color: "white",
+    lineHeight: "40px",
+  },
+  contentUxExamples: {
+    width: "100%",
+    height: "auto",
+    margin: "0 auto",
+    padding: "50px",
+  },
+  titleUxExamples: {
+    fontFamily: "Nexa Bold",
+    fontWeight: 700,
+    fontSize: "30px",
+    lineHeight: " 32px",
+    letterSpacing: "0.02rem",
+    color: "#FFFFFF",
   },
 }))
 const DesignSection = () => {
   const classes = useStyles()
   const { t, i18n } = useTranslation()
   const classesComponent = StyleComponent()
+
+  const targetStep1 = useRef(null)
+  const targetStep2 = useRef(null)
+  const targetStep3 = useRef(null)
 
   const router = useRouter()
   const [technicalDiscoveryVisible, setTechnicalDiscoveryVisible] =
@@ -469,22 +501,27 @@ const DesignSection = () => {
     {
       number: t("step1").toUpperCase(),
       description: t("designDiscovery"),
+      anchor: "step1",
     },
     {
       number: t("step2").toUpperCase(),
       description: t("technicalDiscovery"),
+      anchor: "step2",
     },
     {
       number: t("step3").toUpperCase(),
       description: t("userExperience_Design"),
+      anchor: "step3",
     },
     {
       number: t("step4").toUpperCase(),
       description: t("userInterface_Design"),
+      anchor: "step4",
     },
     {
       number: t("step5").toUpperCase(),
       description: t("PrototypeEstimation"),
+      anchor: "step5",
     },
   ]
 
@@ -511,31 +548,71 @@ const DesignSection = () => {
           </Box>
           <Box style={{ marginTop: "50px" }}>
             {steps.map((step, index) => (
-              <Box
-                key={index}
-                className={classes.stepContainer}
-                // id={`step${index + 1}`}
-              >
+              <Box key={index} className={classes.stepContainer}>
                 <Typography variant="body1" className={classes.stepNumber}>
                   {step.number}.
                 </Typography>
-                <Typography
-                  variant="body1"
-                  className={classes.stepDescription}
-                  style={{ cursor: "pointer" }}
+                <Link key={index} href={`#${step.anchor}`}>
+                  <a
+                    style={{
+                      textTransform: "capitalize",
+                      textDecoration: "none",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      if (index === 0) {
+                        targetStep1.current?.scrollIntoView({
+                          behavior: "smooth",
+                        })
+                      } else if (index === 1) {
+                        targetStep2.current?.scrollIntoView({
+                          behavior: "smooth",
+                        })
+                      } else if (index === 2) {
+                        targetStep3.current?.scrollIntoView({
+                          behavior: "smooth",
+                        })
+                      }
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      className={classes.stepDescription}
+                    >
+                      {step.description.toLowerCase()}
+                    </Typography>
+                  </a>
+                </Link>
+
+                {/* <a
+                  style={{
+                    textTransform: "capitalize",
+                    textDecoration: "none",
+                  }}
+                  onClick={() => {
+                    if (index === 0) {
+                      targetStep1.current?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    } else if (index === 1) {
+                      targetStep2.current?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    } else if (index === 2) {
+                      targetStep3.current?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    }
+                  }}
                 >
-                  {step.description}
-                </Typography>
-                {/* 
-                <Link href={`/road-map#${"step" + (index + 1)}`}>
                   <Typography
                     variant="body1"
                     className={classes.stepDescription}
                     style={{ cursor: "pointer" }}
                   >
-                    {step.description}
+                    {step.description.toLowerCase()}
                   </Typography>
-                </Link> */}
+                </a> */}
               </Box>
             ))}
 
@@ -564,7 +641,12 @@ const DesignSection = () => {
           </Box>
         </Grid>
       </Grid>
-      <Grid className={classes.contentStep1} container spacing={2}>
+      <Grid
+        ref={targetStep1}
+        className={classes.contentStep1}
+        container
+        spacing={2}
+      >
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Box>
             <Typography variant="body1" className={classes.titleStep1}>
@@ -661,7 +743,12 @@ const DesignSection = () => {
         </Grid>
       </Grid>
       <Box className={classes.boxContentStep2}>
-        <Grid container spacing={2} className={classes.containerStep2}>
+        <Grid
+          ref={targetStep2}
+          container
+          spacing={2}
+          className={classes.containerStep2}
+        >
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Box className={classes.boxImagelanguages}>
               <img src={LanguageIcons.src} alt="Images Languages" />
@@ -704,7 +791,7 @@ const DesignSection = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box id="step3" className={classes.boxContentStep3}>
+      <Box id="step3" ref={targetStep3} className={classes.boxContentStep3}>
         <Grid container spacing={2} className={classes.containerStep3}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <Box>
@@ -737,13 +824,14 @@ const DesignSection = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid container spacing={2} className={classes.contentFeatureMap2}>
+
+        <Grid container spacing={2} className={classes.contentUserFlow}>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Box className={classes.boxContentFeatureMap}>
+            <Box className={classes.boxContentUserFlow}>
               <Typography className={classes.titleFeatureMap}>
                 {t("title_UserFlow")}
               </Typography>
-              <Box className={classes.boxContentDescripcionFeatureMap2}>
+              <Box className={classes.boxContentDescripcionUserFlow}>
                 <Typography className={classes.descriptionFeatureMap}>
                   {t("description_UserFlow")}
                 </Typography>
@@ -751,6 +839,73 @@ const DesignSection = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
+        </Grid>
+        <Grid container spacing={2} className={classes.contentWirefrawes}>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Box className={classes.boxContentUserFlow}>
+              <Typography className={classes.titleFeatureMap}>
+                {t("title_Wireframes")}
+              </Typography>
+              <Box className={classes.boxContentDescripcionUserFlow}>
+                <Typography className={classes.descriptionFeatureMap}>
+                  {t("description_Wireframes")}
+                </Typography>
+              </Box>
+              <Box className={classes.boxContentWireframes}>
+                <ul>
+                  <li className={classes.listItem}>
+                    <Typography className={classes.descriptionFeatureMap}>
+                      {t("li1_Wireframes")}
+                    </Typography>
+                  </li>
+                  <li className={classes.listItem}>
+                    <Typography className={classes.descriptionFeatureMap}>
+                      {t("li2_Wireframes")}
+                    </Typography>
+                  </li>
+                  <li className={classes.listItem}>
+                    <Typography className={classes.descriptionFeatureMap}>
+                      {t("li3_Wireframes")}
+                    </Typography>
+                  </li>
+                  <li className={classes.listItem}>
+                    <Typography className={classes.descriptionFeatureMap}>
+                      {t("li4_Wireframes")}
+                    </Typography>
+                  </li>
+                </ul>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2} className={classes.contentUxExamples}>
+          <Grid item xs={12} align="center">
+            <Typography className={classes.titleUxExamples}>
+              {t("title_UxExamples")}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={4} align="center">
+            <a
+              href="https://whimsical.com/account-management-LgYciykM5TXFZwYa4a9qTR"
+              target="_blank"
+            >
+              <img src={FeatureMap.src} alt="Images FeatureMap" />
+            </a>
+          </Grid>
+          <Grid item xs={4} align="center">
+            <a
+              href="https://whimsical.com/example-user-flow-for-invoices-FvrfYrQFBLCNbMfCCzzkt"
+              target="_blank"
+            >
+              <img src={UserFlow.src} alt="Images UserFlow" />
+            </a>
+          </Grid>
+          <Grid item xs={4} align="center">
+            <img src={Wireframes.src} alt="Images Wireframes" />
+          </Grid>
         </Grid>
       </Box>
     </>

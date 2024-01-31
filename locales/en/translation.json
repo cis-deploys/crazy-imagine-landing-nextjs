@@ -272,7 +272,15 @@
      "title_FeatureMap":"Feature Map",
      "description_FeatureMap":"To start, we create a feature map - a high level view of the features of your application. It serves as a starting point for closer examination of how the views will interact, and is maintained and updated throughout the life of the project.",
      "title_UserFlow":"User Flow",
-     "description_UserFlow":"Next, we'll build User Flows to demonstrate the steps users will take to achieve specific goals. User Flows become especially important when dealing with complex conditional workflows. It allows clients, designers, and developers to share a mutual understanding of how features will work and what feature outcomes will be."
+     "description_UserFlow":"Next, we'll build User Flows to demonstrate the steps users will take to achieve specific goals. User Flows become especially important when dealing with complex conditional workflows. It allows clients, designers, and developers to share a mutual understanding of how features will work and what feature outcomes will be.",
+     "title_Wireframes":"Wireframes",
+     "description_Wireframes":"As a final step, we'll create wireframes of the primary views of the application. Wireframing allows us to create the general layout of the screen without having to decide on the exact text and imagery that will be used in the final designs. It's useful for:",
+     "li1_Wireframes":"Rapid Prototyping",
+     "li2_Wireframes":"Understanding Functionality",
+     "li3_Wireframes":"Demonstrating the User Flow",
+     "li4_Wireframes":"Ensuring a Solid Underlying Structure",
+     "title_UxExamples":"Ux Examples"
+
 
 
 

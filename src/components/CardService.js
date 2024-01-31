@@ -107,7 +107,7 @@ const CardService = ({
   const { t } = useTranslation()
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
-  const [showSecondImage, setShowSecondImage] = useState(false) // Nuevo estado para cambiar la imagen
+  const [showSecondImage, setShowSecondImage] = useState(false)
   const titleCss = titleCss2
     ? classesComponent.titleCard2
     : classesComponent.titleCard

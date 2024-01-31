@@ -273,6 +273,7 @@ const ThechnicalDiscovery = () => {
     { name: t("example1").toUpperCase(), description: t("technicalDiscovery") },
     { name: t("example2").toUpperCase(), description: t("technicalDiscovery") },
   ]
+
   return (
     <>
       <Box className={classes.boxContentStep2}>

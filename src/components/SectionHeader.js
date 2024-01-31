@@ -184,22 +184,22 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       fontSize: "15px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "8px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
   }),
   link: {
     textDecoration: "none",
-    borderRadius: "100px"
+    borderRadius: "100px",
   },
   contactButton: {
     background: "#797EF6 !important",
@@ -208,9 +208,44 @@ const useStyles = makeStyles(theme => ({
       background: "#797EF6 !important",
     },
   },
+  contactButtonSection: {
+    width: "150px",
+    height: "40px",
+    background: "transparent",
+    borderRadius: "100px",
+    textDecoration: "none",
+    border: "2px solid #FFFFFF",
+
+    [theme.breakpoints.up("xl")]: {
+      width: "200px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "140px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      "& span": {
+        color: "#1E2F97",
+      },
+    },
+  },
 }))
 
-export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
+export const SectionHeader = ({
+  title,
+  desc,
+  btn,
+  little,
+  img,
+  button,
+  buttonRoadmap,
+}) => {
   const classes = useStyles({ little, btn })
   const classesComponent = StyleComponent()
   const { t } = useTranslation()
@@ -219,19 +254,34 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.title} variant="h1" component="h1"><span>{title}</span></Typography>
+          <Typography className={classes.title} variant="h1" component="h1">
+            <span>{title}</span>
+          </Typography>
           <Typography className={classes.desc}>{desc}</Typography>
-          { button ? 
-            <Button component="a" href={`#${button.refID}`}
-            className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+          {button ? (
+            <Button
+              component="a"
+              href={`#${button.refID}`}
+              className={`${classesComponent.buttonComponent} ${
+                buttonRoadmap
+                  ? classes.contactButtonSection
+                  : classes.contactButton
+              } `}
             >
               <span>{button.text}</span>
-            </Button> 
-            : ''
-          }
+            </Button>
+          ) : (
+            ""
+          )}
         </Box>
         <Box className={classes.imgContainer}>
-          <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" />
+          <Image
+            className={classes.img}
+            src={img}
+            width={307}
+            height={407}
+            alt="Header Section"
+          />
         </Box>
       </Box>
     </Box>
