@@ -143,6 +143,9 @@ export const StyleComponent = makeStyles(theme => ({
     alignItems: "center",
     height: "100%",
 
+    [theme.breakpoints.between("xs", "sm")]: {
+      flexDirection: "column",
+    },
     [theme.breakpoints.between("lg", "xl")]: {
       paddingTop: "50px",
     },
@@ -162,6 +165,10 @@ export const StyleComponent = makeStyles(theme => ({
     width: "58%",
     whiteSpace: "pre-line",
     marginLeft: "20px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingTop: "32px",
+      width: "70%",
+    },
     [theme.breakpoints.between("lg", "xl")]: {
       width: "55%",
     },

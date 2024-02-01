@@ -93,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
-      display: "none",
+      lineHeight: "22px",
     },
   },
   desc2: {

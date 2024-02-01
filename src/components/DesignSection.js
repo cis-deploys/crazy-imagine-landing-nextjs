@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: "90px",
 
     marginTop: "73px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingLeft: "50px",
+    },
   },
   titlePhase1: {
     fontFamily: "Nexa Bold",
@@ -44,6 +47,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("lg")]: {
       width: "78%",
     },
+    [theme.breakpoints.between("xs", "sm")]: {
+      width: "90%",
+    },
   },
   descriptionPhase1: {
     fontFamily: "HindVadodara",
@@ -53,6 +59,15 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     lineHeight: "32.8px",
     paddingTop: "50px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "16px",
+      lineHeight: "24.8px",
+    },
+  },
+  boxdescription2Phase1: {
+    [theme.breakpoints.between("xs", "sm")]: {
+      width: "90%",
+    },
   },
   description2Phase1: {
     fontFamily: "HindVadodara",
@@ -62,6 +77,10 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
     lineHeight: "22.1px",
     paddingTop: "30px",
+
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "16px",
+    },
   },
 
   imageContainer: {
@@ -76,6 +95,15 @@ const useStyles = makeStyles(theme => ({
     top: "-150px",
     right: "-18px",
 
+    [theme.breakpoints.between(0, 600)]: {
+      display: "none",
+    },
+    [theme.breakpoints.between(601, 1024)]: {
+      display: "none",
+    },
+    [theme.breakpoints.between(1024, 1399)]: {
+      display: "none",
+    },
     [theme.breakpoints.up("xl")]: {
       right: "-44px",
       width: "715px",
@@ -96,6 +124,16 @@ const useStyles = makeStyles(theme => ({
     width: "500px",
     height: "495px",
 
+    [theme.breakpoints.between(0, 600)]: {
+      display: "none",
+    },
+    [theme.breakpoints.between(601, 1024)]: {
+      display: "none",
+    },
+    [theme.breakpoints.between(1024, 1399)]: {
+      display: "none",
+    },
+
     [theme.breakpoints.up("xl")]: {
       top: "105px",
       left: "-50px",
@@ -111,6 +149,15 @@ const useStyles = makeStyles(theme => ({
     left: "-183px",
     width: "500px",
     height: "495px",
+    [theme.breakpoints.between(0, 600)]: {
+      display: "none",
+    },
+    [theme.breakpoints.between(601, 1024)]: {
+      display: "none",
+    },
+    [theme.breakpoints.between(1024, 1399)]: {
+      display: "none",
+    },
 
     [theme.breakpoints.up("xl")]: {
       top: "-63px",
@@ -128,6 +175,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
 
     paddingTop: "20px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingTop: "16px",
+    },
   },
   stepNumber: {
     color: "#888DFF",
@@ -136,6 +186,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: "15px",
     lineHeight: "15px",
     letterSpacing: "0.2rem",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "14px",
+      paddingTop: "2px",
+      letterSpacing: "0.02rem",
+    },
   },
   stepDescription: {
     color: "#8C98BA",
@@ -145,15 +200,22 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "18px",
     letterSpacing: "0.2rem",
     paddingLeft: "8px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "14px",
+      letterSpacing: " 0.02rem",
+    },
   },
   /*step 1 content */
   contentStep1: {
     width: "100%",
-
     height: "auto",
-
     paddingLeft: "90px",
     marginTop: "73px",
+
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingLeft: "70px",
+      marginTop: "50px",
+    },
   },
 
   titleStep1: {
@@ -174,6 +236,15 @@ const useStyles = makeStyles(theme => ({
   boxDescriptionStep1: {
     width: "61%",
     paddingTop: "30px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "90%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "69%",
+    },
   },
   descriptionStep1: {
     fontFamily: "HindVadodara",
@@ -182,6 +253,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "34px",
     letterSpacing: "0.02rem",
     color: "#304392",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "24px",
+      lineHeight: "30px",
+    },
   },
 
   title2Step1: {
@@ -204,10 +279,25 @@ const useStyles = makeStyles(theme => ({
   },
   boxContentMeeting: {
     paddingTop: "153px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingTop: "40px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      paddingTop: "10px",
+    },
   },
   boxContentDescripcion2: {
     width: "56%",
     paddingTop: "20px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "93%",
+    },
   },
   boxImageMeetTeam: {
     boxShadow: "rgba(0, 0, 0, 0.06)",
@@ -219,12 +309,19 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
 
-    paddingLeft: "62px",
+    paddingLeft: "30px",
   },
   /*content avatar  */
   containerAvatarAndText: {
     width: "100%",
     height: "auto",
+    paddingLeft: "25px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingTop: "50px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      paddingTop: "50px",
+    },
   },
 
   contentAvatar: {
@@ -237,7 +334,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "flex-start",
     marginTop: "54px",
-    paddingLeft: "77px",
+    paddingLeft: "96px",
   },
   avatar: {
     width: theme.spacing(8),
@@ -276,11 +373,35 @@ const useStyles = makeStyles(theme => ({
   /* users persons  */
 
   boxContentUsers: {
-    paddingTop: "153px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      alignItems: "center",
+      paddingTop: "30px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      alignItems: "center",
+      paddingTop: "30px",
+    },
   },
   boxContentDescripcionUsers: {
     width: "68%",
     paddingTop: "20px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      width: "80%",
+      paddingLeft: "32px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "100%",
+      paddingLeft: "50px",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "70%",
+    },
   },
   descriptionUsers: {
     fontFamily: "HindVadodara",
@@ -542,9 +663,11 @@ const DesignSection = () => {
               </Typography>
             </Box>
 
-            <Typography className={classes.description2Phase1}>
-              {t("designDescripcion2")}
-            </Typography>
+            <Box className={classes.boxdescription2Phase1}>
+              <Typography className={classes.description2Phase1}>
+                {t("designDescripcion2")}
+              </Typography>
+            </Box>
           </Box>
           <Box style={{ marginTop: "50px" }}>
             {steps.map((step, index) => (
@@ -665,7 +788,7 @@ const DesignSection = () => {
       </Grid>
 
       <Grid container spacing={2} className={classes.contentMeetTeam}>
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <Box className={classes.boxImageMeetTeam}>
             <img
               className={classes.imageMeetTeam}
@@ -674,7 +797,7 @@ const DesignSection = () => {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <Box className={classes.boxContentMeeting}>
             <Typography className={classes.title2Step1}>
               {t("title2Step1")}
@@ -689,7 +812,7 @@ const DesignSection = () => {
       </Grid>
 
       <Grid container spacing={2} className={classes.containerAvatarAndText}>
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <Box className={classes.contentAvatar}>
             <Stack direction="row" spacing={2} className={classes.avatar1Stack}>
               <Avatar
@@ -730,7 +853,7 @@ const DesignSection = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-          <Box>
+          <Box className={classes.boxContentUsers}>
             <Typography className={classes.title3Users}>
               {t("titleUserPersonas")}
             </Typography>

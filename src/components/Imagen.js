@@ -33,8 +33,8 @@ const Imagen = ({ imageUrl }) => {
           src={imageUrl}
           alt="Imagen de la empresa"
           layout="responsive"
-          width={4000}
-          height={2250}
+          width={3840}
+          height={2160}
           quality={100}
         />
       )

@@ -68,7 +68,18 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     maxWidth: "1200px",
     margin: " 0 auto",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "flex",
+      flexDirection: "column",
+      width: "80%",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      display: "flex",
+
+      width: "80%",
+    },
   },
+
   sectionTitles: {
     padding: "5px",
     position: "relative",
