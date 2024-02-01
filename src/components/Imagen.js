@@ -2,7 +2,7 @@ import React from "react"
 import { Box } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
-import Crazy from "../../public/crazyAniversario.webp"
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     width: "100%",
     height: "auto",
-    objectFit: "contain",
+    //objectFit: "contain",
     justifyContent: "end"
   },
 }))
@@ -26,32 +26,23 @@ const useStyles = makeStyles(theme => ({
 const Imagen = ({ imageUrl }) => {
   const classes = useStyles()
 
-  const renderImage = () => {
-    if (imageUrl) {
-      return (
-        <Image
-          className={`${classes.img2}`}
-          src={imageUrl}
-          alt="Imagen de la empresa"
-          width={4000}
-          height={2250}
-          quality={100}
-        />
-      )
-    } else {
-      return (
+  return (
+    <Box className={classes.img2}>
+      {imageUrl && (
         <Image
           className={classes.img2}
-          src={Crazy}
+          src={imageUrl}
           alt="Imagen de la empresa"
-          layout="responsive"
+          width={3840}
+          height={1398}
           quality={100}
-        />
-      )
-    }
-  }
+        /> 
+      )}
+    </Box>
+  );
 
-  return <Box className={classes.img2}>{renderImage()}</Box>
+ 
 }
 
 export default Imagen
+
