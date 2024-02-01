@@ -35,13 +35,13 @@ const WorkWithUsPage = ({ workWithUspage }) => {
 
   useEffect(() => {
     // Obtener la locale del router
-    const locale = router.locale;
+    const locale = router.locale
 
-    if (locale === 'es' && i18n.language !== 'es') {
+    if (locale === "es" && i18n.language !== "es") {
       // Establecer el idioma en español si no está establecido
-      i18n.changeLanguage('es');
+      i18n.changeLanguage("es")
     }
-  }, [router.locale, i18n]);
+  }, [router.locale, i18n])
 
   const [metaTitle, setMetaTitle] = useState()
   const [metaDescription, setMetaDescription] = useState()
@@ -55,6 +55,9 @@ const WorkWithUsPage = ({ workWithUspage }) => {
       setKeywords(workWithUspage.data?.attributes.seo?.keywords)
     setTitle(workWithUspage.data?.attributes.title)
   }, [])
+
+  const imageUrl =
+    workWithUspage.data?.attributes?.images?.data[0]?.attributes?.url
 
   return (
     <Layout>
@@ -84,7 +87,8 @@ const WorkWithUsPage = ({ workWithUspage }) => {
       />
 
       <WorkForm />
-      <Imagen imageUrl={images[0]?.attributes.url} />
+
+      {imageUrl && <Imagen imageUrl={imageUrl} />}
     </Layout>
   )
 }
