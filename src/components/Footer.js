@@ -245,7 +245,7 @@ const Footer = () => {
               size="1x"
             />
             <Typography className={classes.infoTypography}>
-              +13203229488
+            +1 (320) 322-9488
             </Typography>
           </Box>
           </Box>

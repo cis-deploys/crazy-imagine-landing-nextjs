@@ -89,7 +89,7 @@ function Mission ({ companyValue, missionPage }) {
         }}
       />
     <SectionHeader
-        title={t("about_aboutSection_Mission_title")}
+        title={t("mission_title")}
         btn={false}
         img={headerImage}
         cls="textContainer"

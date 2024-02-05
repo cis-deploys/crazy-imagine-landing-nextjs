@@ -172,7 +172,7 @@ function IndexPage({ projects, articles, reviews, homepage }) {
   return (
     <Layout>
       <NextSeo
-      title={`${metaTitle ? metaTitle : title}`}
+      title={`Crazy Imagine Software | ${metaTitle ? metaTitle : mainTitle}`}
       description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
       keywords={`${keywords ? keywords : 'crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support'}`}
       openGraph={{

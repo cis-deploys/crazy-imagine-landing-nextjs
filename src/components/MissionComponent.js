@@ -277,15 +277,19 @@ const MissionComponent = ({ companyValue, missionPage }) => {
       <Box className={classes.container}>
 
         { CompanyFilter.length > 0 && 
-          (<Box className={classes.backgroundImage}>
+          (
+            <>
+          <Box className={classes.backgroundImage}>
             <FontAwesomeIcon
               icon={faAward}
               size="lg"
               color="#193174"
               className={classes.icon}
             />
-          </Box>)
-          (<Typography className={classes.title}>{titleValue}</Typography>)
+          </Box>
+          <Typography className={classes.title}>{titleValue}</Typography>
+          </>
+          )
         }
         
 
