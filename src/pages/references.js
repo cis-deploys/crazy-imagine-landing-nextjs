@@ -19,10 +19,14 @@ const CarCategoryReview = dynamic(
 export async function getServerSideProps() {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resReviews = await fetch(`${domain}reviews?locale=all&_limit=6&_sort=created_at:DESC&&populate=avatar=slug&populate=project&populate=category_reviews`)
+  const resReviews = await fetch(
+    `${domain}reviews?locale=all&_limit=6&_sort=created_at:DESC&&populate=avatar=slug&populate=project&populate=category_reviews`
+  )
   const reviews = await resReviews.json()
 
-  const resReferencespage = await fetch(`${domain}references-page?locale=all&&populate=seo&populate=title`)
+  const resReferencespage = await fetch(
+    `${domain}references-page?locale=all&&populate=seo&populate=title`
+  )
   const referencespage = await resReferencespage.json()
 
   return { props: { referencespage, reviews } }
@@ -39,13 +43,13 @@ const References = ({ referencespage, reviews }) => {
 
   useEffect(() => {
     // Obtener la locale del router
-    const locale = router.locale;
+    const locale = router.locale
 
-    if (locale === 'es' && i18n.language !== 'es') {
+    if (locale === "es" && i18n.language !== "es") {
       // Establecer el idioma en español si no está establecido
-      i18n.changeLanguage('es');
+      i18n.changeLanguage("es")
     }
-  }, [router.locale, i18n]);
+  }, [router.locale, i18n])
 
   useEffect(() => {
     if (referencespage && referencespage.data) {

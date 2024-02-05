@@ -71,12 +71,23 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.between("xs", "sm")]: {
       display: "flex",
       flexDirection: "column",
-      width: "80%",
+      maxWidth: "220px",
+      marginTop: "-52px",
+      paddingRight: "12px",
     },
     [theme.breakpoints.between("sm", "md")]: {
       display: "flex",
 
-      width: "80%",
+      flexDirection: "column",
+      maxWidth: "680px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      maxWidth: "880px",
+      display: "flex",
+      flexDirection: "column",
+    },
+    [theme.breakpoints.between(1030, 1450)]: {
+      maxWidth: "930px",
     },
   },
 
@@ -94,6 +105,20 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "10px 10px 100px 3px rgba(0, 0, 0, 0.06)",
     borderRadius: "14px",
     height: "185px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      height: "130px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      height: "130px",
+      minWidth: "200px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      height: "150px",
+      minWidth: "200px",
+    },
+    [theme.breakpoints.between(1030, 1440)]: {
+      minWidth: "300px",
+    },
   },
   sectionTitlesText: {
     color: "#193174",
@@ -119,6 +144,15 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "15px",
     letterSpacing: "0.2rem",
     padding: "15px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      padding: "4px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      padding: "4px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      padding: "4px",
+    },
   },
   "@keyframes myEffect": {
     "0%": {

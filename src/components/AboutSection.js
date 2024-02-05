@@ -177,8 +177,7 @@ const AboutSection = () => {
     },
     {
       title: "RoadMap",
-      description:
-        "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
+      description: t("description_DescriptionRoad_Map"),
       link: "/road-map",
       icon: faCheckSquare,
     },
@@ -191,8 +190,8 @@ const AboutSection = () => {
     {
       title: t("about_aboutSection_faq_title"),
       description: t("about_aboutSection_faq"),
-      link: '/faq',
-      icon: faEnvelopeOpen
+      link: "/faq",
+      icon: faEnvelopeOpen,
     },
     // {
     //   title: "Mission",
@@ -226,7 +225,8 @@ const AboutSection = () => {
         <Box>
           <Grid container className={classes.containerGrids}>
             {elements.map(e => (
-              <Grid item
+              <Grid
+                item
                 lg={3}
                 md={4}
                 sm={6}
@@ -240,7 +240,8 @@ const AboutSection = () => {
                     justifyContent="space-evenly"
                     className={classes.gridElements}
                   >
-                    <Grid item
+                    <Grid
+                      item
                       lg={2}
                       md={3}
                       sm={2}

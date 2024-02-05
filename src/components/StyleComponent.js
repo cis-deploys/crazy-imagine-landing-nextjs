@@ -148,6 +148,7 @@ export const StyleComponent = makeStyles(theme => ({
     },
     [theme.breakpoints.between("lg", "xl")]: {
       paddingTop: "50px",
+      maxWidth: "1080px",
     },
     [theme.breakpoints.up("xl")]: {
       paddingTop: "32px",
@@ -413,6 +414,14 @@ export const StyleComponent = makeStyles(theme => ({
         fontSize: "10px",
         lineHeight: "14px",
         padding: "10px 14px 8px 14px",
+      },
+      [theme.breakpoints.between(0, 330)]: {
+        borderRadius: "100px",
+        "& > span": {
+          fontSize: "14px",
+          lineHeight: "14px",
+          padding: "10px 14px 8px 14px",
+        },
       },
     },
   },

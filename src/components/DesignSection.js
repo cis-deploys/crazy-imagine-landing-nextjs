@@ -27,6 +27,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.between("xs", "sm")]: {
       paddingLeft: "50px",
     },
+    [theme.breakpoints.between(605, 780)]: {
+      marginTop: "-200px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      marginTop: "-267px",
+    },
   },
   titlePhase1: {
     fontFamily: "Nexa Bold",
@@ -48,7 +54,13 @@ const useStyles = makeStyles(theme => ({
       width: "78%",
     },
     [theme.breakpoints.between("xs", "sm")]: {
-      width: "90%",
+      width: "93%",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "94%",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      width: "98%",
     },
   },
   descriptionPhase1: {
@@ -67,6 +79,9 @@ const useStyles = makeStyles(theme => ({
   boxdescription2Phase1: {
     [theme.breakpoints.between("xs", "sm")]: {
       width: "90%",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "94%",
     },
   },
   description2Phase1: {
@@ -213,8 +228,11 @@ const useStyles = makeStyles(theme => ({
     marginTop: "73px",
 
     [theme.breakpoints.between("xs", "sm")]: {
-      paddingLeft: "70px",
+      paddingLeft: "50px",
       marginTop: "50px",
+    },
+    [theme.breakpoints.between(605, 780)]: {
+      marginTop: "40px",
     },
   },
 
@@ -237,11 +255,15 @@ const useStyles = makeStyles(theme => ({
     width: "61%",
     paddingTop: "30px",
     [theme.breakpoints.between("xs", "sm")]: {
-      width: "100%",
-    },
-    [theme.breakpoints.between("sm", "md")]: {
       width: "90%",
     },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "96%",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      width: "94%",
+    },
+
     [theme.breakpoints.up("lg")]: {
       width: "69%",
     },
@@ -254,7 +276,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02rem",
     color: "#304392",
     [theme.breakpoints.between("xs", "sm")]: {
-      fontSize: "24px",
+      fontSize: "22px",
       lineHeight: "30px",
     },
   },
@@ -276,6 +298,10 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
 
     letterSpacing: "0.02rem",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "15px",
+      lineHeight: "21px",
+    },
   },
   boxContentMeeting: {
     paddingTop: "153px",
@@ -283,20 +309,33 @@ const useStyles = makeStyles(theme => ({
       paddingTop: "40px",
     },
     [theme.breakpoints.between("sm", "md")]: {
-      paddingTop: "10px",
+      paddingTop: "5px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      paddingTop: "5px",
     },
   },
+
   boxContentDescripcion2: {
-    width: "56%",
     paddingTop: "20px",
     [theme.breakpoints.between("xs", "sm")]: {
-      width: "100%",
+      width: "92%",
     },
     [theme.breakpoints.between("sm", "md")]: {
-      width: "100%",
+      width: "97%",
     },
-    [theme.breakpoints.up("lg")]: {
-      width: "93%",
+    [theme.breakpoints.between(1200, 1450)]: {
+      width: "70%",
+      minWidth: "650px",
+    },
+    [theme.breakpoints.between(1450, 1980)]: {
+      width: "95%",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      width: "97%",
+    },
+    [theme.breakpoints.up(2560)]: {
+      width: "95%",
     },
   },
   boxImageMeetTeam: {
@@ -309,18 +348,28 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
 
-    paddingLeft: "30px",
+    paddingLeft: "50px",
+    [theme.breakpoints.between(950, 1030)]: {
+      paddingLeft: "100px",
+    },
   },
   /*content avatar  */
+
   containerAvatarAndText: {
     width: "100%",
     height: "auto",
-    paddingLeft: "25px",
+    paddingLeft: "40px",
     [theme.breakpoints.between("xs", "sm")]: {
       paddingTop: "50px",
+      paddingLeft: "8px",
+      paddingRight: "8px",
     },
     [theme.breakpoints.between("sm", "md")]: {
       paddingTop: "50px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
+      paddingLeft: "90px",
+      paddingTop: "40px",
     },
   },
 
@@ -335,6 +384,29 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     marginTop: "54px",
     paddingLeft: "96px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingLeft: "8px",
+      paddingRight: "8px",
+    },
+  },
+  avatar1Stack: {
+    paddingLeft: "32px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingLeft: 0,
+    },
+  },
+  avatar2Stack: {
+    [theme.breakpoints.between("xs", "sm")]: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingLeft: 0,
+    },
   },
   avatar: {
     width: theme.spacing(8),
@@ -345,6 +417,10 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingLeft: 0,
+      paddingTop: "16px",
+    },
   },
   name: {
     fontFamily: "Nexa Bold",
@@ -382,9 +458,12 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between("sm", "md")]: {
       display: "flex",
-      justifyContent: "center",
+
       flexDirection: "column",
-      alignItems: "center",
+      alignItems: "flex-start",
+      paddingTop: "30px",
+    },
+    [theme.breakpoints.between(950, 1030)]: {
       paddingTop: "30px",
     },
   },
@@ -392,15 +471,25 @@ const useStyles = makeStyles(theme => ({
     width: "68%",
     paddingTop: "20px",
     [theme.breakpoints.between("xs", "sm")]: {
-      width: "80%",
+      width: "93%",
       paddingLeft: "32px",
     },
     [theme.breakpoints.between("sm", "md")]: {
-      width: "100%",
-      paddingLeft: "50px",
+      width: "98%",
     },
-    [theme.breakpoints.up("lg")]: {
-      width: "70%",
+    [theme.breakpoints.between(950, 1030)]: {
+      width: "96%",
+    },
+    [theme.breakpoints.between(1200, 1450)]: {
+      width: "75%",
+      minWidth: "770px",
+    },
+
+    [theme.breakpoints.between(1450, 1980)]: {
+      width: "95%",
+    },
+    [theme.breakpoints.up(2560)]: {
+      width: "96%",
     },
   },
   descriptionUsers: {
@@ -411,6 +500,13 @@ const useStyles = makeStyles(theme => ({
     color: "#193174",
 
     letterSpacing: "0.02rem",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "15px",
+      lineHeight: "21px",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      fontSize: "19px",
+    },
   },
   title3Users: {
     fontFamily: "Nexa Bold",
@@ -463,6 +559,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "34px",
     letterSpacing: "0.02rem",
     color: "#304392",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "20px",
+      lineHeight: "24.8px",
+    },
   },
   boxDescription2Step2: {
     paddingTop: "24px",
@@ -481,6 +581,9 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "30px",
     display: "flex",
     justifyContent: "end",
+    [theme.breakpoints.between("xs", "sm")]: {
+      justifyContent: "center",
+    },
   },
   boxImagelanguages: {
     display: "flex",
@@ -494,9 +597,6 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.2rem",
     color: "#888DFF",
     paddingTop: "12px",
-  },
-  avatar1Stack: {
-    paddingLeft: "32px",
   },
 
   /* Step 3  */
@@ -531,6 +631,12 @@ const useStyles = makeStyles(theme => ({
   boxDescriptionStep3: {
     width: "70%",
     paddingTop: "30px",
+    [theme.breakpoints.between(0, 600)]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between(600, 780)]: {
+      width: "100%",
+    },
   },
   contentFeatureMap: {
     width: "100%",
@@ -549,6 +655,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02rem",
     color: "#FFFFFF",
     textAlign: "justify",
+    [theme.breakpoints.up(2560)]: {
+      fontSize: "25px",
+    },
   },
   descriptionFeatureMap: {
     fontFamily: "HindVadodara",
@@ -558,14 +667,34 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
 
     letterSpacing: "0.02rem",
+    [theme.breakpoints.between(0, 600)]: {
+      fontSize: "16px",
+      lineHeight: "22px",
+    },
   },
   boxContentDescripcionFeatureMap: {
-    width: "72%",
+    width: "100%",
     paddingTop: "20px",
+    [theme.breakpoints.between(1200, 1450)]: {
+      width: "95%",
+    },
+    [theme.breakpoints.between(600, 780)]: {
+      width: "100%",
+      minWidth: "680px",
+    },
   },
   boxContentDescripcionUserFlow: {
-    width: "78%",
     paddingTop: "20px",
+    width: "100%",
+
+    [theme.breakpoints.between(600, 780)]: {
+      width: "100%",
+      minWidth: "670px",
+    },
+
+    [theme.breakpoints.between(1200, 1450)]: {
+      width: "85%",
+    },
   },
   contentUserFlow: {
     width: "100%",
@@ -582,9 +711,28 @@ const useStyles = makeStyles(theme => ({
     margin: "0 auto",
     padding: "50px",
   },
+  contentBoxWireframes: {
+    paddingTop: "60px",
+  },
   boxContentWireframes: {
     paddingTop: "40px",
     paddingLeft: "32px",
+    [theme.breakpoints.between(0, 600)]: {
+      paddingLeft: 0,
+    },
+  },
+  boxContentDescripcionWireframes: {
+    width: "100%",
+    paddingTop: "20px",
+
+    [theme.breakpoints.between(600, 780)]: {
+      width: "100%",
+      minWidth: "670px",
+    },
+
+    [theme.breakpoints.between(1200, 1450)]: {
+      width: "95%",
+    },
   },
 
   listItem: {
@@ -706,36 +854,6 @@ const DesignSection = () => {
                     </Typography>
                   </a>
                 </Link>
-
-                {/* <a
-                  style={{
-                    textTransform: "capitalize",
-                    textDecoration: "none",
-                  }}
-                  onClick={() => {
-                    if (index === 0) {
-                      targetStep1.current?.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                    } else if (index === 1) {
-                      targetStep2.current?.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                    } else if (index === 2) {
-                      targetStep3.current?.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                    }
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    className={classes.stepDescription}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {step.description.toLowerCase()}
-                  </Typography>
-                </a> */}
               </Box>
             ))}
 
@@ -788,7 +906,7 @@ const DesignSection = () => {
       </Grid>
 
       <Grid container spacing={2} className={classes.contentMeetTeam}>
-        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <Box className={classes.boxImageMeetTeam}>
             <img
               className={classes.imageMeetTeam}
@@ -797,7 +915,7 @@ const DesignSection = () => {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <Box className={classes.boxContentMeeting}>
             <Typography className={classes.title2Step1}>
               {t("title2Step1")}
@@ -834,7 +952,7 @@ const DesignSection = () => {
             </Stack>
           </Box>
           <Box className={classes.contentAvatar2}>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} className={classes.avatar2Stack}>
               <Avatar
                 alt="Remy Sharp"
                 src="/avatar2.png"
@@ -852,7 +970,7 @@ const DesignSection = () => {
             </Stack>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <Box className={classes.boxContentUsers}>
             <Typography className={classes.title3Users}>
               {t("titleUserPersonas")}
@@ -933,8 +1051,8 @@ const DesignSection = () => {
           </Grid>
         </Grid>
         <Grid container spacing={2} className={classes.contentFeatureMap}>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}></Grid>
+          <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
             <Box className={classes.boxContentFeatureMap}>
               <Typography className={classes.titleFeatureMap}>
                 {t("title_FeatureMap")}
@@ -964,13 +1082,13 @@ const DesignSection = () => {
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
         </Grid>
         <Grid container spacing={2} className={classes.contentWirefrawes}>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}></Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Box className={classes.boxContentUserFlow}>
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}></Grid>
+          <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+            <Box className={classes.contentBoxWireframes}>
               <Typography className={classes.titleFeatureMap}>
                 {t("title_Wireframes")}
               </Typography>
-              <Box className={classes.boxContentDescripcionUserFlow}>
+              <Box className={classes.boxContentDescripcionWireframes}>
                 <Typography className={classes.descriptionFeatureMap}>
                   {t("description_Wireframes")}
                 </Typography>
