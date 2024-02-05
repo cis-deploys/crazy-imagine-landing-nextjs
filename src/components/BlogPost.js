@@ -159,9 +159,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
 
   const articles = AllArticles
   const articlesFilter =
-    articles
-      ?.filter(article => article?.locale?.includes(lang))
-      ?.filter(article => article?.title !== null && article.Key !== Key) || []
+    articles?.filter(article => article?.title !== null && article.Key !== Key) || []
 
   const articlesSort = articlesFilter
     ?.sort((a, b) => {

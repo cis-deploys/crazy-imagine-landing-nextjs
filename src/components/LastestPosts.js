@@ -102,19 +102,15 @@ const LastestPosts = ({ articlesAll }) => {
   const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
     
-  const [projectDataAll, setProjectDataAll] = useState(articlesAll.filter(article =>
-    article.locale.includes(i18n.language)
-    ))?.sort((a, b) => {
+  const [projectDataAll, setProjectDataAll] = useState(articlesAll)?.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     }); 
 
     useEffect(() => {
-      setProjectDataAll(articlesAll.filter(article =>
-        article.locale.includes(i18n.language)
-        ))?.sort((a, b) => {
+      setProjectDataAll(articlesAll)?.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         });
-    }, [i18n.language]);
+    }, [articlesAll]);
 
   return (
     <Box className={classes.container}>

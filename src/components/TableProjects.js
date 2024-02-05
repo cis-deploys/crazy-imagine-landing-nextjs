@@ -353,13 +353,9 @@ const TableProjects = ({ projectsData }) => {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 
-  const projects = projectsData
-  const projectsFilter = projects.filter(project =>
-    project.locale.includes(lang)
-  )
 
   const [projectDataAll, setProjectDataAll] = useState(
-    projectsFilter.sort((a, b) => {
+    projectsData.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     })
   )
@@ -379,7 +375,7 @@ const TableProjects = ({ projectsData }) => {
   }
 
   const loadingSelectedOption = () => {
-    const types = projectsFilter
+    const types = projectsData
       .sort((a, b) => {
         return new Date(b.created_at) - new Date(a.created_at)
       })
@@ -402,7 +398,7 @@ const TableProjects = ({ projectsData }) => {
 
     let filteredProjects = []
     filteredTecnologies.forEach(tecnology => {
-      projectsFilter.map(project => {
+      projectsData.map(project => {
         if (project.types[0] === tecnology) {
           filteredProjects.push(project)
         }
@@ -417,7 +413,7 @@ const TableProjects = ({ projectsData }) => {
       )
     } else {
       setProjectDataAll(
-        projectsFilter.sort((a, b) => {
+        projectsData.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         })
       )

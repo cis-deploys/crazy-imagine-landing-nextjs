@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 import { Box } from "@mui/material"
 
@@ -29,20 +30,22 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=all&populate=images&populate=seo`)
+  const resProjects = await fetch(`${domain}projects?locale=${locale}&populate=images&populate=seo`)
   const projects = await resProjects.json()
 
-  const resServices = await fetch(`${domain}services-page?locale=en&locale=es-VE&populate=title&populate=seo`)
+  const resServices = await fetch(`${domain}services-page?locale=${locale}&populate=title&populate=seo`)
   const servicesPage = await resServices.json()
 
-  return { props: { projects, servicesPage } }
+  return { props: { projects, servicesPage,
+    ...await serverSideTranslations(locale, ['common'])
+  } }
 }
 
 function Services({ projects, servicesPage }) {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
@@ -89,7 +92,7 @@ function Services({ projects, servicesPage }) {
     setMetaDescription(servicesPage.data?.attributes.seo?.metaDescription),
     setKeywords(servicesPage.data?.attributes.seo?.keywords)
     setMainTitle(servicesPage.data?.attributes.title)
-  }, [])
+  }, [servicesPage])
 
   return (
     <Layout>

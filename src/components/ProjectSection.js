@@ -185,18 +185,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
   const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
-  const { i18n, t } = useTranslation()
-  const lang = i18n.language
-
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
-    project.locale.includes(lang)
-  ));
-  
-  useEffect(() => {
-      setProjectDataAll(projects.filter(project =>
-        project.locale.includes(lang)
-      ));
-  }, [i18n.language]);
+  const { t } = useTranslation()
 
       return (
         <Box className={classes.container}>
@@ -225,7 +214,6 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             pagination={{
               clickable: true,
             }}
-            //slidesPerView={"auto"}
             grabCursor={true}
             loop={false}
             modules={[Pagination, Keyboard]}
@@ -238,10 +226,10 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             className={bulletClass}
           >
 
-            { projectDataAll
+            { projects
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => {
-                const dataImage = el?.images[0]?.url //localFile
+                const dataImage = el?.images[0]?.url
                 const titleProject = el?.title
 
 

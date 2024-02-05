@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 import { Box } from "@mui/material"
 
@@ -24,22 +25,24 @@ const TableProjects = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=en&locale=es-VE&populate=title&populate=project_types&populate=images`)
+  const resProjects = await fetch(`${domain}projects?locale=${locale}&populate=title&populate=project_types&populate=images`)
   const projects = await resProjects.json()
     
-  const resProjectspage = await fetch(`${domain}projectspage?populate=seo&populate=mainTitle`)
+  const resProjectspage = await fetch(`${domain}projectspage?locale=${locale}&populate=seo&populate=mainTitle`)
   const projectsPage = await resProjectspage.json()
 
   return { props: { 
     projects,
-     projectsPage } }
+     projectsPage,
+     ...await serverSideTranslations(locale, ['common']),
+    } }
 }
 
 function Projects({ projects, projectsPage }) {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {
@@ -104,7 +107,7 @@ useEffect(() => {
   setMetaDescription(projectsPage.data?.attributes.seo?.metaDescription),
   setKeywords(projectsPage.data?.attributes.seo?.keywords)
   setMainTitle(projectsPage.data?.attributes.mainTitle)
-}, [])
+}, [projectsPage])
 
   return (
     <Layout>
