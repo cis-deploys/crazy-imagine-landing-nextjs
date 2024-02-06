@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 
-import headerImage from "../../public/flag.webp"
+import MissionImage from "../../public/Mision.svg"
 import { useTranslation } from 'react-i18next'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
@@ -91,7 +91,7 @@ function Mission ({ companyValue, missionPage }) {
     <SectionHeader
         title={t("mission_title")}
         btn={false}
-        img={headerImage}
+        img={MissionImage}
         cls="textContainer"
       />    
       <MissionComponent companyValue={ newCompanyValueArray } missionPage={ missionPage }/>
