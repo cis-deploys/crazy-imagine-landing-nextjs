@@ -12,7 +12,7 @@ import {
     faPhone,
     faCircle
   } from "@fortawesome/free-solid-svg-icons"
-import { REFERENCES, TEAMS, FAQ, SERVICES, BLOG, PROJECTS, ABOUT, WORK_WITH_US, } from '../navigation/sitemap'
+import { REFERENCES, TEAMS, FAQ, SERVICES, BLOG, PROJECTS, ABOUT, WORK_WITH_US, MISSION, } from '../navigation/sitemap'
 import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles(theme => ({
@@ -160,6 +160,15 @@ const formatText = (text) => {
             <Link href={`${FAQ}`} >
                 <a className={ classes.links }>
                 {t("about_aboutSection_faq_title")}
+                </a>
+              </Link>
+            </Typography>
+
+            <Typography>
+            <FontAwesomeIcon icon={faCircle} size={"2xs"} color={"#27AAE1"} style={{ marginRight: "10px" }}/>
+            <Link href={`${MISSION}`} >
+                <a className={ classes.links }>
+                {t("mission_title")}
                 </a>
               </Link>
             </Typography>
