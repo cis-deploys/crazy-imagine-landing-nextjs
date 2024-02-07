@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles"
 import { Typography, Button, CardContent } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'next-i18next';
 import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({

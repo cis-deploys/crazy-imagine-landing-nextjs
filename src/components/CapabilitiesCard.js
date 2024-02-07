@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material"
 import { PROJECTS } from "../navigation/sitemap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 

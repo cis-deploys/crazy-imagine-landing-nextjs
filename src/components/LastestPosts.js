@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Box, Typography } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import BlogPost from "./BlogPost"
 import { BLOG } from "../navigation/sitemap"
@@ -101,16 +101,6 @@ const LastestPosts = ({ articlesAll }) => {
   const classes = useStyes()
   const classesComponent = StyleComponent()
   const { i18n, t } = useTranslation();
-    
-  const [projectDataAll, setProjectDataAll] = useState(articlesAll)?.sort((a, b) => {
-      return new Date(b.created_at) - new Date(a.created_at)
-    }); 
-
-    useEffect(() => {
-      setProjectDataAll(articlesAll)?.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at)
-        });
-    }, [articlesAll]);
 
   return (
     <Box className={classes.container}>
@@ -126,7 +116,7 @@ const LastestPosts = ({ articlesAll }) => {
         </a>
 
       </Link>
-      <BlogPost articles={ projectDataAll }/>
+      <BlogPost articles={ articlesAll }/>
     </Box>
   )
 }

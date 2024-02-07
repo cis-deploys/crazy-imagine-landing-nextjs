@@ -4,7 +4,7 @@ import { faBuilding, faEnvelopeOpen, faPhone } from "@fortawesome/free-solid-svg
 import { Box,  Typography } from "@mui/material"
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
 import { HOME, PROJECTS, WORK_WITH_US, ABOUT, CONTACT, SERVICES, BLOG, SITEMAP, SITEMA } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { SocialMedia } from "./SocialMedia"
 import Copyright from "./Copyright"
 import Image from "next/image" 

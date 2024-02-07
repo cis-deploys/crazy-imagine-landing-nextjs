@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import fullstackImage from "../../public/laptop.svg"
 import qualityImage from "../../public/quality.svg"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   container: {

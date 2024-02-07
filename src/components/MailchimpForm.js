@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { makeStyles } from "@mui/styles";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Swal from "sweetalert2"
 import axios from "axios"
 import { StyleComponent } from "./StyleComponent"

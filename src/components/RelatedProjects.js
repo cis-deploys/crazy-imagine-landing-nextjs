@@ -5,7 +5,7 @@ import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { useIntersection } from "../hooks/useIntersection"
 import { makeStyles } from "@mui/styles"
 import "../styles/Swiper.module.css"

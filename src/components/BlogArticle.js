@@ -154,10 +154,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const prepareArticles = (articles, lang, limitOfArticles) => {
+const prepareArticles = (articles, limitOfArticles) => {
   return (
     articles
-      ?.filter(article => article.locale.includes(lang))
       ?.sort((a, b) => {
         return new Date(b.created_at) - new Date(a.created_at)
       })
@@ -170,24 +169,23 @@ const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
-  const lang = i18n.language
   const [load, setLoad] = useState(getInitialLoad())
   const [buttonLoad, setButtonLoad] = useState(true)
   const [showLoadMore, setShowLoadMore] = useState(true)
   const [limitOfCards, setLimitOfCards] = useState(getInitialLoad())
   const [filteredArticles, setFilteredArticles] = useState(
-    prepareArticles(AllArticles, lang, limitOfCards)
+    prepareArticles(AllArticles, limitOfCards)
   )
 
   useEffect(() => {
-    setFilteredArticles(prepareArticles(AllArticles, lang, limitOfCards))
-  }, [lang, limitOfCards])
-
-  const articles = AllArticles
+    setFilteredArticles(prepareArticles(AllArticles, limitOfCards))
+  }, [limitOfCards, AllArticles])
 
   function getInitialLoad() {
     return window.innerWidth >= 3000 ? 5 : 4
   }
+
+  const articles = AllArticles
 
   useEffect(() => {
     const handleResize = () => {
@@ -208,9 +206,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
   }
 
   const loadMoreArticles = () => {
-    const filterResult = AllArticles?.filter(article =>
-      article.locale.includes(lang)
-    )
+    const filterResult = AllArticles
     const maxLimitOfLoads = filterResult.length
 
     if (maxLimitOfLoads > limitOfCards) {

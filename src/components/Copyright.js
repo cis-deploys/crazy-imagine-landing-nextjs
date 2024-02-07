@@ -1,6 +1,6 @@
 import React from "react"
 import { Box,  Typography } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { PRIVACY_POLICY } from "../navigation/sitemap"
 import { makeStyles } from "@mui/styles";
 import Link from "next/link"

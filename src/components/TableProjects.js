@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Link from "next/link"
 
 import "swiper/swiper.min.css"

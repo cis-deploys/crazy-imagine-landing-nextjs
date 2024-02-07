@@ -53,10 +53,10 @@ const ContactSection = dynamic(
 export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=${locale}&_sort=created_at:DESC&populate=images&populate=seo`)
+  const resProjects = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=5&_sort=created_at:DESC&populate=images&populate=seo`)
   const projects = await resProjects.json()
 
-  const resArticles = await fetch(`${domain}articles?locale=${locale}&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=5&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
   const resReviews = await fetch(`${domain}reviews?locale=${locale}&populate=avatar`)

@@ -1,7 +1,7 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import { Box } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import rehypeRaw from "rehype-raw"
 import { makeStyles } from "@mui/styles"
 

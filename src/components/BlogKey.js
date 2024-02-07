@@ -5,9 +5,8 @@ import {
   Typography,
   InputLabel,
 } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles";
-import { useRouter } from "next/router"
 import Image from "next/image"
 
 const PostContent = dynamic(
@@ -175,28 +174,22 @@ const useStyles = makeStyles(theme => ({
     },
   }))
 
-const BlogKey = ({ articles, articlesAll }) => {
+const BlogKey = ({ articles, articleKey }) => {
     const classes = useStyles()
     const { i18n, t } = useTranslation()
     const lang = i18n.language 
-    const router = useRouter();
-    const { Key } = router.query;
     
-    const [projectData, setProjectData] = useState(articles
-      ?.filter( project => project?.Key === Key && project?.Key !== null)
+    const [projectData, setProjectData] = useState(articleKey
       ?.filter( articles => articles?.locale?.includes(lang)) || []);
-      
-    const [projectDataAll, setProjectDataAll] = useState(articlesAll
-      ?.filter( articles => articles?.locale?.includes(lang)) || []);
+
+    const [projectDataAll, setProjectDataAll] = useState(articles)
 
         useEffect(() => {
-          setProjectData(articles
-            ?.filter( project => project?.Key === Key && project?.Key !== null)
+          setProjectData(articleKey
             ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
-            setProjectDataAll(articlesAll
-              ?.filter( projects => projects?.locale?.includes(lang)) || []);
-        }, [i18n.language]);
+            setProjectDataAll(articles)
+        }, [i18n.language]);  
 
   return (
     <>

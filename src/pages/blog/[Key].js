@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from "next/dynamic";
 
 import Layout from "../../components/Layout";
-import { Box } from '@mui/material';
 import { NextSeo } from 'next-seo';
 
 const BlogKey = dynamic(
@@ -19,31 +20,55 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-
 export async function getServerSideProps(context) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-  const { query } = context;
+  const { query, locale, slug } = context;
   const { Key } = query;
 
-  const resArticlesAll = await fetch(`${domain}articles?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
-  const articlesAll = await resArticlesAll.json();
-
-  const resArticlesAllEs = await fetch(`${domain}articles?locale=en&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)//falta restringuir seo
-  const articlesAllEs = await resArticlesAllEs.json();
-
-  const resArticles = await fetch(`${domain}articles?filters[Key][$eq]=${Key}&locale=all&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)//falta restringuir seo
   const articles = await resArticles.json();
 
-  return { props: { articles, articlesAll, articlesAllEs } }
+  const resArticleKey = await fetch(`${domain}articles?filters[Key][$eq]=${Key}&locale=all&populate=category&populate=author&populate=image&populate=seo`)
+  const articleKey = await resArticleKey.json();
+
+  return { props: { articles, articleKey,
+    ...await serverSideTranslations(locale, ['common']),
+  },
+ }
 }
 
-const Post = ({ articles, articlesAll, articlesAllEs }) => {
+const Post = ({ articles, articleKey }) => {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
   const [metaTitle, setMetaTitle] = useState();
   const [metaDescription, setMetaDescription] = useState();
   const [keywords, setKeywords] = useState();
   const [ title, setTitle ] = useState();
+
+  const articleKeyNew = [];
+  articleKey.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
+    const imagesArticles = [];
+    if(image.data){
+      image.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    articleKeyNew.push({
+      title,
+      description,
+      content,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      image: imagesArticles,
+      category: category?.data?.attributes,
+      author: author?.data?.attributes,
+      seo
+    });
+  });
 
   const articlesNew = [];
   articles.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
@@ -69,62 +94,12 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
       seo
     });
   });
-
-  const articlesAllNew = [];
-  articlesAll.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
-    const imagesArticles = [];
-    if(image.data){
-      image.data.map(({ attributes: { url }}) => {
-        imagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    articlesAllNew.push({
-      title,
-      description,
-      content,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      image: imagesArticles,
-      category: category?.data?.attributes,
-      author: author?.data?.attributes,
-      seo
-    });
-  });
-
-  const articlesAllEsNew = [];
-  articlesAllEs.data.map(({ attributes: { title, description, content, slug, Key, createdAt, locale, image, category, author, seo}}) => {
-    const imagesArticles = [];
-    if(image.data){
-      image.data.map(({ attributes: { url }}) => {
-        imagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    articlesAllEsNew.push({
-      title,
-      description,
-      content,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      image: imagesArticles,
-      category: category?.data?.attributes,
-      author: author?.data?.attributes,
-      seo
-    });
-  });
   
   useEffect(() => {
-    setMetaTitle(articles.data[0]?.attributes.seo?.metaTitle),
-    setMetaDescription(articles.data[0]?.attributes.seo?.metaDescription),
-    setKeywords(articles.data[0]?.attributes.seo?.keywords)
-    setTitle(articles.data[0]?.attributes.title)
+    setMetaTitle(articleKey.data[0]?.attributes.seo?.metaTitle),
+    setMetaDescription(articleKey.data[0]?.attributes.seo?.metaDescription),
+    setKeywords(articleKey.data[0]?.attributes.seo?.keywords)
+    setTitle(articleKey.data[0]?.attributes.title)
   }, [])
 
   return (
@@ -139,9 +114,9 @@ const Post = ({ articles, articlesAll, articlesAllEs }) => {
           url: "https://crazyimagine.com",
         }}
       />
-      <BlogKey articles={ articlesNew } articlesAll={ articlesAllNew ? articlesAllNew?.concat(articlesAllEsNew) : [] }/>
+      <BlogKey articleKey={ articleKeyNew } articles={ articlesNew }/>
 
-      <LastestPosts articles={ articlesNew } articlesAll={ articlesAllNew ? articlesAllNew?.concat(articlesAllEsNew) : [] }/>
+      <LastestPosts articlesAll={ articlesNew }/>
 
       <ContactSection />
     </Layout>

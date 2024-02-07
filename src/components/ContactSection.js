@@ -1,6 +1,6 @@
 import React from "react"
 import { Box,  Typography, Grid } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles";
 import Image from 'next/image';
 import ContactForm from "./ContactForm"

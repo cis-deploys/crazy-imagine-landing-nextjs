@@ -6,7 +6,7 @@ import { Pagination } from "swiper"
 import {  Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { BLOG } from "../navigation/sitemap"
 import 'swiper/swiper-bundle.css';
 
@@ -149,7 +149,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const BlogPost = ({ bulletClass, articles: AllArticles }) => {
+const BlogPost = ({ bulletClass, articles }) => {
   const classes = useStyles()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
@@ -157,7 +157,6 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   const router = useRouter();
   const { Key } = router.query;
 
-  const articles = AllArticles
   const articlesFilter =
     articles?.filter(article => article?.title !== null && article.Key !== Key) || []
 
@@ -190,7 +189,6 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
       }}
       pagination={{
         clickable: true,
-        //dynamicBullets: true,
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}

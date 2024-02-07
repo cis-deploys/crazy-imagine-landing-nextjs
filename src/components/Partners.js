@@ -8,7 +8,7 @@ import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
 import Sirge from "../../public/Sirge-Logo.webp"
 import orderingImage from "../../public/orderingLogo.webp"
 import piggyImage from "../../public/piggyBackLogo.webp"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { StyleComponent } from "./StyleComponent"
 
