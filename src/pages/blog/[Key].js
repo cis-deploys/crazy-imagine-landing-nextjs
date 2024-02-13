@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 
 import Layout from "../../components/Layout";
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 const BlogKey = dynamic(
   () => import("../../components/BlogKey"),
@@ -22,10 +23,10 @@ const ContactSection = dynamic(
 
 export async function getServerSideProps(context) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-  const { query, locale, slug } = context;
+  const { query, locale } = context;
   const { Key } = query;
 
-  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)//falta restringuir seo
+  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=category&populate=author&populate=image&populate=seo`)//falta restringuir seo
   const articles = await resArticles.json();
 
   const resArticleKey = await fetch(`${domain}articles?filters[Key][$eq]=${Key}&locale=all&populate=category&populate=author&populate=image&populate=seo`)
@@ -38,7 +39,18 @@ export async function getServerSideProps(context) {
 }
 
 const Post = ({ articles, articleKey }) => {
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+  const { i18n } = useTranslation('common')
+  const router = useRouter()
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   const [metaTitle, setMetaTitle] = useState();
   const [metaDescription, setMetaDescription] = useState();

@@ -28,7 +28,7 @@ const TableProjects = dynamic(
 export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=${locale}&populate=title&populate=project_types&populate=images`)
+  const resProjects = await fetch(`${domain}projects?locale=${locale}&sort[0]=createdAt:desc&populate=title&populate=project_types&populate=images`)
   const projects = await resProjects.json()
     
   const resProjectspage = await fetch(`${domain}projectspage?locale=${locale}&populate=seo&populate=mainTitle`)

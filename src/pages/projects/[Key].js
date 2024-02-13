@@ -5,6 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Layout from "../../components/Layout"
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 const ProjectsKey = dynamic(
   () => import("../../components/ProjectsKey"),
@@ -16,7 +17,7 @@ export async function getServerSideProps(context) {
     const { query, locale } = context;
     const { Key } = query;
     
-    const resprojectsAll = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=5&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)
+    const resprojectsAll = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=10&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)
     const projects = await resprojectsAll.json();
     
     const resProjects = await fetch(`${domain}projects?filters[Key][$eq]=${Key}&locale=${locale}&populate=images&populate=galleryImages&populate=seo`)
@@ -31,6 +32,17 @@ export async function getServerSideProps(context) {
 
 const Project = ({ projectKey, projects }) => {
   const { t, i18n } = useTranslation('common')
+  const router = useRouter()
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   const [metaTitle, setMetaTitle] = useState();
   const [metaDescription, setMetaDescription] = useState();

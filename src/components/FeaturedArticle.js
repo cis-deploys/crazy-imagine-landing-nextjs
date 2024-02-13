@@ -252,18 +252,12 @@ const FeaturedArticle = ({ articles }) => {
   const articlesFilter = articles
 
   const featureArticle = articlesFilter
-    .sort((a, b) => {
-      return new Date(b.created_at) - new Date(a.created_at)
-    })
     .slice(0, 2)
       
     const [projectDataAll, setProjectDataAll] = useState(featureArticle);
 
     useEffect(() => {
           const featureArticle = articlesFilter
-            .sort((a, b) => {
-              return new Date(b.created_at) - new Date(a.created_at)
-            })
             .slice(0, 2)
             setProjectDataAll(featureArticle);
     }, [i18n.language, articles]);

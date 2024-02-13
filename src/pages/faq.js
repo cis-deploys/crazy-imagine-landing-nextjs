@@ -42,9 +42,9 @@ const SectionHeader = dynamic(
       // Obtener la locale del router
       const locale = router.locale;
   
-      if (locale === 'es-VE' && i18n.language !== 'es-VE') {
+      if (locale === 'es' && i18n.language !== 'es') {
         // Establecer el idioma en español si no está establecido
-        i18n.changeLanguage('es-VE');
+        i18n.changeLanguage('es');
       }
     }, [router.locale, i18n]);
 

@@ -180,16 +180,18 @@ const BlogKey = ({ articles, articleKey }) => {
     const lang = i18n.language 
     
     const [projectData, setProjectData] = useState(articleKey
-      ?.filter( articles => articles?.locale?.includes(lang)) || []);
+      ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
-    const [projectDataAll, setProjectDataAll] = useState(articles)
+    const [projectDataAll, setProjectDataAll] = useState(articles
+      ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
         useEffect(() => {
           setProjectData(articleKey
             ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
-            setProjectDataAll(articles)
-        }, [i18n.language]);  
+            setProjectDataAll(articles
+              ?.filter( projects => projects?.locale?.includes(lang)) || []);
+        }, [ articleKey, articles]);  
 
   return (
     <>

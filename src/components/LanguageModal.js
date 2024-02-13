@@ -177,7 +177,7 @@ export const LanguageModal = () => {
             inputProps={{ 'aria-label': 'Without label' }}
           >
             <MenuItem value="en">EN</MenuItem>
-            <MenuItem value="es-VE">ES</MenuItem>
+            <MenuItem value="es">ES</MenuItem>
           </Select>
 
         </FormControl>
