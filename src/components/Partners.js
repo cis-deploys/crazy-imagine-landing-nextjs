@@ -68,6 +68,7 @@ const Partners = () => {
                   width={150}
                   height={90}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -78,6 +79,7 @@ const Partners = () => {
                   width={279}
                   height={62}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -88,6 +90,7 @@ const Partners = () => {
                   width={85}
                   height={85}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -98,6 +101,7 @@ const Partners = () => {
                   width={71}
                   height={85}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
       </Box>
@@ -110,6 +114,7 @@ const Partners = () => {
                   width={280}
                   height={66}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -120,6 +125,7 @@ const Partners = () => {
                   width={280}
                   height={85}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -130,6 +136,7 @@ const Partners = () => {
                   width={280}
                   height={66}
                   layout='fixed'
+                  quality={100}
               /> 
         </Box>
       </Box>

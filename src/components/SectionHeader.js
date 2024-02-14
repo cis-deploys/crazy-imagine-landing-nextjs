@@ -231,7 +231,7 @@ export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
           }
         </Box>
         <Box className={classes.imgContainer}>
-          <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" />
+          <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" quality={100}/>
         </Box>
       </Box>
     </Box>

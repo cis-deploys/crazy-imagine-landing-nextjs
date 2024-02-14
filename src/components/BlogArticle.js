@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
       paddingTop: "40px",
     },
     [theme.breakpoints.down("xl")]: {
-      width: "70%",
+      width: "65%",
       paddingTop: "40px",
     },
     [theme.breakpoints.down("lg")]: {
