@@ -281,6 +281,7 @@ export const SectionHeader = ({
             width={307}
             height={407}
             alt="Header Section"
+            quality={100}
           />
         </Box>
       </Box>
