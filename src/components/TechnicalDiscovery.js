@@ -43,14 +43,14 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
 
-    padding: "50px",
+    padding: "40px",
     margin: "0 auto",
   },
   containerInfo4: {
     width: "100%",
     height: "auto",
 
-    padding: "60px",
+    padding: "40px",
     margin: "0 auto",
   },
   boxContent2Step2: {
@@ -70,6 +70,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: "40px",
     lineHeight: "64px",
+    [theme.breakpoints.between(0, 600)]: {
+      lineHeight: "40px",
+      fontSize: "30px",
+    },
   },
   boxDescriptionStep2: {
     paddingTop: "26px",
@@ -81,6 +85,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "34px",
     letterSpacing: "0.02rem",
     color: "#304392",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "20px",
+      lineHeight: "24.8px",
+    },
   },
   boxDescription2Step2: {
     paddingTop: "24px",
@@ -104,6 +112,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "40px",
     lineHeight: "40px",
     color: "#193174",
+    [theme.breakpoints.between(0, 600)]: {
+      fontSize: "20px",
+      lineHeight: "30px",
+    },
   },
   thechnicalDescription1: {
     fontFamily: "HindVadodara",
@@ -124,6 +136,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02rem",
     lineHeight: "28px",
     color: "#304392",
+    [theme.breakpoints.between(0, 600)]: {
+      lineHeight: "26px",
+    },
     [theme.breakpoints.between(1920, 2498)]: {
       fontSize: "20px",
     },
@@ -137,13 +152,29 @@ const useStyles = makeStyles(theme => ({
   boxImageComputer: {
     display: "flex",
     justifyContent: "end",
-    // alignItems: "flex-start",
+
     height: "100%",
+    [theme.breakpoints.between(901, 1040)]: {
+      justifyContent: "center",
+    },
   },
 
   boxContentTexts: {
     paddingTop: "32px",
     width: "82%",
+    [theme.breakpoints.between(0, 600)]: {
+      width: "100%",
+      paddingTop: 0,
+    },
+    [theme.breakpoints.between(600, 900)]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between(901, 1040)]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between(1200, 1450)]: {
+      maxWidth: "555px",
+    },
     [theme.breakpoints.between(2500, 4000)]: {
       width: "100%",
     },
@@ -153,15 +184,30 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
   },
   boxContentServers: {
-    width: "90%",
+    width: "100%",
     paddingTop: "85px",
+    [theme.breakpoints.between(0, 600)]: {
+      paddingTop: "5px",
+    },
+    [theme.breakpoints.between(601, 900)]: {
+      paddingTop: "20px",
+    },
+    [theme.breakpoints.between(901, 1080)]: {
+      paddingTop: "10px",
+    },
+  },
+  boxContentImageBackendServer: {
+    [theme.breakpoints.between(605, 1080)]: {
+      display: "flex",
+      justifyContent: "center",
+    },
   },
   boxContentServices: {
     width: "85%",
-    [theme.breakpoints.between(1920, 2498)]: {
+    [theme.breakpoints.up(1920)]: {
       width: "100%",
     },
-    [theme.breakpoints.between(2500, 4000)]: {
+    [theme.breakpoints.between(0, 1080)]: {
       width: "100%",
     },
   },
@@ -175,6 +221,15 @@ const useStyles = makeStyles(theme => ({
   },
   containerTesting: {
     paddingTop: "50px",
+    [theme.breakpoints.between(0, 380)]: {
+      paddingTop: "20px",
+    },
+    [theme.breakpoints.between(385, 475)]: {
+      paddingTop: "4px",
+    },
+    [theme.breakpoints.between(600, 780)]: {
+      paddingTop: "80px",
+    },
   },
 
   boxImageServices: {
@@ -205,11 +260,14 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "auto",
     margin: "0 auto",
-    padding: "50px",
+    padding: "40px",
   },
   boxContentServers2: {
-    width: "85%",
+    width: "100%",
     paddingTop: "32px",
+    [theme.breakpoints.between(1200, 1450)]: {
+      minWidth: "582px",
+    },
   },
   containerFatherExample: {
     marginTop: "25px",
@@ -238,6 +296,12 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.2rem",
     paddingLeft: "8px",
   },
+  boxContentImageServices2: {
+    [theme.breakpoints.between(605, 1080)]: {
+      display: "flex",
+      justifyContent: "center",
+    },
+  },
   containerTextButton: {
     width: "100%",
     height: "auto",
@@ -250,6 +314,9 @@ const useStyles = makeStyles(theme => ({
   },
   boxdescriptionAfter: {
     width: "56%",
+    [theme.breakpoints.between(0, 600)]: {
+      width: "100%",
+    },
   },
   textDescriptionAfter: {
     fontFamily: "HindVadodara",
@@ -258,6 +325,11 @@ const useStyles = makeStyles(theme => ({
     color: "#304392",
     letterSpacing: "0.2rem",
     textAlign: "center",
+    lineHeight: "33.8px",
+    [theme.breakpoints.between(0, 600)]: {
+      fontSize: "20px",
+      lineHeight: "22px",
+    },
   },
 }))
 
@@ -267,8 +339,7 @@ const ThechnicalDiscovery = () => {
   const router = useRouter()
   const classesComponent = StyleComponent()
   const [card1Open, setCard1Open] = useState(false)
-  const [card2Open, setCard2Open] = useState(false)
-  const [card3Open, setCard3Open] = useState(false)
+
   const examples = [
     { name: t("example1").toUpperCase(), description: t("technicalDiscovery") },
     { name: t("example2").toUpperCase(), description: t("technicalDiscovery") },
@@ -303,7 +374,7 @@ const ThechnicalDiscovery = () => {
         </Grid>
       </Box>
       <Grid container spacing={2} className={classes.containerInfoTechnical}>
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <Box className={classes.boxContentTexts}>
             <Typography className={classes.title1}>
               {t("title_TechiDis")}
@@ -336,7 +407,7 @@ const ThechnicalDiscovery = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <Box className={classes.boxImageComputer}>
             <img src={Computer.src} alt="Image computer" />
           </Box>
@@ -344,12 +415,12 @@ const ThechnicalDiscovery = () => {
       </Grid>
       <Box className={classes.boxContentStep2}>
         <Grid container spacing={2} className={classes.containerInfo3}>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Box>
-              <img src={Servers.src} alt="Image computer" />
+          <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
+            <Box className={classes.boxContentImageBackendServer}>
+              <img src={Servers.src} alt="Image servers" />
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
             <Box className={classes.boxContentServers}>
               <Typography className={classes.title1}>
                 {t("backend_servers")}
@@ -409,7 +480,7 @@ const ThechnicalDiscovery = () => {
       </Grid>
       <Box className={classes.boxContentTesting}>
         <Grid container spacing={2} className={classes.containerTesting}>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
             <Box className={`${classes.cardContainer}`}>
               <CardService
                 title={t("title_Card1")}
@@ -421,7 +492,7 @@ const ThechnicalDiscovery = () => {
               />
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
             <Box className={`${classes.cardContainer}`}>
               <CardService
                 title={t("title_Card2")}
@@ -438,7 +509,7 @@ const ThechnicalDiscovery = () => {
       </Box>
       <Grid container spacing={2} className={classes.containerInfrastructure}>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-          <Box>
+          <Box className={classes.boxContentImageServices2}>
             <img src={Servers2.src} alt="Image servers2" />
           </Box>
         </Grid>
@@ -468,7 +539,7 @@ const ThechnicalDiscovery = () => {
               </Typography>
             </Box>
           </Box>
-          <Box className={classes.containerFatherExample}>
+          {/* <Box className={classes.containerFatherExample}>
             {examples.map((example, index) => (
               <Box key={index} className={classes.exampleContainer}>
                 <Typography variant="body1" className={classes.exampleName}>
@@ -484,7 +555,7 @@ const ThechnicalDiscovery = () => {
                 </Typography>
               </Box>
             ))}
-          </Box>
+          </Box> */}
         </Grid>
       </Grid>
       <Grid container spacing={2} className={classes.containerTextButton}>

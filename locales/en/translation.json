@@ -261,7 +261,7 @@
      "infrastructure_desc1":"We determine whether the client owns their servers or if they use a cloud provider. We identify their current cost structure and list out or estimate the volume of traffic by day, hour, and minute.",
      "infrastructure_desc2":"This includes assessing if the client expects traffic bursts and/or spikes. We make recommendations regarding hosting assets and load testing based on consumers’ locations and the client’s current testing infrastructure.",
      "infrastructure_desc3":"We also determine if there is a plan in place for monitoring load on the servers and help the client develop a deployment strategy to allow for minimal downtime.",
-     "infrastructure_desc4":"We'll provide a document that describes the growth strategies as the project scale.Here are a couple of examples",
+     "infrastructure_desc4":"We'll provide a document that describes the growth strategies as the project scale.",
      "example1":"example 1 ",
      "example2":"example 2 ",
      "description_AfterBtn":"After the Technical Discovery is ready, we move on to the next step:",
@@ -278,7 +278,13 @@
      "li3_Wireframes":"Demonstrating the User Flow",
      "li4_Wireframes":"Ensuring a Solid Underlying Structure",
      "title_UxExamples":"UX Examples",
-     "description_DescriptionRoad_Map":"Step-by-step process to design and develop new applications."
+     "description_DescriptionRoad_Map":"Step-by-step process to design and develop new applications.",
+     "type_OfJob":"Account Owner/Propel contact - 47 Years Old Male",
+     "role_OfJob":"Responsible for managing business relationship.",
+     "type_OfJob2":"Senior Manager - 33 Years Old Male",
+     "role_OfJob2":" Needs a better method for organizing invoices."
+
+
 
 
 

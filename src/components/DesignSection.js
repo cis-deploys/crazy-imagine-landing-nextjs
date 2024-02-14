@@ -216,7 +216,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.2rem",
     paddingLeft: "8px",
     [theme.breakpoints.between("xs", "sm")]: {
-      fontSize: "14px",
+      fontSize: "12px",
       letterSpacing: " 0.02rem",
     },
   },
@@ -250,6 +250,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: "40px",
     lineHeight: "55px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "30px",
+      lineHeight: "40px",
+    },
   },
   boxDescriptionStep1: {
     width: "61%",
@@ -453,8 +457,9 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       justifyContent: "center",
       flexDirection: "column",
-      alignItems: "center",
+      alignItems: "flex-start",
       paddingTop: "30px",
+      paddingLeft: "32px",
     },
     [theme.breakpoints.between("sm", "md")]: {
       display: "flex",
@@ -471,8 +476,7 @@ const useStyles = makeStyles(theme => ({
     width: "68%",
     paddingTop: "20px",
     [theme.breakpoints.between("xs", "sm")]: {
-      width: "93%",
-      paddingLeft: "32px",
+      width: "100%",
     },
     [theme.breakpoints.between("sm", "md")]: {
       width: "98%",
@@ -548,6 +552,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: "40px",
     lineHeight: "64px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      lineHeight: "40px",
+      fontSize: "30px",
+    },
   },
   boxDescriptionStep2: {
     paddingTop: "26px",
@@ -619,6 +627,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: "40px",
     lineHeight: "55px",
+    [theme.breakpoints.between(0, 600)]: {
+      fontSize: "30px",
+      lineHeight: "40px",
+    },
   },
   descriptionStep3: {
     fontFamily: "HindVadodara",
@@ -655,6 +667,9 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.02rem",
     color: "#FFFFFF",
     textAlign: "justify",
+    [theme.breakpoints.between(0, 600)]: {
+      fontSize: "18px",
+    },
     [theme.breakpoints.up(2560)]: {
       fontSize: "25px",
     },
@@ -752,6 +767,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: " 32px",
     letterSpacing: "0.02rem",
     color: "#FFFFFF",
+    [theme.breakpoints.between(0, 600)]: {
+      fontSize: "15px",
+      lineHeight: " 22px",
+    },
   },
 }))
 const DesignSection = () => {
@@ -943,10 +962,10 @@ const DesignSection = () => {
                   Enzo Kukuriczka
                 </Typography>
                 <Typography className={classes.area}>
-                  Account Owner/Propel contact - 47 Years Old Male
+                  {t("type_OfJob")}
                 </Typography>
                 <Typography className={classes.role}>
-                  Responsible for managing business relationship.
+                  {t("role_OfJob")}
                 </Typography>
               </Box>
             </Stack>
@@ -961,10 +980,10 @@ const DesignSection = () => {
               <Box className={classes.textContainer}>
                 <Typography className={classes.name}>John Methol</Typography>
                 <Typography className={classes.area}>
-                  Senior Manager - 33 Years Old Male
+                  {t("type_OfJob2")}
                 </Typography>
                 <Typography className={classes.role}>
-                  Needs a better method for organizing invoices.
+                  {t("role_OfJob2")}
                 </Typography>
               </Box>
             </Stack>
@@ -1128,7 +1147,7 @@ const DesignSection = () => {
             </Typography>
           </Grid>
 
-          <Grid item xs={4} align="center">
+          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} align="center">
             <a
               href="https://whimsical.com/account-management-LgYciykM5TXFZwYa4a9qTR"
               target="_blank"
@@ -1136,7 +1155,7 @@ const DesignSection = () => {
               <img src={FeatureMap.src} alt="Images FeatureMap" />
             </a>
           </Grid>
-          <Grid item xs={4} align="center">
+          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} align="center">
             <a
               href="https://whimsical.com/example-user-flow-for-invoices-FvrfYrQFBLCNbMfCCzzkt"
               target="_blank"
@@ -1144,7 +1163,7 @@ const DesignSection = () => {
               <img src={UserFlow.src} alt="Images UserFlow" />
             </a>
           </Grid>
-          <Grid item xs={4} align="center">
+          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} align="center">
             <img src={Wireframes.src} alt="Images Wireframes" />
           </Grid>
         </Grid>

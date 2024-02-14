@@ -262,7 +262,7 @@
    "infrastructure_desc1":"Determinamos si el cliente es propietario de sus servidores o si utiliza un proveedor de nube. Identificamos su estructura de costos actual y enumeramos o estimamos el volumen de tráfico por día, hora y minuto.",
    "infrastructure_desc2":"Esto incluye evaluar si el cliente espera picos o ráfagas de tráfico. Hacemos recomendaciones con respecto a los activos de alojamiento y las pruebas de carga según las ubicaciones de los consumidores y la infraestructura de prueba actual del cliente.",
    "infrastructure_desc3":"También determinamos si existe un plan para monitorear la carga en los servidores y ayudamos al cliente a desarrollar una estrategia de implementación para permitir un tiempo de inactividad mínimo.",
-   "infrastructure_desc4":"Proporcionaremos un documento que describe las estrategias de crecimiento según la escala del proyecto. Aquí hay un par de ejemplos.",
+   "infrastructure_desc4":"Proporcionaremos un documento que describe las estrategias de crecimiento según la escala del proyecto.",
    "example1":"ejemplo 1 ",
    "example2":"ejemplo 2 ",
    "description_AfterBtn":"Una vez que el descubrimiento técnico esté listo, pasamos al siguiente paso:",
@@ -279,7 +279,11 @@
    "li3_Wireframes":"Demostrando El Flujo De Usuarios",
    "li4_Wireframes":"Garantizar una Estructura Subyacente Sólida",
    "title_UxExamples":"Ejemplos De Experiencia De Usuario",
-   "description_DescriptionRoad_Map":"Proceso paso a paso para diseñar y desarrollar nuevas aplicaciones."
+   "description_DescriptionRoad_Map":"Proceso paso a paso para diseñar y desarrollar nuevas aplicaciones.",
+   "type_OfJob":"Propietario de la cuenta/contacto de Propel: hombre de 47 años",
+   "role_OfJob":"Responsable de gestionar la relación comercial.",
+   "type_OfJob2":"Gerente Senior - Hombre de 33 años",
+    "role_OfJob2":" Necesita un mejor método para organizar las facturas."
 
 
    

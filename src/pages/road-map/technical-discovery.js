@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 import Layout from "../../components/Layout"
-
+import { Box } from "@mui/material"
 const SectionHeader = dynamic(() => import("../../components/SectionHeader"), {
   ssr: false,
 })
@@ -14,7 +14,9 @@ const TechnicalDiscovery = dynamic(
 function technicalDiscovery() {
   return (
     <Layout>
-      <TechnicalDiscovery />
+      <Box overflow="hidden">
+        <TechnicalDiscovery />
+      </Box>
     </Layout>
   )
 }
