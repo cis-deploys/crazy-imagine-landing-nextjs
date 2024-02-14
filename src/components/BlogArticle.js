@@ -6,6 +6,7 @@ import { BLOG } from "../navigation/sitemap"
 import Link from "next/link"
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -169,6 +170,13 @@ const BlogArticle = ({ articles: AllArticles }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
+
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
+
   const [load, setLoad] = useState(getInitialLoad())
   const [buttonLoad, setButtonLoad] = useState(true)
   const [showLoadMore, setShowLoadMore] = useState(true)
@@ -231,10 +239,25 @@ const BlogArticle = ({ articles: AllArticles }) => {
             const title = el?.image[0]?.title
             return (
               <Box
-                key={index}
-                component="article"
-                className={classes.container}
+              key={index}
+              component="article"
+              className={classes.container}
               >
+              {isLoading && (
+              <Box
+              sx={{ 
+                display:"flex", 
+                paddingTop: "50px",
+                alignItems:'center',
+                minWidth: "300px",
+                minHeight: "320px",
+                }}
+              >
+              <Loading/>
+              </Box>
+              )}
+              {!isLoading && (
+                <>
                 <Image
                   className={classes.ron}
                   src={dataImage}
@@ -250,6 +273,8 @@ const BlogArticle = ({ articles: AllArticles }) => {
                     </a>
                   </Link>
                 </Box>
+                </>
+              )}
               </Box>
             )
           })}

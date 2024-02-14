@@ -27,6 +27,7 @@ import CardMedia from "@mui/material/CardMedia"
 import { PROJECTS } from "../navigation/sitemap"
 import FilterProjectMovil from "./FilterProjectMovil"
 import { StyleComponent } from "./StyleComponent"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   ContainerSection: {
@@ -510,6 +511,11 @@ const TableProjects = ({ projectsData }) => {
   const handleTouchEnd = event => {
     setOnEndPosition(event.changedTouches[0].screenX)
   }
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
 
   return (
     <Box className={classes.ContainerSection}>
@@ -576,6 +582,19 @@ const TableProjects = ({ projectsData }) => {
           {visibleData.map(cardProject => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={cardProject.id}>
               <Card className={classes.cardProject}>
+              {isLoading && (
+                <Card 
+                sx={{ 
+                display:"flex", 
+                alignItems:'center',
+                minWidth: "300px",
+                minHeight: "300px",
+                }}>
+                <Loading/>
+                </Card>
+                )}
+                {!isLoading && (
+                  <>
                 <CardMedia
                   className={classes.cardMediaProject}
                   image={cardProject.images[0].url}
@@ -599,6 +618,8 @@ const TableProjects = ({ projectsData }) => {
                     </a>
                   </Link>
                 </CardContent>
+                </>
+                )}
               </Card>
             </Grid>
           ))}

@@ -10,6 +10,7 @@ import { useTranslation } from 'next-i18next'
 import { BLOG } from "../navigation/sitemap"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -159,6 +160,11 @@ const BlogPost = ({ bulletClass, articles }) => {
   const { Key } = router.query;
 
     const [visibleArticles, setVisibleArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+ 
+    useEffect(() => {
+      setTimeout(() => setIsLoading(false), 2000);
+    }, []);
 
     useEffect(() => {
       const handleResize = () => {
@@ -225,6 +231,12 @@ const BlogPost = ({ bulletClass, articles }) => {
 
         <SwiperSlide key={index} className={classes.carousel}>
           <Box className={classes.container}>
+
+          {isLoading && (
+            <Loading/>
+          )}
+          {!isLoading && (
+            
             <>
             <Image
               src={el?.image[0]?.url}
@@ -246,6 +258,7 @@ const BlogPost = ({ bulletClass, articles }) => {
                 </Link>
               </Box>
             </>
+          )}
           </Box>
         </SwiperSlide>
       ))}

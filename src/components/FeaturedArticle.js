@@ -6,6 +6,7 @@ import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -249,6 +250,12 @@ const FeaturedArticle = ({ articles }) => {
   const isVisible = useIntersection(ref, "0px")
   const { t, i18n } = useTranslation()
 
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
+
   const articlesFilter = articles
 
   const featureArticle = articlesFilter
@@ -269,6 +276,11 @@ const FeaturedArticle = ({ articles }) => {
       </Typography>
       <Box className={classes.containerCard}>
       <Box className={classes.cardContainer}>
+
+      {isLoading && (
+          <Loading/>
+          )}
+        {!isLoading && (
         <>
           <Image
             className={classes.img}
@@ -288,9 +300,15 @@ const FeaturedArticle = ({ articles }) => {
             </Link>
           </Box>
         </>
+        )}
         </Box>
 
         <Box className={classes.cardContainer}>
+          
+      {isLoading && (
+          <Loading/>
+          )}
+        {!isLoading && (
         <>
           <Image
             className={classes.img}
@@ -310,6 +328,7 @@ const FeaturedArticle = ({ articles }) => {
             </Link>
           </Box>
         </>
+        )}
         </Box>
         </Box>
 

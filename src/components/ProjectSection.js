@@ -14,6 +14,7 @@ import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -187,6 +188,12 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   SwiperCore.use([Keyboard])
   const { t } = useTranslation()
 
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
+
       return (
         <Box className={classes.container}>
           <Typography className={classesComponent.titleBlue} style={{ marginTop: "30px"}}>
@@ -237,8 +244,21 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
+                    {isLoading && (
+                      <Box 
+                      sx={{ 
+                        display:"flex", 
+                        paddingTop: "50px",
+                        alignItems:'center',
+                        minWidth: "100px",
+                        minHeight: "150px",
+                        }}>
+                      <Loading/>
+                      </Box>
+                      )}
+                    {!isLoading && (
+                      <>
                       <Image src={dataImage} alt={title} width={350} height="250px" quality={100} />
-
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
                           {titleProject}
@@ -251,6 +271,8 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
                         </Link>
                       </Box>
+                      </>
+                        )}
                     </Box>
                   </SwiperSlide>
                 )
