@@ -162,6 +162,8 @@ const useStyles = makeStyles(theme => ({
   boxContentTexts: {
     paddingTop: "32px",
     width: "82%",
+    animation: `$myEffect 1000ms`,
+
     [theme.breakpoints.between(0, 600)]: {
       width: "100%",
       paddingTop: 0,
@@ -179,6 +181,16 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
     },
   },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+  },
   boxImagelanguages: {
     display: "flex",
     justifyContent: "center",
@@ -186,6 +198,7 @@ const useStyles = makeStyles(theme => ({
   boxContentServers: {
     width: "100%",
     paddingTop: "85px",
+    animation: `$myEffect 1000ms`,
     [theme.breakpoints.between(0, 600)]: {
       paddingTop: "5px",
     },
@@ -194,6 +207,16 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(901, 1080)]: {
       paddingTop: "10px",
+    },
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
     },
   },
   boxContentImageBackendServer: {
@@ -265,10 +288,12 @@ const useStyles = makeStyles(theme => ({
   boxContentServers2: {
     width: "100%",
     paddingTop: "32px",
+
     [theme.breakpoints.between(1200, 1450)]: {
       minWidth: "582px",
     },
   },
+
   containerFatherExample: {
     marginTop: "25px",
   },
