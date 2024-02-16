@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from "react"
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { BLOG } from "../navigation/sitemap"
 import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -243,37 +244,30 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const FeaturedArticle = ({ articles: AllArticles }) => {
+const FeaturedArticle = ({ articles }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   const { t, i18n } = useTranslation()
-  const lang = i18n.language
 
-  const articles = AllArticles
-  const articlesFilter = articles.filter(article =>
-    article.locale.includes(lang)
-  )
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
+
+  const articlesFilter = articles
+
   const featureArticle = articlesFilter
-    .sort((a, b) => {
-      return new Date(b.created_at) - new Date(a.created_at)
-    })
     .slice(0, 2)
       
     const [projectDataAll, setProjectDataAll] = useState(featureArticle);
 
     useEffect(() => {
-          const articles = AllArticles
-          const articlesFilter = articles.filter(article =>
-            article.locale.includes(lang)
-          )
           const featureArticle = articlesFilter
-            .sort((a, b) => {
-              return new Date(b.created_at) - new Date(a.created_at)
-            })
             .slice(0, 2)
             setProjectDataAll(featureArticle);
-    }, [i18n.language]);
+    }, [i18n.language, articles]);
 
   return (
     <Box ref={ref} className={ classes.container }>
@@ -282,6 +276,11 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
       </Typography>
       <Box className={classes.containerCard}>
       <Box className={classes.cardContainer}>
+
+      {isLoading && (
+          <Loading/>
+          )}
+        {!isLoading && (
         <>
           <Image
             className={classes.img}
@@ -301,9 +300,15 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             </Link>
           </Box>
         </>
+        )}
         </Box>
 
         <Box className={classes.cardContainer}>
+          
+      {isLoading && (
+          <Loading/>
+          )}
+        {!isLoading && (
         <>
           <Image
             className={classes.img}
@@ -316,13 +321,14 @@ const FeaturedArticle = ({ articles: AllArticles }) => {
             <Typography className={classes.titleCard}>
               {projectDataAll[1]?.title}
             </Typography>
-            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[1]?.Key}`} >
+            <Link href={`${BLOG}/[Key].js`} as={`${BLOG}/${projectDataAll[1]?.Key} `}>
               <a style={{ textDecoration: "none" }} className={classes.link}>
                 {t("common_lastestPosts_blogPost_button_readMore")}
               </a>
             </Link>
           </Box>
         </>
+        )}
         </Box>
         </Box>
 

@@ -1,5 +1,6 @@
 import * as React from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from "next/dynamic"
 
 import Layout from "../components/Layout"
@@ -18,19 +19,21 @@ const WorkForm = dynamic(() => import("../components/WorkForm"), { ssr: false })
 
 const Imagen = dynamic(() => import("../components/Imagen"), { ssr: false })
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
   const resWorkWithUspage = await fetch(
-    `${domain}work-with-us-page?populate=seo&populate=title&populate=images`
+    `${domain}work-with-us-page?locale=${locale}&populate=seo&populate=title&populate=images`
   )
   const workWithUspage = await resWorkWithUspage.json()
 
-  return { props: { workWithUspage } }
+  return { props: { workWithUspage,
+    ...await serverSideTranslations(locale, ['common'])
+  } }
 }
 
 const WorkWithUsPage = ({ workWithUspage }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {
@@ -54,7 +57,7 @@ const WorkWithUsPage = ({ workWithUspage }) => {
       setMetaDescription(workWithUspage.data?.attributes.seo?.metaDescription),
       setKeywords(workWithUspage.data?.attributes.seo?.keywords)
     setTitle(workWithUspage.data?.attributes.title)
-  }, [])
+  }, [workWithUspage])
 
   const imageUrl =
     workWithUspage.data?.attributes?.images?.data[0]?.attributes?.url

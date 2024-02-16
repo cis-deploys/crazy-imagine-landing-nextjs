@@ -1,5 +1,6 @@
 import { Box } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -49,36 +50,37 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=en&locale=es-VE&_limit=6&_sort=created_at:DESC&populate=images&populate=seo`)
+  const resProjects = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=8&sort[0]=createdAt:desc&populate=images&populate=seo`)
   const projects = await resProjects.json()
 
-  const resArticles = await fetch(`${domain}articles?locale=en&locale=es-VE&_limit=6&_sort=created_at:DESC&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=8&sort[0]=createdAt:desc&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
-  const resReviews = await fetch(`${domain}reviews?locale=all&populate=avatar`)
+  const resReviews = await fetch(`${domain}reviews?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=avatar`)
   const reviews = await resReviews.json()
 
-  const resHomepage = await fetch(`${domain}home-page?locale=all&populate=seo&populate=hero`)
+  const resHomepage = await fetch(`${domain}home-page?locale=${locale}&populate=seo&populate=hero`)
   const homepage = await resHomepage.json()
 
-  return { props: { projects, articles, reviews, homepage } }
+  return { props: { 
+    projects, articles, reviews, homepage,
+    ...await serverSideTranslations(locale, ['common']),
+   } }
 }
 
 
 function IndexPage({ projects, articles, reviews, homepage }) {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
   useEffect(() => {
-    // Obtener la locale del router
     const locale = router.locale;
 
     if (locale === 'es' && i18n.language !== 'es') {
-      // Establecer el idioma en español si no está establecido
       i18n.changeLanguage('es');
     }
   }, [router.locale, i18n]);
@@ -156,18 +158,12 @@ function IndexPage({ projects, articles, reviews, homepage }) {
   });
 
   useEffect(() => {
-  homepage.data.map(({ attributes: { seo, hero }}) => {
-    if(seo){
-      setMetaTitle(seo?.metaTitle),
-      setMetaDescription(seo?.metaDescription),
-      setKeywords(seo?.keywords)
-    }
-    if(hero){
-      setTitle(hero?.title)
-    }
-  });
+    setMetaTitle(homepage.data?.attributes.seo?.metaTitle),
+    setMetaDescription(homepage.data?.attributes.seo?.metaDescription),
+    setKeywords(homepage.data?.attributes.seo?.keywords),
+    setTitle(homepage.data?.attributes.hero?.title)
+  }, [homepage])
 
-}, [])
 
   return (
     <Layout>

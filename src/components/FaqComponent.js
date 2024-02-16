@@ -4,7 +4,6 @@ import ProjectFAQ from './ProjectFAQ'
 import { Box } from '@mui/material'
 
 import { makeStyles } from "@mui/styles"
-import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -31,13 +30,8 @@ const useStyles = makeStyles(theme => ({
 
 const FaqComponent = ({ faq }) => {
   const classes = useStyles()
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language
 
-  const faqs = faq
-  const faqFilter = faqs
-  .filter(faq => faq.locale.includes(lang)
-  )
+  const faqFilter = faq
 
   const generalFilter = faqFilter
   .filter(item => item.faq_options.data.attributes.slug === "general_faqs" || item.faq_options.data.attributes.slug === "preguntas_generales")

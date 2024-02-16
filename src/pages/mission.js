@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const SectionHeader = dynamic(
     () => import("../components/SectionHeader"),
@@ -17,20 +18,22 @@ const SectionHeader = dynamic(
     { ssr: false },
   )
 
-  export async function getServerSideProps() {
+  export async function getServerSideProps({ locale }) {
     const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
   
-    const resCompanyValue = await fetch(`${domain}company-values?locale=en&locale=es-VE&populate=title&populate=description&populate=image`)
+    const resCompanyValue = await fetch(`${domain}company-values?locale=${locale}&populate=title&populate=description&populate=image`)
     const companyValue = await resCompanyValue.json()
   
-    const resMissionPage = await fetch(`${domain}mission-page?locale=all&populate=title&populate=seo&populate=images&populate=title_mission&populate=description_mission&populate=title_vission&populate=description_vission&populate=title_compamy_value`)
+    const resMissionPage = await fetch(`${domain}mission-page?locale=${locale}&populate=title&populate=seo&populate=images&populate=title_mission&populate=description_mission&populate=title_vission&populate=description_vission&populate=title_compamy_value`)
     const missionPage = await resMissionPage.json()
   
-    return { props: { companyValue, missionPage } }
+    return { props: { companyValue, missionPage,
+      ...await serverSideTranslations(locale, ['common']),
+    } }
   }
 
 function Mission ({ companyValue, missionPage }) {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {
@@ -69,10 +72,10 @@ function Mission ({ companyValue, missionPage }) {
     });
   
       useEffect(() => {
-        setMetaTitle(missionPage.data[1].attributes.seo?.metaTitle),
-        setMetaDescription(missionPage.data[1].attributes.seo?.metaDescription),
-        setKeywords(missionPage.data[1].attributes.seo?.keywords)
-        setTitle(missionPage.data[1].attributes.title)
+        setMetaTitle(missionPage.data.attributes.seo?.metaTitle),
+        setMetaDescription(missionPage.data.attributes.seo?.metaDescription),
+        setKeywords(missionPage.data.attributes.seo?.keywords)
+        setTitle(missionPage.data.attributes.title)
       }, [])
 
 

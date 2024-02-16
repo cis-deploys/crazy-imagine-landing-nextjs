@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Grid, Typography } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import TitleSection from "./TitleSection"
 import mainImage from "../../public/Group619.webp"

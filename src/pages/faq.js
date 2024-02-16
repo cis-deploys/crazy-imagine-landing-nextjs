@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -17,20 +19,23 @@ const SectionHeader = dynamic(
     { ssr: false },
   )
   
-  export async function getServerSideProps() {
+  export async function getServerSideProps({ locale }) {
     const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
   
-    const resFaq = await fetch(`${domain}faqs?locale=en&locale=es-VE&populate=question&populate=ask&populate=faq_options`)
+    const resFaq = await fetch(`${domain}faqs?locale=${locale}&populate=question&populate=ask&populate=faq_options`)
     const faq = await resFaq.json()
-  
-    const resFaqPage = await fetch(`${domain}faq-page?populate=seo&populate=title`)
+
+    const resFaqPage = await fetch(`${domain}faq-page?locale=${locale}&populate=seo&populate=title`)
     const faqPage = await resFaqPage.json()
   
-    return { props: { faq, faqPage } }
+    return { props: { 
+      faq, faqPage,  
+      ...await serverSideTranslations(locale, ['common']),}    
+    } 
   }
 
   function Faq ({ faq, faqPage }) {
-    const { t, i18n } = useTranslation()
+    const { t, i18n } = useTranslation('common')
     const router = useRouter()
 
     useEffect(() => {
@@ -71,9 +76,9 @@ const SectionHeader = dynamic(
     useEffect(() => {
       setMetaTitle(faqPage.data?.attributes.seo?.metaTitle),
       setMetaDescription(faqPage.data?.attributes.seo?.metaDescription),
-      setKeywords(faqPage.data?.attributes.seo?.keywords)
+      setKeywords(faqPage.data?.attributes.seo?.keywords),
       setTitle(faqPage.data?.attributes.title)
-    }, [])
+    }, [faqPage])
 
   return (
     <Layout >

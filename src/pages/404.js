@@ -3,7 +3,8 @@ import dynamic from "next/dynamic"
 
 import Layout from "../components/Layout"
 import { useRouter } from "next/router"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from "react"
 
 const Content404 = dynamic(
@@ -11,8 +12,16 @@ const Content404 = dynamic(
   { ssr: false },
 )
 
+export const getStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ["common"]),
+    },
+  };
+};
+
 const NotFoundPage = () => {
-  const { i18n } = useTranslation()
+  const { i18n } = useTranslation('common')
   const router = useRouter()
   
   useEffect(() => {

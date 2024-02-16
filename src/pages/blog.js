@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -28,23 +29,25 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale, query }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resArticles = await fetch(`${domain}articles?locale=all&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[pageSize]=${query?.size || 6}&sort[0]=createdAt:desc&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
-  const resBlogpage = await fetch(`${domain}blog?populate=seo&populate=title`)
+  const resBlogpage = await fetch(`${domain}blog?locale=${locale}&populate=seo&populate=title`)
   const blogpage = await resBlogpage.json()
 
-  return { props: { articles, blogpage } }
+  return { props: { 
+    articles, 
+    blogpage,
+    ...await serverSideTranslations(locale, ['common'])
+  } }
 }
 
 const Blog = ({ articles, blogpage }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
   useEffect(() => {
     // Obtener la locale del router
@@ -62,7 +65,7 @@ const Blog = ({ articles, blogpage }) => {
   const [ title, setTitle ] = useState();
   
   const articlesNew = [];
-  articles.data.map(({ attributes: { title, Key, createdAt, locale, image, seo}}) => {
+  articles?.data?.map(({ attributes: { title, Key, slug, createdAt, locale, image, seo}}) => {
     const imagesArticles = [];
     if(image.data){
       image.data.map(({ attributes: { url }}) => {
@@ -74,13 +77,15 @@ const Blog = ({ articles, blogpage }) => {
     articlesNew.push({
       title,
       Key,
+      slug,
       createdAt,
       locale,
       image: imagesArticles,
-      seo
+      seo,
     });
   });
 
+  const articlesPag = articles.meta
 
   useEffect(() => {
     setMetaTitle(blogpage.data?.attributes.seo?.metaTitle),
@@ -110,7 +115,7 @@ const Blog = ({ articles, blogpage }) => {
 
       <FeaturedArticle articles={ articlesNew }/>
 
-      <BlogArticle articles={ articlesNew }/>
+      <BlogArticle articles={ articlesNew } articlesPagination={ articlesPag}/>
 
       <ContactSection />
 

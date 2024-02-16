@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -18,17 +19,19 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale}) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resContactpage = await fetch(`${domain}contact-page?populate=seo&populate=title`)
+  const resContactpage = await fetch(`${domain}contact-page?locale=${locale}&populate=seo&populate=title`)
   const contactpage = await resContactpage.json()
 
-  return { props: { contactpage } }
+  return { props: { contactpage,
+    ...await serverSideTranslations(locale, ['common']),
+  } }
 }
 
 const Contact = ({ contactpage }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {
@@ -51,7 +54,7 @@ const Contact = ({ contactpage }) => {
         setMetaDescription(contactpage.data?.attributes.seo?.metaDescription),
         setKeywords(contactpage.data?.attributes.seo?.keywords)
         setTitle(contactpage.data?.attributes.title)
-  }, [])
+  }, [contactpage])
 
   return (
     <Layout>

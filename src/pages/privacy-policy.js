@@ -1,5 +1,6 @@
 import * as React from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -28,6 +29,14 @@ const ContactSection = dynamic(
   () => import("../components/ContactSection"),
   { ssr: false },
 )
+
+export const getStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ["common"]),
+    },
+  };
+};
 
 const PrivacyPolicy = () => {
   const { t, i18n } = useTranslation()

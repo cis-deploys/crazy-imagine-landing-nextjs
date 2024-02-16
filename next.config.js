@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const withOptimizedImages = require('next-optimized-images');
 
+const { i18n } = require('./next-i18next.config');
+
 const nextConfig = {
   reactStrictMode: true,
   env: {
@@ -9,10 +11,7 @@ const nextConfig = {
   images: {
     domains: ['blogadmin.s3.amazonaws.com'],
   },
-  i18n: {
-    locales: ['en', 'es'],
-    defaultLocale: 'en',
-  }
+  i18n,
 }
 
 module.exports = withOptimizedImages({
