@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
     const { query, locale } = context;
     const { Key } = query;
     
-    const resprojectsAll = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=10&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)
+    const resprojectsAll = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=images&populate=galleryImages&populate=seo`)
     const projects = await resprojectsAll.json();
     
     const resProjects = await fetch(`${domain}projects?filters[Key][$eq]=${Key}&locale=${locale}&populate=images&populate=galleryImages&populate=seo`)

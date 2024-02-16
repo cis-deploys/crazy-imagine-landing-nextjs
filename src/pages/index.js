@@ -53,10 +53,10 @@ const ContactSection = dynamic(
 export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resProjects = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=images&populate=seo`)
+  const resProjects = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=8&sort[0]=createdAt:desc&populate=images&populate=seo`)
   const projects = await resProjects.json()
 
-  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=category&populate=author&populate=image&populate=seo`)
+  const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=8&sort[0]=createdAt:desc&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
   const resReviews = await fetch(`${domain}reviews?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=avatar`)
@@ -78,11 +78,9 @@ function IndexPage({ projects, articles, reviews, homepage }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
 
   useEffect(() => {
-    // Obtener la locale del router
     const locale = router.locale;
 
     if (locale === 'es' && i18n.language !== 'es') {
-      // Establecer el idioma en español si no está establecido
       i18n.changeLanguage('es');
     }
   }, [router.locale, i18n]);
