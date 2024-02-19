@@ -244,6 +244,7 @@ const BlogPost = ({ bulletClass, articles }) => {
               height="250px"
               width={310}
               quality={100}
+              priority={ false } 
             />
 
               <Box className={classes.textContainer}>
