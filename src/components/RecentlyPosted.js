@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Grid, Typography } from "@mui/material"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -90,8 +90,6 @@ const RecentlyPosted = ({ articles: AllArticles }) => {
         const articles = AllArticles
         const articlesFilter = articles
         ?.filter( project => project?.Key !== Key && project?.Key !== null)
-        .filter(article => article.locale.includes(lang)
-        )
         const articlesSort = articlesFilter
           .sort((a, b) => {
             return new Date(b.created_at) - new Date(a.created_at)

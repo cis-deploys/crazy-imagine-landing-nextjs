@@ -1,5 +1,5 @@
 import { Grid, Typography, Box } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import NextImage from "next/image"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"

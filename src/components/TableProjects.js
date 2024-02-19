@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Link from "next/link"
 
 import "swiper/swiper.min.css"
@@ -27,6 +27,7 @@ import CardMedia from "@mui/material/CardMedia"
 import { PROJECTS } from "../navigation/sitemap"
 import FilterProjectMovil from "./FilterProjectMovil"
 import { StyleComponent } from "./StyleComponent"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   ContainerSection: {
@@ -353,13 +354,9 @@ const TableProjects = ({ projectsData }) => {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 
-  const projects = projectsData
-  const projectsFilter = projects.filter(project =>
-    project.locale.includes(lang)
-  )
 
   const [projectDataAll, setProjectDataAll] = useState(
-    projectsFilter.sort((a, b) => {
+    projectsData.sort((a, b) => {
       return new Date(b.created_at) - new Date(a.created_at)
     })
   )
@@ -379,7 +376,7 @@ const TableProjects = ({ projectsData }) => {
   }
 
   const loadingSelectedOption = () => {
-    const types = projectsFilter
+    const types = projectsData
       .sort((a, b) => {
         return new Date(b.created_at) - new Date(a.created_at)
       })
@@ -402,7 +399,7 @@ const TableProjects = ({ projectsData }) => {
 
     let filteredProjects = []
     filteredTecnologies.forEach(tecnology => {
-      projectsFilter.map(project => {
+      projectsData.map(project => {
         if (project.types[0] === tecnology) {
           filteredProjects.push(project)
         }
@@ -417,7 +414,7 @@ const TableProjects = ({ projectsData }) => {
       )
     } else {
       setProjectDataAll(
-        projectsFilter.sort((a, b) => {
+        projectsData.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at)
         })
       )
@@ -514,6 +511,11 @@ const TableProjects = ({ projectsData }) => {
   const handleTouchEnd = event => {
     setOnEndPosition(event.changedTouches[0].screenX)
   }
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
 
   return (
     <Box className={classes.ContainerSection}>
@@ -580,6 +582,19 @@ const TableProjects = ({ projectsData }) => {
           {visibleData.map(cardProject => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={cardProject.id}>
               <Card className={classes.cardProject}>
+              {isLoading && (
+                <Card 
+                sx={{ 
+                display:"flex", 
+                alignItems:'center',
+                minWidth: "300px",
+                minHeight: "300px",
+                }}>
+                <Loading/>
+                </Card>
+                )}
+                {!isLoading && (
+                  <>
                 <CardMedia
                   className={classes.cardMediaProject}
                   image={cardProject.images[0].url}
@@ -603,6 +618,8 @@ const TableProjects = ({ projectsData }) => {
                     </a>
                   </Link>
                 </CardContent>
+                </>
+                )}
               </Card>
             </Grid>
           ))}

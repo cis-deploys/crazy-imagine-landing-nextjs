@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -23,20 +24,22 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
   const resArticles = await fetch(`${domain}members?members?populate=name&populate=role&populate=avatar`)
   const members = await resArticles.json()
 
-  const resMeetTeam = await fetch(`${domain}meet-team-page?locale=en&locale=es-VE&populate=title&populate=seo`)
+  const resMeetTeam = await fetch(`${domain}meet-team-page?locale=${locale}&populate=title&populate=seo`)
   const meetTeamPage= await resMeetTeam.json()
 
-  return { props: { members, meetTeamPage} }
+  return { props: { members, meetTeamPage,
+    ...await serverSideTranslations(locale, ['common']),
+  } }
 }
 
 const About = ({ members, meetTeamPage }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {
@@ -78,7 +81,7 @@ const About = ({ members, meetTeamPage }) => {
     setMetaDescription(meetTeamPage.data?.attributes.seo?.metaDescription),
     setKeywords(meetTeamPage.data?.attributes.seo?.keywords)
     setMainTitle(meetTeamPage.data?.attributes.title)
-  }, [])
+  }, [meetTeamPage])
 
   return (
     <Layout >

@@ -6,7 +6,7 @@ import * as yup from "yup"
 import Swal from "sweetalert2"
 import { Box,  Input, Typography, Select, MenuItem, InputLabel, Alert, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"

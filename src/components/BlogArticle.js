@@ -6,6 +6,8 @@ import { BLOG } from "../navigation/sitemap"
 import Link from "next/link"
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
+import { useRouter } from "next/router"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -65,7 +67,7 @@ const useStyles = makeStyles(theme => ({
       paddingTop: "40px",
     },
     [theme.breakpoints.down("xl")]: {
-      width: "65%",
+      width: "70%",
       paddingTop: "40px",
     },
     [theme.breakpoints.down("lg")]: {
@@ -154,73 +156,70 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const prepareArticles = (articles, lang, limitOfArticles) => {
-  return (
-    articles
-      ?.filter(article => article.locale.includes(lang))
-      ?.sort((a, b) => {
-        return new Date(b.created_at) - new Date(a.created_at)
-      })
-      ?.slice(2)
-      ?.slice(0, limitOfArticles) || []
-  )
-}
+const prepareArticles = articles => {
+  return articles?.slice(2) || [] }
 
-const BlogArticle = ({ articles: AllArticles }) => {
+const BlogArticle = ({ articles: AllArticles, articlesPagination }) => {
   const classes = useStyles()
+  const router = useRouter()
+  const { query } = router
   const classesComponent = StyleComponent()
   const { t, i18n } = useTranslation()
-  const lang = i18n.language
-  const [load, setLoad] = useState(getInitialLoad())
-  const [buttonLoad, setButtonLoad] = useState(true)
+
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
+
   const [showLoadMore, setShowLoadMore] = useState(true)
-  const [limitOfCards, setLimitOfCards] = useState(getInitialLoad())
   const [filteredArticles, setFilteredArticles] = useState(
-    prepareArticles(AllArticles, lang, limitOfCards)
+    prepareArticles(AllArticles)
   )
 
   useEffect(() => {
-    setFilteredArticles(prepareArticles(AllArticles, lang, limitOfCards))
-  }, [lang, limitOfCards])
+    setFilteredArticles(prepareArticles(AllArticles))
+  }, [query?.size])
 
-  const articles = AllArticles
+  const initialPagination = () => {
+    const size = window.innerWidth >= 3000 ? 7 : 6
+    router.push({
+      query: {
+        size: size 
+      },
+    })
+  }
 
-  function getInitialLoad() {
+  useEffect(() => {
+    initialPagination()
+  }, [window.innerWidth])
+
+  function getLoadArticles() {
     return window.innerWidth >= 3000 ? 5 : 4
   }
 
   useEffect(() => {
     const handleResize = () => {
-      setShowLoadMore(true)
-      setLimitOfCards(getInitialLoad())
+      initialPagination()
     }
-
     window.addEventListener("resize", handleResize)
-
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
+      window.removeEventListener("resize", handleResize)}
   }, [])
 
-  const loadArticles = length => {
-    if (length > load) setLoad(load + getInitialLoad())
-    if ((length = load)) setButtonLoad(false)
-  }
+  const loadMore = () => {
 
-  const loadMoreArticles = () => {
-    const filterResult = AllArticles?.filter(article =>
-      article.locale.includes(lang)
-    )
-    const maxLimitOfLoads = filterResult.length
+    const pagination = articlesPagination.pagination
+    const maxLimitOfCards = pagination.total
+    const { query } = router
+    const sumArticles = Number(query.size) + Number(getLoadArticles())
 
-    if (maxLimitOfLoads > limitOfCards) {
-      setLimitOfCards(limitOfCards + getInitialLoad())
-    }
-
-    if (limitOfCards > maxLimitOfLoads) {
-      setLimitOfCards(maxLimitOfLoads)
+    if (sumArticles > maxLimitOfCards) {
+      sumArticles = maxLimitOfCards
       setShowLoadMore(false)
     }
+    if (sumArticles <= maxLimitOfCards) router.push({query: {size: sumArticles}}, undefined, { scroll: false})
+    if (sumArticles == maxLimitOfCards) setShowLoadMore(false)
   }
 
   return (
@@ -239,6 +238,13 @@ const BlogArticle = ({ articles: AllArticles }) => {
                 component="article"
                 className={classes.container}
               >
+              {isLoading && (
+                <Box sx={{ minHeight: "80%", height: "250px", padding: "50px" }}>
+                <Loading/>
+                </Box>
+              )}
+              {!isLoading && (
+                <>
                 <Image
                   className={classes.ron}
                   src={dataImage}
@@ -254,6 +260,8 @@ const BlogArticle = ({ articles: AllArticles }) => {
                     </a>
                   </Link>
                 </Box>
+                </>
+              )}
               </Box>
             )
           })}
@@ -261,8 +269,7 @@ const BlogArticle = ({ articles: AllArticles }) => {
         {showLoadMore && (
           <Button
             onClick={() => {
-              loadArticles(articles.length)
-              loadMoreArticles()
+              loadMore()
             }}
             style={{
               textDecoration: "none",

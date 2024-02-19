@@ -5,7 +5,7 @@ import HomeCard from "./HomeCard"
 import TitleSection from "./TitleSection"
 import HomeDescription from "../components/HomeDescription"
 import { PROJECTS } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 import { StyleComponent } from "./StyleComponent"
