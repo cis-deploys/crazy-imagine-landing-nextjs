@@ -8,8 +8,6 @@ import Link from "next/link"
 import { useTranslation } from 'next-i18next'
 import { useIntersection } from "../hooks/useIntersection"
 import { makeStyles } from "@mui/styles"
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';

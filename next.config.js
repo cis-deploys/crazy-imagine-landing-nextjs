@@ -12,6 +12,9 @@ const nextConfig = {
     domains: ['blogadmin.s3.amazonaws.com'],
   },
   i18n,
+  compiler: {
+    styledComponents: true,
+  },
 }
 
 module.exports = withOptimizedImages({

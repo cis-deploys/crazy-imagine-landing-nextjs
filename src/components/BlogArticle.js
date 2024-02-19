@@ -115,13 +115,6 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "10px",
     },
   },
-  img: {
-    backgroundColor: "#27AAE1",
-    height: "210px",
-    [theme.breakpoints.down("md")]: {
-      height: "147px",
-    },
-  },
   link: {
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
