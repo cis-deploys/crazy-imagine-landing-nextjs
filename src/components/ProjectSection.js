@@ -7,8 +7,6 @@ import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
 import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
@@ -258,7 +256,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                       )}
                     {!isLoading && (
                       <>
-                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} />
+                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} priority={ false }/>
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
                           {titleProject}
