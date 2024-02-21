@@ -6,7 +6,7 @@ import { makeStyles } from "@mui/styles"
 import { faRocket, faEye, faAward } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { useRouter } from "next/router"
 
 const useStyles = makeStyles(theme => ({

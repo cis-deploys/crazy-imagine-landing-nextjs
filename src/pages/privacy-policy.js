@@ -39,7 +39,7 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const PrivacyPolicy = () => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {

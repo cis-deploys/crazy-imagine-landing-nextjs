@@ -13,7 +13,7 @@ import {
     faCircle
   } from "@fortawesome/free-solid-svg-icons"
 import { REFERENCES, TEAMS, FAQ, SERVICES, BLOG, PROJECTS, ABOUT, WORK_WITH_US, MISSION, } from '../navigation/sitemap'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
 container: {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 import MissionImage from "../../public/Mision.svg"
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'

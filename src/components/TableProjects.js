@@ -351,7 +351,7 @@ function createNumberArray(dynamicNumber) {
 const TableProjects = ({ projectsData }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const lang = i18n.language
 
 
