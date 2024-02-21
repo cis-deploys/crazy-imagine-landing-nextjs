@@ -16,6 +16,7 @@ import Background3 from "../../public/background3.svg"
 import FeatureMap from "../../public/imageFeatureMap.svg"
 import UserFlow from "../../public/imageUserFlow.svg"
 import Wireframes from "../../public/imageWireframes.svg"
+import FeatureMap2 from "../../public/featureMap.png"
 
 const useStyles = makeStyles(theme => ({
   contentPhase1: {
@@ -105,10 +106,6 @@ const useStyles = makeStyles(theme => ({
 
   imageVector: {
     position: "absolute",
-    width: "553px",
-    height: "791px",
-    top: "-150px",
-    right: "-18px",
 
     [theme.breakpoints.between(0, 600)]: {
       display: "none",
@@ -120,7 +117,7 @@ const useStyles = makeStyles(theme => ({
       display: "none",
     },
     [theme.breakpoints.up("xl")]: {
-      right: "-44px",
+      right: "-100px",
       width: "715px",
       height: "882px",
       top: "-150px",
@@ -134,8 +131,8 @@ const useStyles = makeStyles(theme => ({
   },
   imagePhoneRoadMap1: {
     position: "absolute",
-    top: "74px",
-    left: "-73px",
+    top: "168px",
+    left: "-91px",
     width: "500px",
     height: "495px",
 
@@ -160,8 +157,8 @@ const useStyles = makeStyles(theme => ({
   },
   imagePhoneRoadMap2: {
     position: "absolute",
-    top: "-81px",
-    left: "-183px",
+    top: "16px",
+    left: "-231px",
     width: "500px",
     height: "495px",
     [theme.breakpoints.between(0, 600)]: {
@@ -310,7 +307,7 @@ const useStyles = makeStyles(theme => ({
   boxContentMeeting: {
     paddingTop: "153px",
     [theme.breakpoints.between("xs", "sm")]: {
-      paddingTop: "40px",
+      paddingTop: "30px",
     },
     [theme.breakpoints.between("sm", "md")]: {
       paddingTop: "5px",
@@ -345,9 +342,7 @@ const useStyles = makeStyles(theme => ({
   boxImageMeetTeam: {
     boxShadow: "rgba(0, 0, 0, 0.06)",
   },
-  imageMeetTeam: {
-    objectFit: "contain",
-  },
+
   contentMeetTeam: {
     width: "100%",
     height: "auto",
@@ -772,6 +767,11 @@ const useStyles = makeStyles(theme => ({
       lineHeight: " 22px",
     },
   },
+  imagesAll: {
+    [theme.breakpoints.between(0, 600)]: {
+      width: "100%",
+    },
+  },
 }))
 const DesignSection = () => {
   const classes = useStyles()
@@ -928,7 +928,7 @@ const DesignSection = () => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <Box className={classes.boxImageMeetTeam}>
             <img
-              className={classes.imageMeetTeam}
+              className={classes.imagesAll}
               src={People.src}
               alt="Image people step1"
             />
@@ -1011,7 +1011,11 @@ const DesignSection = () => {
         >
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Box className={classes.boxImagelanguages}>
-              <img src={LanguageIcons.src} alt="Images Languages" />
+              <img
+                src={LanguageIcons.src}
+                className={classes.imagesAll}
+                alt="Images Languages"
+              />
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
@@ -1070,7 +1074,14 @@ const DesignSection = () => {
           </Grid>
         </Grid>
         <Grid container spacing={2} className={classes.contentFeatureMap}>
-          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}></Grid>
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+            <img
+              src={FeatureMap2.src}
+              width={"100%"}
+              height={"max-content"}
+              alt="Images Feature Map example"
+            />
+          </Grid>
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
             <Box className={classes.boxContentFeatureMap}>
               <Typography className={classes.titleFeatureMap}>
@@ -1152,7 +1163,11 @@ const DesignSection = () => {
               href="https://whimsical.com/account-management-LgYciykM5TXFZwYa4a9qTR"
               target="_blank"
             >
-              <img src={FeatureMap.src} alt="Images FeatureMap" />
+              <img
+                src={FeatureMap.src}
+                width={"100%"}
+                alt="Images FeatureMap"
+              />
             </a>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={4} xl={4} align="center">
@@ -1160,11 +1175,11 @@ const DesignSection = () => {
               href="https://whimsical.com/example-user-flow-for-invoices-FvrfYrQFBLCNbMfCCzzkt"
               target="_blank"
             >
-              <img src={UserFlow.src} alt="Images UserFlow" />
+              <img src={UserFlow.src} width={"100%"} alt="Images UserFlow" />
             </a>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={4} xl={4} align="center">
-            <img src={Wireframes.src} alt="Images Wireframes" />
+            <img src={Wireframes.src} width={"100%"} alt="Images Wireframes" />
           </Grid>
         </Grid>
       </Box>

@@ -356,6 +356,11 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "22px",
     },
   },
+  imagesAll: {
+    [theme.breakpoints.between(0, 600)]: {
+      width: "100%",
+    },
+  },
 }))
 
 const ThechnicalDiscovery = () => {
@@ -376,7 +381,11 @@ const ThechnicalDiscovery = () => {
         <Grid container spacing={2} className={classes.containerTechnical}>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Box className={classes.boxImagelanguages}>
-              <img src={LanguageIcons.src} alt="Images Languages" />
+              <img
+                src={LanguageIcons.src}
+                className={classes.imagesAll}
+                alt="Images Languages"
+              />
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
@@ -434,7 +443,11 @@ const ThechnicalDiscovery = () => {
 
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <Box className={classes.boxImageComputer}>
-            <img src={Computer.src} alt="Image computer" />
+            <img
+              src={Computer.src}
+              className={classes.imagesAll}
+              alt="Image computer"
+            />
           </Box>
         </Grid>
       </Grid>
@@ -442,7 +455,11 @@ const ThechnicalDiscovery = () => {
         <Grid container spacing={2} className={classes.containerInfo3}>
           <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
             <Box className={classes.boxContentImageBackendServer}>
-              <img src={Servers.src} alt="Image servers" />
+              <img
+                src={Servers.src}
+                className={classes.imagesAll}
+                alt="Image servers"
+              />
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -499,7 +516,11 @@ const ThechnicalDiscovery = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <Box className={classes.boxImageServices}>
-            <img src={Services.src} alt="Image services" />
+            <img
+              src={Services.src}
+              className={classes.imagesAll}
+              alt="Image services"
+            />
           </Box>
         </Grid>
       </Grid>
@@ -535,7 +556,11 @@ const ThechnicalDiscovery = () => {
       <Grid container spacing={2} className={classes.containerInfrastructure}>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <Box className={classes.boxContentImageServices2}>
-            <img src={Servers2.src} alt="Image servers2" />
+            <img
+              src={Servers2.src}
+              className={classes.imagesAll}
+              alt="Image servers2"
+            />
           </Box>
         </Grid>
         <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
