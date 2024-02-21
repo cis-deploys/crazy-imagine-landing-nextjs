@@ -5,11 +5,11 @@ import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import "swiper/css"
 import "swiper/css/pagination"
-import 'swiper/swiper-bundle.css';
+import "swiper/swiper-bundle.css"
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
 import Loading from "./Loading"
@@ -24,11 +24,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.between(3000, 4000)]: {
       height: "800px",
       padding: "10px 200px",
-    }, 
+    },
     [theme.breakpoints.between(2301, 2999)]: {
       height: "780px",
       padding: "10px 205px",
-    },   
+    },
     [theme.breakpoints.between(1920, 2300)]: {
       height: "780px",
       padding: "10px 48px",
@@ -68,23 +68,23 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     [theme.breakpoints.between(1951, 4000)]: {
       width: "500px",
-      height: "410px"
+      height: "410px",
     },
     [theme.breakpoints.between(1501, 1950)]: {
       width: "450px",
-      height: "350px"
+      height: "350px",
     },
     [theme.breakpoints.between(1280, 1500)]: {
       width: "450px",
-      height: "300px"
+      height: "300px",
     },
     [theme.breakpoints.down("lg")]: {
       width: "360px",
-      height: "250px"
+      height: "250px",
     },
     [theme.breakpoints.down("md")]: {
       width: "350px",
-      height: "260px"
+      height: "260px",
     },
     [theme.breakpoints.down("sm")]: {
       width: "350px",
@@ -184,111 +184,124 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
   const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
-  const [isLoading, setIsLoading] = useState(true);
- 
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000);
-  }, []);
+    setTimeout(() => setIsLoading(false), 2000)
+  }, [])
 
-      return (
-        <Box className={classes.container}>
-          <Typography className={classesComponent.titleBlue} style={{ marginTop: "30px"}}>
-            {title}
-          </Typography>
-          <Swiper
-            spaceBetween={50}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-                },
-              600: {
-                slidesPerView: 2,
-              },
-              960: {
-                slidesPerView: 3,
-              },
-              1280: {
-                slidesPerView: 4,
-              },
-              1920: {
-                slidesPerView: 4,
-              },
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            grabCursor={true}
-            loop={false}
-            modules={[Pagination, Keyboard]}
-            style={{
-              width: "100%",
-              boxSizing: "content-box",
-              height: "auto"
-            }}
-            keyboard={{ enabled: true }}
-            className={bulletClass}
-          >
+  return (
+    <Box className={classes.container}>
+      <Typography
+        className={classesComponent.titleBlue}
+        style={{ marginTop: "30px" }}
+      >
+        {title}
+      </Typography>
+      <Swiper
+        spaceBetween={50}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          600: {
+            slidesPerView: 2,
+          },
+          960: {
+            slidesPerView: 3,
+          },
+          1280: {
+            slidesPerView: 4,
+          },
+          1920: {
+            slidesPerView: 4,
+          },
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        grabCursor={true}
+        loop={false}
+        modules={[Pagination, Keyboard]}
+        style={{
+          width: "100%",
+          boxSizing: "content-box",
+          height: "auto",
+        }}
+        keyboard={{ enabled: true }}
+        className={bulletClass}
+      >
+        {projects
+          ?.filter(project => project.title !== null)
+          ?.map((el, index) => {
+            const dataImage = el?.images[0]?.url
+            const titleProject = el?.title
 
-            { projects
-              ?.filter((project) => project.title !== null )
-              ?.map((el, index) => {
-                const dataImage = el?.images[0]?.url
-                const titleProject = el?.title
-
-
-                return (
-                  <SwiperSlide key={index} className={classes.slide}>
-                    <Box className={classes.carouselContainer}>
-
-                    {isLoading && (
-                      <Box 
-                      sx={{ 
-                        display:"flex", 
+            return (
+              <SwiperSlide key={index} className={classes.slide}>
+                <Box className={classes.carouselContainer}>
+                  {isLoading && (
+                    <Box
+                      sx={{
+                        display: "flex",
                         paddingTop: "50px",
-                        alignItems:'center',
+                        alignItems: "center",
                         minWidth: "100px",
                         minHeight: "150px",
-                        }}>
-                      <Loading/>
-                      </Box>
-                      )}
-                    {!isLoading && (
-                      <>
-                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} priority={ false }/>
+                      }}
+                    >
+                      <Loading />
+                    </Box>
+                  )}
+                  {!isLoading && (
+                    <>
+                      <Image
+                        src={dataImage}
+                        alt={title}
+                        width={350}
+                        height="250px"
+                        quality={100}
+                        priority={false}
+                      />
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
                           {titleProject}
                         </Typography>
-                        <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`} >
-
-                          <a className={classes.link} >
-                          {t("common_projectSection_button_viewProject")}
+                        <Link
+                          href={`${PROJECTS}/[Key].js`}
+                          as={`${PROJECTS}/${el?.Key}`}
+                        >
+                          <a className={classes.link}>
+                            {t("common_projectSection_button_viewProject")}
                           </a>
-
                         </Link>
                       </Box>
-                      </>
-                        )}
-                    </Box>
-                  </SwiperSlide>
-                )
-              })}
-          </Swiper>
-              {btn && (
-                <Link href={`${PROJECTS}`} >
-  
-                  <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "10px" }}>   
-                  <Button className={classesComponent.buttonComponent}>
-                    <span>{t("home_projectSection_button")}</span>
-                  </Button>
-                  </a>
-  
-                </Link>
-              )}
-        </Box>
-      )
+                    </>
+                  )}
+                </Box>
+              </SwiperSlide>
+            )
+          })}
+      </Swiper>
+      {btn && (
+        <Link href={`${PROJECTS}`}>
+          <a
+            style={{
+              textDecoration: "none",
+              alignSelf: "center",
+              marginBottom: "10px",
+            }}
+          >
+            <Button className={classesComponent.buttonComponent}>
+              <span>{t("home_projectSection_button")}</span>
+            </Button>
+          </a>
+        </Link>
+      )}
+    </Box>
+  )
 }
 
 export default ProjectSection

@@ -1,10 +1,10 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+import React from "react"
+import { useTranslation } from "react-i18next"
 
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles(theme => ({
   title: {
     fontSize: 75,
     fontWeight: "bold",
@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme)=>({
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: 35,
-    },    
+    },
   },
   titleSecondary: {
     fontSize: 65,
     fontWeight: "bold",
     textAlign: "initial",
-    fontFamily: 'Nexa Bold',
+    fontFamily: "Nexa Bold",
     [theme.breakpoints.down("lg")]: {
       fontSize: 40,
     },
@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme)=>({
     },
   },
   container: {
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
+    backgroundSize: "cover",
+    backgroundPosition: "top",
     background: ` linear-gradient(123deg, rgba(40,64,128,1) 0%, rgba(39,170,225,1) 31%,transparent 75%),
     url('/Background404.svg')
     `,
@@ -45,40 +45,44 @@ const useStyles = makeStyles((theme)=>({
     [theme.breakpoints.down("sm")]: {
       display: "flex",
       alignItems: "center",
-      backgroundPosition: 'top',
+      backgroundPosition: "top",
       background: ` linear-gradient(123deg, rgba(40,64,128,1) 0%, rgba(39,170,225,1) 31%,transparent 75%)`,
     },
   },
   ContainerTexts: {
     display: "flex",
     flexDirection: "column",
-    textAlign: 'center',
+    textAlign: "center",
     alignContent: "center",
-    padding: '0 0 0 200px',
-    boxSizing: 'border-box',
+    padding: "0 0 0 200px",
+    boxSizing: "border-box",
     [theme.breakpoints.down("lg")]: {
-      padding: '0 0 0 150px',
+      padding: "0 0 0 150px",
     },
     [theme.breakpoints.down("md")]: {
-      padding: '0 0 0 100px',
+      padding: "0 0 0 100px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: '0 0 0 0px',
+      padding: "0 0 0 0px",
     },
-  }
+  },
 }))
 
 const Content404 = () => {
-    const { t } = useTranslation()
-    const classes = useStyles()
+  const { t } = useTranslation("common")
+  const classes = useStyles()
 
   return (
-<Box className={classes.container}>
-    <Box className={classes.ContainerTexts} >
-        <Typography variant="h3" className={classes.title}>404</Typography>
-        <Typography variant="h3" className={classes.titleSecondary}>{t("404-title")}</Typography>
+    <Box className={classes.container}>
+      <Box className={classes.ContainerTexts}>
+        <Typography variant="h3" className={classes.title}>
+          404
+        </Typography>
+        <Typography variant="h3" className={classes.titleSecondary}>
+          {t("404-title")}
+        </Typography>
+      </Box>
     </Box>
-</Box>
   )
 }
 

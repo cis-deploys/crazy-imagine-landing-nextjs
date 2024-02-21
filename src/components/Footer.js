@@ -1,14 +1,28 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding, faEnvelopeOpen, faPhone } from "@fortawesome/free-solid-svg-icons"
-import { Box,  Typography } from "@mui/material"
+import {
+  faBuilding,
+  faEnvelopeOpen,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons"
+import { Box, Typography } from "@mui/material"
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
-import { HOME, PROJECTS, WORK_WITH_US, ABOUT, CONTACT, SERVICES, BLOG, SITEMAP, SITEMA } from "../navigation/sitemap"
-import { useTranslation } from 'next-i18next'
+import {
+  HOME,
+  PROJECTS,
+  WORK_WITH_US,
+  ABOUT,
+  CONTACT,
+  SERVICES,
+  BLOG,
+  SITEMAP,
+  SITEMA,
+} from "../navigation/sitemap"
+import { useTranslation } from "next-i18next"
 import { SocialMedia } from "./SocialMedia"
 import Copyright from "./Copyright"
-import Image from "next/image" 
-import { makeStyles } from "@mui/styles";
+import Image from "next/image"
+import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +54,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       height: "auto",
       flexDirection: "row",
-      flexWrap: 'wrap',
+      flexWrap: "wrap",
     },
     [theme.breakpoints.down("sm")]: {
       width: "90%",
@@ -79,7 +93,6 @@ const useStyles = makeStyles(theme => ({
       width: "220px",
       padding: "14px 4px 10px 4px",
     },
-
   },
   titleTypography: {
     fontFamily: "Nexa",
@@ -131,7 +144,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(0, 450)]: {
       fontSize: "13px",
-      maxWidth: "270px"
+      maxWidth: "270px",
     },
   },
   info: {
@@ -147,14 +160,14 @@ const useStyles = makeStyles(theme => ({
     color: "#A7E4F5",
     marginTop: 3,
     alingSelf: "center",
-    size:"1x",
+    size: "1x",
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
-      size: "1x"
+      size: "1x",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "14px",
-      size:"1x"
+      size: "1x",
     },
   },
   linkTypography: {
@@ -178,86 +191,93 @@ const useStyles = makeStyles(theme => ({
       fontSize: "18px",
     },
   },
-  
-}));
+}))
 
 const Footer = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
-  const formatText = (text) => {
-    return text?.charAt(0).toUpperCase() + text.substring(1, text.lenght).toLowerCase();
+  const formatText = text => {
+    return (
+      text?.charAt(0).toUpperCase() +
+      text.substring(1, text.lenght).toLowerCase()
+    )
   }
 
   return (
     <Box component="footer" className={classes.footer}>
-
       <Box className={classes.footerContainer}>
-      
         <Box className={classes.footerColumn} order={1}>
           <Box className={classes.Container1}>
-          <Link href={`${HOME}`}>
-            <a style={{ margin: "10px 0px 10px"}}>
-            <Image src={CrazyImageLogo} alt="footerImage" className={classes.image}/>
-            </a>
-          </Link>
-          <Typography className={classes.infoTypography} style={{ marginBottom: "10px"}}>
-            {t("home_footer_text")}
-          </Typography>
-          <Copyright />
+            <Link href={`${HOME}`}>
+              <a style={{ margin: "10px 0px 10px" }}>
+                <Image
+                  src={CrazyImageLogo}
+                  alt="footerImage"
+                  className={classes.image}
+                />
+              </a>
+            </Link>
+            <Typography
+              className={classes.infoTypography}
+              style={{ marginBottom: "10px" }}
+            >
+              {t("home_footer_text")}
+            </Typography>
+            <Copyright />
           </Box>
         </Box>
 
         <Box className={classes.footerColumn} order={2}>
           <Box className={classes.Container1}>
             <Typography className={classes.titleTypography}>
-            {t("home_footer_location")}
+              {t("home_footer_location")}
             </Typography>
-        <Box className={classes.info}>
-            <FontAwesomeIcon
-              icon={faBuilding}
-              className={classes.infoIcon}
-              size="1x"
-            />
-            <Box style={{ flexDirection: "column", }}>
+            <Box className={classes.info}>
+              <FontAwesomeIcon
+                icon={faBuilding}
+                className={classes.infoIcon}
+                size="1x"
+              />
+              <Box style={{ flexDirection: "column" }}>
+                <Typography className={classes.infoTypography}>
+                  {"1786 Smarts Rule St. kissimmee"}
+                </Typography>
+              </Box>
+            </Box>
+            <Typography className={classes.infoTypography}>
+              {"Florida 34744"}
+            </Typography>
+            <Box className={classes.info}>
+              <FontAwesomeIcon
+                icon={faEnvelopeOpen}
+                className={classes.infoIcon}
+                size="1x"
+              />
               <Typography className={classes.infoTypography}>
-                {"1786 Smarts Rule St. kissimmee"}
+                Support@crazyimagine.com
               </Typography>
             </Box>
-        </Box>
-        <Typography className={classes.infoTypography}>
-                {"Florida 34744"}
+            <Box className={classes.info}>
+              <FontAwesomeIcon
+                icon={faPhone}
+                className={classes.infoIcon}
+                size="1x"
+              />
+              <Typography className={classes.infoTypography}>
+                +1 (320) 322-9488
               </Typography>
-          <Box className={classes.info}>
-            <FontAwesomeIcon
-              icon={faEnvelopeOpen}
-              className={classes.infoIcon}
-              size="1x"
-            />
-            <Typography className={classes.infoTypography}>
-              Support@crazyimagine.com
-            </Typography>
-          </Box>
-          <Box className={classes.info}>
-            <FontAwesomeIcon
-              icon={faPhone}
-              className={classes.infoIcon}
-              size="1x"
-            />
-            <Typography className={classes.infoTypography}>
-            +1 (320) 322-9488
-            </Typography>
-          </Box>
+            </Box>
           </Box>
         </Box>
 
         <Box className={classes.footerColumn} order={3}>
           <Box className={classes.Container1}>
-          <Typography className={classes.titleTypography}>
-           {t("home_footer_socialMedia")}
-          </Typography>
+            <Typography className={classes.titleTypography}>
+              {t("home_footer_socialMedia")}
+            </Typography>
             <Box>
-            <SocialMedia/>
+              <SocialMedia />
             </Box>
           </Box>
         </Box>
@@ -269,64 +289,62 @@ const Footer = () => {
             </Typography>
 
             <Typography>
-              <Link href={`${ABOUT}`} >
+              <Link href={`${ABOUT}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("common_button_about"))}
+                  {formatText(t("common_button_about"))}
                 </a>
               </Link>
-          </Typography>
+            </Typography>
 
-          <Typography>
-              <Link href={`${PROJECTS}`} >
+            <Typography>
+              <Link href={`${PROJECTS}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("common_button_projects"))}
+                  {formatText(t("common_button_projects"))}
                 </a>
               </Link>
-          </Typography>
+            </Typography>
 
-          <Typography>
-              <Link href={`${SERVICES}`} >
+            <Typography>
+              <Link href={`${SERVICES}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("common_button_services"))}
+                  {formatText(t("common_button_services"))}
                 </a>
               </Link>
-          </Typography>
+            </Typography>
 
-          <Typography>
-              <Link href={`${BLOG}`} >
+            <Typography>
+              <Link href={`${BLOG}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("common_button_blog"))}
+                  {formatText(t("common_button_blog"))}
                 </a>
               </Link>
-          </Typography>
+            </Typography>
 
-          <Typography>
-              <Link href={`${WORK_WITH_US}`} >
+            <Typography>
+              <Link href={`${WORK_WITH_US}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("common_button_work_with_us"))}
+                  {formatText(t("common_button_work_with_us"))}
                 </a>
               </Link>
-          </Typography>
+            </Typography>
 
-          <Typography style={{ textTransform: "capitalize" }}>
-              <Link href={`${CONTACT}`} >
+            <Typography style={{ textTransform: "capitalize" }}>
+              <Link href={`${CONTACT}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("home_footer_button_contact"))}
+                  {formatText(t("home_footer_button_contact"))}
                 </a>
               </Link>
-          </Typography>
+            </Typography>
 
-          <Typography style={{ textTransform: "capitalize" }}>
-              <Link href={`${SITEMAP}`} >
+            <Typography style={{ textTransform: "capitalize" }}>
+              <Link href={`${SITEMAP}`}>
                 <a className={classes.infoTypography}>
-                {formatText(t("home_footer_button_sitemap"))}
+                  {formatText(t("home_footer_button_sitemap"))}
                 </a>
               </Link>
-          </Typography>
-
+            </Typography>
           </Box>
         </Box>
-
       </Box>
     </Box>
   )

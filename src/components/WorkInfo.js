@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { makeStyles } from "@mui/styles"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { Box, Typography } from "@mui/material"
 import { useIntersection } from "../hooks/useIntersection"
 
@@ -32,14 +32,14 @@ const useStyles = makeStyles(theme => ({
       marginTop: "80px",
       fontSize: "25px",
       width: "85%",
-      whiteSpace:"normal",
+      whiteSpace: "normal",
       textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "80px",
       fontSize: "25px",
       width: "85%",
-      whiteSpace:"normal",
+      whiteSpace: "normal",
       textAlign: "center",
     },
   },
@@ -64,13 +64,13 @@ const WorkInfo = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Box ref={ref} className={classes.container}>
-      <Typography
-        className={isVisible ? classes.title2 : classes.title}
-      >{t("workWithUs_workForm_workInfo_title")}</Typography>
+      <Typography className={isVisible ? classes.title2 : classes.title}>
+        {t("workWithUs_workForm_workInfo_title")}
+      </Typography>
     </Box>
   )
 }

@@ -1,10 +1,10 @@
 import React from "react"
-import { Box,  Typography } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { Box, Typography } from "@mui/material"
+import { useTranslation } from "next-i18next"
 import { PRIVACY_POLICY } from "../navigation/sitemap"
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/styles"
 import Link from "next/link"
-import '@fontsource/roboto/400.css'
+import "@fontsource/roboto/400.css"
 
 const useStyles = makeStyles(theme => ({
   copyContainer: {
@@ -44,25 +44,23 @@ const useStyles = makeStyles(theme => ({
 
 const Copyright = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
-      <Box className={classes.copyContainer}>
-        <Typography className={classes.copyright}>
-          {" "}
-          {t("home_copyright_label1")}
-        </Typography>
+    <Box className={classes.copyContainer}>
+      <Typography className={classes.copyright}>
+        {" "}
+        {t("home_copyright_label1")}
+      </Typography>
 
-        <Link href={`${PRIVACY_POLICY}`} >
-
-          <a className={classes.copyright} >
+      <Link href={`${PRIVACY_POLICY}`}>
+        <a className={classes.copyright}>
           {t("home_copyright_label2")}
           <span className={classes.barText}>|</span>
           {t("home_copyright_label3")}
-          </a>
-
-        </Link>
-      </Box>
+        </a>
+      </Link>
+    </Box>
   )
 }
 

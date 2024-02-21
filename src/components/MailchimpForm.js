@@ -1,11 +1,10 @@
-
-import React from 'react'
-import { Box,  Typography, TextField, Button } from "@mui/material"
+import React from "react"
+import { Box, Typography, TextField, Button } from "@mui/material"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { makeStyles } from "@mui/styles";
-import { useTranslation } from 'next-i18next'
+import { makeStyles } from "@mui/styles"
+import { useTranslation } from "next-i18next"
 import Swal from "sweetalert2"
 import axios from "axios"
 import { StyleComponent } from "./StyleComponent"
@@ -38,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     "& .MuiInput-underline:before": {
       borderBottom: "1px #D6D6D6 solid !important",
     },
-    
+
     "& .MuiTypography-body1": {
       fontSize: "13px",
       fontStyle: "italic",
@@ -54,7 +53,6 @@ const useStyles = makeStyles(theme => ({
       background: "transparent",
       borderRadius: "2px",
       color: "#797EF6",
-      
     },
   },
   subTitleMail2: {
@@ -64,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     fontStyle: "normal",
     fontSize: "19px",
     fontWeight: "400",
-    lineHeight: "18px",    
+    lineHeight: "18px",
     marginBottom: "40px",
     textAlign: "center",
     padding: "10px 40px",
@@ -104,25 +102,25 @@ const useStyles = makeStyles(theme => ({
       width: "90%",
       padding: "40px",
       margin: "auto",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     [theme.breakpoints.between(376, 450)]: {
       width: "auto",
       padding: "50px",
       flexDirection: "column",
-      height: "330px"
+      height: "330px",
     },
     [theme.breakpoints.between(326, 376)]: {
       width: "auto",
       padding: "50px",
       flexDirection: "column",
-      height: "320px"
+      height: "320px",
     },
     [theme.breakpoints.between(0, 325)]: {
       width: "auto",
       padding: "30px",
       flexDirection: "column",
-      height: "300px"
+      height: "300px",
     },
   },
 
@@ -156,26 +154,26 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     [theme.breakpoints.up("xl")]: {
       width: "100%",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      flexDirection: "column"
+      flexDirection: "column",
     },
   },
   inputLong: {
     width: "520px",
     [theme.breakpoints.down("md")]: {
       width: "auto",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      flexDirection: "column"
+      flexDirection: "column",
     },
   },
   dividerInputs: {
@@ -214,62 +212,66 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MailchimpForm = () => {
-    const { t } = useTranslation();
-    const classes = useStyles({})
-    const classesComponent = StyleComponent()
-    const schema = yup.object().shape({
-        name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
-        email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
-        lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
-      })
-      const {
-        formState: { errors },
-        handleSubmit,
-        register, 
-        reset,
-      } = useForm({
-        resolver: yupResolver(schema),
-        mode: "onChange",
-      })
-      
-  
-  const submit = async (e) => {
+  const { t } = useTranslation("common")
+  const classes = useStyles({})
+  const classesComponent = StyleComponent()
+  const schema = yup.object().shape({
+    name: yup
+      .string()
+      .required(t("home_contacSection_contactForm_schemaYup_name")),
+    email: yup
+      .string()
+      .email(t("home_contacSection_contactForm_schemaYup_email1"))
+      .required(t("home_contacSection_contactForm_schemaYup_email2")),
+    lastName: yup
+      .string()
+      .required(t("workWithUs_workForm_schemaYup_lastName")),
+  })
+  const {
+    formState: { errors },
+    handleSubmit,
+    register,
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  })
+
+  const submit = async e => {
     const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-    await axios.post(`${domain}mailchimps`, {
-      "data":{
-        email: e.email,
-        name:  e.name,
-        lastname: e.lastName,
-      }
-    })
-    .then(({ data }) => {
-
-      Swal.fire(
-        t("home_mailchimp_swalSuccess_title"),
-        t("home_mailchimp_swalSuccess_text"),
-        "success"
-      
-        )
-    })
-    .catch(error => {
-      Swal.fire({
-        icon: "error",
-        title: t("home_contacSection_contactForm_swalError_title"),
-        text: t("home_contacSection_contactForm_swalError_text"),
+    await axios
+      .post(`${domain}mailchimps`, {
+        data: {
+          email: e.email,
+          name: e.name,
+          lastname: e.lastName,
+        },
       })
-
-    });
+      .then(({ data }) => {
+        Swal.fire(
+          t("home_mailchimp_swalSuccess_title"),
+          t("home_mailchimp_swalSuccess_text"),
+          "success"
+        )
+      })
+      .catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: t("home_contacSection_contactForm_swalError_title"),
+          text: t("home_contacSection_contactForm_swalError_text"),
+        })
+      })
     reset()
   }
 
   return (
     <Box className={classes.containerForm}>
-        <Typography className={classesComponent.titleWhite} >
-          {t("home_mailChimp_title")}
-        </Typography>
-        <Typography className={classes.subTitleMail2}>
-          {t("home_mailChimp_subTitle")}
-        </Typography>
+      <Typography className={classesComponent.titleWhite}>
+        {t("home_mailChimp_title")}
+      </Typography>
+      <Typography className={classes.subTitleMail2}>
+        {t("home_mailChimp_subTitle")}
+      </Typography>
       <form onSubmit={handleSubmit(submit)}>
         <Box className={classes.inputContainer}>
           <Box className={classes.dividerInputs}>
@@ -308,13 +310,16 @@ const MailchimpForm = () => {
             helperText={errors.email?.message}
             variant="standard"
           />
-          <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
-          <Button
-            type="submit"
-            className={classesComponent.buttonComponent}
+          <a
+            style={{
+              textDecoration: "none",
+              alignSelf: "center",
+              marginBottom: "5px",
+            }}
           >
-            <span>{t("home_mailChimp_button")}</span>
-          </Button>
+            <Button type="submit" className={classesComponent.buttonComponent}>
+              <span>{t("home_mailChimp_button")}</span>
+            </Button>
           </a>
         </Box>
       </form>

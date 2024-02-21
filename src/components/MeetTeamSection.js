@@ -1,19 +1,19 @@
 import React from "react"
 import { Box, Grid, Typography } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import TitleSection from "./TitleSection"
 import mainImage from "../../public/Group619.webp"
 import Image from "next/image"
 
 const useStyles = makeStyles(theme => ({
-  gridContainer:{
-    marginBottom: '70px',
+  gridContainer: {
+    marginBottom: "70px",
     [theme.breakpoints.down("md")]: {
-      marginBottom: '55px',
+      marginBottom: "55px",
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: '25px',
+      marginBottom: "25px",
     },
   },
   container: {
@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: "5px",
     },
   },
-  textBox:{
+  textBox: {
     position: "absolute",
     bottom: 0,
     textAlign: "end",
@@ -95,8 +95,8 @@ const useStyles = makeStyles(theme => ({
       letf: "0",
       marginTop: "10px",
     },
-  }, 
-  textBoxLeft:{
+  },
+  textBoxLeft: {
     position: "absolute",
     bottom: 0,
     textAlign: "start",
@@ -108,127 +108,151 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
     },
   },
-  contentLeft:{
+  contentLeft: {
     position: "relative",
-    padding: '15px', 
-    textAlign: 'end',
-    marginRight: '25px',
+    padding: "15px",
+    textAlign: "end",
+    marginRight: "25px",
     minHeight: "40px",
     minWidth: "40px",
     [theme.breakpoints.down("md")]: {
       textAlign: "start",
-      marginRight: '1px',
-      padding: '2px', 
+      marginRight: "1px",
+      padding: "2px",
     },
     [theme.breakpoints.down("sm")]: {
-      marginRight: '0px',
-      padding: '3px',
+      marginRight: "0px",
+      padding: "3px",
       textAlign: "start",
       position: "relative",
       width: "100%",
-      height: "100%"
+      height: "100%",
     },
   },
-  contentRight:{
-    padding: '5px', 
-    textAlign: 'start', 
-    marginLeft: '25px',
+  contentRight: {
+    padding: "5px",
+    textAlign: "start",
+    marginLeft: "25px",
     position: "relative",
     [theme.breakpoints.down("md")]: {
-      marginLeft: '0px',
-      padding: '3px',
+      marginLeft: "0px",
+      padding: "3px",
     },
   },
-  textRenponsiveRight:{
+  textRenponsiveRight: {
     "@media (max-width: 959px)": {
       display: "none",
     },
   },
-  textRenponsiveSmallscreen:{
-    position: "relative", 
+  textRenponsiveSmallscreen: {
+    position: "relative",
     marginTop: "10px",
-    marginBottom: '5px',
+    marginBottom: "5px",
     width: "100%",
     "@media (min-width: 960px)": {
       display: "none",
     },
   },
   images: {
-  objectFit: "contain", 
-  objectPosition: "bottom",
-  }
+    objectFit: "contain",
+    objectPosition: "bottom",
+  },
 }))
 
-const MeetTeamSection = ({members}) => {
+const MeetTeamSection = ({ members }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
-  members.sort((a, b) => a.id - b.id);
+  const { t } = useTranslation("common")
+  members.sort((a, b) => a.id - b.id)
 
   return (
     <Box className={classes.container}>
-      
       {members.map(e => (
-        <Grid container justifyContent="center" key={e.id} className={classes.gridContainer}>
-          {e.id % 2 === 0? 
+        <Grid
+          container
+          justifyContent="center"
+          key={e.id}
+          className={classes.gridContainer}
+        >
+          {e.id % 2 === 0 ? (
             <>
-            <Grid md={5} sm={6} item className={classes.contentLeft}>
-              <div  className={`${classes.textBox}`} >
-                <Box style={{height: '45%'}}/>
-                <Box style={{height: '55%'}}>
-                  <Typography className={classes.title2}>{e.name}</Typography>
-                  <Typography className={classes.blueTitle2} >{e.role}</Typography>
-                </Box> 
-              </div>
-            </Grid>
-            <Grid md={5} sm={6} className={classes.contentRight} item >
-              <Image
-                src={e.avatar[0] ? e.avatar[0].url: mainImage}
-                width={314}
-                height={357}
-                alt="Title"
-                quality={100}
-                className={ classes.images }
-                priority
-              />
-            </Grid>
-          </>
-        : 
-          <>
-            <Grid md={5} sm={6} className={classes.textRenponsiveSmallscreen} item >
-              <div className={classes.textBoxLeft}>
-                <Box style={{height: '45%'}}/>
-                <Box style={{height: '55%'}}>
-                  <Typography className={classes.title2}>{e.name}</Typography>
-                  <Typography className={classes.blueTitle2}>{e.role}</Typography>
-                </Box>  
-              </div>
-            </Grid> 
-            <Grid md={5} sm={6} item className={classes.contentLeft} style={{right: '0'}}>
-              <Image
-                src={e.avatar[0] ? e.avatar[0].url: mainImage}
-                width={314}
-                height={357}
-                alt="Title"
-                quality={100}
-                className={ classes.images }
-                priority
-              />
-            </Grid>
-            <Grid md={5} sm={6} item className={`${classes.contentRight} ${classes.textRenponsiveRight}`}>
-              <div className={classes.textBoxLeft}>
-                <Box style={{height: '45%'}}/>
-                <Box style={{height: '55%'}}>
-                  <Typography className={classes.title2}>{e.name}</Typography>
-                  <Typography className={classes.blueTitle2}>{e.role}</Typography>
-                </Box> 
-              </div>
-            </Grid> 
-          </>
-        }
+              <Grid md={5} sm={6} item className={classes.contentLeft}>
+                <div className={`${classes.textBox}`}>
+                  <Box style={{ height: "45%" }} />
+                  <Box style={{ height: "55%" }}>
+                    <Typography className={classes.title2}>{e.name}</Typography>
+                    <Typography className={classes.blueTitle2}>
+                      {e.role}
+                    </Typography>
+                  </Box>
+                </div>
+              </Grid>
+              <Grid md={5} sm={6} className={classes.contentRight} item>
+                <Image
+                  src={e.avatar[0] ? e.avatar[0].url : mainImage}
+                  width={314}
+                  height={357}
+                  alt="Title"
+                  quality={100}
+                  className={classes.images}
+                  priority
+                />
+              </Grid>
+            </>
+          ) : (
+            <>
+              <Grid
+                md={5}
+                sm={6}
+                className={classes.textRenponsiveSmallscreen}
+                item
+              >
+                <div className={classes.textBoxLeft}>
+                  <Box style={{ height: "45%" }} />
+                  <Box style={{ height: "55%" }}>
+                    <Typography className={classes.title2}>{e.name}</Typography>
+                    <Typography className={classes.blueTitle2}>
+                      {e.role}
+                    </Typography>
+                  </Box>
+                </div>
+              </Grid>
+              <Grid
+                md={5}
+                sm={6}
+                item
+                className={classes.contentLeft}
+                style={{ right: "0" }}
+              >
+                <Image
+                  src={e.avatar[0] ? e.avatar[0].url : mainImage}
+                  width={314}
+                  height={357}
+                  alt="Title"
+                  quality={100}
+                  className={classes.images}
+                  priority
+                />
+              </Grid>
+              <Grid
+                md={5}
+                sm={6}
+                item
+                className={`${classes.contentRight} ${classes.textRenponsiveRight}`}
+              >
+                <div className={classes.textBoxLeft}>
+                  <Box style={{ height: "45%" }} />
+                  <Box style={{ height: "55%" }}>
+                    <Typography className={classes.title2}>{e.name}</Typography>
+                    <Typography className={classes.blueTitle2}>
+                      {e.role}
+                    </Typography>
+                  </Box>
+                </div>
+              </Grid>
+            </>
+          )}
         </Grid>
       ))}
-        
-      
     </Box>
   )
 }

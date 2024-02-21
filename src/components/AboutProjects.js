@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     padding: "60px",
-    "& > div:first-of-type":{
+    "& > div:first-of-type": {
       maxWidth: "1060px",
     },
     [theme.breakpoints.down("md")]: {
@@ -66,26 +66,30 @@ const useStyles = makeStyles(theme => ({
 
 const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <>
       <Box className={classes.container}>
         <Box>
-          <Typography className={classes.title}>{t("project_aboutProjects_title")}</Typography>
-          <Typography className={classes.description}>{aboutProject}</Typography>
+          <Typography className={classes.title}>
+            {t("project_aboutProjects_title")}
+          </Typography>
+          <Typography className={classes.description}>
+            {aboutProject}
+          </Typography>
         </Box>
       </Box>
       <Box className={classes.imgContainer}>
         <Image
-          src={gallery[0] ? gallery[0]?.url : images[0]?.url }
+          src={gallery[0] ? gallery[0]?.url : images[0]?.url}
           style={{ objectFit: "contain" }}
           alt="About the project"
           width={530}
           height={300}
         />
         <Image
-          src={ gallery[1] ? gallery[1]?.url : images[0]?.url }
+          src={gallery[1] ? gallery[1]?.url : images[0]?.url}
           style={{ objectFit: "contain" }}
           alt="More"
           width={530}
@@ -93,7 +97,9 @@ const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
         />
       </Box>
       <Box className={classes.container}>
-        <Typography className={classes.title}>{t("project_aboutProjects_subtitle")}</Typography>
+        <Typography className={classes.title}>
+          {t("project_aboutProjects_subtitle")}
+        </Typography>
         <Typography className={classes.description}>{moreAbout}</Typography>
       </Box>
     </>

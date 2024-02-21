@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import fullstackImage from "../../public/laptop.svg"
 import qualityImage from "../../public/quality.svg"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -36,7 +36,6 @@ const useStyles = makeStyles(theme => ({
       padding: "50px 43px 0px 43px",
       height: "fit-content",
       background: "transparent",
-    
     },
     [theme.breakpoints.down("xs")]: {
       gap: "20px",
@@ -46,7 +45,7 @@ const useStyles = makeStyles(theme => ({
       justifyContent: "center",
       height: "fit-content",
       alignSelf: "center",
-    }
+    },
   },
   reverseContainer: {
     display: "flex",
@@ -102,7 +101,7 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-  const { t } = useTranslation();
+  const { t } = useTranslation("common")
 
   return (
     <>
@@ -121,8 +120,7 @@ const CapabilitiesSection = () => {
             icon={faCode}
             title={t("common_capabilities_capabilitiesCard_title1")}
             desc={t("home_capabilities_capabilitiesCard_description1")}
-            
-          /> 
+          />
           <CapabilitiesCard
             icon={faGears}
             title={t("common_capabilities_capabilitiesCard_title2")}

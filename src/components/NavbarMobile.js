@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Image from "next/image"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 
 import LanguageModal from "./LanguageModal"
@@ -52,8 +52,8 @@ const useStyles = makeStyles(theme => ({
     transition: "background 300ms ease",
     boxShadow: "none",
     backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
-      [theme.breakpoints.down("xs")]: {
-    backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: props.scroll ? props.color : "rgba(25, 49, 116, 0.87)",
     },
   }),
   navbarMobileIcons: props => ({
@@ -114,7 +114,7 @@ const useStyles = makeStyles(theme => ({
   btn: {
     "& .MuiButtonBase-root": {
       padding: "8px",
-      marginRight: "2px"
+      marginRight: "2px",
     },
     [theme.breakpoints.down("md")]: {
       marginRight: "0px",
@@ -160,7 +160,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  
+
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }))
@@ -183,7 +183,7 @@ export const NavbarMobile = ({
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -201,21 +201,17 @@ export const NavbarMobile = ({
 
   return (
     <>
-      <AppBar
-        color={color}
-        position="fixed"
-        className={classes.container}
-      >
+      <AppBar color={color} position="fixed" className={classes.container}>
         <Toolbar>
           <Box className={classes.navbarMobileResponsive}>
-            <Link href={`${HOME}`} >
+            <Link href={`${HOME}`}>
               <a className={classes.navbarLogo}>
-              <Image
-                src={CrazyImageLogo}
-                alt="logo"
-                width={230}
-                height={48}
-              />
+                <Image
+                  src={CrazyImageLogo}
+                  alt="logo"
+                  width={230}
+                  height={48}
+                />
               </a>
             </Link>
 
@@ -231,107 +227,88 @@ export const NavbarMobile = ({
             </IconButton>
           </Box>
         </Toolbar>
-        
+
         <Drawer
           className={classes.drawer}
           variant="persistent"
           anchor="left"
           open={open}
         >
-          <DrawerHeader style={{ justifyContent: "space-between", marginLeft: "15px"}}>
-            <Link href={`${HOME}`} >
+          <DrawerHeader
+            style={{ justifyContent: "space-between", marginLeft: "15px" }}
+          >
+            <Link href={`${HOME}`}>
               <a onClick={handleDrawerClose}>
-              <Image
-                src={CrazyImageLogo}
-                alt="ss"
-                className={classes.Crazy}
-              />
+                <Image
+                  src={CrazyImageLogo}
+                  alt="ss"
+                  className={classes.Crazy}
+                />
               </a>
             </Link>
             <IconButton onClick={handleDrawerClose}>
-              <FontAwesomeIcon icon={faXmark} inverse size="lg"/>
+              <FontAwesomeIcon icon={faXmark} inverse size="lg" />
             </IconButton>
           </DrawerHeader>
 
           <Divider style={{ backgroundColor: "white", opacity: 0.7 }} />
           <List onClick={handleDrawerClose} className={classes.list}>
             {[
-              <Link
-                key="navbar-link-home"
-                href={`${HOME}`}>
-
+              <Link key="navbar-link-home" href={`${HOME}`}>
                 <a className={classes.resetLink}>
-                <Typography className={classes.textLink}>
-                  {t("common_button_home")}
-                </Typography>
+                  <Typography className={classes.textLink}>
+                    {t("common_button_home")}
+                  </Typography>
                 </a>
               </Link>,
-              <Link
-                key="navbar-link-about"
-                href={`${ABOUT}`}>
-
+              <Link key="navbar-link-about" href={`${ABOUT}`}>
                 <a className={classes.resetLink}>
-                <Typography className={classes.textLink}>
-                  {t("common_button_about")}
-                </Typography>
+                  <Typography className={classes.textLink}>
+                    {t("common_button_about")}
+                  </Typography>
                 </a>
               </Link>,
-              <Link
-              key="navbar-link-projects"
-              href={`${PROJECTS}`}>
-
-              <a className={classes.resetLink}>
-              <Typography className={classes.textLink}>
-                {t("common_button_projects")}
-              </Typography>
-              </a>
-            </Link>,
-              <Link
-                key="navbar-link-services"
-                href={`${SERVICES}`}>
-
+              <Link key="navbar-link-projects" href={`${PROJECTS}`}>
                 <a className={classes.resetLink}>
-                <Typography className={classes.textLink}>
-                  {t("common_button_services")}
-                </Typography>
+                  <Typography className={classes.textLink}>
+                    {t("common_button_projects")}
+                  </Typography>
+                </a>
+              </Link>,
+              <Link key="navbar-link-services" href={`${SERVICES}`}>
+                <a className={classes.resetLink}>
+                  <Typography className={classes.textLink}>
+                    {t("common_button_services")}
+                  </Typography>
                 </a>
               </Link>,
 
-              <Link
-                key="navbar-link-blog"
-                href={`${BLOG}`}>
-
+              <Link key="navbar-link-blog" href={`${BLOG}`}>
                 <a className={classes.resetLink}>
-                <Typography className={classes.textLink}>
-                  {t("common_button_blog")}
-                </Typography>
+                  <Typography className={classes.textLink}>
+                    {t("common_button_blog")}
+                  </Typography>
                 </a>
               </Link>,
 
-              <Link
-                key="navbar-link-work-with-us"
-                href={`${WORK_WITH_US}`} >
-
+              <Link key="navbar-link-work-with-us" href={`${WORK_WITH_US}`}>
                 <a className={classes.resetLink}>
-                <Typography
-                  style={{ textDecoration: "none" }}
-                  className={classes.textLink}
-                >
-                  {t("common_button_work_with_us")}
-                </Typography>
+                  <Typography
+                    style={{ textDecoration: "none" }}
+                    className={classes.textLink}
+                  >
+                    {t("common_button_work_with_us")}
+                  </Typography>
                 </a>
               </Link>,
-              <Link
-                key="navbar-link-contact"
-                href={`${CONTACT}`}>
-
+              <Link key="navbar-link-contact" href={`${CONTACT}`}>
                 <a className={classes.resetLink}>
-                <Typography className={classes.textLink}>
-                  {t("common_button_contact_us")}
-                </Typography>
+                  <Typography className={classes.textLink}>
+                    {t("common_button_contact_us")}
+                  </Typography>
                 </a>
               </Link>,
-              <LanguageModal key="language-modal"/>,
+              <LanguageModal key="language-modal" />,
             ]?.map((text, index) => (
               <ListItem button key={index} alignItems="center">
                 <ListItemIcon className={classes.resetLink}>

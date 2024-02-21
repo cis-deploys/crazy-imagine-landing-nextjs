@@ -145,7 +145,7 @@ const RoadMapComponents = ({ title, desc, img }) => {
   const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const titleParts = title.split(" ")
   const firstPart = titleParts.slice(0, 3).join(" ")

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import React, { useRef } from "react"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 import { useIntersection } from "../hooks/useIntersection"
@@ -141,7 +141,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container1}>

@@ -4,13 +4,22 @@ import { useForm, Controller } from "react-hook-form"
 import axios from "axios"
 import * as yup from "yup"
 import Swal from "sweetalert2"
-import { Box,  Input, Typography, Select, MenuItem, InputLabel, Alert, Button } from "@mui/material"
-import { makeStyles } from "@mui/styles";
-import { useTranslation } from 'next-i18next'
+import {
+  Box,
+  Input,
+  Typography,
+  Select,
+  MenuItem,
+  InputLabel,
+  Alert,
+  Button,
+} from "@mui/material"
+import { makeStyles } from "@mui/styles"
+import { useTranslation } from "next-i18next"
 import TextField from "@mui/material/TextField"
 import { yupResolver } from "@hookform/resolvers/yup"
 import WorkInfo from "../components/WorkInfo"
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser"
 import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
@@ -32,7 +41,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: "12px",
       },
     },
-     "& .MuiTypography-body1": {
+    "& .MuiTypography-body1": {
       fontFamily: "HindVadodara",
       fontStyle: "italic",
       fontWeight: "400",
@@ -56,15 +65,15 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
       lineHeight: "140%",
       color: "#193173",
-        [theme.breakpoints.up("xl")]: {
-          fontSize: "18px",
-        },
-        [theme.breakpoints.down("md")]: {
-          fontSize: "12px",
-        },
-        [theme.breakpoints.down("md")]: {
-          fontSize: "10px",
-        },
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "18px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "12px",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "10px",
+      },
     },
     "& .MuiInput-underline:before": {
       borderBottom: "1px #D6D6D6 solid !important",
@@ -105,12 +114,12 @@ const useStyles = makeStyles(theme => ({
     marginRight: 40,
     marginBottom: "40px",
     "& .MuiSelect-select": {
-    fontSize: "16px", 
-  },
+      fontSize: "16px",
+    },
     [theme.breakpoints.down("md")]: {
-      "& .MuiSelect-select": {      
-          fontSize: "12px",
-        },
+      "& .MuiSelect-select": {
+        fontSize: "12px",
+      },
       width: "364px",
       margin: "30px 30px 30px 30px",
     },
@@ -134,7 +143,7 @@ const useStyles = makeStyles(theme => ({
       backgroung: "transparent",
     },
   },
-   item: {
+  item: {
     color: "#193173",
     fontSize: "14px",
     fontWeight: "400",
@@ -432,13 +441,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("md")]: {
       fontSize: "12px",
     },
-  }
+  },
 }))
 
 const WorkForm = () => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const [fileIsLoaded, setFileIsLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [showButton, setShowButton] = useState(false)
@@ -453,26 +462,58 @@ const WorkForm = () => {
     return () => {
       clearTimeout(timer)
     }
-  }, [formStatus])  
+  }, [formStatus])
 
   const schema = yup.object().shape({
-    firstName: yup.string().required(t("workWithUs_workForm_schemaYup_firstName")),
-    lastName: yup.string().required(t("workWithUs_workForm_schemaYup_lastName")),
-    email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
-    phone: yup.string().matches(/^[a-zA-Z0-9\-().\s]{10,15}$/, t("workWithUs_workForm_schemaYup_phone2")).required(t("workWithUs_workForm_schemaYup_phone")),
+    firstName: yup
+      .string()
+      .required(t("workWithUs_workForm_schemaYup_firstName")),
+    lastName: yup
+      .string()
+      .required(t("workWithUs_workForm_schemaYup_lastName")),
+    email: yup
+      .string()
+      .email(t("home_contacSection_contactForm_schemaYup_email1"))
+      .required(t("home_contacSection_contactForm_schemaYup_email2")),
+    phone: yup
+      .string()
+      .matches(
+        /^[a-zA-Z0-9\-().\s]{10,15}$/,
+        t("workWithUs_workForm_schemaYup_phone2")
+      )
+      .required(t("workWithUs_workForm_schemaYup_phone")),
     linkedin: yup.string(),
     website: yup.string().url(),
-    curriculum: yup.mixed().test('fileSize', (t("workWithUs_workForm_schemaYup_curriculum5")), (value) => {
-      if (!value) return true;
-      return value && value[0] && value[0].size <= 2097152;
-    }).test('type', t("workWithUs_workForm_schemaYup_curriculum3"), (value) => {
-      if (!value) return true;
-      const allowedTypes = ['image/jpg', 'image/jpeg', 'application/pdf', 'application/msword'];
-      return typeof value === 'object' && value[0]?.type && ('application/pdf' === value[0].type || 'application/msword' === value[0].type || 'image/jpeg' === value[0].type || 'image/jpg' === value[0].type);
-    }),
+    curriculum: yup
+      .mixed()
+      .test(
+        "fileSize",
+        t("workWithUs_workForm_schemaYup_curriculum5"),
+        value => {
+          if (!value) return true
+          return value && value[0] && value[0].size <= 2097152
+        }
+      )
+      .test("type", t("workWithUs_workForm_schemaYup_curriculum3"), value => {
+        if (!value) return true
+        const allowedTypes = [
+          "image/jpg",
+          "image/jpeg",
+          "application/pdf",
+          "application/msword",
+        ]
+        return (
+          typeof value === "object" &&
+          value[0]?.type &&
+          ("application/pdf" === value[0].type ||
+            "application/msword" === value[0].type ||
+            "image/jpeg" === value[0].type ||
+            "image/jpg" === value[0].type)
+        )
+      }),
     reference: yup.string(),
-  });
-              
+  })
+
   const {
     register,
     handleSubmit,
@@ -485,21 +526,37 @@ const WorkForm = () => {
     mode: "onChange",
   })
 
-  const watchCurriculum = watch("curriculum");
+  const watchCurriculum = watch("curriculum")
 
   useEffect(() => {
-    if (watchCurriculum?.length > 0 && ('application/pdf' === watchCurriculum[0].type || 'application/msword' === watchCurriculum[0].type || 'image/jpeg' === watchCurriculum[0].type || 'image/jpg' === watchCurriculum[0].type) && watchCurriculum[0].size <= 2097152) {
+    if (
+      watchCurriculum?.length > 0 &&
+      ("application/pdf" === watchCurriculum[0].type ||
+        "application/msword" === watchCurriculum[0].type ||
+        "image/jpeg" === watchCurriculum[0].type ||
+        "image/jpg" === watchCurriculum[0].type) &&
+      watchCurriculum[0].size <= 2097152
+    ) {
       setFileIsLoaded(true)
     } else {
       setFileIsLoaded(false)
     }
   }, [watchCurriculum])
 
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL;
-  const domainurl = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
+  const domainurl = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES
 
-  const onSubmitHandler = async(formData) => {
-    const { firstName, lastName, email, phone, linkedin, website, reference, curriculum } = formData;
+  const onSubmitHandler = async formData => {
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      linkedin,
+      website,
+      reference,
+      curriculum,
+    } = formData
     // const cvurl = curriculum.url;
 
     if (curriculum?.length === 1) {
@@ -508,11 +565,11 @@ const WorkForm = () => {
       const formData = new FormData()
       formData.append("files", curriculum[0])
       axios
-        .post(`${domain}upload`, formData, { headers: '*' })
+        .post(`${domain}upload`, formData, { headers: "*" })
         .then(async response => {
-          const file = response.data[0].id;
-          const cvurl = response.data[0].url;
-          
+          const file = response.data[0].id
+          const cvurl = response.data[0].url
+
           const sendData = {
             firstName: firstName,
             lastName: lastName,
@@ -523,8 +580,10 @@ const WorkForm = () => {
             reference: reference,
             curriculum: file,
           }
-          const res = await axios.post(`${domain}curriculums`, { data: sendData })
-        
+          const res = await axios.post(`${domain}curriculums`, {
+            data: sendData,
+          })
+
           if (res.status === 200) {
             setFormStatus("well")
             setShowButton(false)
@@ -538,20 +597,25 @@ const WorkForm = () => {
               linkedin: linkedin,
               website: website,
               reference: reference,
-              file: cvurl,//`${domainurl}${cvurl}`,
+              file: cvurl, //`${domainurl}${cvurl}`,
             }
 
-            emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
-            .then((result) => {
-
-            }, (error) => {
-
-            });
+            emailjs
+              .send(
+                "service_idrfktg",
+                "template_96fwtyn",
+                userEmail,
+                "barMeaEdxx4emnNzc"
+              )
+              .then(
+                result => {},
+                error => {}
+              )
 
             Swal.fire(
-            t("home_contacSection_contactForm_swalSuccess_title"),
-            t("workWithUs_workForm_submit_success"),
-            "success"
+              t("home_contacSection_contactForm_swalSuccess_title"),
+              t("workWithUs_workForm_submit_success"),
+              "success"
             )
             reset()
           }
@@ -560,10 +624,10 @@ const WorkForm = () => {
           setFormStatus("bad")
           setShowButton(false)
           Swal.fire({
-          icon: "error",
-          title: t("home_contacSection_contactForm_swalError_title"),
-          text: t("workWithUs_workForm_submit_error"),
-        })
+            icon: "error",
+            title: t("home_contacSection_contactForm_swalError_title"),
+            text: t("workWithUs_workForm_submit_error"),
+          })
         })
     } else {
       if (data.website !== "") {
@@ -576,7 +640,7 @@ const WorkForm = () => {
           website: data.website,
           reference: data.reference,
         }
-        const res = await axios.post(`${domain}curriculums`, { data: sendData });
+        const res = await axios.post(`${domain}curriculums`, { data: sendData })
 
         if (res.status === 200) {
           setFormStatus("well")
@@ -591,30 +655,35 @@ const WorkForm = () => {
             linkedin: linkedin,
             website: website,
             reference: reference,
-            file: '',
+            file: "",
           }
 
-          emailjs.send('service_idrfktg', 'template_96fwtyn', userEmail, 'barMeaEdxx4emnNzc')
-          .then((result) => {
-
-          }, (error) => {
-
-          });
+          emailjs
+            .send(
+              "service_idrfktg",
+              "template_96fwtyn",
+              userEmail,
+              "barMeaEdxx4emnNzc"
+            )
+            .then(
+              result => {},
+              error => {}
+            )
 
           Swal.fire(
-          t("home_contacSection_contactForm_swalSuccess_title"),
-          t("workWithUs_workForm_submit_success"),
-          "success"
+            t("home_contacSection_contactForm_swalSuccess_title"),
+            t("workWithUs_workForm_submit_success"),
+            "success"
           )
           reset()
         } else {
           setFormStatus("bad")
           setShowButton(false)
           Swal.fire({
-          icon: "error",
-          title: t("home_contacSection_contactForm_swalError_title"),
-          text: t("workWithUs_workForm_submit_error"),
-        })
+            icon: "error",
+            title: t("home_contacSection_contactForm_swalError_title"),
+            text: t("workWithUs_workForm_submit_error"),
+          })
         }
       }
     }
@@ -635,9 +704,7 @@ const WorkForm = () => {
           alignSelf="center"
         ></Box>
         <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
-          <Box
-            className={classes.formContainer2}
-          >
+          <Box className={classes.formContainer2}>
             <Box className={classes.shortContainer}>
               <TextField
                 required
@@ -715,21 +782,24 @@ const WorkForm = () => {
             <Box className={classes.attachContainer}>
               <Box className={classes.attach}>
                 <span className={classes.attachLabel}>
-                  {t("workWithUs_workForm_textField_label7")}</span>
+                  {t("workWithUs_workForm_textField_label7")}
+                </span>
                 <label className={classes.attachButton} htmlFor="resume-btn">
                   {t("workWithUs_workForm_textField_button1")}
                 </label>
-                <Typography className={classes.limitMessage}>Max 2 mb</Typography>
+                <Typography className={classes.limitMessage}>
+                  Max 2 mb
+                </Typography>
                 <Alert
-              severity="success" 
-              className={classes.uploadAlert}
-              style={{
-                visibility: fileIsLoaded ? "visible" : "hidden",
-                color: "#4caf50"
-              }}
-            >
-              {t("workWithUs_workForm_schemaYup_curriculum4")}
-            </Alert>
+                  severity="success"
+                  className={classes.uploadAlert}
+                  style={{
+                    visibility: fileIsLoaded ? "visible" : "hidden",
+                    color: "#4caf50",
+                  }}
+                >
+                  {t("workWithUs_workForm_schemaYup_curriculum4")}
+                </Alert>
               </Box>
               <Input
                 type="file"
@@ -740,35 +810,102 @@ const WorkForm = () => {
                   minLength: {
                     value: 1,
                     message: "Load a file",
-                  }
-                })} />
-             </Box>
-             <Alert
-              severity={(errors.curriculum?.message === t("workWithUs_workForm_schemaYup_curriculum4")) ? "success" : "error"}
+                  },
+                })}
+              />
+            </Box>
+            <Alert
+              severity={
+                errors.curriculum?.message ===
+                t("workWithUs_workForm_schemaYup_curriculum4")
+                  ? "success"
+                  : "error"
+              }
               className={classes.curriculumAlert}
               style={{
                 display: errors.curriculum !== undefined ? "inherit" : "none",
-                color: (errors.curriculum?.message === t("workWithUs_workForm_schemaYup_curriculum4")) ? "green" : "red"
+                color:
+                  errors.curriculum?.message ===
+                  t("workWithUs_workForm_schemaYup_curriculum4")
+                    ? "green"
+                    : "red",
               }}
             >
               {errors.curriculum?.message}
             </Alert>
-            <InputLabel id="demo-simple-select-label" className={classes.selectLabel}>How did you hear about us?</InputLabel>
+            <InputLabel
+              id="demo-simple-select-label"
+              className={classes.selectLabel}
+            >
+              How did you hear about us?
+            </InputLabel>
             <Controller
               name="reference"
               control={control}
               defaultValue="Google"
-              render={({ field }) =>
-              <Select labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" {...field} className={classes.selectEmpty} variant="standard">
-              <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem")}>{t("home_contacSection_contactForm_Select_label1_MenuItem")}</MenuItem>
-              <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem1")}>{t("home_contacSection_contactForm_Select_label1_MenuItem1")}</MenuItem>
-              <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem2")}>{t("home_contacSection_contactForm_Select_label1_MenuItem2")}</MenuItem>
-              <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_label1_MenuItem3")}>{t("home_contacSection_contactForm_Select_label1_MenuItem3")}</MenuItem>
-              <MenuItem className={classes.item} value={t("home_contacSection_contactForm_Select_MenuItem_Common")}>{t("home_contacSection_contactForm_Select_MenuItem_Common")}</MenuItem>
-               </Select> 
-              }
-            /> 
-            <Button className={classesComponent.buttonComponent} type="submit" disabled={showButton} style={{ marginBottom: "30px" }}>
+              render={({ field }) => (
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  {...field}
+                  className={classes.selectEmpty}
+                  variant="standard"
+                >
+                  <MenuItem
+                    className={classes.item}
+                    value={t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem"
+                    )}
+                  >
+                    {t("home_contacSection_contactForm_Select_label1_MenuItem")}
+                  </MenuItem>
+                  <MenuItem
+                    className={classes.item}
+                    value={t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem1"
+                    )}
+                  >
+                    {t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem1"
+                    )}
+                  </MenuItem>
+                  <MenuItem
+                    className={classes.item}
+                    value={t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem2"
+                    )}
+                  >
+                    {t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem2"
+                    )}
+                  </MenuItem>
+                  <MenuItem
+                    className={classes.item}
+                    value={t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem3"
+                    )}
+                  >
+                    {t(
+                      "home_contacSection_contactForm_Select_label1_MenuItem3"
+                    )}
+                  </MenuItem>
+                  <MenuItem
+                    className={classes.item}
+                    value={t(
+                      "home_contacSection_contactForm_Select_MenuItem_Common"
+                    )}
+                  >
+                    {t("home_contacSection_contactForm_Select_MenuItem_Common")}
+                  </MenuItem>
+                </Select>
+              )}
+            />
+            <Button
+              className={classesComponent.buttonComponent}
+              type="submit"
+              disabled={showButton}
+              style={{ marginBottom: "30px" }}
+            >
               <span>{t("workWithUs_workForm_textField_button2")}</span>
             </Button>
           </Box>

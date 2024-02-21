@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Box, Typography } from "@mui/material"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
       textAlign: "left",
       lineHeight: "17px",
     },
-},
+  },
   desc: {
     fontFamily: "HindVadodara",
     fontWeight: "600",
@@ -110,20 +110,18 @@ const useStyles = makeStyles(theme => ({
 
 const HomeDescription = () => {
   const classes = useStyles()
-  const { t } = useTranslation();
-  
+  const { t } = useTranslation("common")
+
   return (
     <Box className={classes.container}>
-      <Box
-        className={classes.textContainer2}
-      >
+      <Box className={classes.textContainer2}>
         <Typography className={classes.text}>
           {t("home_homeDescription_text")}
         </Typography>
-        
-        <Typography
-          className={classes.desc}
-        >{t("home_homeDescription_description")}</Typography>
+
+        <Typography className={classes.desc}>
+          {t("home_homeDescription_description")}
+        </Typography>
       </Box>
     </Box>
   )

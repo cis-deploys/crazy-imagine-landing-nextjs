@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Typography } from "@mui/material"
 import CustomerReview from "./CustomerReview"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
 
@@ -38,7 +38,7 @@ const useStyes = makeStyles(theme => ({
 const ReferenceSection = ({ reviews }) => {
   const classes = useStyes()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Box className={classes.referenceContainer}>

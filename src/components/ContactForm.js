@@ -13,7 +13,7 @@ import emailjs from "@emailjs/browser"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
@@ -171,7 +171,7 @@ const ContactForm = () => {
   const classes = useStyles({})
   const classesComponent = StyleComponent()
   const form = useRef()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const [typeProject, setTypeProject] = useState("")
   const [findUs, setFindUs] = useState("")
   const schema = yup.object().shape({

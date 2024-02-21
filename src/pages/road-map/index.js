@@ -4,7 +4,7 @@ import dynamic from "next/dynamic"
 import { Box } from "@mui/material"
 import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
-
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import headerImage from "../../../public/Roadmap.svg"
 
 const SectionHeader = dynamic(() => import("../../components/SectionHeader"), {
@@ -25,8 +25,15 @@ const RoadMapContent = dynamic(
   }
 )
 
+export const getStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  }
+}
 function RoadMap() {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation("common")
   const button = {
     refID: "contactSection",
     text: t("common_button_get_started"),

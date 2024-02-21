@@ -1,5 +1,5 @@
 import React from "react"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import Link from "next/link"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
@@ -134,7 +134,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     lineHeight: "14px",
     color: "#FFFFFF",
-    textDecoration: "none"
+    textDecoration: "none",
   },
   effect: {
     paddingTop: "10px",
@@ -169,7 +169,7 @@ const useStyles = makeStyles(theme => ({
 
   link: {
     textDecoration: "none",
-    borderRadius: "100px"
+    borderRadius: "100px",
   },
 }))
 
@@ -181,61 +181,61 @@ export const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const classes = useStyles({
     scroll,
     linkVariant,
     iconsVariant,
     color,
-  });
+  })
 
   return (
     <AppBar color={color} position="fixed" className={classes.container}>
       <Toolbar className={classes.root}>
         <Box className={classes.barContainer}>
-          <Link href={`${HOME}`} >
-            <a >
-            <Image
-              src={CrazyImagineLogo}
-              alt="logo"
-              width={245}
-              height={55}
-            />
+          <Link href={`${HOME}`}>
+            <a>
+              <Image
+                src={CrazyImagineLogo}
+                alt="logo"
+                width={245}
+                height={55}
+              />
             </a>
           </Link>
           <Box className={classes.linkContainer}>
-            <Typography style={{ minWidth: "max-content"}}>
-              <Link href={`${ABOUT}`} >
+            <Typography style={{ minWidth: "max-content" }}>
+              <Link href={`${ABOUT}`}>
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_about")}
+                  {t("common_button_about")}
                 </a>
               </Link>
             </Typography>
             <Typography>
-            <Link href={`${PROJECTS}`} >
+              <Link href={`${PROJECTS}`}>
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_projects")}
+                  {t("common_button_projects")}
                 </a>
               </Link>
             </Typography>
             <Typography>
-            <Link href={`${SERVICES}`} >
+              <Link href={`${SERVICES}`}>
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_services")}
+                  {t("common_button_services")}
                 </a>
               </Link>
             </Typography>
             <Typography>
-            <Link href={`${BLOG}`} >
+              <Link href={`${BLOG}`}>
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_blog")}
+                  {t("common_button_blog")}
                 </a>
               </Link>
             </Typography>
             <Typography style={{ minWidth: "max-content" }}>
-            <Link href={`${WORK_WITH_US}`} >
+              <Link href={`${WORK_WITH_US}`}>
                 <a className={`${classes.linkTypography} ${classes.effect}`}>
-                {t("common_button_work_with_us")}
+                  {t("common_button_work_with_us")}
                 </a>
               </Link>
             </Typography>
@@ -243,15 +243,12 @@ export const Navbar = ({
           </Box>
           <SocialMedia />
           <Link href={`${CONTACT}`}>
-
-            <a className={ classes.link }>
-            <Button className={classes.contactButton}>
-              <span
-                className={classes.contactTypography}
-              >
-                {t("common_button_contact_us")}
-              </span>
-            </Button>
+            <a className={classes.link}>
+              <Button className={classes.contactButton}>
+                <span className={classes.contactTypography}>
+                  {t("common_button_contact_us")}
+                </span>
+              </Button>
             </a>
           </Link>
         </Box>

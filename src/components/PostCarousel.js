@@ -2,7 +2,7 @@ import React from "react"
 import BlogPost from "../components/BlogPost"
 import { Box, Typography } from "@mui/material"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 
@@ -20,11 +20,11 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     [theme.breakpoints.down("md")]: {
       gap: "16px",
-      padding: "0px 43px"
+      padding: "0px 43px",
     },
     [theme.breakpoints.down("xs")]: {
       gap: "16px",
-      padding: "0px 15px"
+      padding: "0px 15px",
     },
   },
   title: {
@@ -69,16 +69,18 @@ const useStyles = makeStyles(theme => ({
 
 const PostCarousel = ({ articles }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   return (
     <Box className={classes.container}>
-      <Typography className={classes.title}>{t("post_postCarousel_title")}</Typography>
-      <Link href={`${BLOG}`} >
+      <Typography className={classes.title}>
+        {t("post_postCarousel_title")}
+      </Typography>
+      <Link href={`${BLOG}`}>
         <a className={classes.link}>
-        {t("common_lastestPosts_button_allBlogs")}
+          {t("common_lastestPosts_button_allBlogs")}
         </a>
       </Link>
-      <BlogPost articles={ articles }/>
+      <BlogPost articles={articles} />
     </Box>
   )
 }

@@ -1,8 +1,7 @@
 import React from "react"
 import { Box, Typography } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
-
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -85,21 +84,29 @@ const useStyles = makeStyles(theme => ({
 
 const PrivacyPolicySection = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   return (
     <>
       <Box className={classes.container}>
         <Typography className={classes.content}>
           {t("privacyPolicy_paragraph1")}
-          <span className={classes.subtitle}>{t("privacyPolicy_subtitle1")}</span>
+          <span className={classes.subtitle}>
+            {t("privacyPolicy_subtitle1")}
+          </span>
           {t("privacyPolicy_paragraph2")}
-          <span className={classes.subtitle}>{t("privacyPolicy_subtitle2")}</span>
+          <span className={classes.subtitle}>
+            {t("privacyPolicy_subtitle2")}
+          </span>
           {t("privacyPolicy_paragraph3")}
           <br />
           {t("privacyPolicy_paragraph4")}
-          <span className={classes.subtitle}>{t("privacyPolicy_subtitle3")}</span>
+          <span className={classes.subtitle}>
+            {t("privacyPolicy_subtitle3")}
+          </span>
           {t("privacyPolicy_paragraph5")}
-          <span className={classes.subtitle}>{t("privacyPolicy_subtitle4")}</span>
+          <span className={classes.subtitle}>
+            {t("privacyPolicy_subtitle4")}
+          </span>
           {t("privacyPolicy_paragraph6")}
           <br />
           {t("privacyPolicy_paragraph7")}

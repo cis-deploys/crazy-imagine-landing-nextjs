@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import { Box, Typography } from "@mui/material"
 import mainImage from "../../public/Group619.webp"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
@@ -82,12 +82,12 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
-      textAlign: "left"
+      textAlign: "left",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
       flexDirection: "row",
-      display: 'none',
+      display: "none",
     },
   },
   desc2: {
@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
   },
   imgContainer: {
     display: "flex",
-    justifyContent: "center",  
+    justifyContent: "center",
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
       width: "40%",
@@ -115,7 +115,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center",
       width: "40%",
-      marginRight: "10px"
+      marginRight: "10px",
     },
   },
 }))
@@ -125,34 +125,42 @@ export const TitleSection = ({ desc }) => {
   const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation();
+  const { t } = useTranslation("common")
   return (
     <Box className={classes.container1}>
-    <Box className={classesComponent.containerWhiteComponent}>
-      <Box className={classes.imgContainer}>
-        <Image
-          src={mainImage}
-          width={314}
-          height={357}
-          className={isVisible ? classesComponent.imageComponent : classesComponent.image}
-          alt="Title"
-        />
-      </Box>
-      <Box className={classesComponent.textContainerWhiteComponent}>
-        <Box className={classes.titleContainer}>
-          <Typography className={classes.title2}>{t("home_homeMainSection_titleSection_title")}</Typography>
-          <Typography className={classes.blueTitle2}>{t("home_homeMainSection_titleSection_blueTitle")}</Typography>
+      <Box className={classesComponent.containerWhiteComponent}>
+        <Box className={classes.imgContainer}>
+          <Image
+            src={mainImage}
+            width={314}
+            height={357}
+            className={
+              isVisible
+                ? classesComponent.imageComponent
+                : classesComponent.image
+            }
+            alt="Title"
+          />
         </Box>
-        <Typography ref={ref} className={classes.desc}>
+        <Box className={classesComponent.textContainerWhiteComponent}>
+          <Box className={classes.titleContainer}>
+            <Typography className={classes.title2}>
+              {t("home_homeMainSection_titleSection_title")}
+            </Typography>
+            <Typography className={classes.blueTitle2}>
+              {t("home_homeMainSection_titleSection_blueTitle")}
+            </Typography>
+          </Box>
+          <Typography ref={ref} className={classes.desc}>
+            {desc}
+          </Typography>
+        </Box>
+      </Box>
+      <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "30px" }}>
+        <Typography ref={ref} className={classes.desc2}>
           {desc}
         </Typography>
       </Box>
-    </Box>
-    <Box sx={{ padding: "0px 30px", width: "90%", marginBottom: "30px"}}>
-      <Typography ref={ref} className={classes.desc2}>
-          {desc}
-      </Typography>
-    </Box>
     </Box>
   )
 }

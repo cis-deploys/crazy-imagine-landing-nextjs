@@ -1,8 +1,8 @@
 import React from "react"
-import { Box,  Typography, Grid } from "@mui/material"
-import { useTranslation } from 'next-i18next'
-import { makeStyles } from "@mui/styles";
-import Image from 'next/image';
+import { Box, Typography, Grid } from "@mui/material"
+import { useTranslation } from "next-i18next"
+import { makeStyles } from "@mui/styles"
+import Image from "next/image"
 import ContactForm from "./ContactForm"
 import Section from "./Section"
 import Satelite from "../../public/satelite.webp"
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "50px",
     color: "#193174",
     display: "flex",
-    [theme.breakpoints.down("md")]:{
+    [theme.breakpoints.down("md")]: {
       fontSize: "40px",
       lineHeight: "50px",
       alignItems: "center",
@@ -80,32 +80,32 @@ const useStyles = makeStyles(theme => ({
     },
   },
   container: {
-     display: "flex",
-     padding: "0px 60px",
-     height: "550px",
-     alignItems: "end",
-     [theme.breakpoints.down("lg")]: {
-       padding: "0px 60px",
-     },
-     [theme.breakpoints.down("md")]: {
+    display: "flex",
+    padding: "0px 60px",
+    height: "550px",
+    alignItems: "end",
+    [theme.breakpoints.down("lg")]: {
+      padding: "0px 60px",
+    },
+    [theme.breakpoints.down("md")]: {
       width: "100%",
       padding: "0px 43px",
       flexDirection: "column",
       height: "auto",
-     },
-     [theme.breakpoints.down("sm")]: {
-       height: "auto",
-       flexDirection: "column",
-       width: "100%",
-       padding: "0px 43px",
-     },
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
+      flexDirection: "column",
+      width: "100%",
+      padding: "0px 43px",
+    },
   },
 }))
 
 const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Section
@@ -115,23 +115,18 @@ const ContactSection = ({ bgColor, bgImage }) => {
     >
       <Grid container spacing={0} className={classes.container}>
         <Grid item sm={12} md={4} className={classes.textContainer}>
-            <Typography
-              className={classes.subtitle2}
-            >
-              {t("home_contacSection_subtitle")}
-            </Typography>
-            <Typography
-              className={classesComponent.titleBlue}
-            >
-              {t("home_contacSection_title1")}</Typography>
-            <Typography
-              className={classesComponent.titleBlue}
-            >
-              {t("home_contacSection_title2")}
-            </Typography>
-            <Box className={classesComponent.imageComponent}>
-              <Image src={Satelite} width={352} height={234} alt="satellite" />
-            </Box>
+          <Typography className={classes.subtitle2}>
+            {t("home_contacSection_subtitle")}
+          </Typography>
+          <Typography className={classesComponent.titleBlue}>
+            {t("home_contacSection_title1")}
+          </Typography>
+          <Typography className={classesComponent.titleBlue}>
+            {t("home_contacSection_title2")}
+          </Typography>
+          <Box className={classesComponent.imageComponent}>
+            <Image src={Satelite} width={352} height={234} alt="satellite" />
+          </Box>
         </Grid>
         <Grid item sm={12} md={8}>
           <ContactForm />

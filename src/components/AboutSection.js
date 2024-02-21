@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Grid, Typography } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 import {
@@ -154,7 +154,7 @@ const useStyles = makeStyles(theme => ({
 
 const AboutSection = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const elements = [
     // {
@@ -196,8 +196,8 @@ const AboutSection = () => {
     {
       title: t("about_aboutSection_Mission_title"),
       description: t("about_aboutSection_Mission"),
-      link: '/mission',
-      icon: faRocket
+      link: "/mission",
+      icon: faRocket,
     },
     {
       title: t("about_aboutSection_whoWeAre_title"),
