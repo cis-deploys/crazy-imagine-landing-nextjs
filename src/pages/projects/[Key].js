@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from "next/dynamic";
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Layout from "../../components/Layout"
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 const ProjectsKey = dynamic(
   () => import("../../components/ProjectsKey"),
@@ -11,31 +14,75 @@ const ProjectsKey = dynamic(
 
 export async function getServerSideProps(context) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-    const { query } = context;
+    const { query, locale } = context;
     const { Key } = query;
-
-    const resprojectsAll = await fetch(`${domain}projects?locale=es-VE&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)
-    const resprojectsAllEs = await fetch(`${domain}projects?locale=en&_limit=6&_sort=created_at:DESC&populate=images&populate=galleryImages&populate=seo`)//falta restringuir seo
-    const projectsAll = await resprojectsAll.json();
-    const projectsAllEs = await resprojectsAllEs.json();
-
-    const resProjects = await fetch(`${domain}projects?filters[Key][$eq]=${Key}&locale=all&populate=images&populate=galleryImages&populate=seo`)
-    const projects = await resProjects.json()
-
-    return { props: { projects, projectsAll, projectsAllEs } }
+    
+    const resprojectsAll = await fetch(`${domain}projects?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=images&populate=galleryImages&populate=seo`)
+    const projects = await resprojectsAll.json();
+    
+    const resProjects = await fetch(`${domain}projects?filters[Key][$eq]=${Key}&locale=${locale}&populate=images&populate=galleryImages&populate=seo`)
+    const projectKey = await resProjects.json()
+    
+    
+    return { props: { projectKey, projects, 
+      ...await serverSideTranslations(locale, ['common'])
+    } 
+  }
 }
 
+const Project = ({ projectKey, projects }) => {
+  const { t, i18n } = useTranslation('common')
+  const router = useRouter()
 
-const Project = ({ projects, projectsAll, projectsAllEs }) => {
-  const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL_FILES;
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
 
-  const projectsNew = [];
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
 
   const [metaTitle, setMetaTitle] = useState();
   const [metaDescription, setMetaDescription] = useState();
   const [keywords, setKeywords] = useState();
   const [ title, setTitle ] = useState();
   
+  const projectKeyNew = [];
+  projectKey.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
+    const imagesArticles = [];
+    if(images.data){
+      images.data.map(({ attributes: { url }}) => {
+        imagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    const galleryImagesArticles = [];
+    if(galleryImages.data){
+      galleryImages.data.map(({ attributes: { url }}) => {
+        galleryImagesArticles.push({
+          url//: `${domain}${url}`
+        });
+      });
+    }
+    projectKeyNew.push({
+      title,
+      description,
+      details,
+      moreAbout,
+      slug,
+      Key,
+      createdAt,
+      locale,
+      images: imagesArticles,
+      galleryImages: galleryImagesArticles,
+      seo
+    });
+  });
+
+  const projectsNew = [];
   projects.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
     const imagesArticles = [];
     if(images.data){
@@ -68,78 +115,12 @@ const Project = ({ projects, projectsAll, projectsAllEs }) => {
     });
   });
 
-  const projectsAllNew = [];
-  projectsAll.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
-    const imagesArticles = [];
-    if(images.data){
-      images.data.map(({ attributes: { url }}) => {
-        imagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    const galleryImagesArticles = [];
-    if(galleryImages.data){
-      galleryImages.data.map(({ attributes: { url }}) => {
-        galleryImagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    projectsAllNew.push({
-      title,
-      description,
-      details,
-      moreAbout,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      images: imagesArticles,
-      galleryImages: galleryImagesArticles,
-      seo
-    });
-  });
-
-  const projectsAllEsNew = [];
-  projectsAllEs.data.map(({ attributes: { title, description, details, moreAbout, slug, Key, createdAt, locale, images, galleryImages, seo}}) => {
-    const imagesArticles = [];
-    if(images.data){
-      images.data.map(({ attributes: { url }}) => {
-        imagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    const galleryImagesArticles = [];
-    if(galleryImages.data){
-      galleryImages.data.map(({ attributes: { url }}) => {
-        galleryImagesArticles.push({
-          url//: `${domain}${url}`
-        });
-      });
-    }
-    projectsAllEsNew.push({
-      title,
-      description,
-      details,
-      moreAbout,
-      slug,
-      Key,
-      createdAt,
-      locale,
-      images: imagesArticles,
-      galleryImages: galleryImagesArticles,
-      seo
-    });
-  });
-
   useEffect(() => {
-    setMetaTitle(projects.data[0]?.attributes.seo?.metaTitle),
-    setMetaDescription(projects.data[0]?.attributes.seo?.metaDescription),
-    setKeywords(projects.data[0]?.attributes.seo?.keywords)
-    setTitle(projects.data[0]?.attributes.title)
-  }, [])
+    setMetaTitle(projectKey.data[0]?.attributes.seo?.metaTitle),
+    setMetaDescription(projectKey.data[0]?.attributes.seo?.metaDescription),
+    setKeywords(projectKey.data[0]?.attributes.seo?.keywords)
+    setTitle(projectKey.data[0]?.attributes.title)
+  }, [projectKey])
 
   return (
     <Layout>
@@ -153,7 +134,7 @@ const Project = ({ projects, projectsAll, projectsAllEs }) => {
           url: "https://crazyimagine.com",
         }}
       />
-      <ProjectsKey projects={ projectsNew } projectsAll={ projectsAllNew ? projectsAllNew?.concat(projectsAllEsNew) : [] }/>
+      <ProjectsKey projectKey={ projectKeyNew } projects={ projectsNew }/>
 
     </Layout>
   )

@@ -2,7 +2,7 @@ import React from "react"
 import BlogPost from "../components/BlogPost"
 import { Box, Typography } from "@mui/material"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 

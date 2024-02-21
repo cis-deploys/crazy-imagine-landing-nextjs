@@ -1,22 +1,10 @@
 import React from 'react'
-import { useTranslation } from "react-i18next"
-import Image from "next/image"
+import { useTranslation } from 'react-i18next'
 
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles((theme)=>({
-  navbarLogo: {
-    width: '100%',
-    height: 160,
-    display: 'none',
-    marginBottom: '20px',
-    filter: 'drop-shadow(1px 1px 1px #0008)',
-    [theme.breakpoints.down("sm")]: {
-      height: 200,
-      display: 'block'
-    },
-  },
   title: {
     fontSize: 75,
     fontWeight: "bold",

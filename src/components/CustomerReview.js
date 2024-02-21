@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Box, Button, Typography } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Keyboard } from "swiper/core"
@@ -251,19 +251,12 @@ const CustomerReview = ({ reviews, bulletClass }) => {
   }
 
   const handleTextInTheArray = () => {
-    if (reviews) {
-      const newReviews = reviews?.filter(article =>
-        article.locale.includes(lang)
-      )
-      const newArray = newReviews.map(card => {
+      const newArray = reviews.map(card => {
         if (handleTextLimits(card.review, 35))
           return { ...card, exceedLimit: true, showFullText: false }
         return { ...card, exceedLimit: false, showFullText: false }
       })
       return newArray
-    } else {
-      return []
-    }
   }
 
   const [projectDataAll, setProjectDataAll] = useState(handleTextInTheArray())
@@ -285,7 +278,7 @@ const CustomerReview = ({ reviews, bulletClass }) => {
 
   useEffect(() => {
     setProjectDataAll(handleTextInTheArray())
-  }, [i18n.language])
+  }, [reviews])
 
   const handleShowFullText = index => {
     const newArray = projectDataAll.map((card, i) => {

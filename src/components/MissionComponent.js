@@ -203,32 +203,17 @@ const MissionComponent = ({ companyValue, missionPage }) => {
   const classes = useStyles()
   const { i18n } = useTranslation()
   const lang = i18n.language
-  const [info] = useState(missionPage?.data || [])
   const [data, setData] = useState(dataToShow)
 
-  const companyV = companyValue
-  const CompanyFilter = companyV.filter(companyV =>
-    companyV.locale.includes(lang)
-  )
-
-  const prepareData = info => {
-    const mappedInfo = info.map(({ attributes }) => {
-      return attributes
-    })
-
-    const filteredData = mappedInfo?.filter(item => item.locale.includes(lang))
-    return filteredData
-  }
-
   useEffect(() => {
-    const data = prepareData(info)
+   const data = missionPage.data
     const obj = {
-      titleMission: data[0].title_mission,
-      descriptionMission: data[0].description_mission,
-      titleVission: data[0].title_vission,
-      subtitleVission: data[0].subtitle_vission,
-      descriptionVission: data[0].description_vission,
-      titleValue: data[0].title_company_value,
+      titleMission: data.attributes.title_mission,
+      descriptionMission: data.attributes.description_mission,
+      titleVission: data.attributes.title_vission,
+      subtitleVission: data.attributes.subtitle_vission,
+      descriptionVission: data.attributes.description_vission,
+      titleValue: data.attributes.title_company_value,
     }
     setData({ ...obj })
   }, [lang])
@@ -276,7 +261,7 @@ const MissionComponent = ({ companyValue, missionPage }) => {
 
       <Box className={classes.container}>
 
-        { CompanyFilter.length > 0 && 
+        { companyValue.length > 0 && 
           (
             <>
           <Box className={classes.backgroundImage}>
@@ -293,7 +278,7 @@ const MissionComponent = ({ companyValue, missionPage }) => {
         }
         
 
-        {CompanyFilter.map(e => {
+        {companyValue.map(e => {
           const ImageValue = e.image.data[0].attributes.url
 
           return (

@@ -5,7 +5,7 @@ import AboutProjects from "./AboutProjects"
 import GalleryProjects from "./GalleryProjects"
 import RelatedSection from "./RelatedSection"
 import ContactSection from "./ContactSection"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router"
 
@@ -67,26 +67,23 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ProjectsKey = ({projects, projectsAll}) => {
+const ProjectsKey = ({projectKey, projects}) => {
     const classes = useStyles()
-    const { i18n, t } = useTranslation()
+    const { i18n, t } = useTranslation('common')
     const router = useRouter();
     const { Key } = router.query;
-    const [projectData, setProjectData] = useState(projects
-      ?.filter( projects => projects?.locale?.includes(i18n.language)) 
+    const [projectData, setProjectData] = useState(projectKey
       ?.filter( project => project?.Key === Key && project?.Key !== null)|| [])
 
-    const [projectDataAll, setProjectDataAll] = useState(projectsAll
-      ?.filter( projects => projects?.locale?.includes(i18n.language)) || [])  
+    const [projectDataAll, setProjectDataAll] = useState(projects)
 
         useEffect(() => {
-          setProjectData(projects
-            ?.filter( projects => projects?.locale?.includes(i18n.language)) 
+          setProjectData(projectKey
             ?.filter( project => project?.Key === Key && project?.Key !== null)|| [])
 
-            setProjectDataAll(projectsAll
+            setProjectDataAll(projects
               ?.filter( projects => projects?.locale?.includes(i18n.language)) || [])
-        }, [i18n.language]);
+        }, [i18n.language, projectKey]);
 
   return (
     <>

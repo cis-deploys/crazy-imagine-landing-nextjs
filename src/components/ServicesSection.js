@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Box } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "next-i18next"
 import { makeStyles } from "@mui/styles"
 import CardService from "./CardService"
 import ServiceCapabilities from "./ServiceCapabilities"
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 
 const ServicesSection = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const [card1Open, setCard1Open] = useState(false)
   const [card2Open, setCard2Open] = useState(false)

@@ -5,11 +5,9 @@ import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { useIntersection } from "../hooks/useIntersection"
 import { makeStyles } from "@mui/styles"
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
@@ -157,13 +155,33 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
   const router = useRouter();
   const { Key } = router.query;
 
-  const [projectDataAll, setProjectDataAll] = useState(projects
-    ?.filter( project => project?.Key !== Key && project?.Key !== null));
-  
+  const [visibleArticles, setVisibleArticles] = useState([]);
+
   useEffect(() => {
-      setProjectDataAll(projects
-        ?.filter( project => project?.Key !== Key && project?.Key !== null));
-  }, [i18n.language]);
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+
+      let articlesToShow = 5;
+      if (windowWidth >= 768 && windowWidth < 1024) {
+        articlesToShow = 6;
+      } else if (windowWidth >= 1024) {
+        articlesToShow = 10;
+      }
+
+      const visibleArticles = projects
+      .slice(0, articlesToShow)
+      ?.filter( project => project?.Key !== Key && project?.Key !== null)
+      setVisibleArticles(visibleArticles);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [projects]);
 
       return (
           <Swiper
@@ -201,7 +219,7 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
             className={bulletClass}
           >
 
-            { projectDataAll
+            { visibleArticles
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => {
                 const dataImage = el?.images[0]?.url //localFile

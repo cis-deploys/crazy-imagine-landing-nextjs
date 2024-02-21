@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Box, Typography } from "@mui/material"
 import RelatedProjects from "../components/RelatedProjects"
 import { PROJECTS } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Link from "next/link"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"

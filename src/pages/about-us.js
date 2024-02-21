@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
 import Layout from "../components/Layout"
@@ -23,18 +24,20 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale}) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
-  const resAboutpage = await fetch(`${domain}about-page?locale=all&populate=seo&populate=title`)
+  const resAboutpage = await fetch(`${domain}about-page?locale=${locale}&populate=seo&populate=title`)
   const aboutpage = await resAboutpage.json()
 
-  return { props: { aboutpage } }
+  return { props: { aboutpage,
+    ...await serverSideTranslations(locale, ['common']),
+  } }
 }
 
 
 const About = ({ aboutpage }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const router = useRouter()
 
   useEffect(() => {
@@ -52,17 +55,12 @@ const About = ({ aboutpage }) => {
   const [keywords, setKeywords] = useState();
   const [ title, setTitle ] = useState();
 
-useEffect(() => {
-  aboutpage.data.map(({ attributes: { seo, title }}) => {
-    if(seo){
-      setMetaTitle(seo?.metaTitle),
-      setMetaDescription(seo?.metaDescription),
-      setKeywords(seo?.keywords)
-    }
-    setTitle(title)
-  });
-
-}, [])
+  useEffect(() => {
+    setMetaTitle(aboutpage.data?.attributes.seo?.metaTitle),
+    setMetaDescription(aboutpage.data?.attributes.seo?.metaDescription),
+    setKeywords(aboutpage.data?.attributes.seo?.keywords),
+    setTitle(aboutpage.data?.attributes.title)
+  }, [aboutpage])
 
   return (
     <Layout >

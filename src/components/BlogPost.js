@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { useRouter } from "next/router"
@@ -6,9 +6,11 @@ import { Pagination } from "swiper"
 import {  Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { BLOG } from "../navigation/sitemap"
 import 'swiper/swiper-bundle.css';
+import Image from "next/image"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -88,7 +90,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "11px",
       lineHeight: "11px",
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       paddingBottom: "12px",
     },
   },
@@ -149,7 +151,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const BlogPost = ({ bulletClass, articles: AllArticles }) => {
+const BlogPost = ({ bulletClass, articles }) => {
   const classes = useStyles()
   const { t, i18n } = useTranslation()
   const lang = i18n.language
@@ -157,17 +159,38 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
   const router = useRouter();
   const { Key } = router.query;
 
-  const articles = AllArticles
-  const articlesFilter =
-    articles
-      ?.filter(article => article?.locale?.includes(lang))
-      ?.filter(article => article?.title !== null && article.Key !== Key) || []
+    const [visibleArticles, setVisibleArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+ 
+    useEffect(() => {
+      setTimeout(() => setIsLoading(false), 2000);
+    }, []);
 
-  const articlesSort = articlesFilter
-    ?.sort((a, b) => {
-      return new Date(b.created_at) - new Date(a.created_at)
-    })
-    .slice(0, 8)
+    useEffect(() => {
+      const handleResize = () => {
+        const windowWidth = window.innerWidth;
+  
+        let articlesToShow = 5;
+        if (windowWidth >= 768 && windowWidth < 1024) {
+          articlesToShow = 6;
+        } else if (windowWidth >= 1024) {
+          articlesToShow = 10;
+        }
+
+        const visibleArticles = articles
+        .slice(0, articlesToShow)
+        ?.filter(article => article?.title !== null && article.Key !== Key) || []
+        setVisibleArticles(visibleArticles);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      handleResize();
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, [articles]);
 
   return (
 
@@ -192,7 +215,6 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
       }}
       pagination={{
         clickable: true,
-        //dynamicBullets: true,
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
@@ -205,20 +227,25 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
       className={bulletClass}
     >
       {
-        articlesSort.map(( el, index) => (
+        visibleArticles.map(( el, index) => (
+
         <SwiperSlide key={index} className={classes.carousel}>
           <Box className={classes.container}>
+
+          {isLoading && (
+            <Loading/>
+          )}
+          {!isLoading && (
+            
             <>
-              <Box
-                style={{ 
-                  backgroundImage: `url(${el?.image[0]?.url})`, 
-                  objectFit: "contain", 
-                  backgroundRepeat: "no-repeat", 
-                  backgroundSize: "cover", 
-                  backgroundPosition: "center", 
-                  height: "250px", 
-                  width: "310",
-                  }} />
+            <Image
+              src={el?.image[0]?.url}
+              alt="article_blog"
+              height="250px"
+              width={310}
+              quality={100}
+              priority={ false } 
+            />
 
               <Box className={classes.textContainer}>
                 <Typography className={classes.title}>
@@ -232,6 +259,7 @@ const BlogPost = ({ bulletClass, articles: AllArticles }) => {
                 </Link>
               </Box>
             </>
+          )}
           </Box>
         </SwiperSlide>
       ))}

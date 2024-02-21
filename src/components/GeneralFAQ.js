@@ -3,7 +3,7 @@ import React from 'react'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material'
 import { makeStyles } from "@mui/styles"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
 
 const GeneralFAQ = ({ generalFAQ }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <Box className={ classes.container }>

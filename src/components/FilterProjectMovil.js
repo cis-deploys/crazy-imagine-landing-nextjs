@@ -15,7 +15,7 @@ import {
 import { faSliders, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { StyleComponent } from "./StyleComponent"
 
 const FilterProjectMovil = ({ checkboxOption, setCheckboxOption }) => {

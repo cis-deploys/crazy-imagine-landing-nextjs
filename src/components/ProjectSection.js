@@ -5,15 +5,14 @@ import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
 import { StyleComponent } from "./StyleComponent"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -185,18 +184,13 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
   const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
-  const { i18n, t } = useTranslation()
-  const lang = i18n.language
+  const { t } = useTranslation()
 
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
-    project.locale.includes(lang)
-  ));
-  
+  const [isLoading, setIsLoading] = useState(true);
+ 
   useEffect(() => {
-      setProjectDataAll(projects.filter(project =>
-        project.locale.includes(lang)
-      ));
-  }, [i18n.language]);
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
 
       return (
         <Box className={classes.container}>
@@ -225,7 +219,6 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             pagination={{
               clickable: true,
             }}
-            //slidesPerView={"auto"}
             grabCursor={true}
             loop={false}
             modules={[Pagination, Keyboard]}
@@ -238,10 +231,10 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             className={bulletClass}
           >
 
-            { projectDataAll
+            { projects
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => {
-                const dataImage = el?.images[0]?.url //localFile
+                const dataImage = el?.images[0]?.url
                 const titleProject = el?.title
 
 
@@ -249,8 +242,21 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
-                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} />
-
+                    {isLoading && (
+                      <Box 
+                      sx={{ 
+                        display:"flex", 
+                        paddingTop: "50px",
+                        alignItems:'center',
+                        minWidth: "100px",
+                        minHeight: "150px",
+                        }}>
+                      <Loading/>
+                      </Box>
+                      )}
+                    {!isLoading && (
+                      <>
+                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} priority={ false }/>
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
                           {titleProject}
@@ -263,6 +269,8 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
 
                         </Link>
                       </Box>
+                      </>
+                        )}
                     </Box>
                   </SwiperSlide>
                 )

@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography, Button } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "next-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
@@ -248,7 +248,7 @@ export const SectionHeader = ({
 }) => {
   const classes = useStyles({ little, btn })
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Box className={classes.backgroundOut}>
@@ -282,6 +282,7 @@ export const SectionHeader = ({
             height={407}
             alt="Header Section"
             quality={100}
+            priority={true}
           />
         </Box>
       </Box>

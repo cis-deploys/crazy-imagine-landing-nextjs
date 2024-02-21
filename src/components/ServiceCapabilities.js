@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import React, { useRef } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Image from "next/image"
 import { useIntersection } from "../hooks/useIntersection"

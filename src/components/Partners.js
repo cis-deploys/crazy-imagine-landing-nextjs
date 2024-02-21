@@ -8,7 +8,7 @@ import EmpowerHR from "../../public/EmpowerHR-Logo.webp"
 import Sirge from "../../public/Sirge-Logo.webp"
 import orderingImage from "../../public/orderingLogo.webp"
 import piggyImage from "../../public/piggyBackLogo.webp"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { StyleComponent } from "./StyleComponent"
 
@@ -69,6 +69,7 @@ const Partners = () => {
                   height={90}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -80,6 +81,7 @@ const Partners = () => {
                   height={62}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -91,6 +93,7 @@ const Partners = () => {
                   height={85}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -102,6 +105,7 @@ const Partners = () => {
                   height={85}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
       </Box>
@@ -115,6 +119,7 @@ const Partners = () => {
                   height={66}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -126,6 +131,7 @@ const Partners = () => {
                   height={85}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
         <Box className={`${classes.containerImage}`}>
@@ -137,6 +143,7 @@ const Partners = () => {
                   height={66}
                   layout='fixed'
                   quality={100}
+                  priority={ false } 
               /> 
         </Box>
       </Box>
