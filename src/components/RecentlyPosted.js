@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
 
 const RecentlyPosted = ({ articles: AllArticles }) => {
   const classes = useStyles()
-  const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation("common")
   const lang = i18n.language 
   const router = useRouter();
   const { Key } = router.query;

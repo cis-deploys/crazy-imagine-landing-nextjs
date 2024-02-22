@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 const HomeMainSection = () => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <Box className={classes.container}>

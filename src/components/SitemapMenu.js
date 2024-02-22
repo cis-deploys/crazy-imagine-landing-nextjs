@@ -102,7 +102,7 @@ links:{
 
 const SitemapMenu = () => {
 const classes = useStyles()
-const { t } = useTranslation()
+const { t } = useTranslation("common")
 
 const formatText = (text) => {
     return text?.charAt(0).toUpperCase() + text.substring(1, text.lenght).toLowerCase();

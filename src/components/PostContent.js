@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const PostContent = ({ articles }) => {
   const classes = useStyles()
-  const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation("common")
   const lang = i18n.language
 
   return (

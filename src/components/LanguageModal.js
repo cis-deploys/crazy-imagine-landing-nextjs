@@ -155,7 +155,7 @@ const useStyles = makeStyles(theme => ({
 
 export const LanguageModal = () => {
   const classes = useStyles()
-  const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation("common")
   const router = useRouter()  
 
   const handleChange = (event) => {

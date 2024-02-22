@@ -76,7 +76,7 @@ function Mission ({ companyValue, missionPage }) {
         setMetaDescription(missionPage.data.attributes.seo?.metaDescription),
         setKeywords(missionPage.data.attributes.seo?.keywords)
         setTitle(missionPage.data.attributes.title)
-      }, [])
+      }, [missionPage])
 
 
   return (

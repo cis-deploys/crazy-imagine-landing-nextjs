@@ -105,7 +105,7 @@ const useStyles = makeStyles(theme => ({
 const ContactSection = ({ bgColor, bgImage }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Section

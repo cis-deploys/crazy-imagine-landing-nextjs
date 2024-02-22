@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ServicesSection = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const [card1Open, setCard1Open] = useState(false);
   const [card2Open, setCard2Open] = useState(false);

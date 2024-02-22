@@ -89,7 +89,7 @@ const useStyles = makeStyles(theme => ({
 const RelatedSection = ({ projects }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation("common");
     
   const [projectDataAll, setProjectDataAll] = useState(projects)
     ?.sort((a, b) => {

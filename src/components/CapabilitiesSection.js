@@ -102,7 +102,7 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <>

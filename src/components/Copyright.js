@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const Copyright = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
       <Box className={classes.copyContainer}>

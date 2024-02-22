@@ -110,7 +110,7 @@ const useStyles = makeStyles(theme => ({
 
 const HomeDescription = () => {
   const classes = useStyles()
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   
   return (
     <Box className={classes.container}>

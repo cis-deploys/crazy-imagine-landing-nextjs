@@ -214,7 +214,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MailchimpForm = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation("common");
     const classes = useStyles({})
     const classesComponent = StyleComponent()
     const schema = yup.object().shape({

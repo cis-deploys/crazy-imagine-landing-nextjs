@@ -181,7 +181,7 @@ export const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const classes = useStyles({
     scroll,
     linkVariant,

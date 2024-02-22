@@ -161,7 +161,7 @@ const useStyles = makeStyles(theme => ({
 
 const MeetTeamSection = ({members}) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   members.sort((a, b) => a.id - b.id);
 
   return (

@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme)=>({
 }))
 
 const Content404 = () => {
-    const { t } = useTranslation()
+    const { t } = useTranslation("common")
     const classes = useStyles()
 
   return (
