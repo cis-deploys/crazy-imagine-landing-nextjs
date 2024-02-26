@@ -111,7 +111,7 @@ const useStyles = makeStyles(theme => ({
 
 const Capabilities = ({ title, desc, img, cls, width, height }) => {
   const classes = useStyles()
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   return (
     <Box className={classes[cls]}>
       <Typography className={classes.subtitle2}>{t("common_button_capabilities")}</Typography>

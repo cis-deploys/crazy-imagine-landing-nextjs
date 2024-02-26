@@ -141,7 +141,7 @@ const ServiceCapabilities = ({ title, desc, img }) => {
   const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   return (
     <Box className={isVisible ? classes.conta2 : classes.conta}>
       <Box className={classes.container1}>

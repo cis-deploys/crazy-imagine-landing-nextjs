@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 
 const AboutProjects = ({ aboutProject, moreAbout, gallery, images }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <>

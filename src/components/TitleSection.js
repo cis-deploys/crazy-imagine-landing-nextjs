@@ -125,7 +125,7 @@ export const TitleSection = ({ desc }) => {
   const classesComponent = StyleComponent()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   return (
     <Box className={classes.container1}>
     <Box className={classesComponent.containerWhiteComponent}>

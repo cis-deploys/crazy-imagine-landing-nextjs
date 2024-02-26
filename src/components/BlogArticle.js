@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { BLOG } from "../navigation/sitemap"
 import Link from "next/link"
 import Image from "next/image"
@@ -157,7 +157,7 @@ const BlogArticle = ({ articles: AllArticles, articlesPagination }) => {
   const router = useRouter()
   const { query } = router
   const classesComponent = StyleComponent()
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
 
   const [isLoading, setIsLoading] = useState(true);
  

@@ -171,7 +171,7 @@ const ContactForm = () => {
   const classes = useStyles({})
   const classesComponent = StyleComponent()
   const form = useRef();
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const [typeProject, setTypeProject] = useState("")
   const [findUs, setFindUs] = useState("")
   const schema = yup.object().shape({

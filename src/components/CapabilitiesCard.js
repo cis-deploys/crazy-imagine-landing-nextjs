@@ -123,7 +123,7 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   
   return (
     <Box

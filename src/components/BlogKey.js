@@ -176,7 +176,7 @@ const useStyles = makeStyles(theme => ({
 
 const BlogKey = ({ articles, articleKey }) => {
     const classes = useStyles()
-    const { i18n, t } = useTranslation()
+    const { i18n, t } = useTranslation("common")
     const lang = i18n.language 
     
     const [projectData, setProjectData] = useState(articleKey

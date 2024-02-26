@@ -213,7 +213,7 @@ const useStyles = makeStyles(theme => ({
 export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
   const classes = useStyles({ little, btn })
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Box className={classes.backgroundOut}>

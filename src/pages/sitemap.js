@@ -20,7 +20,7 @@ const SitemapMenu = dynamic(
   };
 
   function Faq () {
-    const { t, i18n } = useTranslation()
+    const { t, i18n } = useTranslation('common')
     const router = useRouter()
 
     useEffect(() => {

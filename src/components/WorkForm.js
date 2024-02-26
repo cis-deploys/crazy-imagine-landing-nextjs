@@ -438,7 +438,7 @@ const useStyles = makeStyles(theme => ({
 const WorkForm = () => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const [fileIsLoaded, setFileIsLoaded] = useState(false)
   const [formStatus, setFormStatus] = useState("")
   const [showButton, setShowButton] = useState(false)
