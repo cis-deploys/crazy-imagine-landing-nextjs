@@ -16,7 +16,8 @@ import Background3 from "../../public/background3.svg"
 import FeatureMap from "../../public/imageFeatureMap.svg"
 import UserFlow from "../../public/imageUserFlow.svg"
 import Wireframes from "../../public/imageWireframes.svg"
-import FeatureMap2 from "../../public/featureMap.png"
+
+import FeatureMap2 from "../../public/mapFeaturesTest.webp"
 
 const useStyles = makeStyles(theme => ({
   contentPhase1: {
@@ -1077,9 +1078,8 @@ const DesignSection = () => {
           <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
             <img
               src={FeatureMap2.src}
-              width={"100%"}
-              height={"max-content"}
               alt="Images Feature Map example"
+              style={{ width: "100%" }}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
