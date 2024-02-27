@@ -38,7 +38,7 @@ const useStyes = makeStyles(theme => ({
 const ReferenceSection = ({ reviews }) => {
   const classes = useStyes()
   const classesComponent = StyleComponent()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Box className={classes.referenceContainer}>

@@ -153,7 +153,7 @@ const useStyles = makeStyles(theme => ({
 
 const BlogPost = ({ bulletClass, articles }) => {
   const classes = useStyles()
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const lang = i18n.language
   SwiperCore.use([Keyboard])
   const router = useRouter();

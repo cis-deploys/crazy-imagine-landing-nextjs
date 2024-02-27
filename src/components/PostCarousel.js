@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
 
 const PostCarousel = ({ articles }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>{t("post_postCarousel_title")}</Typography>

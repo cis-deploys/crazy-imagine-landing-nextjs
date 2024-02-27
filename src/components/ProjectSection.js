@@ -184,7 +184,7 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
   const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const [isLoading, setIsLoading] = useState(true);
  

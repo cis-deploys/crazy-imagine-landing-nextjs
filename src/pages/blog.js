@@ -92,7 +92,7 @@ const Blog = ({ articles, blogpage }) => {
     setMetaDescription(blogpage.data?.attributes.seo?.metaDescription),
     setKeywords(blogpage.data?.attributes.seo?.keywords)
     setTitle(blogpage.data?.attributes.title)
-  }, [])
+  }, [blogpage])
 
   return (
     <Layout >

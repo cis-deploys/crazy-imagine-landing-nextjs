@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme)=>({
 }))
 
 const Content404 = () => {
-    const { t } = useTranslation()
+    const { t } = useTranslation("common")
     const classes = useStyles()
 
   return (

@@ -183,7 +183,7 @@ export const NavbarMobile = ({
   const [open, setOpen] = useState(false)
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const handleDrawerOpen = () => {
     setOpen(true)

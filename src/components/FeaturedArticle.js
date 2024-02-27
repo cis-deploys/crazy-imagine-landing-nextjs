@@ -248,7 +248,7 @@ const FeaturedArticle = ({ articles }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
 
   const [isLoading, setIsLoading] = useState(true);
  

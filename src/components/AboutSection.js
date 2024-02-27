@@ -154,7 +154,7 @@ const useStyles = makeStyles(theme => ({
 
 const AboutSection = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const elements = [
     // {

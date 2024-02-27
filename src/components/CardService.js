@@ -87,7 +87,7 @@ const CardService = ({ icon, title, contentList }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
   const ref = useRef()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
   

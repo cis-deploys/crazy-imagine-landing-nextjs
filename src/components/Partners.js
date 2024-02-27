@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 const Partners = () => {
     const classes = useStyles()
     const classesComponent = StyleComponent()
-    const { t } = useTranslation();
+    const { t } = useTranslation("common");
 
   return (
     <Box className={classes.section}>
