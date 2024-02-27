@@ -186,8 +186,6 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   SwiperCore.use([Keyboard])
   const { t } = useTranslation("common")
 
-  const [isLoading, setIsLoading] = useState(true)
-
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000)
   }, [])

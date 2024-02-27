@@ -19,7 +19,7 @@ import { useTranslation } from 'next-i18next'
 import { StyleComponent } from "./StyleComponent"
 
 const FilterProjectMovil = ({ checkboxOption, setCheckboxOption }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const lang = i18n.language
   const clases = StyleComponent()
 

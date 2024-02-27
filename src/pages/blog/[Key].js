@@ -112,7 +112,7 @@ const Post = ({ articles, articleKey }) => {
     setMetaDescription(articleKey.data[0]?.attributes.seo?.metaDescription),
     setKeywords(articleKey.data[0]?.attributes.seo?.keywords)
     setTitle(articleKey.data[0]?.attributes.title)
-  }, [])
+  }, [articleKey])
 
   return (
     <Layout>

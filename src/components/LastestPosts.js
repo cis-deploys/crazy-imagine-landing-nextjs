@@ -100,7 +100,7 @@ const useStyes = makeStyles(theme => ({
 const LastestPosts = ({ articlesAll }) => {
   const classes = useStyes()
   const classesComponent = StyleComponent()
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation("common");
 
   return (
     <Box className={classes.container}>

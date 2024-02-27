@@ -405,7 +405,7 @@ function formatMonthYear(date, lang) {
 const CarCategoryReview = ({ review, index }) => {
   const classes = useStyles()
   const classesComponent = StyleComponent()
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
   const currentLanguage = i18n.language
 
   const renderInfoProject = () => {

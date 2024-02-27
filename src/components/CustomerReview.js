@@ -238,7 +238,7 @@ const useStyles = makeStyles(theme => ({
 const CustomerReview = ({ reviews, bulletClass }) => {
   const classes = useStyles()
   SwiperCore.use([Keyboard])
-  const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation("common")
   const lang = i18n.language
 
   const handleTextLimits = (text, maxWords) => {

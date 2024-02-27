@@ -151,7 +151,7 @@ const RelatedProjects = ({ title, btn, size, projects, bulletClass }) => {
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
   SwiperCore.use([Keyboard])
-  const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation("common")
   const router = useRouter();
   const { Key } = router.query;
 

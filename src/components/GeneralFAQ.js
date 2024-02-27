@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
 
 const GeneralFAQ = ({ generalFAQ }) => {
   const classes = useStyles()
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('common')
 
   return (
     <Box className={ classes.container }>
