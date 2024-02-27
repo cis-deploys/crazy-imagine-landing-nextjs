@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
 import { theme } from "../theme"
+import Layout from '../components/Layout';
 
 const emptyInitialI18NextConfig = {
   i18n: {
@@ -22,7 +23,9 @@ function MyApp({ Component, pageProps }) {
 
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Layout>
         <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
 
   )

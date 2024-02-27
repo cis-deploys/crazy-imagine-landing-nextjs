@@ -3,8 +3,6 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from "next/dynamic"
 
-import Layout from "../components/Layout"
-
 import headerImage from "../../public/rocket.svg"
 import { useState } from "react"
 import { NextSeo } from "next-seo"
@@ -63,7 +61,7 @@ const WorkWithUsPage = ({ workWithUspage }) => {
     workWithUspage.data?.attributes?.images?.data[0]?.attributes?.url
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${
@@ -92,7 +90,7 @@ const WorkWithUsPage = ({ workWithUspage }) => {
       <WorkForm />
 
       {imageUrl && <Imagen imageUrl={imageUrl} />}
-    </Layout>
+    </>
   )
 }
 
