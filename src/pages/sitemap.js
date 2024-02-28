@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import dynamic from 'next/dynamic'
 
-import Layout from "../components/Layout"
 import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -32,11 +31,11 @@ const SitemapMenu = dynamic(
     }, [router.locale, i18n]);
 
   return (
-    <Layout >
+    <>
 
     <SitemapMenu/>
 
-    </Layout>
+    </>
   )
 }
 

@@ -1,9 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXTwitter, faFacebook, faYoutube, faInstagram, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
+import { faXTwitter, faFacebook, faYoutube, faInstagram, faLinkedin, faUpwork } from '@fortawesome/free-brands-svg-icons'
 import { Box } from "@mui/material"
-import UpworkIcon from "../../public/upwork_icon.webp"
-import Image from "next/image"
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -88,12 +86,8 @@ export const SocialMedia = () => {
         href="https://www.upwork.com/ag/crazyimagine"
         target="_blank"
         rel="noreferrer"
-        style={{
-          borderRadius: '5px',
-          overflow: 'hidden'
-        }}
-      >
-        <Image src={UpworkIcon} size="2x" alt='upwork-icon' className={classes.contactIcon} />
+        >
+        <FontAwesomeIcon size="2x" icon={faUpwork} className={classes.contactIcon}/>
       </a>
     </Box>
   )

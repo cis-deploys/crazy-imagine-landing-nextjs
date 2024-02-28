@@ -40,6 +40,9 @@ const useStyles = makeStyles(theme => ({
       order: 1,
     },
   },
+  image: {
+    width: "-webkit-fill-available", // Set the desired width for the images
+  },
 }))
 
 const PostContent = ({ articles }) => {
@@ -50,7 +53,11 @@ const PostContent = ({ articles }) => {
   return (
     <>
       <Box className={classes.container}>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} className={classes.content}>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} className={classes.content} components={{
+            img: ({ node, ...props }) => (
+              <img {...props} className={classes.image} />
+            ),
+          }}>
           {articles[0]?.content}
         </ReactMarkdown>
       </Box>
