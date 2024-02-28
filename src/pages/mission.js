@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 
 import MissionImage from "../../public/Mision.svg"
 import { useTranslation } from 'next-i18next'
-import Layout from '../components/Layout'
+
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -80,7 +80,7 @@ function Mission ({ companyValue, missionPage }) {
 
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
@@ -98,7 +98,7 @@ function Mission ({ companyValue, missionPage }) {
         cls="textContainer"
       />    
       <MissionComponent companyValue={ newCompanyValueArray } missionPage={ missionPage }/>
-    </Layout>
+    </>
   )
 }
 

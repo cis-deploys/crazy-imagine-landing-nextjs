@@ -1,7 +1,6 @@
 import * as React from "react"
 import dynamic from "next/dynamic"
 
-import Layout from "../components/Layout"
 import { useRouter } from "next/router"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -35,9 +34,9 @@ const NotFoundPage = () => {
   }, [router.locale, i18n]);
 
   return (
-    <Layout>
+    <>
       <Content404 />
-    </Layout>
+    </>
   )
 }
 

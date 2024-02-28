@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
-import Layout from "../components/Layout"
 
 import headerImage from "../../public/marciano.webp"
 import { NextSeo } from "next-seo"
@@ -84,7 +83,7 @@ const About = ({ members, meetTeamPage }) => {
   }, [meetTeamPage])
 
   return (
-    <Layout >
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
@@ -103,7 +102,7 @@ const About = ({ members, meetTeamPage }) => {
       />
       <MeetTeamSection members={membersNew}/>
       <ContactSection />
-    </Layout>
+    </>
   )
 }
 export default About

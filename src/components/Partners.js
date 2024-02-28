@@ -60,9 +60,9 @@ const Partners = () => {
         {t("home_partners_title")}
       </Typography>
       <Box className={classes.container}>
-        <Box className={`${classes.containerImage}`}>
+        <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={littleImage}
                   alt='Little Taller logo'
                   width={150}
@@ -72,9 +72,9 @@ const Partners = () => {
                   priority={ false } 
               /> 
         </Box>
-        <Box className={`${classes.containerImage}`}>
+        <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={orderingImage}
                   alt='Ordering Logo'
                   width={279}
@@ -84,9 +84,9 @@ const Partners = () => {
                   priority={ false } 
               /> 
         </Box>
-        <Box className={`${classes.containerImage}`}>
+        <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={motorennImage}
                   alt='Motorenn logo'
                   width={85}
@@ -96,9 +96,9 @@ const Partners = () => {
                   priority={ false } 
               /> 
         </Box>
-        <Box className={`${classes.containerImage}`}>
+        <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={piggyImage}
                   alt='Piggyback logo'
                   width={71}
@@ -110,9 +110,9 @@ const Partners = () => {
         </Box>
       </Box>
       <Box className={classes.container}>
-        <Box className={`${classes.containerImage}`}>
+      <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={clientifyImage}
                   alt='Clientify logo'
                   width={280}
@@ -122,9 +122,9 @@ const Partners = () => {
                   priority={ false } 
               /> 
         </Box>
-        <Box className={`${classes.containerImage}`}>
+        <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={EmpowerHR}
                   alt='EmpowerHR logo'
                   width={280}
@@ -134,9 +134,9 @@ const Partners = () => {
                   priority={ false } 
               /> 
         </Box>
-        <Box className={`${classes.containerImage}`}>
+        <Box className={classes.containerImage}>
               <Image
-                  className={`${classes.logo}`}
+                  className={classes.logo}
                   src={Sirge}
                   alt='Sirge logo'
                   width={280}
