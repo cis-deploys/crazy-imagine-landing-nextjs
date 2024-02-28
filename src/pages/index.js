@@ -58,7 +58,7 @@ export async function getServerSideProps({ locale }) {
   const resArticles = await fetch(`${domain}articles?locale=${locale}&pagination[limit]=8&sort[0]=createdAt:desc&populate=category&populate=author&populate=image&populate=seo`)
   const articles = await resArticles.json()
 
-  const resReviews = await fetch(`${domain}reviews?locale=${locale}&pagination[limit]=10&sort[0]=createdAt:desc&populate=avatar`)
+  const resReviews = await fetch(`${domain}reviews?locale=${locale}&pagination[limit]=8&sort[0]=createdAt:desc&populate=avatar`)
   const reviews = await resReviews.json()
 
   const resHomepage = await fetch(`${domain}home-page?locale=${locale}&populate=seo&populate=hero`)
