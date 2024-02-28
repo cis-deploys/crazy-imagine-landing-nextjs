@@ -94,7 +94,7 @@ const About = ({ members, meetTeamPage }) => {
   }, [meetTeamPage])
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${
@@ -122,7 +122,7 @@ const About = ({ members, meetTeamPage }) => {
       />
       <MeetTeamSection members={membersNew} />
       {/* <ContactSection /> */}
-    </Layout>
+    </>
   )
 }
 export default About
