@@ -90,6 +90,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "10px",
     padding: "10px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    minHeight: "88px",
   },
   name: {
     fontWeight: 700,
@@ -100,7 +101,7 @@ const useStyles = makeStyles(theme => ({
   },
   role: {
     fontWeight: 400,
-    fontFamily: "Nexa",
+    fontFamily: "HindVadodara",
     fontSize: "16px",
     lineHeight: "19px",
     color: "#193174",
@@ -113,9 +114,9 @@ const useStyles = makeStyles(theme => ({
   },
   gridItem: {
     padding: theme.spacing(2),
-    [theme.breakpoints.down("sm")]: {
-      padding: theme.spacing(1),
-    },
+    // [theme.breakpoints.down("sm")]: {
+    //   padding: theme.spacing(1),
+    // },
   },
   boxContentCardBack1: {
     paddingTop: "32px",
@@ -132,27 +133,42 @@ const useStyles = makeStyles(theme => ({
     color: "#A4A4A6",
     whiteSpace: "break-spaces",
     letterSpacing: "0.02rem",
+    [theme.breakpoints.down(475)]: {
+      fontSize: "12px",
+      lineHeight:"12px"
+    
+    },
   },
 }))
 
 const MeetTeamSection = ({ members }) => {
   // Ordenar los miembros, colocando primero al CEO y luego al COO
   const sortedMembers = [...members].sort((a, b) => {
-    if (a.role === "Founder and Chief Executive Officer") return -1
-    if (b.role === "Founder and Chief Executive Officer") return 1
-    if (a.role === "Chief Operating Officer") return -1
-    if (b.role === "Chief Operating Officer") return 1
+    if (
+      a.role === "Founder and Chief Executive Officer" ||
+      a.role === "Fundador y Director Ejecutivo"
+    )
+      return -1
+    if (
+      b.role === "Founder and Chief Executive Officer" ||
+      b.role === "Fundador y Director Ejecutivo"
+    )
+      return 1
+    if (
+      a.role === "Chief Operating Officer" ||
+      a.role === "Director de Operaciones"
+    )
+      return -1
+    if (
+      b.role === "Chief Operating Officer" ||
+      b.role === "Director de Operaciones"
+    )
+      return 1
     return a.name.localeCompare(b.name)
   })
   const classes = useStyles()
   const [flippedStates, setFlippedStates] = useState({})
 
-  // const handleClick = id => {
-  //   setFlippedStates(prevState => ({
-  //     ...prevState,
-  //     [id]: !prevState[id],
-  //   }))
-  // }
   const handleMouseEnter = id => {
     setFlippedStates(prevState => ({
       ...prevState,
@@ -181,7 +197,7 @@ const MeetTeamSection = ({ members }) => {
             key={member.id}
             xs={12}
             sm={6}
-            md={3}
+            md={6}
             lg={3}
           >
             <Box>
@@ -236,7 +252,6 @@ const MeetTeamSection = ({ members }) => {
                             width: "100%",
                             height: "100%",
                             backgroundColor: "#fff",
-                            borderRadius: 4,
                             display: "flex",
                             alignItems: "flex-start",
                             justifyContent: "flex-start",

@@ -444,8 +444,8 @@ export const StyleComponent = makeStyles(theme => ({
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
       fontWeight: "400",
-      fontSize: "14px",
-      padding: "14px 20px 12px 20px",
+      fontSize: "12px",
+      padding: "14px 32px 12px 32px",
       lineHeight: "14px",
       display: "flex",
       alignItems: "center",
@@ -456,24 +456,26 @@ export const StyleComponent = makeStyles(theme => ({
     [theme.breakpoints.between(1920, 4000)]: {
       borderRadius: "100px",
       "& > span": {
-        fontSize: "17px",
+        fontSize: "14px",
         lineHeight: "10px",
-        padding: "15px 17px 15px 17px",
+        padding: "15px 24px 15px 24px",
+        whiteSpace: "nowrap",
       },
     },
     [theme.breakpoints.between(960, 1919)]: {
       borderRadius: "100px",
       "& > span": {
-        fontSize: "15px",
+        fontSize: "12px",
         lineHeight: "14px",
-        padding: "10px 14px 8px 14px",
+        padding: "10px 32px 8px 32px",
+        whiteSpace: "nowrap",
       },
     },
     [theme.breakpoints.between(0, 959)]: {
       borderRadius: "100px",
       "& > span": {
         fontSize: "10px",
-        lineHeight: "14px",
+        lineHeight: "12px",
         padding: "10px 14px 8px 14px",
       },
     },

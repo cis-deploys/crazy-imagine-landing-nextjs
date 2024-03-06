@@ -55,10 +55,6 @@ const About = ({ members, meetTeamPage }) => {
     }
   }, [router.locale, i18n])
 
-  const button = {
-    refID: "contactSection",
-    text: t("common_button_SCHEDULE_A_CALL"),
-  }
   const [metaTitle, setMetaTitle] = useState()
   const [metaDescription, setMetaDescription] = useState()
   const [keywords, setKeywords] = useState()
@@ -119,8 +115,8 @@ const About = ({ members, meetTeamPage }) => {
         btn={true}
         img={headerImage}
         cls="textContainer"
-        buttonRoadmap
-        button={true}
+        buttonMeet
+        buttonMeetText={t("commom_button2_contact_us")}
       />
       <MeetTeamSection members={membersNew} />
       {/* <ContactSection /> */}

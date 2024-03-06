@@ -235,6 +235,33 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  contactButtonSection2: {
+    width: "150px",
+    height: "40px",
+    background: "transparent",
+    borderRadius: "100px",
+    textDecoration: "none",
+    border: "2px solid #FFFFFF",
+
+    [theme.breakpoints.up("xl")]: {
+      width: "230px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "180px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      "& span": {
+        color: "#1E2F97",
+      },
+    },
+  },
 }))
 
 export const SectionHeader = ({
@@ -245,6 +272,8 @@ export const SectionHeader = ({
   img,
   button,
   buttonRoadmap,
+  buttonMeet,
+  buttonMeetText,
 }) => {
   const classes = useStyles({ little, btn })
   const classesComponent = StyleComponent()
@@ -258,7 +287,6 @@ export const SectionHeader = ({
             <span>{title}</span>
           </Typography>
           <Typography className={classes.desc}>{desc}</Typography>
-
           {button ? (
             <Button
               component="a"
@@ -273,6 +301,18 @@ export const SectionHeader = ({
             </Button>
           ) : (
             ""
+          )}
+
+          {buttonMeet && (
+            <>
+              <Button
+                component="a"
+                href={"contact-us"}
+                className={`${classesComponent.buttonComponent} ${classes.contactButtonSection2} `}
+              >
+                <span>{buttonMeetText}</span>
+              </Button>
+            </>
           )}
         </Box>
         <Box className={classes.imgContainer}>
