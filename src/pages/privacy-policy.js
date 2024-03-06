@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
-import Layout from "../components/Layout"
 
 import headerImage from "../../public/rocket.svg"
 import { NextSeo } from "next-seo"
@@ -52,7 +51,7 @@ const PrivacyPolicy = () => {
     }
   }, [router.locale, i18n]);
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`Crazy Imagine Software | Privacy Policy`}
         description={`Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!`}
@@ -67,7 +66,7 @@ const PrivacyPolicy = () => {
       <PrivacyPolicySection />
       <Imagen />
       <ContactSection />
-    </Layout>
+    </>
   )
 }
 

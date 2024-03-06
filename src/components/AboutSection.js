@@ -1,31 +1,33 @@
 import React from "react"
-import { Box, Grid, Typography } from "@mui/material"
 import { useTranslation } from 'next-i18next'
-import { makeStyles } from "@mui/styles"
 import Link from "next/link"
-import {
-  faDesktop,
-  faUser,
-  faUsers,
-  faCheckSquare,
-  faFileText,
-  faEnvelopeOpen,
-  faRocket,
-  faBriefcase,
-  faHandshake,
-  faBuilding,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Image from "next/image"
+
+import reference_icon from "../../public/reference_icon.webp"
+import meet_icon from "../../public/meet_icon.webp"
+import blog_icon from "../../public/blog_icon.webp"
+import faq_icon from "../../public/faq_icon.webp"
+import mission_icon from "../../public/mission_icon.webp"
+import whoWeAre_icon from "../../public/whoWeAre_icon.webp"
+import working_icon from "../../public/working_icon.webp"
+import workWithUs_icon from "../../public/workWithUs_icon.webp"
+import roadmap_icon from "../../public/roadmap_icon.webp"
+
+import { Box, Card, CardContent, Grid, Typography } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    "& .MuiCardContent-root":{
+      padding: "0px !important"
+    }
+  },
   container: {
     height: "auto",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    background: "#FFF",
-    marginBottom: '10px',
     marginTop: '50px',
+    marginLeft: '60px',
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       height: "auto",
@@ -33,121 +35,83 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       height: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      height: "auto",
+      marginLeft: "40px",
     },
   },
   containerGrids: {
-    padding: "30px",
-    margin: "6px",
-    marginTop: "20px",
-    marginBottom: "20px",
-    width: "96%",
-    position: "relative",
+    width: "100%",
   },
   gridElements: {
-    padding: "3px",
-    margin: "3px",
     marginTop: "20px",
-  },
-  icon: {
-    // fontSize: '2rem',
-    width: "35px",
-    height: "35px",
-    [theme.breakpoints.down("xl")]: {
-      // fontSize: '1.5rem',
-      width: "30px",
-      height: "30px",
+    marginLeft: "10px",
+    marginRight: "10px",
+    marginBottom: "20px",
+    alignItems: "center",
+    width: "80%",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "0px",
     },
+  },
+  card:{
+    display:"flex", 
+    backgroundColor: "#F8F8F8",
+    alignItems:'center',
+    width: "100%",
+    height: "auto",
+    padding: "24px",
+    gap: "24px",
+    alignSelf: "stretch",
+    boxShadow: "5px 5px 15px rgba(164,164,166,0.3)",
     [theme.breakpoints.down("md")]: {
-      // fontSize: '1rem',
-      width: "27px",
-      height: "27px",
+      gap: "5px"
     },
+  },
+  gridImage:{
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
-      // fontSize: '2rem',
-      width: "20px",
-      height: "20px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      // fontSize: '0.7rem',
-      width: "15px",
-      height: "15px",
+      width: "50%",
     },
   },
-  gridElementImg: {
-    padding: "5px",
-    margin: "3px",
-    textAlign: "end",
-    "& > svg": {
-      padding: "18px",
-      background: "rgb(39, 170, 225)",
-      borderRadius: "100%",
-    },
-    [theme.breakpoints.down("xl")]: {
-      padding: "2px",
-      "& > svg": {
-        padding: "10px",
-        background: "rgb(39, 170, 225)",
-        borderRadius: "100%",
-      },
-    },
-    [theme.breakpoints.between(960, 1280)]: {
-      padding: "1px",
-      "& > svg": {
-        padding: "13px",
-        background: "rgb(39, 170, 225)",
-        borderRadius: "100%",
-      },
-    },
-    [theme.breakpoints.between(600, 959)]: {
-      padding: "0px",
-      "& > svg": {
-        padding: "16px",
-        background: "rgb(39, 170, 225)",
-        borderRadius: "100%",
-      },
-    },
-    [theme.breakpoints.down("sm")]: {
-      padding: "0px",
-      "& > svg": {
-        padding: "10px",
-        background: "rgb(39, 170, 225)",
-        borderRadius: "100%",
-      },
-    },
-  },
-  gridText: {
-    marginTop: "10px",
-    fontStyle: "normal",
-    fontFamily: "HindVadodara",
-    color: "#193174",
-    display: "-webkit-box",
-    "-webkit-line-clamp": "3",
-    "-webkit-box-orient": "vertical",
-    overflow: "hidden",
-    "text-overflow": "ellipsis",
-  },
-  gridTitle: {
+  titleCard: {
     "& > a": {
-      color: "#193174",
-      fontSize: "28px",
+      color: "#081E7A",
       fontFamily: "Nexa Bold",
+      fontSize: "20px",
       fontStyle: "normal",
-      [theme.breakpoints.down("xl")]: {
-        fontSize: "25px",
+      fontWeight: "700",
+      lineHeight: "30px",
+      textDecoration: "none",
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "23px",
       },
       [theme.breakpoints.between(960, 1280)]: {
-        fontSize: "20px",
+        fontSize: "15px",
       },
       [theme.breakpoints.between(600, 959)]: {
-        fontSize: "18px",
+        fontSize: "15px",
       },
       [theme.breakpoints.down("sm")]: {
-        fontSize: "18px",
+        fontSize: "13px",
       },
+    },
+  },
+  description: {
+    color: "#A4A4A6",
+    fontFamily: "Roboto",
+    fontSize: "16px",
+    fontWeight: "400",
+    lineHeight: "19px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "18px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "12px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "10px",
+      lineHeight: "14px",
     },
   },
 }))
@@ -167,70 +131,68 @@ const AboutSection = () => {
       title: t("about_aboutSection_reference_title"),
       description: t("about_aboutSection_reference"),
       link: "/references",
-      icon: faUser,
+      iconImage: reference_icon,
     },
     {
       title: t("about_aboutSection_meetTheTeam_title"),
       description: t("about_aboutSection_meetTheTeam"),
       link: "/meet-team",
-      icon: faUsers,
+      iconImage: meet_icon,
     },
-    // {
-    //   title: "Playbook",
-    //   description: "Collaboration with our internal team as well as with our clients sets our work apart from the pack.",
-    //   link: '/play-book',
-    //   icon: faCheckSquare
-    // },
     {
       title: "Blog",
       description: t("about_aboutSection_blog"),
       link: "/blog",
-      icon: faFileText,
+      iconImage: blog_icon,
     },
     {
       title: t("about_aboutSection_faq_title"),
       description: t("about_aboutSection_faq"),
       link: '/faq',
-      icon: faEnvelopeOpen
+      iconImage: faq_icon,
     },
     {
       title: t("about_aboutSection_Mission_title"),
       description: t("about_aboutSection_Mission"),
       link: '/mission',
-      icon: faRocket
+      iconImage: mission_icon,
     },
     {
       title: t("about_aboutSection_whoWeAre_title"),
       description: t("about_aboutSection_whoWeAre"),
       link: "/",
-      icon: faBriefcase,
+      iconImage: whoWeAre_icon
     },
     // {
-    //   title: "To create more",
-    //   description: t("about_aboutSection_description2"),
-    //   link: '/to_create_more',
-    //   icon: faBuilding
+    //   title: t("about_aboutSection_Roadmap_title"),
+    //   description: t("about_aboutSection_Roadmap"),
+    //   link: '/road-map',
+    //   iconImage: roadmap_icon
     // },
     {
-      title: t("about_aboutSection_WorkinngTogether_title"),
-      description: t("about_aboutSection_WorkinngTogether"),
+      title: t("about_aboutSection_WorkingTogether_title"),
+      description: t("about_aboutSection_WorkingTogether"),
       link: "/services",
-      icon: faHandshake,
+      iconImage: working_icon,
+    },
+    {
+      title: t("about_aboutSection_WorkWithUs_title"),
+      description: t("about_aboutSection_WorkWithUs"),
+      link: '/work-with-us',
+      iconImage: workWithUs_icon,
     },
   ]
 
   return (
     <>
       <Box className={classes.container}>
-        <Box>
           <Grid container className={classes.containerGrids}>
             {elements.map(e => (
               <Grid item
-                lg={3}
-                md={4}
+                lg={4}
+                md={6}
                 sm={6}
                 xs={12}
-                style={{ padding: "5px" }}
                 key={e.title}
               >
                 <Box>
@@ -239,32 +201,33 @@ const AboutSection = () => {
                     justifyContent="space-evenly"
                     className={classes.gridElements}
                   >
-                    <Grid item
-                      lg={2}
-                      md={3}
-                      sm={2}
-                      xs={2}
-                      className={classes.gridElementImg}
+                    <Card
+                    className={`${classes.card} ${classes.root}`}
                     >
-                      <FontAwesomeIcon icon={e.icon} className={classes.icon} />
+                    <Grid item md={2} className={classes.gridImage}> 
+                    <Image src={e.iconImage} alt="icon-image" width={60} height={60}/>                     
                     </Grid>
-                    <Grid lg={9} md={8} sm={8} xs={9} item>
-                      <Typography className={classes.gridTitle}>
+
+                    <Grid item md={10}>
+                    <CardContent>
+                      <Typography className={classes.titleCard}>
                         <Link href={e.link}>
-                          <a className={``}>{e.title}</a>
+                          <a>{e.title}</a>
                         </Link>
                       </Typography>
-                      <Typography className={classes.gridText}>
+
+                      <Typography className={ classes.description}>
                         {e.description}
                       </Typography>
+                    </CardContent>
                     </Grid>
+                      </Card>
                   </Grid>
                 </Box>
               </Grid>
             ))}
           </Grid>
         </Box>
-      </Box>
     </>
   )
 }

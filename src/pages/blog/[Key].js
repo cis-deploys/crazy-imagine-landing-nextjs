@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from "next/dynamic";
 
-import Layout from "../../components/Layout";
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
@@ -115,7 +114,7 @@ const Post = ({ articles, articleKey }) => {
   }, [articleKey])
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
@@ -131,7 +130,7 @@ const Post = ({ articles, articleKey }) => {
       <LastestPosts articlesAll={ articlesNew }/>
 
       <ContactSection />
-    </Layout>
+    </>
   )
 }
 
