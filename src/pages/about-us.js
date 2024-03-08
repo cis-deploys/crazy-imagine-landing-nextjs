@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
-import headerImage from "../../public/marciano.webp"
+import headerImage from "../../public/Objects.webp"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 
@@ -74,7 +74,8 @@ const About = ({ aboutpage }) => {
       />
       <SectionHeader
         title={t("about_sectionHeader_title")}
-        btn={false}
+        desc={t("about_sectionHeader_desc")}
+        btn={true}
         img={headerImage}
         cls="textContainer"
       />
