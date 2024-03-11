@@ -251,67 +251,7 @@ export const StyleComponent = makeStyles(theme => ({
     },
   },
 
-  buttonComponent: {
-    animation: `myEffectbutton 2000ms`,
-    background: "#797EF6",
-    borderRadius: "100px",
-    "&:hover": {
-      backgroundColor: "#27AAE1",
-    },
-    "& > span": {
-      fontFamily: "Nexa Bold",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      padding: "14px 20px 12px 20px",
-      lineHeight: "14px",
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
-      letterSpacing: "0.05em",
-      color: "#FFFFFF",
-    },
-    [theme.breakpoints.between(1920, 4000)]: {
-      borderRadius: "100px",
-      "& > span": {
-        fontSize: "17px",
-        lineHeight: "10px",
-        padding: "15px 17px 15px 17px",
-      },
-    },
-    [theme.breakpoints.between(960, 1919)]: {
-      borderRadius: "100px",
-      "& > span": {
-        fontSize: "15px",
-        lineHeight: "14px",
-        padding: "10px 14px 8px 14px",
-      },
-    },
-    [theme.breakpoints.between(0, 959)]: {
-      borderRadius: "100px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "14px",
-        padding: "10px 14px 8px 14px",
-      },
-    },
-    [theme.breakpoints.between(373, 450)]: {
-      borderRadius: "100px",
-      "& > span": {
-        fontSize: "10px",
-        lineHeight: "14px",
-        padding: "5px 10px 4px 14px",
-      }
-    },
-    [theme.breakpoints.between(0, 372)]: {
-      borderRadius: "100px",
-      "& > span": {
-        fontSize: "8px",
-        lineHeight: "10px",
-        padding: "5px 10px 4px 14px",
-      }
-    }
-  },
+  
 
   "@keyframes myEffect-image-component": {
     "0%": {
@@ -448,20 +388,19 @@ export const StyleComponent = makeStyles(theme => ({
     objectFit: "contain",
     objectPosition: "center",
   },
-
   buttonComponent: {
     animation: `myEffectbutton 2000ms`,
     background: "#797EF6",
     borderRadius: "100px",
     "&:hover": {
-      backgroundColor: "#27AAE1",
-    },
+        backgroundColor: "#27AAE1",
+      },
     "& > span": {
       fontFamily: "Nexa Bold",
       fontStyle: "normal",
       fontWeight: "400",
-      fontSize: "12px",
-      padding: "14px 32px 12px 32px",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
       lineHeight: "14px",
       display: "flex",
       alignItems: "center",
@@ -471,29 +410,44 @@ export const StyleComponent = makeStyles(theme => ({
     },
     [theme.breakpoints.between(1920, 4000)]: {
       borderRadius: "100px",
-      "& > span": {
-        fontSize: "14px",
-        lineHeight: "10px",
-        padding: "15px 24px 15px 24px",
-        whiteSpace: "nowrap",
-      },
+      "& > span":  {
+          fontSize: "17px",
+          lineHeight: "10px",
+          padding: "15px 17px 15px 17px",
+        }
     },
     [theme.breakpoints.between(960, 1919)]: {
-      borderRadius: "100px",
-      "& > span": {
-        fontSize: "12px",
-        lineHeight: "14px",
-        padding: "10px 32px 8px 32px",
-        whiteSpace: "nowrap",
-      },
+        borderRadius: "100px",
+        "& > span": {
+          fontSize: "15px",
+          lineHeight: "14px",
+          padding: "10px 14px 8px 14px",
+        }
     },
     [theme.breakpoints.between(0, 959)]: {
       borderRadius: "100px",
       "& > span": {
         fontSize: "10px",
-        lineHeight: "12px",
+        lineHeight: "14px",
         padding: "10px 14px 8px 14px",
-      },
+      }
     },
+    [theme.breakpoints.between(373, 450)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "5px 10px 4px 14px",
+      }
+    },
+    [theme.breakpoints.between(0, 372)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "8px",
+        lineHeight: "10px",
+        padding: "5px 10px 4px 14px",
+      }
+    }
   },
+  
 }))
