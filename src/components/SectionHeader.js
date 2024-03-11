@@ -297,7 +297,7 @@ export const SectionHeader = ({
               <Button
                 component="a"
                 href={"contact-us"}
-                className={`${classesComponent.buttonComponent} ${classes.contactButtonSection2} `}
+                className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
               >
                 <span>{buttonMeetText}</span>
               </Button>
