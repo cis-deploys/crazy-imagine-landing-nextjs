@@ -23,8 +23,9 @@ export async function getServerSideProps({ locale }) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
 
   const resArticles = await fetch(
-    `${domain}members?members?populate=name&populate=role&populate=avatar`
+    `${domain}members?locale=${locale}&populate=name&populate=role&populate=avatar`
   )
+
   const members = await resArticles.json()
 
   const resMeetTeam = await fetch(

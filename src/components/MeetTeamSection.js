@@ -145,23 +145,23 @@ const MeetTeamSection = ({ members }) => {
   // Ordenar los miembros, colocando primero al CEO y luego al COO
   const sortedMembers = [...members].sort((a, b) => {
     if (
-      a.role === "Founder and Chief Executive Officer" ||
-      a.role === "Fundador y Director Ejecutivo"
+      a.role.toLowerCase() === "Founder and Chief Executive Officer".toLowerCase() ||
+      a.role.toLowerCase() === "Fundador y Director Ejecutivo".toLowerCase()
     )
       return -1
     if (
-      b.role === "Founder and Chief Executive Officer" ||
-      b.role === "Fundador y Director Ejecutivo"
+      b.role.toLowerCase() === "Founder and Chief Executive Officer".toLowerCase() ||
+      b.role.toLowerCase() === "Fundador y Director Ejecutivo".toLowerCase()
     )
       return 1
     if (
-      a.role === "Chief Operating Officer" ||
-      a.role === "Director de Operaciones"
+      a.role.toLowerCase() === "Chief Operating Officer".toLowerCase() ||
+      a.role.toLowerCase() === "Director de Operaciones".toLowerCase()
     )
       return -1
     if (
-      b.role === "Chief Operating Officer" ||
-      b.role === "Director de Operaciones"
+      b.role.toLowerCase() === "Chief Operating Officer".toLowerCase() ||
+      b.role.toLowerCase() === "Director de Operaciones".toLowerCase()
     )
       return 1
     return a.name.localeCompare(b.name)
@@ -190,6 +190,7 @@ const MeetTeamSection = ({ members }) => {
         justifyContent="center"
         spacing={2}
       >
+    
         {sortedMembers.map(member => (
           <Grid
             item
@@ -234,11 +235,11 @@ const MeetTeamSection = ({ members }) => {
                     <Flipped inverseFlipId={`box-${member.id}`}>
                       <Box
                         sx={{
-                          width: "100%",
+                          width: "101%",
                           height: "100%",
                           position: "absolute",
                           top: 0,
-                          left: 0,
+                          left: -1,
                           backfaceVisibility: "hidden",
                           transformStyle: "preserve-3d",
                           transition: "transform 0.5s",
