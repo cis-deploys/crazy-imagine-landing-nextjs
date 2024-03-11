@@ -295,6 +295,22 @@ export const StyleComponent = makeStyles(theme => ({
         padding: "10px 14px 8px 14px",
       },
     },
+    [theme.breakpoints.between(373, 450)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "5px 10px 4px 14px",
+      }
+    },
+    [theme.breakpoints.between(0, 372)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "8px",
+        lineHeight: "10px",
+        padding: "5px 10px 4px 14px",
+      }
+    }
   },
 
   "@keyframes myEffect-image-component": {
