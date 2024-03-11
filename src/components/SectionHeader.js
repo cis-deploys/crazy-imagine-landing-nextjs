@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography, Button, Hidden } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
@@ -166,19 +166,23 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       fontSize: "15px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "10px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
   }),
+  link: {
+    textDecoration: "none",
+    borderRadius: "100px",
+  },
   contactButton: {
     background: "#797EF6 !important",
     "&:hover": {
@@ -188,60 +192,176 @@ const useStyles = makeStyles(theme => ({
       margin: "10px",
     },
     [theme.breakpoints.between(0, 372)]: {
-      margin: "7px"
-    }
+      margin: "7px",
+    },
+  },
+  contactButtonSection: {
+    width: "150px",
+    height: "40px",
+    background: "transparent",
+    borderRadius: "100px",
+    textDecoration: "none",
+    border: "2px solid #FFFFFF",
+
+    [theme.breakpoints.up("xl")]: {
+      width: "200px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "140px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      "& span": {
+        color: "#1E2F97",
+      },
+    },
+  },
+  contactButtonSection2: {
+    width: "150px",
+    height: "40px",
+    background: "transparent",
+    borderRadius: "100px",
+    textDecoration: "none",
+    border: "2px solid #FFFFFF",
+
+    [theme.breakpoints.up("xl")]: {
+      width: "230px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "180px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      "& span": {
+        color: "#1E2F97",
+      },
+    },
   },
 }))
 
-export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
+export const SectionHeader = ({
+  title,
+  desc,
+  btn,
+  little,
+  img,
+  button,
+  buttonRoadmap,
+  buttonMeet,
+  buttonMeetText,
+}) => {
   const classes = useStyles({ little, btn })
-  const classesComponent = StyleComponent()
   const { t } = useTranslation("common")
+  const classesComponent = StyleComponent()
 
   return (
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.title} variant="h1" component="h1"><span>{title}</span></Typography>
+          <Typography className={classes.title} variant="h1" component="h1">
+            <span>{title}</span>
+          </Typography>
           <Typography className={classes.desc}>{desc}</Typography>
-          <Hidden smDown>
-          { button ? 
-            <Button component="a" href={`#${button.refID}`}
-            className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
-            >
-            <span>{button.text}</span>
-            </Button> 
-            : ''
-          }
-          </Hidden>
-        </Box>
 
+          <Hidden smDown>
+            {button ? (
+              <Button
+                component="a"
+                href={`#${button.refID}`}
+                className={`${classesComponent.buttonComponent} ${
+                  buttonRoadmap
+                    ? classes.contactButtonSection
+                    : classes.contactButton
+                } `}
+              >
+                <span>{button.text}</span>
+              </Button>
+            ) : (
+              ""
+            )}
+          </Hidden>
+          {buttonMeet && (
+            <>
+              <Button
+                component="a"
+                href={"contact-us"}
+                className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+              >
+                <span>{buttonMeetText}</span>
+              </Button>
+            </>
+          )}
+        </Box>
 
         <Hidden smDown>
-        <Box className={classes.imgContainer}>
-          <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" quality={100} priority={ true }/>
-        </Box>
+          <Box className={classes.imgContainer}>
+            <Image
+              className={classes.img}
+              src={img}
+              width={307}
+              height={407}
+              alt="Header Section"
+              quality={100}
+              priority={true}
+            />
+          </Box>
         </Hidden>
 
         <Hidden smUp>
-        <Box className={ classes.container2 }>
-          <Box style={{ display: "flex", width: "100%", height: "30%", justifyContent: "start", alignContent: "center", marginTop: "50px" }}>
-        { button ? 
-            <Button component="a" href={`#${button.refID}`}
-            className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+          <Box className={classes.container2}>
+            <Box
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "30%",
+                justifyContent: "start",
+                alignContent: "center",
+                marginTop: "50px",
+              }}
             >
-              <span>{button.text}</span>
-            </Button> 
-            : ''
-          }
+              {button ? (
+                <Button
+                  component="a"
+                  href={`#${button.refID}`}
+                  className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+                >
+                  <span>{button.text}</span>
+                </Button>
+              ) : (
+                ""
+              )}
+            </Box>
+            <Box
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Image
+                className={classes.img}
+                src={img}
+                width={170}
+                height={170}
+                alt="Header Section"
+                quality={100}
+                priority={true}
+              />
+            </Box>
           </Box>
-        <Box style={{ display: "flex", width: "100%", justifyContent: "flex-end" }}>
-          <Image className={classes.img} src={img} width={170} height={170} alt="Header Section" quality={100} priority={ true }/>
-        </Box>
-        </Box>
         </Hidden>
-
-
       </Box>
     </Box>
   )

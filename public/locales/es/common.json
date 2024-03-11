@@ -176,7 +176,8 @@
     "workWithUs_workForm_textField_button2": "ENVIAR",
     "contactUs_sectionHeader_title": "Imaginemos Juntos",
     "contactUs_sectionHeader_metaDescription": "Desarrollo de Aplicaciones Web, Desarrollo de Aplicaciones Móviles, Equipos Remotos Dedicados para Empresas. Tecnologías-Basadas en Javascript, React js, Angular js, Vue js, React Native, Ionic, y PHP.",
-    "meetTheTeam_sectionHeader_title": "Conoce Al Equipo",
+    "meetTheTeam_sectionHeader_title": "Nuestro equipo es su mayor recurso",
+    "meetTheTeam_sectionHeader_desc":"Liderando un equipo de ingenieros, desarrolladores y diseñadores de clase mundial.",
     "mission_title": "Nuestra Misión",
     "privacyPolicy_title": "Política de Privacidad",
     "privacyPolicy_sectionHeader_metaDescription": "Política de privacidad de Crazy Imagine - Desarrollo de software para empresas",
@@ -213,7 +214,9 @@
     "The reviewer":"El revisor",
     "Project Duration":"Duracion del proyecto",
     "Project Size":"Tamaño del proyecto",
-    "Project Category":"Categoria del proyecto"
+    "Project Category":"Categoria del proyecto",
+    "commom_button2_contact_us":"ponerse en contacto"
+
  
 
 

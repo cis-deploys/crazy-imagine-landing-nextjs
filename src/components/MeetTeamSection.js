@@ -1,21 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { Box, Grid, Typography } from "@mui/material"
-import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
-import TitleSection from "./TitleSection"
 import mainImage from "../../public/Group619.webp"
 import Image from "next/image"
+import { Flipper, Flipped } from "react-flip-toolkit"
 
 const useStyles = makeStyles(theme => ({
-  gridContainer:{
-    marginBottom: '70px',
-    [theme.breakpoints.down("md")]: {
-      marginBottom: '55px',
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: '25px',
-    },
-  },
   container: {
     display: "flex",
     flexDirection: "column",
@@ -80,155 +70,222 @@ const useStyles = makeStyles(theme => ({
       marginTop: "5px",
     },
   },
-  textBox:{
-    position: "absolute",
-    bottom: 0,
-    textAlign: "end",
-    paddingBottom: "30px",
-    right: "0",
+  image: {
     width: "100%",
-    [theme.breakpoints.down("md")]: {
-      textAlign: "start",
-      display: "fixed",
-      position: "realtive",
-      paddingBottom: "5px",
-      letf: "0",
-      marginTop: "10px",
-    },
-  }, 
-  textBoxLeft:{
-    position: "absolute",
-    bottom: 0,
-    textAlign: "start",
-    paddingBottom: "30px",
-    width: "100%",
-    [theme.breakpoints.down("md")]: {
-      position: "relative",
-      paddingBottom: "5px",
-      width: "100%",
-    },
+    height: "auto",
   },
-  contentLeft:{
+
+  imageContainer: {
+    width: "100%",
+    height: "auto",
     position: "relative",
-    padding: '15px', 
-    textAlign: 'end',
-    marginRight: '25px',
-    minHeight: "40px",
-    minWidth: "40px",
-    [theme.breakpoints.down("md")]: {
-      textAlign: "start",
-      marginRight: '1px',
-      padding: '2px', 
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginRight: '0px',
-      padding: '3px',
-      textAlign: "start",
-      position: "relative",
-      width: "100%",
-      height: "100%"
+    borderRadius: "10px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    overflow: "hidden",
+    marginBottom: "8px",
+    cursor: "pointer",
+  },
+  info: {
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    padding: "10px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    minHeight: "88px",
+  },
+  name: {
+    fontWeight: 700,
+    fontSize: "20px",
+    lineHeight: "30px",
+    color: "#091E7A",
+    fontFamily: "Nexa Bold",
+  },
+  role: {
+    fontWeight: 400,
+    fontFamily: "HindVadodara",
+    fontSize: "16px",
+    lineHeight: "19px",
+    color: "#193174",
+  },
+
+  gridContainer: {
+    maxWidth: "1400px",
+    margin: "auto",
+    padding: "32px",
+  },
+  gridItem: {
+    padding: theme.spacing(2),
+    // [theme.breakpoints.down("sm")]: {
+    //   padding: theme.spacing(1),
+    // },
+  },
+  boxContentCardBack1: {
+    paddingTop: "32px",
+  },
+  boxContentCardBack2: {
+    marginTop: "16px",
+  },
+  descriptionCardBackText: {
+    fontFamily: "HindVadodara",
+    fontSize: "16px",
+    lineHeight: "1.0rem",
+    textAlign: "justify",
+    fontWeight: 400,
+    color: "#A4A4A6",
+    whiteSpace: "break-spaces",
+    letterSpacing: "0.02rem",
+    [theme.breakpoints.down(475)]: {
+      fontSize: "12px",
+      lineHeight:"12px"
+    
     },
   },
-  contentRight:{
-    padding: '5px', 
-    textAlign: 'start', 
-    marginLeft: '25px',
-    position: "relative",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: '0px',
-      padding: '3px',
-    },
-  },
-  textRenponsiveRight:{
-    "@media (max-width: 959px)": {
-      display: "none",
-    },
-  },
-  textRenponsiveSmallscreen:{
-    position: "relative", 
-    marginTop: "10px",
-    marginBottom: '5px',
-    width: "100%",
-    "@media (min-width: 960px)": {
-      display: "none",
-    },
-  },
-  images: {
-  objectFit: "contain", 
-  objectPosition: "bottom",
-  }
 }))
 
-const MeetTeamSection = ({members}) => {
+const MeetTeamSection = ({ members }) => {
+  // Ordenar los miembros, colocando primero al CEO y luego al COO
+  const sortedMembers = [...members].sort((a, b) => {
+    if (
+      a.role.toLowerCase() === "Founder and Chief Executive Officer".toLowerCase() ||
+      a.role.toLowerCase() === "Fundador y Director Ejecutivo".toLowerCase()
+    )
+      return -1
+    if (
+      b.role.toLowerCase() === "Founder and Chief Executive Officer".toLowerCase() ||
+      b.role.toLowerCase() === "Fundador y Director Ejecutivo".toLowerCase()
+    )
+      return 1
+    if (
+      a.role.toLowerCase() === "Chief Operating Officer".toLowerCase() ||
+      a.role.toLowerCase() === "Director de Operaciones".toLowerCase()
+    )
+      return -1
+    if (
+      b.role.toLowerCase() === "Chief Operating Officer".toLowerCase() ||
+      b.role.toLowerCase() === "Director de Operaciones".toLowerCase()
+    )
+      return 1
+    return a.name.localeCompare(b.name)
+  })
   const classes = useStyles()
-  const { t } = useTranslation("common")
-  members.sort((a, b) => a.id - b.id);
+  const [flippedStates, setFlippedStates] = useState({})
 
+  const handleMouseEnter = id => {
+    setFlippedStates(prevState => ({
+      ...prevState,
+      [id]: true,
+    }))
+  }
+
+  const handleMouseLeave = id => {
+    setFlippedStates(prevState => ({
+      ...prevState,
+      [id]: false,
+    }))
+  }
   return (
-    <Box className={classes.container}>
-      
-      {members.map(e => (
-        <Grid container justifyContent="center" key={e.id} className={classes.gridContainer}>
-          {e.id % 2 === 0? 
-            <>
-            <Grid md={5} sm={6} item className={classes.contentLeft}>
-              <div  className={`${classes.textBox}`} >
-                <Box style={{height: '45%'}}/>
-                <Box style={{height: '55%'}}>
-                  <Typography className={classes.title2}>{e.name}</Typography>
-                  <Typography className={classes.blueTitle2} >{e.role}</Typography>
-                </Box> 
-              </div>
-            </Grid>
-            <Grid md={5} sm={6} className={classes.contentRight} item >
-              <Image
-                src={e.avatar[0] ? e.avatar[0].url: mainImage}
-                width={314}
-                height={357}
-                alt="Title"
-                quality={100}
-                className={ classes.images }
-                priority
-              />
-            </Grid>
-          </>
-        : 
-          <>
-            <Grid md={5} sm={6} className={classes.textRenponsiveSmallscreen} item >
-              <div className={classes.textBoxLeft}>
-                <Box style={{height: '45%'}}/>
-                <Box style={{height: '55%'}}>
-                  <Typography className={classes.title2}>{e.name}</Typography>
-                  <Typography className={classes.blueTitle2}>{e.role}</Typography>
-                </Box>  
-              </div>
-            </Grid> 
-            <Grid md={5} sm={6} item className={classes.contentLeft} style={{right: '0'}}>
-              <Image
-                src={e.avatar[0] ? e.avatar[0].url: mainImage}
-                width={314}
-                height={357}
-                alt="Title"
-                quality={100}
-                className={ classes.images }
-                priority
-              />
-            </Grid>
-            <Grid md={5} sm={6} item className={`${classes.contentRight} ${classes.textRenponsiveRight}`}>
-              <div className={classes.textBoxLeft}>
-                <Box style={{height: '45%'}}/>
-                <Box style={{height: '55%'}}>
-                  <Typography className={classes.title2}>{e.name}</Typography>
-                  <Typography className={classes.blueTitle2}>{e.role}</Typography>
-                </Box> 
-              </div>
-            </Grid> 
-          </>
-        }
-        </Grid>
-      ))}
-        
-      
+    <Box>
+      <Grid
+        container
+        className={classes.gridContainer}
+        justifyContent="center"
+        spacing={2}
+      >
+    
+        {sortedMembers.map(member => (
+          <Grid
+            item
+            className={classes.gridItem}
+            key={member.id}
+            xs={12}
+            sm={6}
+            md={6}
+            lg={3}
+          >
+            <Box>
+              <Flipper flipKey={JSON.stringify(flippedStates)}>
+                <Flipped flipId={`box-${member.id}`}>
+                  <Box
+                    onMouseEnter={() => handleMouseEnter(member.id)}
+                    onMouseLeave={() => handleMouseLeave(member.id)}
+                    className={classes.imageContainer}
+                  >
+                    <Flipped inverseFlipId={`box-${member.id}`}>
+                      <Box>
+                        <Image
+                          src={
+                            member.avatar[0] ? member.avatar[0].url : mainImage
+                          }
+                          alt={member.name}
+                          layout="responsive"
+                          width={300}
+                          height={350}
+                          objectFit="cover"
+                          className={classes.image}
+                        />
+                        <Box className={classes.info}>
+                          <Typography className={classes.name}>
+                            {member.name}
+                          </Typography>
+                          <Typography className={classes.role}>
+                            {member.role}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Flipped>
+                    <Flipped inverseFlipId={`box-${member.id}`}>
+                      <Box
+                        sx={{
+                          width: "101%",
+                          height: "100%",
+                          position: "absolute",
+                          top: 0,
+                          left: -1,
+                          backfaceVisibility: "hidden",
+                          transformStyle: "preserve-3d",
+                          transition: "transform 0.5s",
+                          transform: flippedStates[member.id]
+                            ? "rotateY(0deg)"
+                            : "rotateY(-180deg)",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: "100%",
+                            height: "100%",
+                            backgroundColor: "#fff",
+                            display: "flex",
+                            alignItems: "flex-start",
+                            justifyContent: "flex-start",
+                            flexDirection: "column",
+                            color: "#000",
+                            padding: "16px",
+                          }}
+                        >
+                          <Box className={classes.boxContentCardBack1}>
+                            <Typography className={classes.name}>
+                              {member.name}
+                            </Typography>
+                            <Typography className={classes.role}>
+                              {member.role}
+                            </Typography>
+                          </Box>
+                          <Box className={classes.boxContentCardBack2}>
+                            <Typography
+                              className={classes.descriptionCardBackText}
+                            >
+                              {member.cardDescription}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Flipped>
+                  </Box>
+                </Flipped>
+              </Flipper>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   )
 }
