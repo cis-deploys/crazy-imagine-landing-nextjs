@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic"
 import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
-import Layout from "../components/Layout"
 import headerImage from "../../public/references.webp"
 
 import { NextSeo } from "next-seo"
@@ -67,7 +66,7 @@ const References = ({ referencespage, reviews }) => {
   }, [referencespage])
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${
@@ -104,7 +103,7 @@ const References = ({ referencespage, reviews }) => {
             }
           }
         })}
-    </Layout>
+    </>
   )
 }
 export default References

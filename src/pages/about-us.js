@@ -3,9 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 
-import Layout from "../components/Layout"
-
-import headerImage from "../../public/marciano.webp"
+import headerImage from "../../public/Objects.webp"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 
@@ -63,7 +61,7 @@ const About = ({ aboutpage }) => {
   }, [aboutpage])
 
   return (
-    <Layout >
+    <>
       <NextSeo
         title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
         description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
@@ -76,14 +74,15 @@ const About = ({ aboutpage }) => {
       />
       <SectionHeader
         title={t("about_sectionHeader_title")}
-        btn={false}
+        desc={t("about_sectionHeader_desc")}
+        btn={true}
         img={headerImage}
         cls="textContainer"
       />
       <AboutSection />
       
       <ContactSection />
-    </Layout>
+    </>
   )
 }
 export default About
