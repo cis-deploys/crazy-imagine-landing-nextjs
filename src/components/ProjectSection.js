@@ -1,19 +1,18 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper"
 import SwiperCore, { Keyboard } from "swiper/core"
 import { PROJECTS } from "../navigation/sitemap"
 import Link from "next/link"
-import { useTranslation } from "react-i18next"
-import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
 import "swiper/css"
 import "swiper/css/pagination"
 import 'swiper/swiper-bundle.css';
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -22,58 +21,72 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    [theme.breakpoints.up("xl")]: {
-      height: "900px",
+    [theme.breakpoints.between(3000, 4000)]: {
+      height: "800px",
+      padding: "10px 200px",
+    }, 
+    [theme.breakpoints.between(2301, 2999)]: {
+      height: "780px",
+      padding: "10px 205px",
+    },   
+    [theme.breakpoints.between(1920, 2300)]: {
+      height: "780px",
       padding: "10px 48px",
     },
-    [theme.breakpoints.up("lg")]: {
-      height: "750px",
+    [theme.breakpoints.between(1700, 1919)]: {
+      height: "700px",
+      padding: "10px 48px",
+    },
+    [theme.breakpoints.between(1280, 1700)]: {
+      height: "600px",
       padding: "10px 48px",
     },
     [theme.breakpoints.down("lg")]: {
-      height: "670px",
+      height: "600px",
       padding: "20px 40px",
     },
     [theme.breakpoints.down("md")]: {
-      height: "550px",
-      padding: "30px 43px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "580px",
+      height: "520px",
       padding: "0px 43px",
     },
-    [theme.breakpoints.down("xs")]: {
-      height: "480px",
+    [theme.breakpoints.between(381, 470)]: {
+      height: "500px",
+      padding: "0px 43px",
+    },
+    [theme.breakpoints.between(0, 380)]: {
+      height: "500px",
       padding: "0px 43px",
     },
   },
   carouselContainer: {
-    boxShadow: "5px 5px 5px 5px rgba(0, 0, 0, 0.1)",
+    boxShadow: "2px 3px 12px 2px rgba(0, 0, 0, 0.1)",
     borderRadius: "14px",
     width: "max-content",
     height: "fit-content",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.up("xl")]: {
-      width: "450px",
-      height: "320px"
+    [theme.breakpoints.between(1951, 4000)]: {
+      width: "500px",
+      height: "410px"
     },
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.between(1501, 1950)]: {
+      width: "450px",
+      height: "350px"
+    },
+    [theme.breakpoints.between(1280, 1500)]: {
       width: "450px",
       height: "300px"
     },
     [theme.breakpoints.down("lg")]: {
       width: "360px",
-      height: "240px"
+      height: "250px"
     },
     [theme.breakpoints.down("md")]: {
-      marginTop: "40px",
       width: "350px",
       height: "260px"
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "20px",
       width: "350px",
       height: "260px",
     },
@@ -82,8 +95,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa Bold",
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "24px",
-    lineHeight: "24px",
+    fontSize: "20px",
+    lineHeight: "20px",
     color: "#193174",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
@@ -131,26 +144,23 @@ const useStyles = makeStyles(theme => ({
     },
   },
   slide: {
-    height: "600px",
+    height: "550px",
     alignItems: "center",
     transform: "scale(1)",
-    [theme.breakpoints.between(1281, 3000)]: {
-      height: "auto",
+    [theme.breakpoints.between(1281, 1920)]: {
+      height: "430px",
     },
-    [theme.breakpoints.between(1201, 1280)]: {
-      height: "270px",
-    },
-    [theme.breakpoints.between(901, 1200)]: {
-      height: "240px",
+    [theme.breakpoints.between(901, 1280)]: {
+      height: "380px",
     },
     [theme.breakpoints.between(550, 900)]: {
-      height: "270px",
+      height: "360px",
     },
     [theme.breakpoints.between(400, 549)]: {
-      height: "350px",
+      height: "370px",
     },
     [theme.breakpoints.between(200, 400)]: {
-      height: "270px",
+      height: "360px",
     },
   },
   textContainer: {
@@ -159,10 +169,6 @@ const useStyles = makeStyles(theme => ({
     gap: "26px",
     padding: "28px 0 38px 28px",
     backgroundColor: "white",
-    [theme.breakpoints.up("xl")]: {
-      gap: "20px",
-      padding: "20px 0 27px 20px",
-    },
     [theme.breakpoints.down("lg")]: {
       gap: "15px",
       padding: "20px 0 27px 20px",
@@ -176,25 +182,19 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
   const classes = useStyles({ btn })
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
+  const classesComponent = StyleComponent()
   SwiperCore.use([Keyboard])
-  const { i18n, t } = useTranslation()
-  const lang = i18n.language
+  const { t } = useTranslation("common")
 
-  const [projectDataAll, setProjectDataAll] = useState(projects.filter(project =>
-    project.locale.includes(lang)
-  ));
-  
+  const [isLoading, setIsLoading] = useState(true);
+ 
   useEffect(() => {
-      setProjectDataAll(projects.filter(project =>
-        project.locale.includes(lang)
-      ));
-  }, [i18n.language]);
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
 
       return (
-        <Box ref={ref} className={classes.container}>
-          <Typography className={isVisible ? 'title-blue' : 'title'}>
+        <Box className={classes.container}>
+          <Typography className={classesComponent.titleBlue} style={{ marginTop: "30px"}}>
             {title}
           </Typography>
           <Swiper
@@ -213,16 +213,15 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                 slidesPerView: 4,
               },
               1920: {
-                slidesPerView: 5,
-              }
+                slidesPerView: 4,
+              },
             }}
             pagination={{
               clickable: true,
             }}
-            slidesPerView={"auto"}
             grabCursor={true}
-            loop={true}
-            modules={[Pagination]}
+            loop={false}
+            modules={[Pagination, Keyboard]}
             style={{
               width: "100%",
               boxSizing: "content-box",
@@ -232,10 +231,10 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
             className={bulletClass}
           >
 
-            { projectDataAll
+            { projects
               ?.filter((project) => project.title !== null )
               ?.map((el, index) => {
-                const dataImage = el?.images[0]?.url //localFile
+                const dataImage = el?.images[0]?.url
                 const titleProject = el?.title
 
 
@@ -243,36 +242,51 @@ const ProjectSection = ({ title, btn, size, projects, bulletClass }) => {
                   <SwiperSlide key={index} className={classes.slide}>
                     <Box className={classes.carouselContainer}>
 
-                      <Image src={dataImage} alt={title} width={310} height="200px"/>
-
+                    {isLoading && (
+                      <Box 
+                      sx={{ 
+                        display:"flex", 
+                        paddingTop: "50px",
+                        alignItems:'center',
+                        minWidth: "100px",
+                        minHeight: "150px",
+                        }}>
+                      <Loading/>
+                      </Box>
+                      )}
+                    {!isLoading && (
+                      <>
+                      <Image src={dataImage} alt={title} width={350} height="250px" quality={100} priority={ false }/>
                       <Box className={classes.textContainer}>
                         <Typography className={classes.titleCarousel}>
                           {titleProject}
                         </Typography>
                         <Link href={`${PROJECTS}/[Key].js`} as={`${PROJECTS}/${el?.Key}`} >
 
-                          <a className={classes.link}>
+                          <a className={classes.link} >
                           {t("common_projectSection_button_viewProject")}
                           </a>
 
                         </Link>
                       </Box>
+                      </>
+                        )}
                     </Box>
                   </SwiperSlide>
                 )
               })}
-            {btn && (
-              <Link href={`${PROJECTS}`} >
-
-                <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "45px" }}>   
-                <Button className={'button-component'}>
-                  <span>{t("home_projectSection_button")}</span>
-                </Button>
-                </a>
-
-              </Link>
-            )}
           </Swiper>
+              {btn && (
+                <Link href={`${PROJECTS}`} >
+  
+                  <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "10px" }}>   
+                  <Button className={classesComponent.buttonComponent}>
+                    <span>{t("home_projectSection_button")}</span>
+                  </Button>
+                  </a>
+  
+                </Link>
+              )}
         </Box>
       )
 }

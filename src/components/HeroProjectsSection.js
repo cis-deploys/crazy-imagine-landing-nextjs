@@ -12,18 +12,15 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     padding: "45px 0px",
-    marginTop: "90px",
+    marginTop: "30px",
     maxHeight: "850px",
     width: '100%',
     height: '100%',
     [theme.breakpoints.down("md")]: {
-      padding: "25px 43px",
+      padding: "10px 43px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "25px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      padding: "25px 15px",
+      padding: "10px 35px",
     },
   },
 }))

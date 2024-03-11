@@ -1,16 +1,21 @@
 /** @type {import('next').NextConfig} */
 const withOptimizedImages = require('next-optimized-images');
 
+const { i18n } = require('./next-i18next.config');
+
 const nextConfig = {
   reactStrictMode: true,
-  // swcMinify: true,
   env: {
     NEXT_PUBLIC_CRAZY_STRAPI_URL: process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL,
   },
   images: {
     domains: ['blogadmin.s3.amazonaws.com'],
   },
-
+  i18n,
+  compiler: {
+    styledComponents: true,
+  },
+  swcMinify: true,
 }
 
 module.exports = withOptimizedImages({

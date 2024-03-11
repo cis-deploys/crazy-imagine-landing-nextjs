@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faEnvelopeOpen, faPhone } from "@fortawesome/free-solid-svg-icons"
 import { Box,  Typography } from "@mui/material"
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
-import { HOME, PROJECTS, WORK_WITH_US, ABOUT, CONTACT, SERVICES, BLOG } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { HOME, PROJECTS, WORK_WITH_US, ABOUT, CONTACT, SERVICES, BLOG, SITEMAP, SITEMA } from "../navigation/sitemap"
+import { useTranslation } from 'next-i18next'
 import { SocialMedia } from "./SocialMedia"
 import Copyright from "./Copyright"
 import Image from "next/image" 
@@ -71,12 +71,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "left",
     justifyContent: "center",
     height: "100%",
-    [theme.breakpoints.between(326, 450)]: {
+    [theme.breakpoints.between(371, 450)]: {
       width: "max-content",
       padding: "14px 4px 10px 4px",
     },
-    [theme.breakpoints.between(0, 325)]: {
-      width: "250px",
+    [theme.breakpoints.between(0, 370)]: {
+      width: "220px",
       padding: "14px 4px 10px 4px",
     },
 
@@ -130,8 +130,8 @@ const useStyles = makeStyles(theme => ({
       fontSize: "14px",
     },
     [theme.breakpoints.between(0, 450)]: {
-      fontSize: "14px",
-      maxWidth: "300px"
+      fontSize: "13px",
+      maxWidth: "270px"
     },
   },
   info: {
@@ -163,7 +163,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Nexa",
     fontWeight: "700",
     lineHeight: "16px",
-    fontSize: "14px",
+    fontSize: "13px",
     textDecoration: "none",
     position: "relative",
     "&::before, &::after": {
@@ -183,7 +183,7 @@ const useStyles = makeStyles(theme => ({
 
 const Footer = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   const formatText = (text) => {
     return text?.charAt(0).toUpperCase() + text.substring(1, text.lenght).toLowerCase();
@@ -221,16 +221,13 @@ const Footer = () => {
             />
             <Box style={{ flexDirection: "column", }}>
               <Typography className={classes.infoTypography}>
-                {t("home_footer_direction1")}
-              </Typography>
-              <Typography className={classes.infoTypography}>
-                {t("home_footer_direction2")}
-              </Typography>
-              <Typography className={classes.infoTypography}>
-                {t("home_footer_direction3")}
+                {"1786 Smarts Rule St. kissimmee"}
               </Typography>
             </Box>
         </Box>
+        <Typography className={classes.infoTypography}>
+                {"Florida 34744"}
+              </Typography>
           <Box className={classes.info}>
             <FontAwesomeIcon
               icon={faEnvelopeOpen}
@@ -248,7 +245,7 @@ const Footer = () => {
               size="1x"
             />
             <Typography className={classes.infoTypography}>
-              +13203229488
+            +1 (320) 322-9488
             </Typography>
           </Box>
           </Box>
@@ -259,7 +256,7 @@ const Footer = () => {
           <Typography className={classes.titleTypography}>
            {t("home_footer_socialMedia")}
           </Typography>
-            <Box maxWidth={200}>
+            <Box>
             <SocialMedia/>
             </Box>
           </Box>
@@ -315,6 +312,14 @@ const Footer = () => {
               <Link href={`${CONTACT}`} >
                 <a className={classes.infoTypography}>
                 {formatText(t("home_footer_button_contact"))}
+                </a>
+              </Link>
+          </Typography>
+
+          <Typography style={{ textTransform: "capitalize" }}>
+              <Link href={`${SITEMAP}`} >
+                <a className={classes.infoTypography}>
+                {formatText(t("home_footer_button_sitemap"))}
                 </a>
               </Link>
           </Typography>

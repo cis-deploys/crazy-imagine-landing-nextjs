@@ -1,26 +1,34 @@
-import { I18nextProvider } from "react-i18next"
-import { CssBaseline, ThemeProvider } from "@mui/material"
+import { appWithTranslation } from 'next-i18next';
+import nextI18NextConfig from '../../next-i18next.config';
 
 import "../styles/globals.css"
-import "../styles/Swiper.module.css"
-import "../styles/swiper-bullet.module.css"
+import { CssBaseline, ThemeProvider } from "@mui/material"
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
-import i18n from "../../i18n"
 import { theme } from "../theme"
+import Layout from '../components/Layout';
+
+const emptyInitialI18NextConfig = {
+  i18n: {
+    defaultLocale: nextI18NextConfig.i18n.defaultLocale,
+    locales: nextI18NextConfig.i18n.locales,
+  },
+};
 
 function MyApp({ Component, pageProps }) {
   return (
-    <I18nextProvider i18n={i18n}>
+
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Layout>
         <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
-    </I18nextProvider>
+
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp, emptyInitialI18NextConfig);

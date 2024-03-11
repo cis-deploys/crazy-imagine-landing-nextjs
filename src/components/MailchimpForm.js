@@ -1,14 +1,14 @@
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { Box,  Typography, TextField, Button } from "@mui/material"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { makeStyles } from "@mui/styles";
-import { useTranslation } from "react-i18next"
-import { useIntersection } from "../hooks/useIntersection"
+import { useTranslation } from 'next-i18next'
 import Swal from "sweetalert2"
 import axios from "axios"
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,9 +57,6 @@ const useStyles = makeStyles(theme => ({
       
     },
   },
-  subTitleMail: {
-    visibility: "hidden",
-  },
   subTitleMail2: {
     animation: `$myEffectSubTitleMail 2000ms`,
     color: "#FFFFFF",
@@ -68,29 +65,26 @@ const useStyles = makeStyles(theme => ({
     fontSize: "19px",
     fontWeight: "400",
     lineHeight: "18px",    
-    marginBottom: "50px",
+    marginBottom: "40px",
     textAlign: "center",
-    padding: "0 50px",
+    padding: "10px 40px",
+    width: "600px",
     [theme.breakpoints.up("xl")]: {
       fontSize: "25px",
       lineHeight: "20px",
-      marginBottom: "40px",
+      width: "800px",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "16px",
-      marginBottom: "40px",
+      marginBottom: "20px",
+      width: "600px",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
-      lineHeight: "16px",
-      marginBottom: "40px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "8px",
-      lineHeight: "10px",
-      marginBottom: "30px",
-      padding: "0 15px",
+      fontSize: "12px",
+      lineHeight: "14px",
+      marginBottom: "10px",
+      width: "300px",
     },
   },
   inputContainer: {
@@ -100,10 +94,11 @@ const useStyles = makeStyles(theme => ({
     padding: "50px",
     borderRadius: "30px",
     flexDirection: "column",
+    height: "270px",
     [theme.breakpoints.up("xl")]: {
       width: "100%",
       margin: "auto",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     [theme.breakpoints.down("md")]: {
       width: "90%",
@@ -113,21 +108,21 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between(376, 450)]: {
       width: "auto",
-      padding: "70px",
+      padding: "50px",
       flexDirection: "column",
-      height: "370px"
+      height: "330px"
     },
     [theme.breakpoints.between(326, 376)]: {
       width: "auto",
       padding: "50px",
       flexDirection: "column",
-      height: "350px"
+      height: "320px"
     },
     [theme.breakpoints.between(0, 325)]: {
       width: "auto",
       padding: "30px",
       flexDirection: "column",
-      height: "320px"
+      height: "300px"
     },
   },
 
@@ -136,8 +131,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    padding: "50px 0",
-    backgroundImage: `url('/background.svg')`,
+    padding: "30px 0",
+    backgroundImage: `url('/background.webp')`,
     backgroundSize: "cover",
     backgroundRepeat: "norepeat",
     backgroundPosition: "center",
@@ -219,10 +214,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MailchimpForm = () => {
-    const ref = useRef()
-    const isVisible = useIntersection(ref, "0px")
-    const { t } = useTranslation();
+    const { t } = useTranslation("common");
     const classes = useStyles({})
+    const classesComponent = StyleComponent()
     const schema = yup.object().shape({
         name: yup.string().required(t("home_contacSection_contactForm_schemaYup_name")),
         email: yup.string().email(t("home_contacSection_contactForm_schemaYup_email1")).required(t("home_contacSection_contactForm_schemaYup_email2")),
@@ -269,11 +263,11 @@ const MailchimpForm = () => {
   }
 
   return (
-    <Box ref={ref} className={classes.containerForm}>
-        <Typography className={isVisible ? 'title-white' : 'title'}>
+    <Box className={classes.containerForm}>
+        <Typography className={classesComponent.titleWhite} >
           {t("home_mailChimp_title")}
         </Typography>
-        <Typography className={isVisible ? classes.subTitleMail2 : classes.subTitleMail}>
+        <Typography className={classes.subTitleMail2}>
           {t("home_mailChimp_subTitle")}
         </Typography>
       <form onSubmit={handleSubmit(submit)}>
@@ -317,7 +311,7 @@ const MailchimpForm = () => {
           <a style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}>
           <Button
             type="submit"
-            className={'button-component'}
+            className={classesComponent.buttonComponent}
           >
             <span>{t("home_mailChimp_button")}</span>
           </Button>

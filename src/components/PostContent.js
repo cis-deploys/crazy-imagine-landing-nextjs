@@ -1,7 +1,7 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import { Box } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import rehypeRaw from "rehype-raw"
 import { makeStyles } from "@mui/styles"
 
@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     width: "60%",
+    [theme.breakpoints.up("xl")]: {
+      width: "70%",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
@@ -36,22 +39,25 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
       order: 1,
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-      order: 1,
-    },
+  },
+  image: {
+    width: "-webkit-fill-available", // Set the desired width for the images
   },
 }))
 
 const PostContent = ({ articles }) => {
   const classes = useStyles()
-  const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation("common")
   const lang = i18n.language
 
   return (
     <>
       <Box className={classes.container}>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} className={classes.content}>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} className={classes.content} components={{
+            img: ({ node, ...props }) => (
+              <img {...props} className={classes.image} />
+            ),
+          }}>
           {articles[0]?.content}
         </ReactMarkdown>
       </Box>

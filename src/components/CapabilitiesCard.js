@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material"
 import { PROJECTS } from "../navigation/sitemap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 
@@ -123,7 +123,7 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   
   return (
     <Box
@@ -136,7 +136,6 @@ export const CapabilitiesCard = ({ icon, title, desc }) => {
       <Link
         href={`${PROJECTS}`}
         className={classes.link}
-        
       >
         {t("common_capabilities_button_services")}
       </Link>

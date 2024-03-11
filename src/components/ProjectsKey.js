@@ -3,10 +3,9 @@ import { Box, Typography } from "@mui/material"
 import HeroProjectsSection from "./HeroProjectsSection"
 import AboutProjects from "./AboutProjects"
 import GalleryProjects from "./GalleryProjects"
-
 import RelatedSection from "./RelatedSection"
 import ContactSection from "./ContactSection"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router"
 
@@ -50,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "22px",
     lineHeight: "31px",
     color: "#27AAE1",
-    marginBottom: "99px",
+    marginBottom: "10px",
     [theme.breakpoints.down("md")]: {
       fontSize: "15px",
       lineHeight: "22px",
@@ -58,7 +57,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   header: {
-    height: "330px",
     width: "80%",
     paddingTop: "60px",
     margin: "70px auto 0px auto",
@@ -69,27 +67,23 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ProjectsKey = ({projects, projectsAll}) => {
+const ProjectsKey = ({projectKey, projects}) => {
     const classes = useStyles()
-    const { i18n, t } = useTranslation()
-    const lang = i18n.language 
+    const { i18n, t } = useTranslation('common')
     const router = useRouter();
     const { Key } = router.query;
-    const [projectData, setProjectData] = useState(projects
-      ?.filter( project => project?.Key === Key && project?.Key !== null)
-      ?.filter( projects => projects?.locale?.includes(lang)) || []);
+    const [projectData, setProjectData] = useState(projectKey
+      ?.filter( project => project?.Key === Key && project?.Key !== null)|| [])
 
-    const [projectDataAll, setProjectDataAll] = useState(projectsAll
-      ?.filter( projects => projects?.locale?.includes(lang)) || []);    
+    const [projectDataAll, setProjectDataAll] = useState(projects)
 
         useEffect(() => {
-          setProjectData(projects
-            ?.filter( project => project?.Key === Key && project?.Key !== null)
-            ?.filter( projects => projects?.locale?.includes(lang)) || []);
+          setProjectData(projectKey
+            ?.filter( project => project?.Key === Key && project?.Key !== null)|| [])
 
-            setProjectDataAll(projectsAll
-              ?.filter( projects => projects?.locale?.includes(lang)) || []);
-        }, [i18n.language]);
+            setProjectDataAll(projects
+              ?.filter( projects => projects?.locale?.includes(i18n.language)) || [])
+        }, [i18n.language, projectKey]);
 
   return (
     <>
@@ -116,7 +110,9 @@ const ProjectsKey = ({projects, projectsAll}) => {
             description={projectData[0]?.moreAbout}
           />
         </>
+        
         <RelatedSection projects={ projectDataAll }/>
+
         <ContactSection />
       </Box>
     </>

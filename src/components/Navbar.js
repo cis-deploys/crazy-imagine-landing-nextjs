@@ -1,5 +1,5 @@
 import React from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import Link from "next/link"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
@@ -181,7 +181,7 @@ export const Navbar = ({
   const { scroll } = useScroll()
   const linkVariant = colors(variant)
   const iconsVariant = colorsIconos(variantIcons)
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const classes = useStyles({
     scroll,
     linkVariant,

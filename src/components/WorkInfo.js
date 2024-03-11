@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { makeStyles } from "@mui/styles"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { Box, Typography } from "@mui/material"
 import { useIntersection } from "../hooks/useIntersection"
 
@@ -64,7 +64,7 @@ const WorkInfo = () => {
   const classes = useStyles()
   const ref = useRef()
   const isVisible = useIntersection(ref, "0px")
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
     <Box ref={ref} className={classes.container}>

@@ -5,9 +5,8 @@ import {
   Typography,
   InputLabel,
 } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles";
-import { useRouter } from "next/router"
 import Image from "next/image"
 
 const PostContent = dynamic(
@@ -40,13 +39,14 @@ const useStyles = makeStyles(theme => ({
       width: "90%",
       paddingTop: "60px",
       margin: "90px auto 0px auto",
+      [theme.breakpoints.up("xl")]: {
+        margin: "0px auto 0px auto",
+        width: "67%",
+      },
       [theme.breakpoints.down("md")]: {
         margin: "0px auto 0px auto",
       },
       [theme.breakpoints.down("sm")]: {
-        margin: "0px auto 0px auto",
-      },
-      [theme.breakpoints.down("xs")]: {
         margin: "0px auto 0px auto",
       },
     },
@@ -151,22 +151,21 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       flexDirection: "row",
       background: "white",
-      padding: "10% 5%",
+      padding: "5% 5%",
       gap: "50px",
+      [theme.breakpoints.up("xl")]: {
+        flexDirection: "row",
+        padding: "5% 17%",
+        gap: "70px",
+      },
       [theme.breakpoints.down("md")]: {
-        flexDirection: "column-reverse",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         gap: "20px",
       },
       [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "10px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        flexDirection: "column",
+        flexDirection: "column-reverse",
         justifyContent: "center",
         alignItems: "center",
         gap: "10px",
@@ -175,30 +174,24 @@ const useStyles = makeStyles(theme => ({
     },
   }))
 
-const BlogKey = ({ articles, articlesAll }) => {
+const BlogKey = ({ articles, articleKey }) => {
     const classes = useStyles()
-    const { i18n, t } = useTranslation()
+    const { i18n, t } = useTranslation("common")
     const lang = i18n.language 
-    const router = useRouter();
-    const { Key } = router.query;
-
-    // const [projectData, setProjectData] = useState(articles.filter(({ locale }) => locale.includes(lang)) || []);
     
-    const [projectData, setProjectData] = useState(articles
-      ?.filter( project => project?.Key === Key && project?.Key !== null)
-      ?.filter( articles => articles?.locale?.includes(lang)) || []);
-      
-    const [projectDataAll, setProjectDataAll] = useState(articlesAll
-      ?.filter( articles => articles?.locale?.includes(lang)) || []);
+    const [projectData, setProjectData] = useState(articleKey
+      ?.filter( projects => projects?.locale?.includes(lang)) || []);
+
+    const [projectDataAll, setProjectDataAll] = useState(articles
+      ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
         useEffect(() => {
-          setProjectData(articles
-            ?.filter( project => project?.Key === Key && project?.Key !== null)
+          setProjectData(articleKey
             ?.filter( projects => projects?.locale?.includes(lang)) || []);
 
-            setProjectDataAll(articlesAll
+            setProjectDataAll(articles
               ?.filter( projects => projects?.locale?.includes(lang)) || []);
-        }, [i18n.language]);
+        }, [ articleKey, articles]);  
 
   return (
     <>

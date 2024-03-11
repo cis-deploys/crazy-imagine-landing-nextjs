@@ -4,9 +4,8 @@ import PropTypes from "prop-types"
 
 import { Box, Hidden } from "@mui/material"
  
-// COMPONENTS
-import SEO from "./seo"
 import { useRouter } from "next/router"
+import GoogleAdsTag from "./GoogleAdsTag"
 
 const Navbar = dynamic(
   () => import("./Navbar"),
@@ -29,15 +28,18 @@ const Layout = ({ children }) => {
   if (router.pathname.includes('[Key]')) {
     navbarColor = "primary";
   }
+  if (router.pathname.includes('sitemap')) {
+    navbarColor = "primary";
+  }
   return (
     <>
-      <SEO />
       <Hidden lgDown>
         <Navbar variant="secondary" color={navbarColor} />
       </Hidden>
       <Hidden lgUp>
         <NavbarMobile color={navbarColor} />
       </Hidden>
+      <GoogleAdsTag/>
       <Box
         sx={{
           width: '100%',

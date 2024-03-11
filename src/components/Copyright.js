@@ -1,6 +1,6 @@
 import React from "react"
 import { Box,  Typography } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { PRIVACY_POLICY } from "../navigation/sitemap"
 import { makeStyles } from "@mui/styles";
 import Link from "next/link"
@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     width: "100%",
     [theme.breakpoints.up("xl")]: {
-      maxWidth: "3000px",
+      maxWidth: "4000px",
       margin: "0 auto",
       padding: "0px",
     },
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     color: "#FFFFFF",
     fontFamily: "Roboto,sans-serif",
     fontWeight: 400,
-    fontSize: "14px",
+    fontSize: "12px",
     textAlign: "left",
     fontStyle: "normal",
     lineHeight: "25px",
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "17.6px",
     },
     [theme.breakpoints.between(0, 325)]: {
-      fontSize: "14px",
+      fontSize: "13px",
     },
   },
   barText: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const Copyright = () => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
 
   return (
       <Box className={classes.copyContainer}>

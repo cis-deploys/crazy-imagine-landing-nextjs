@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import CardService from "./CardService";
 import ServiceCapabilities from "./ServiceCapabilities";
-import fullStackImage from "../../public/laptop-purple.svg";
-import qualitySupport from "../../public/quality-blue.svg";
+import fullStackImage from "../../public/laptop-purple.webp";
+import qualitySupport from "../../public/quality-blue.webp";
+import userExperience from "../../public/user_experience.webp";
 import {
   faBagShopping,
   faChartBar,
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ServicesSection = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const [card1Open, setCard1Open] = useState(false);
   const [card2Open, setCard2Open] = useState(false);
@@ -84,6 +85,7 @@ const ServicesSection = () => {
         <ServiceCapabilities
           title={t("common_capabilities_title2")}
           desc={t("common_capabilities_description2")}
+          img={userExperience}
         />
         <Box className={`${classes.cardContainer}`}>
           <CardService 

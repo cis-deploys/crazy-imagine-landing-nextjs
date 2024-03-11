@@ -1,11 +1,11 @@
-import React from "react"
-import { useTranslation } from "react-i18next"
+import React, { useEffect, useState } from "react"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
-
-import Layout from "../components/Layout"
 
 import headerImage from "../../public/astronaut.svg"
 import { NextSeo } from "next-seo"
+import { useRouter } from "next/router"
 
 const SectionHeader = dynamic(
   () => import("../components/SectionHeader"),
@@ -17,23 +17,55 @@ const ContactSection = dynamic(
   { ssr: false },
 )
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale}) {
   const domain = process.env.NEXT_PUBLIC_CRAZY_STRAPI_URL
-  const resContactpage = await fetch(`${domain}contact-page?locale=all`)
+
+  const resContactpage = await fetch(`${domain}contact-page?locale=${locale}&populate=seo&populate=title`)
   const contactpage = await resContactpage.json()
 
-  return { props: { contactpage } }
+  return { props: { contactpage,
+    ...await serverSideTranslations(locale, ['common']),
+  } }
 }
 
 const Contact = ({ contactpage }) => {
-  const { t } = useTranslation()
-  // const metaTitle = contactpage.SEO.metaTitle
-  // const metaDescription = contactpage.SEO.metaDescription
-  // const keywords = contactpage.SEO.keywords
+  const { t, i18n } = useTranslation('common')
+  const router = useRouter()
+
+  useEffect(() => {
+    // Obtener la locale del router
+    const locale = router.locale;
+
+    if (locale === 'es' && i18n.language !== 'es') {
+      // Establecer el idioma en español si no está establecido
+      i18n.changeLanguage('es');
+    }
+  }, [router.locale, i18n]);
+
+  const [metaTitle, setMetaTitle] = useState();
+  const [metaDescription, setMetaDescription] = useState();
+  const [keywords, setKeywords] = useState();
+  const [ title, setTitle ] = useState(); 
+
+  useEffect(() => {
+        setMetaTitle(contactpage.data?.attributes.seo?.metaTitle),
+        setMetaDescription(contactpage.data?.attributes.seo?.metaDescription),
+        setKeywords(contactpage.data?.attributes.seo?.keywords)
+        setTitle(contactpage.data?.attributes.title)
+  }, [contactpage])
 
   return (
-    <Layout>
-
+    <>
+      <NextSeo
+      title={`Crazy Imagine Software | ${metaTitle ? metaTitle : title}`}
+      description={`${metaDescription ? metaDescription : 'Crazy Imagine Software Offer Software Development of High-Quality Web and Mobile Applications To Meet Our Client’s Unique Demands. Contac Us!'}`}
+      keywords={`${keywords ? keywords : 'crazy imagine, web development services, mobile app development, Software Development Company, Web and Mobile App Development Firm, developer, software, work, Full-stack Development, programming, user Experience, quality support'}`}
+      openGraph={{
+        type: "website",
+        locale: "en_US",
+        url: "https://crazyimagine.com",
+      }}
+      />
       <SectionHeader
         title={t("contactUs_sectionHeader_title")}
         btn={true}
@@ -42,7 +74,7 @@ const Contact = ({ contactpage }) => {
       />
       <ContactSection />
       
-    </Layout>
+    </>
   )
 }
 

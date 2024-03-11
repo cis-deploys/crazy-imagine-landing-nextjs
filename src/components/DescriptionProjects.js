@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    padding: "80px",
+    padding: "40px",
     [theme.breakpoints.down("md")]: {
-      padding: "75px",
+      padding: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "75px 45px 75px 45px",
+      padding: "40px 45px 0px 45px",
     },
   },
 }))

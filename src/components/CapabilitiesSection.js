@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import fullstackImage from "../../public/laptop.svg"
 import qualityImage from "../../public/quality.svg"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -32,7 +32,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "15px",
       width: "100%",
-      //flexDirection: "column",
       justifyContent: "space-between",
       padding: "50px 43px 0px 43px",
       height: "fit-content",
@@ -68,7 +67,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       gap: "15px",
       width: "100%",
-      //flexDirection: "column",
       justifyContent: "space-between",
       padding: "50px 43px 0px 43px",
       height: "fit-content",
@@ -104,7 +102,7 @@ const useStyles = makeStyles(theme => ({
 
 const CapabilitiesSection = () => {
   const classes = useStyles()
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <>

@@ -2,7 +2,7 @@ import React from "react"
 import BlogPost from "../components/BlogPost"
 import { Box, Typography } from "@mui/material"
 import { BLOG } from "../navigation/sitemap"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { makeStyles } from "@mui/styles"
 import Link from "next/link"
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     gap: "23px",
     justifyContent: "center",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
 
 const PostCarousel = ({ articles }) => {
   const classes = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   return (
     <Box className={classes.container}>
       <Typography className={classes.title}>{t("post_postCarousel_title")}</Typography>

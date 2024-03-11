@@ -1,11 +1,13 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Button } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next'
 import { BLOG } from "../navigation/sitemap"
-import { useIntersection } from "../hooks/useIntersection"
 import Link from "next/link"
 import Image from "next/image"
+import { StyleComponent } from "./StyleComponent"
+import { useRouter } from "next/router"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -32,9 +34,9 @@ const useStyles = makeStyles(theme => ({
       gap: "7px",
     },
   },
-  ron:{
-    "& > div:first-of-type":{
-      height: "250px"
+  ron: {
+    "& > div:first-of-type": {
+      height: "250px",
     },
   },
   textContainer: {
@@ -44,71 +46,46 @@ const useStyles = makeStyles(theme => ({
     padding: "6px 25px 22px 37px",
     height: "100%",
     [theme.breakpoints.down("md")]: {
-      gap: "13px",
-      padding: "18px 18px 16px 26px",
+      gap: "10px",
+      padding: "5px 18px 16px 26px",
     },
     [theme.breakpoints.down("sm")]: {
       gap: "8px",
       padding: "11px 11px 10px 16px",
     },
   },
-  // wrapperTitle: {
-  //   visibility: "hidden",
-  // },
-  // wrapperTitle2: {
-  //   animation: `$myEffect 2000ms`,
-  //   fontFamily: "Nexa Bold",
-  //   fontStyle: "normal",
-  //   fontWeight: "900",
-  //   fontSize: "40px",
-  //   lineHeight: "40px",
-  //   textAlign: "center",
-  //   color: "#FFFFFF",
-  //   marginBottom: "38px",
-  //   [theme.breakpoints.down("md")]: {
-  //     fontSize: "28px",
-  //     lineHeight: "28px",
-  //   },
-  //   [theme.breakpoints.down("sm")]: {
-  //     fontSize: "22px",
-  //     lineHeight: "22px",
-  //   },
-  // },
-  // "@keyframes myEffect": {
-  //   "0%": {
-  //     opacity: 0,
-  //     transform: "translateY(-200%)",
-  //   },
-  //   "100%": {
-  //     opacity: 1,
-  //     transform: "translateY(0)",
-  //   },
-  // },
   wrapperContainer: {
-    width: "75%",
+    width: "80%",
     margin: "auto",
     paddingTop: "83px",
     paddingBottom: "83px",
     display: "flex",
     flexDirection: "column",
+    alignContent: "flex-start",
     [theme.breakpoints.up("xl")]: {
-      width: "45%",
+      width: "80%",
       paddingTop: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "70%",
+      paddingTop: "40px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingTop: "40px",
+      width: "80%",
     },
     [theme.breakpoints.down("md")]: {
       paddingTop: "40px",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "20px 15px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "10px",
+      width: "70%",
+      paddingTop: "40px",
     },
   },
   wrapperContainerSection: {
     width: "100%",
     backgroundColor: "#193174",
-    backgroundImage: `url('/background.svg')`,
+    backgroundImage: `url('/background.webp')`,
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
@@ -126,7 +103,7 @@ const useStyles = makeStyles(theme => ({
     display: "-webkit-box",
     boxOrient: "vertical",
     lineClamp: "2",
-    height: "36px",
+    height: "40px",
     [theme.breakpoints.down("md")]: {
       fontSize: "16px",
       lineHeight: "16px",
@@ -136,13 +113,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "10px",
       lineHeight: "10px",
-    },
-  },
-  img: {
-    backgroundColor: "#27AAE1",
-    height: "210px",
-    [theme.breakpoints.down("md")]: {
-      height: "147px",
     },
   },
   link: {
@@ -155,114 +125,157 @@ const useStyles = makeStyles(theme => ({
     color: "#888DFF",
     textDecoration: "none",
     [theme.breakpoints.down("md")]: {
-      fontSize: "11px",
-      lineHeight: "11px",
+      fontSize: "10px",
+      lineHeight: "10px",
     },
   },
   wrapper: {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "left",
     background: "transparent",
     marginTop: "50px",
     marginBottom: "50px",
     gap: "21px",
+    [theme.breakpoints.between(2560, 3000)]: {
+      paddingLeft: "25px",
+    },
+    [theme.breakpoints.between(1280, 2559)]: {
+      paddingLeft: "10px",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   },
 }))
 
-const BlogArticle = ({ articles: AllArticles }) => {
+const prepareArticles = articles => {
+  return articles?.slice(2) || [] }
+
+const BlogArticle = ({ articles: AllArticles, articlesPagination }) => {
   const classes = useStyles()
-  const ref = useRef()
-  const isVisible = useIntersection(ref, "0px")
-  const ref1 = useRef()
-  const isVisible1 = useIntersection(ref1, "0px")
-  const [load, setLoad] = useState(6)
-  const [buttonLoad, setButtonLoad] = useState(true)
-  const loadArticles = length => {
-    if (length > load) setLoad(load + 2)
-    if (length <= load) setButtonLoad(false)
-  }
+  const router = useRouter()
+  const { query } = router
+  const classesComponent = StyleComponent()
+  const { t, i18n } = useTranslation('common')
 
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  }, []);
 
-  const articles = AllArticles
-  const articlesFilter = articles.filter(article =>
-    article.locale.includes(lang)
+  const [showLoadMore, setShowLoadMore] = useState(true)
+  const [filteredArticles, setFilteredArticles] = useState(
+    prepareArticles(AllArticles)
   )
 
-    const [projectDataAll, setProjectDataAll] = useState(articlesFilter
-      .sort((a, b) => {
-        return new Date(b.created_at) - new Date(a.created_at)
-      })
-      .slice(0, load));
+  useEffect(() => {
+    setFilteredArticles(prepareArticles(AllArticles))
+  }, [query?.size])
 
-    useEffect(() => {
-      const articles = AllArticles
-      const articlesFilter = articles.filter(article =>
-        article.locale.includes(lang)
-      )
-        setProjectDataAll(articlesFilter
-          .sort((a, b) => {
-            return new Date(b.created_at) - new Date(a.created_at)
-          })
-          .slice(0, load));
-    }, [i18n.language, load]);
+  const initialPagination = () => {
+    const size = window.innerWidth >= 3000 ? 7 : 6
+    router.push({
+      query: {
+        size: size 
+      },
+    })
+  }
+
+  useEffect(() => {
+    initialPagination()
+  }, [window.innerWidth])
+
+  function getLoadArticles() {
+    return window.innerWidth >= 3000 ? 5 : 4
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      initialPagination()
+    }
+    window.addEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)}
+  }, [])
+
+  const loadMore = () => {
+
+    const pagination = articlesPagination.pagination
+    const maxLimitOfCards = pagination.total
+    const { query } = router
+    const sumArticles = Number(query.size) + Number(getLoadArticles())
+
+    if (sumArticles > maxLimitOfCards) {
+      sumArticles = maxLimitOfCards
+      setShowLoadMore(false)
+    }
+    if (sumArticles <= maxLimitOfCards) router.push({query: {size: sumArticles}}, undefined, { scroll: false})
+    if (sumArticles == maxLimitOfCards) setShowLoadMore(false)
+  }
 
   return (
     <Box className={classes.wrapperContainerSection}>
       <Box className={classes.wrapperContainer}>
-        <Typography
-          ref={ref}
-          className={
-            isVisible ? 'title-white' : 'title'}
-        >
+        <Typography className={classesComponent.titleWhite}>
           {t("blog_blogArticle_title")}
         </Typography>
         <Box className={classes.wrapper}>
-          {
-          projectDataAll.map(( el, index) => {
-              const dataImage = el?.image[0].url
-              const title = el?.image[0].title
-            return(
-            <Box
-              key={index}
-              component="article"
-              className={classes.container}
-            >
-              <Image className={classes.ron} src={dataImage} alt={title} width={480} height={250}/>
-              <Box className={classes.textContainer}>
-                <Typography className={classes.title}>
-                  {el?.title}
-                </Typography>
-                <Link href={`${BLOG}/${el?.Key}`} >
-
-                  <a className={classes.link}>
-                  {t("common_lastestPosts_blogPost_button_readMore")}
-                  </a>
-
-                </Link>
+          {filteredArticles.map((el, index) => {
+            const dataImage = el?.image[0]?.url
+            const title = el?.image[0]?.title
+            return (
+              <Box
+                key={index}
+                component="article"
+                className={classes.container}
+              >
+              {isLoading && (
+                <Box sx={{ minHeight: "80%", height: "250px", padding: "50px" }}>
+                <Loading/>
+                </Box>
+              )}
+              {!isLoading && (
+                <>
+                <Image
+                  className={classes.ron}
+                  src={dataImage}
+                  alt={title}
+                  width={480}
+                  height={250}
+                />
+                <Box className={classes.textContainer}>
+                  <Typography className={classes.title}>{el?.title}</Typography>
+                  <Link href={`${BLOG}/${el?.Key}`}>
+                    <a className={classes.link}>
+                      {t("common_lastestPosts_blogPost_button_readMore")}
+                    </a>
+                  </Link>
+                </Box>
+                </>
+              )}
               </Box>
-            </Box>
-          )
+            )
           })}
         </Box>
-        { buttonLoad && (
+        {showLoadMore && (
           <Button
-            ref={ref1}
-            onClick={() => { loadArticles(articles.length) }}
-            style={{ textDecoration: "none", alignSelf: "center", marginBottom: "5px" }}
-            className={ isVisible1 ? 'button-component' : 'button' }
+            onClick={() => {
+              loadMore()
+            }}
+            style={{
+              textDecoration: "none",
+              alignSelf: "center",
+              marginBottom: "5px",
+            }}
+            className={classesComponent.buttonComponent}
           >
             <span>{t("blog_blogArticle_button")}</span>
           </Button>
         )}
       </Box>
     </Box>
-
   )
 }
 

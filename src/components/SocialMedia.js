@@ -1,22 +1,20 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTwitter, faFacebook, faYoutube, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faXTwitter, faFacebook, faYoutube, faInstagram, faLinkedin, faUpwork } from '@fortawesome/free-brands-svg-icons'
 import { Box } from "@mui/material"
-import UpworkIcon from "../../public/upwork_icon.svg"
-import Image from "next/image"
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(theme => ({
   contactIcon: {
-    fontSize: "20px",
+    fontSize: "25px",
     color: "#A7E4F5",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "16px",
+      fontSize: "20px",
     },
   },
   contactIconButton: {
-    width: "40px",
-    height: "40px",
+    width: "30px",
+    height: "30px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -28,12 +26,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-start",
     alignContent: "flex-start",
     flexWrap: "wrap",
-    gap: "10px",
+    gap: "5px",
     [theme.breakpoints.down("xl")]: {
-      gap: "8px",
+      gap: "5px",
     },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "15px",
+    [theme.breakpoints.down("sm")]: {
+      gap: "3px",
     },
   }
 }))
@@ -45,14 +43,6 @@ export const SocialMedia = () => {
     <Box className={classes.iconsContainer}>
       <a
         className={classes.contactIconButton}
-        href="https://twitter.com/CrazyImagineDev"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FontAwesomeIcon size="2x" icon={faTwitter} className={classes.contactIcon}/>
-      </a>
-      <a
-        className={classes.contactIconButton}
         href="https://www.facebook.com/crazyimaginedev"
         target="_blank"
         rel="noreferrer"
@@ -61,11 +51,19 @@ export const SocialMedia = () => {
       </a>
       <a
         className={classes.contactIconButton}
+        href="https://twitter.com/CrazyImagineDev"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FontAwesomeIcon size="2x" icon={faXTwitter} className={classes.contactIcon}/>
+      </a>
+      <a
+        className={classes.contactIconButton}
         href="https://ve.linkedin.com/company/crazy-imagine-software"
         target="_blank"
         rel="noreferrer"
       >
-        <FontAwesomeIcon size="2x" icon={faLinkedinIn} className={classes.contactIcon}/>
+        <FontAwesomeIcon size="2x" icon={faLinkedin} className={classes.contactIcon}/>
       </a>
       <a
         className={classes.contactIconButton}
@@ -77,7 +75,7 @@ export const SocialMedia = () => {
       </a>
       <a
         className={classes.contactIconButton}
-        href="#"
+        href="https://www.youtube.com/@crazyimaginedev"
         target="_blank"
         rel="noreferrer"
       >
@@ -88,12 +86,8 @@ export const SocialMedia = () => {
         href="https://www.upwork.com/ag/crazyimagine"
         target="_blank"
         rel="noreferrer"
-        style={{
-          borderRadius: '5px',
-          overflow: 'hidden'
-        }}
-      >
-        <Image src={UpworkIcon} size="2x" alt='upwork-icon' className={classes.contactIcon} />
+        >
+        <FontAwesomeIcon size="2x" icon={faUpwork} className={classes.contactIcon}/>
       </a>
     </Box>
   )

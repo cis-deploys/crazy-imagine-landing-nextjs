@@ -1,14 +1,15 @@
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@mui/styles"
-import { Box, Typography, Button, Card, CardContent } from "@mui/material"
+import { Typography, Button, CardContent } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'next-i18next';
+import { StyleComponent } from "./StyleComponent"
 
 const useStyles = makeStyles(theme => ({
   list: {
     margin: "20px 40px 46px",
-    textAlign: "justify",
+    textAlign: "left",
     [theme.breakpoints.down("md")]: {
       margin: "20px 30px 31px"
     },
@@ -21,16 +22,20 @@ const useStyles = makeStyles(theme => ({
     fontfamily: "HindVadodara",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "18px",
+    fontSize: "22px",
     lineHeight: "140%",
     letterspacing: "0.02em",
     color: "#193174",
     "&::marker": {
       color: "#797EF6",
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xl")]: {
       marginBottom: "14px",
-      fontSize: "16px",
+      fontSize: "18px",
+    },
+    [theme.breakpoints.down("lg")]: {
+      marginBottom: "14px",
+      fontSize: "14px",
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "12px",
@@ -80,17 +85,19 @@ const useStyles = makeStyles(theme => ({
 }))
 const CardService = ({ icon, title, contentList }) => {
   const classes = useStyles()
+  const classesComponent = StyleComponent()
   const ref = useRef()
-  const { t } = useTranslation()
+  const { t } = useTranslation("common")
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
+  
   return (
     <CardContent
       ref={ref}
-      className={isVisible ? 'containerServices2' : 'cardContainer'}
+      className={isVisible ? classesComponent.containerServices2 : classesComponent.cardContainer}
     >
       <FontAwesomeIcon icon={icon} className={classes.icon} />
-      <Typography className={'title-card'}>{title}</Typography>
+      <Typography className={ classesComponent.titleCard }>{title}</Typography>
       <ul className={classes.list} style={{ display: isListVisible ? "block" : "none" }}>
         {contentList?.map((value, index) => (
           <li key={index} className={classes.listItem}>
@@ -102,7 +109,7 @@ const CardService = ({ icon, title, contentList }) => {
         className={classes.readMoreButton}
         onClick={() => setListVisible(!isListVisible)}
       >
-        {isListVisible ? t("readLess") : t("readMore")}
+        { isListVisible ? t("readLess") : t("readMore")}
       </Button>
       </CardContent>
   )
