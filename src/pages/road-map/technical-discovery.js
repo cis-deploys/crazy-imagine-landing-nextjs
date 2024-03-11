@@ -21,11 +21,11 @@ export const getStaticProps = async ({ locale }) => {
 }
 function technicalDiscovery() {
   return (
-    <Layout>
+   <>
       <Box overflow="hidden">
         <TechnicalDiscovery />
       </Box>
-    </Layout>
+      </>
   )
 }
 export default technicalDiscovery

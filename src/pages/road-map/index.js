@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import dynamic from "next/dynamic"
 import { Box } from "@mui/material"
 import { useRouter } from "next/router"
-import Layout from "../../components/Layout"
+
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import headerImage from "../../../public/Roadmap.svg"
 
@@ -51,7 +51,7 @@ function RoadMap() {
   }, [router.locale, i18n])
 
   return (
-    <Layout>
+    <>
       <Box overflow="hidden">
         <SectionHeader
           title={t("RoadMap_sectionHeader_title")}
@@ -66,7 +66,7 @@ function RoadMap() {
 
         <ContactSection />
       </Box>
-    </Layout>
+    </>
   )
 }
 
