@@ -10,6 +10,7 @@ import {
   Box,
   Divider,
   Drawer,
+  Hidden,
   IconButton,
   List,
   ListItem,
@@ -36,6 +37,7 @@ import { colorsIconos, colors } from "../helpers/navbarColors"
 import useScroll from "../hooks/useScroll"
 
 import CrazyImageLogo from "../../public/crazy-imagine-icon.svg"
+import Logo from "../../public/Logo-white.webp"
 import {
   CONTACT,
   HOME,
@@ -48,6 +50,11 @@ import {
 import Link from "next/link"
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    "& -1k455el":{
+      minHeight: "4em"
+    }
+  },
   container: props => ({
     transition: "background 300ms ease",
     boxShadow: "none",
@@ -60,19 +67,16 @@ const useStyles = makeStyles(theme => ({
     fontSize: 50,
     color: props.scroll ? props.iconsVariant : "white",
     [theme.breakpoints.down("md")]: {
-      fontSize: 30,
+      fontSize: 35,
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: 30,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 35,
     },
   }),
   navbarLogo: {
     marginLeft: "25px",
     marginTop: "15px",
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "10px",
-    },
-    [theme.breakpoints.down("xs")]: {
       marginLeft: "10px",
     },
   },
@@ -143,15 +147,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
-      height: "3em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "3em",
+      height: "4em",
     },
   },
   Crazy: {
-    width: "100%",
-    height: "100%",
+    width: "80%",
+    height: "80%",
   },
 }))
 
@@ -208,6 +209,7 @@ export const NavbarMobile = ({
       >
         <Toolbar>
           <Box className={classes.navbarMobileResponsive}>
+            <Hidden smDown>
             <Link href={`${HOME}`} >
               <a className={classes.navbarLogo}>
               <Image
@@ -217,7 +219,23 @@ export const NavbarMobile = ({
                 height={48}
               />
               </a>
-            </Link>
+              </Link>
+              </Hidden>
+
+              <Hidden smUp>
+              <Link href={`${HOME}`} >
+              <a style={{ height: "50%", }}>
+              <Image
+                src={Logo}
+                alt="Logo"
+                width={35}
+                height={35}
+                style={{ justifyContent: "center" }}
+              />
+              </a>
+              </Link>
+              </Hidden>
+
 
             <IconButton
               color="inherit"
@@ -238,13 +256,14 @@ export const NavbarMobile = ({
           anchor="left"
           open={open}
         >
-          <DrawerHeader style={{ justifyContent: "space-between", marginLeft: "15px"}}>
+          <DrawerHeader style={{ justifyContent: "space-between", marginLeft: "15px", minHeight: "4em"}}>
             <Link href={`${HOME}`} >
-              <a onClick={handleDrawerClose}>
+              <a style={{ display: "flex", justifyContent: "center" }} onClick={handleDrawerClose}>
               <Image
                 src={CrazyImageLogo}
                 alt="ss"
-                className={classes.Crazy}
+                height={100}
+                width={190}
               />
               </a>
             </Link>

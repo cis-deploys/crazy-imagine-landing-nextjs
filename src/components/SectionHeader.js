@@ -1,6 +1,6 @@
 import React from "react"
-import { Box, Typography, Button } from "@mui/material"
-import { useTranslation } from 'next-i18next'
+import { Box, Typography, Button, Hidden } from "@mui/material"
+import { useTranslation } from "next-i18next"
 import Image from "next/image"
 import { makeStyles } from "@mui/styles"
 import { StyleComponent } from "./StyleComponent"
@@ -26,20 +26,7 @@ const useStyles = makeStyles(theme => ({
       height: props.little ? "312px" : "290px",
       background: props.little ? "#27AAE1" : "transparent",
       backgroundColor: "transparent",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: "50px",
-      justifyContent: "center",
-      height: "auto",
-      width: "100%",
-      background: props.little ? "#27AAE1" : "transparent",
-      backgroundColor: "transparent",
-    },
-    [theme.breakpoints.between(450, 350)]: {
-      height: props.little ? "257px" : "235px",
-    },
-    [theme.breakpoints.between(350, 0)]: {
-      height: props.little ? "237px" : "215px",
+      flexDirection: "column",
     },
   }),
   backgroundOut: props => ({
@@ -61,18 +48,8 @@ const useStyles = makeStyles(theme => ({
       padding: "0px 43px 0px",
     },
     [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-      padding: "30px 15px 0px 20px",
+      padding: "10px 15px 0px 20px",
       height: "auto",
-    },
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-      height: props.little ? "370px" : "350px",
-      padding: "30px 15px 0px 20px",
-    },
-    [theme.breakpoints.between(0, 400)]: {
-      flexDirection: "column",
-      height: props.little ? "370px" : "350px",
     },
   }),
   textContainer: props => ({
@@ -97,13 +74,18 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "5px 10px 20px 10px",
-      width: "auto",
+      padding: "5px 10px 0px 10px",
+      width: "100%",
       height: "auto",
-      gap: "22px",
+      gap: "10px",
       background: props.little ? "#27AAE1" : "transparent",
     },
   }),
+  container2: {
+    display: "flex",
+    width: "100%",
+    marginBottom: "20px",
+  },
   imgContainer: props => ({
     display: "flex",
     flexDirection: "column",
@@ -116,9 +98,9 @@ const useStyles = makeStyles(theme => ({
       height: "90%",
     },
     [theme.breakpoints.down("sm")]: {
-      marginRight: props.little ? "50px" : "0px",
-      marginBottom: "50px",
-      height: "80%",
+      marginTop: "0px",
+      height: "100%",
+      width: "100%",
     },
   }),
   img: {
@@ -128,8 +110,8 @@ const useStyles = makeStyles(theme => ({
       height: "70%",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "200%",
-      height: "70%",
+      width: "100%",
+      height: "100%",
     },
   },
   "@keyframes myEffect": {
@@ -184,55 +166,202 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       fontSize: "15px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "11px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "8px",
+      fontSize: "10px",
       lineHeight: "inherit",
-      width: "100%"
+      width: "100%",
     },
   }),
   link: {
     textDecoration: "none",
-    borderRadius: "100px"
+    borderRadius: "100px",
   },
   contactButton: {
     background: "#797EF6 !important",
-    margin: 0,
     "&:hover": {
       background: "#797EF6 !important",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "10px",
+    },
+    [theme.breakpoints.between(0, 372)]: {
+      margin: "7px",
+    },
+  },
+  contactButtonSection: {
+    width: "150px",
+    height: "40px",
+    background: "transparent",
+    borderRadius: "100px",
+    textDecoration: "none",
+    border: "2px solid #FFFFFF",
+
+    [theme.breakpoints.up("xl")]: {
+      width: "200px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "140px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      "& span": {
+        color: "#1E2F97",
+      },
+    },
+  },
+  contactButtonSection2: {
+    width: "150px",
+    height: "40px",
+    background: "transparent",
+    borderRadius: "100px",
+    textDecoration: "none",
+    border: "2px solid #FFFFFF",
+
+    [theme.breakpoints.up("xl")]: {
+      width: "230px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "180px",
+      height: "35px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "130px",
+      height: " 30px",
+    },
+    "&:hover": {
+      background: "#FFFFFF",
+      "& span": {
+        color: "#1E2F97",
+      },
     },
   },
 }))
 
-export const SectionHeader = ({ title, desc, btn, little, img, button }) => {
+export const SectionHeader = ({
+  title,
+  desc,
+  btn,
+  little,
+  img,
+  button,
+  buttonRoadmap,
+  buttonMeet,
+  buttonMeetText,
+}) => {
   const classes = useStyles({ little, btn })
-  const classesComponent = StyleComponent()
   const { t } = useTranslation("common")
+  const classesComponent = StyleComponent()
 
   return (
     <Box className={classes.backgroundOut}>
       <Box className={classes.backgroundIn}>
         <Box className={classes.textContainer}>
-          <Typography className={classes.title} variant="h1" component="h1"><span>{title}</span></Typography>
+          <Typography className={classes.title} variant="h1" component="h1">
+            <span>{title}</span>
+          </Typography>
           <Typography className={classes.desc}>{desc}</Typography>
-          { button ? 
-            <Button component="a" href={`#${button.refID}`}
-            className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+
+          <Hidden smDown>
+            {button ? (
+              <Button
+                component="a"
+                href={`#${button.refID}`}
+                className={`${classesComponent.buttonComponent} ${
+                  buttonRoadmap
+                    ? classes.contactButtonSection
+                    : classes.contactButton
+                } `}
+              >
+                <span>{button.text}</span>
+              </Button>
+            ) : (
+              ""
+            )}
+          </Hidden>
+          {buttonMeet && (
+            <>
+              <Button
+                component="a"
+                href={"contact-us"}
+                className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+              >
+                <span>{buttonMeetText}</span>
+              </Button>
+            </>
+          )}
+        </Box>
+
+        <Hidden smDown>
+          <Box className={classes.imgContainer}>
+            <Image
+              className={classes.img}
+              src={img}
+              width={307}
+              height={407}
+              alt="Header Section"
+              quality={100}
+              priority={true}
+            />
+          </Box>
+        </Hidden>
+
+        <Hidden smUp>
+          <Box className={classes.container2}>
+            <Box
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "30%",
+                justifyContent: "start",
+                alignContent: "center",
+                marginTop: "50px",
+              }}
             >
-              <span>{button.text}</span>
-            </Button> 
-            : ''
-          }
-        </Box>
-        <Box className={classes.imgContainer}>
-          <Image className={classes.img} src={img} width={307} height={407} alt="Header Section" quality={100} priority={ true }/>
-        </Box>
+              {button ? (
+                <Button
+                  component="a"
+                  href={`#${button.refID}`}
+                  className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+                >
+                  <span>{button.text}</span>
+                </Button>
+              ) : (
+                ""
+              )}
+            </Box>
+            <Box
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Image
+                className={classes.img}
+                src={img}
+                width={170}
+                height={170}
+                alt="Header Section"
+                quality={100}
+                priority={true}
+              />
+            </Box>
+          </Box>
+        </Hidden>
       </Box>
     </Box>
   )
