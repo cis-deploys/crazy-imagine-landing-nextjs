@@ -3,7 +3,7 @@ import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import dynamic from "next/dynamic"
 
-import headerImage from "../../public/layer2.svg"
+import headerImage from "../../public/Objects.webp"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 

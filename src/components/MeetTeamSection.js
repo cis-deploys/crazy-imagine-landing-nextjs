@@ -106,17 +106,16 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "19px",
     color: "#193174",
   },
-
   gridContainer: {
     maxWidth: "1400px",
     margin: "auto",
     padding: "32px",
+    [theme.breakpoints.down("lg")]: {
+      width: "100%",
+    },
   },
   gridItem: {
     padding: theme.spacing(2),
-    // [theme.breakpoints.down("sm")]: {
-    //   padding: theme.spacing(1),
-    // },
   },
   boxContentCardBack1: {
     paddingTop: "32px",
@@ -187,7 +186,6 @@ const MeetTeamSection = ({ members }) => {
       <Grid
         container
         className={classes.gridContainer}
-        justifyContent="center"
         spacing={2}
       >
     
