@@ -276,7 +276,7 @@ export const SectionHeader = ({
           <Typography className={classes.desc}>{desc}</Typography>
 
           <Hidden smDown>
-            {button ? (
+          {button ? (
               <Button
                 component="a"
                 href={`#${button.refID}`}
@@ -291,7 +291,7 @@ export const SectionHeader = ({
             ) : (
               ""
             )}
-          </Hidden>
+            
           {buttonMeet && (
             <>
               <Button
@@ -303,6 +303,7 @@ export const SectionHeader = ({
               </Button>
             </>
           )}
+        </Hidden>
         </Box>
 
         <Hidden smDown>
@@ -331,6 +332,17 @@ export const SectionHeader = ({
                 marginTop: "50px",
               }}
             >
+            {buttonMeet && (
+            <>
+              <Button
+                component="a"
+                href={"contact-us"}
+                className={`${classesComponent.buttonComponent} ${classes.contactButton} `}
+              >
+                <span>{buttonMeetText}</span>
+              </Button>
+            </>
+          )}
               {button ? (
                 <Button
                   component="a"
