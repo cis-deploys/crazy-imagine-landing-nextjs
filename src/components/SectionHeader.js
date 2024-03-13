@@ -280,11 +280,8 @@ export const SectionHeader = ({
               <Button
                 component="a"
                 href={`#${button.refID}`}
-                className={`${classesComponent.buttonComponent} ${
-                  buttonRoadmap
-                    ? classes.contactButtonSection
-                    : classes.contactButton
-                } `}
+                className={`${classes.buttonContactInfo} ${classesComponent.buttonComponent} ${classes.contactButton}`}
+                buttonRoadmap
               >
                 <span>{button.text}</span>
               </Button>

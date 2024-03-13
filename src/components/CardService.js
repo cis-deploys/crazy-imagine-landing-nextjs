@@ -1,20 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"
 import { makeStyles } from "@mui/styles"
 import { Typography, Button, CardContent } from "@mui/material"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useIntersection } from "../hooks/useIntersection"
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "next-i18next"
 import { StyleComponent } from "./StyleComponent"
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles(theme => ({
   list: {
     margin: "20px 40px 46px",
     textAlign: "left",
     [theme.breakpoints.down("md")]: {
-      margin: "20px 30px 31px"
+      margin: "20px 30px 31px",
     },
     [theme.breakpoints.down("sm")]: {
-      margin: "20px"
+      margin: "20px",
     },
   },
   listItem: {
@@ -82,36 +83,109 @@ const useStyles = makeStyles(theme => ({
       lineHeight: "10px",
     },
   },
+  textInfoCard: {
+    fontFamily: "HindVadodara",
+    fontSize: "20px",
+    fontWeight: 400,
+    letterSpacing: "0.02rem",
+    lineHeight: "24px",
+    color: "#193174",
+    paddingTop: "20px",
+    paddingBottom: "10px",
+  },
 }))
-const CardService = ({ icon, title, contentList }) => {
+const CardService = ({
+  icon = null,
+  title,
+  contentList,
+  img,
+  typeInfo = "ul",
+  description = null,
+  titleCss2 = null,
+  img2,
+}) => {
+  const router = useRouter()
   const classes = useStyles()
   const classesComponent = StyleComponent()
   const ref = useRef()
   const { t } = useTranslation("common")
   const isVisible = useIntersection(ref, "0px")
   const [isListVisible, setListVisible] = useState(false)
-  
+  const [showSecondImage, setShowSecondImage] = useState(false)
+  const [hiddeImageInServices, setHiddeImageInServices] = useState(false)
+
+  const titleCss = titleCss2
+    ? classesComponent.titleCard2
+    : classesComponent.titleCard
+
+  useEffect(() => {
+    if (router.pathname.includes('services')) {
+      console.log("estamos en services")
+
+      setHiddeImageInServices(true)
+    }
+  },[router])
+
   return (
     <CardContent
       ref={ref}
-      className={isVisible ? classesComponent.containerServices2 : classesComponent.cardContainer}
+      className={
+        isVisible
+          ? classesComponent.containerServices2
+          : classesComponent.cardContainer
+      }
     >
-      <FontAwesomeIcon icon={icon} className={classes.icon} />
-      <Typography className={ classesComponent.titleCard }>{title}</Typography>
-      <ul className={classes.list} style={{ display: isListVisible ? "block" : "none" }}>
-        {contentList?.map((value, index) => (
-          <li key={index} className={classes.listItem}>
-            {value}
-          </li>
-        ))}
-      </ul>
+      { !hiddeImageInServices && (
+      <>
+        {showSecondImage && img2 ? (
+        <img src={img2} alt="Image" className={classes.icon} />
+      ) : (
+        <img src={img} alt="Image" className={classes.icon} />
+      )}
+      </>
+      )}
+      
+
+      {icon && <FontAwesomeIcon icon={icon} className={classes.icon} />}
+
+      <Typography className={titleCss}>{title}</Typography>
+
+      { hiddeImageInServices && (
+      <>
+      {typeInfo && (
+        <ul
+          className={classes.list}
+          style={{ display: isListVisible ? "block" : "none" }}
+        >
+          {contentList?.map((value, index) => (
+            <li key={index} className={classes.listItem}>
+              {value}
+            </li>
+          ))}
+        </ul>
+      )}
+      </>
+      )}
+
+      {description && (
+        <Typography
+          className={classes.textInfoCard}
+          style={{ display: isListVisible ? "block" : "none" }}
+        >
+          {description}
+        </Typography>
+      )}
+
       <Button
         className={classes.readMoreButton}
-        onClick={() => setListVisible(!isListVisible)}
+        onClick={() => {
+          setListVisible(!isListVisible)
+          setShowSecondImage(!showSecondImage)
+        }}
       >
-        { isListVisible ? t("readLess") : t("readMore")}
+        {isListVisible ? t("readLess") : t("readMore")}
       </Button>
-      </CardContent>
+    </CardContent>
   )
 }
 export default CardService
