@@ -1162,6 +1162,7 @@ const DesignSection = () => {
             <a
               href="https://whimsical.com/account-management-LgYciykM5TXFZwYa4a9qTR"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 src={FeatureMap.src}
@@ -1174,6 +1175,7 @@ const DesignSection = () => {
             <a
               href="https://whimsical.com/example-user-flow-for-invoices-FvrfYrQFBLCNbMfCCzzkt"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img src={UserFlow.src} width={"100%"} alt="Images UserFlow" />
             </a>
