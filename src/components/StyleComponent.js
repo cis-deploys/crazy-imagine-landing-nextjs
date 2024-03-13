@@ -239,7 +239,6 @@ export const StyleComponent = makeStyles(theme => ({
       lineHeight: "22px",
     },
   },
-
   "@keyframes myEffectbutton": {
     "0%": {
       opacity: 0,
@@ -250,9 +249,6 @@ export const StyleComponent = makeStyles(theme => ({
       transform: "translateY(0)",
     },
   },
-
-  
-
   "@keyframes myEffect-image-component": {
     "0%": {
       opacity: 0,
@@ -448,6 +444,281 @@ export const StyleComponent = makeStyles(theme => ({
         padding: "5px 10px 4px 14px",
       }
     }
+  },
+  "@keyframes myEffect-image-component": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-200%)",
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+  },
+
+  image: {
+    display: "none",
+  },
+  imageComponent: {
+    animation: `myEffect-image-component 2000ms`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.between(1920, 4000)]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      width: "80%",
+    },
+    [theme.breakpoints.between(0, 959)]: {
+      width: "60%",
+    },
+  },
+  TypographyTitleFilter: {
+    fontFamily: "Nexa",
+    fontSize: "18px",
+    lineHeight: "20px",
+    color: "#696969",
+    padding: "2px 0px",
+    textTransform: "capitalize",
+  },
+  ButtonFilter: {
+    backgroundColor: "#FFFFFF",
+    gap: "10px",
+    borderRadius: "100px",
+    [theme.breakpoints.between(481, 1280)]: {
+      width: "500px",
+    },
+    [theme.breakpoints.between(381, 480)]: {
+      width: "350px",
+    },
+    [theme.breakpoints.between(351, 380)]: {
+      width: "300px",
+    },
+    [theme.breakpoints.between(0, 350)]: {
+      width: "250px",
+    },
+  },
+  labelSelect: {
+    fontFamily: "Nexa Bold",
+    fontSize: "18px",
+    color: "#27AAE1",
+    paddingLeft: "20px",
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "20px",
+    },
+  },
+  buttonClose: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  IconButtonFilter: {
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "5px",
+  },
+  containerFilterDrawer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  TypographyFilter: {
+    fontFamily: "Nexa Bold",
+    fontSize: "18px",
+    lineHeight: "20px",
+    color: "#696969",
+    padding: "2px 0px",
+    textTransform: "capitalize",
+    margin: "20px",
+  },
+  buttonShowFilter: {
+    backgroundColor: "#797EF6",
+    width: "140px",
+    height: "45px",
+    color: "#FFFFFF",
+    fontFamily: "Nexa Bold",
+    fontSize: "12px",
+    borderRadius: "100px",
+  },
+  containerGridSwiper: {
+    display: "flex",
+    width: "100%",
+    position: "relative",
+    flexDirection: "row",
+    height: "auto",
+  },
+  containerCardSwiper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "26px",
+    flex: "1 0 40%",
+    background: "#FFFFFF",
+    borderRadius: "14px",
+    overflow: "hidden",
+    height: "fit-content",
+    maxWidth: "400px",
+    [theme.breakpoints.between(2550, 4000)]: {
+      gap: "18px",
+      maxWidth: "400px",
+      flexWrap: "wrap",
+      justifyContent: "center",
+    },
+    [theme.breakpoints.down("md")]: {
+      gap: "18px",
+      maxWidth: "380px",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      margin: "auto",
+      padding: "auto",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gap: "13px",
+      maxWidth: "300px",
+    },
+  },
+  imagenContent: {
+    objectFit: "contain",
+    objectPosition: "center",
+  },
+
+  containerWhiteComponentRoadMap: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+
+    [theme.breakpoints.between("xs", "sm")]: {
+      flexDirection: "column",
+    },
+    [theme.breakpoints.between("lg", "xl")]: {
+      paddingTop: "50px",
+      maxWidth: "1080px",
+    },
+    [theme.breakpoints.up("xl")]: {
+      paddingTop: "32px",
+    },
+    [theme.breakpoints.up("xxl")]: {
+      paddingTop: "60px",
+    },
+  },
+  textContainerWhiteComponentRoadMap: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    gap: "20px",
+    width: "58%",
+    whiteSpace: "pre-line",
+    marginLeft: "20px",
+    [theme.breakpoints.between("xs", "sm")]: {
+      paddingTop: "32px",
+      width: "70%",
+    },
+    [theme.breakpoints.between("lg", "xl")]: {
+      width: "55%",
+    },
+  },
+
+  buttonComponentContinueReading: {
+    animation: `myEffectbutton 2000ms`,
+    background: "#797EF6",
+    borderRadius: "100px",
+    "&:hover": {
+      backgroundColor: "#27AAE1",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
+    [theme.breakpoints.between(1920, 4000)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "17px",
+        lineHeight: "10px",
+        padding: "15px 17px 15px 17px",
+      },
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "15px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
+    [theme.breakpoints.between(0, 959)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+      [theme.breakpoints.between(0, 330)]: {
+        borderRadius: "100px",
+        "& > span": {
+          fontSize: "14px",
+          lineHeight: "14px",
+          padding: "10px 14px 8px 14px",
+        },
+      },
+    },
+  },
+ 
+  buttonComponentUserExperience: {
+    animation: `myEffectbutton 2000ms`,
+    background: "#797EF6",
+    borderRadius: "100px",
+    "&:hover": {
+      backgroundColor: "#27AAE1",
+    },
+    "& > span": {
+      fontFamily: "Nexa Bold",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      padding: "14px 20px 12px 20px",
+      lineHeight: "14px",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      letterSpacing: "0.05em",
+      color: "#FFFFFF",
+    },
+    [theme.breakpoints.between(1920, 4000)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "17px",
+        lineHeight: "10px",
+        padding: "15px 17px 15px 17px",
+      },
+    },
+    [theme.breakpoints.between(960, 1919)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "15px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
+    [theme.breakpoints.between(0, 959)]: {
+      borderRadius: "100px",
+      "& > span": {
+        fontSize: "10px",
+        lineHeight: "14px",
+        padding: "10px 14px 8px 14px",
+      },
+    },
   },
   
 }))
