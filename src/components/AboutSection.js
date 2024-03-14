@@ -163,12 +163,12 @@ const AboutSection = () => {
       link: "/",
       iconImage: whoWeAre_icon
     },
-    // {
-    //   title: t("about_aboutSection_Roadmap_title"),
-    //   description: t("about_aboutSection_Roadmap"),
-    //   link: '/road-map',
-    //   iconImage: roadmap_icon
-    // },
+    {
+      title: t("about_aboutSection_Roadmap_title"),
+      description: t("about_aboutSection_Roadmap"),
+      link: '/road-map',
+      iconImage: roadmap_icon
+    },
     {
       title: t("about_aboutSection_WorkingTogether_title"),
       description: t("about_aboutSection_WorkingTogether"),
